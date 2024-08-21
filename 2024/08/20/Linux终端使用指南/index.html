@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux终端使用指南 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux终端使用指南主目录~是一个缩写，代表用户的主目录(home)，课程所用虚拟机中用户的主目录的路径为&#x2F;home&#x2F;co-eda。双击虚拟机桌面上的“文件管理器”图标，即可进入用户主目录。    在表示文件路径时，我们常用这个缩写，例如 ~&#x2F;VCS-Example 表示 &#x2F;home&#x2F;co-eda&#x2F;VCS-Example。   &#x3D;&#x3D;目录与文件夹&#x3D;&#x3D; 目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux终端使用指南">
+<meta property="og:url" content="http://ywxy12138.github.io/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="Linux终端使用指南主目录~是一个缩写，代表用户的主目录(home)，课程所用虚拟机中用户的主目录的路径为&#x2F;home&#x2F;co-eda。双击虚拟机桌面上的“文件管理器”图标，即可进入用户主目录。    在表示文件路径时，我们常用这个缩写，例如 ~&#x2F;VCS-Example 表示 &#x2F;home&#x2F;co-eda&#x2F;VCS-Example。   &#x3D;&#x3D;目录与文件夹&#x3D;&#x3D; 目录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/Linux.jpeg">
+<meta property="article:published_time" content="2024-08-20T15:28:27.000Z">
+<meta property="article:modified_time" content="2024-08-21T14:01:35.745Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/Linux.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux终端使用指南',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-08-21 22:01:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Linux.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux终端使用指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-20T15:28:27.000Z" title="发表于 2024-08-20 23:28:27">2024-08-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-21T14:01:35.745Z" title="更新于 2024-08-21 22:01:35">2024-08-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux终端使用指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux终端使用指南"><a href="#Linux终端使用指南" class="headerlink" title="Linux终端使用指南"></a>Linux终端使用指南</h1><h2 id="主目录"><a href="#主目录" class="headerlink" title="主目录"></a>主目录</h2><p><code>~</code>是一个缩写，代表用户的主目录(home)，课程所用虚拟机中用户的主目录的路径为<code>/home/co-eda</code>。双击虚拟机桌面上的“文件管理器”图标，即可进入用户主目录。   </p>
+<p>在表示文件路径时，我们常用这个缩写，例如 <code>~/VCS-Example</code> 表示 <code>/home/co-eda/VCS-Example</code>。  </p>
+<p>&#x3D;&#x3D;目录与文件夹&#x3D;&#x3D;</p>
+<p>目录 (directory) 又称文件夹 (folder)，这两者一般表示相同的含义。</p>
+<h2 id="终端与shell"><a href="#终端与shell" class="headerlink" title="终端与shell"></a>终端与shell</h2><p>在虚拟机桌面上双击“终端”图标，即可打开终端。终端是一个&#x3D;&#x3D;程序&#x3D;&#x3D;，它使我们能以&#x3D;&#x3D;文本方式&#x3D;&#x3D;以计算机交互。  </p>
+<p>打开终端后，其中将运行一个被称作<strong>shell</strong>的程序，在终端中的提示文本都是 <strong>shell</strong> 负责输出的，你的输入也将交由<strong>shell</strong>处理。<strong>shell</strong>启动后，会显示<code>co-eda@co-eda ~&gt;</code>提示，向用户展示一些基本的运行状态信息。  </p>
+<p>&#x3D;&#x3D;shell 提示格式&#x3D;&#x3D;</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">上述终端提示由 4 部分组成。<br>`co-eda@co-eda ~&gt;`<br>1.`co-eda`表示当前用户名；<br>2.`co-eda`表示当前主机名；<br>3.`~`表示当前所在目录；<br>4.`&gt;`表示当前用户为普通用户；如果当前用户为超级用户，则会显示红色的`#`号。<br></code></pre></td></tr></table></figure>
+
+<p>你可以在<strong>shell</strong>提示后输入命令，并按回车键，即可执行该命令。例如，执行<code>ls</code>命令，将列出当前所在目录下的所有文件。</p>
+<h2 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h2><p><strong>shell</strong>打印的<code>~</code>表示当前所在目录。如果从桌面上启动终端，则当前目录默认为用户的主目录。</p>
+<p>若想改变当前所在目录，可使用<code>cd &lt;目录名&gt;</code>命令。例如，想要进入<code>VCS-Example</code>目录，则可输入<code>cd VCS-Example</code>，可看到<code>~</code>变为 <code>~/VCS-Example</code>，表示当前目录已经更改。</p>
+<p>Linux 中，有两个特殊的目录：<code>.</code>（一个点）和 <code>..</code>（两个点）。一个点表示当前所在目录；两个点表示当前目录的上一级目录。执行<code>cd .</code>（注意空格)不会有任何作用；执行<code>cd ..</code>(注意cd和两个点之间的空格)可返回&#x3D;&#x3D;上一级&#x3D;&#x3D;目录。</p>
+<p>上面的“目录名”是<strong>相对路径</strong>，即相对于当前目录的路径。<code>cd</code> 命令也可直接到达<strong>绝对路径</strong>。例如，无论当前目录在何处，输入 <code>cd ~</code>都可到达用户主目录下。</p>
+<p>若觉得使用<code>cd</code>命令进入目录太麻烦，也可在文件管理器中打开想进入的地方，然后按下F4键，即打开终端并直接进入该目录。</p>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p><strong>shell</strong>中，输入命令的格式为 <code>&lt;命令名称&gt; &lt;参数 1&gt; &lt;参数 2&gt; &lt;参数 n&gt; ...</code>。其中，“命令名称”有两种类型：<strong>系统命令</strong>和<strong>路径命令</strong>。</p>
+<h3 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h3><p>系统命令&#x3D;&#x3D;直接&#x3D;&#x3D;由&#x3D;&#x3D;命令名&#x3D;&#x3D;表示，命令的程序存放于特定的系统程序目录内。例如，<code>cd</code>和<code>ls</code>皆为系统命令，我们后面要用到的<code>vcs</code>也是系统命令。</p>
+<h3 id="路径命令"><a href="#路径命令" class="headerlink" title="路径命令"></a>路径命令</h3><p>路径命令的格式则为 <code>路径/程序文件名</code>，程序可以位于任何地方，不一定是系统程序目录。例如，用户主目录中有<code>hello.sh</code>文件（打开文件管理器即可看到）。在<strong>shell</strong>中输入<code>~/hello.sh</code>或<code>./hello.sh</code>，即可执行这个文件（注意后者只能在用户主目录下执行）。只有特定的文件（例如&#x3D;&#x3D;脚本&#x3D;&#x3D;、&#x3D;&#x3D;可执行文件&#x3D;&#x3D;）才能被执行，文本文件、Verilog 源代码文件等都是不能执行的。</p>
+<h3 id="终止命令"><a href="#终止命令" class="headerlink" title="终止命令"></a>终止命令</h3><p>如果一个命令执行太久，你想终止这个命令，可以在终端中按下<code>^Ctrl</code>+<code>C</code>，终端会向当前进程发送中断信号，停止其执行。</p>
+<h2 id="一些常用的命令"><a href="#一些常用的命令" class="headerlink" title="一些常用的命令"></a>一些常用的命令</h2><ul>
+<li><p><code>ls</code>: 查看当前目录下的&#x3D;&#x3D;所有&#x3D;&#x3D;文件。</p>
+</li>
+<li><p><code>cd</code>: &#x3D;&#x3D;进入&#x3D;&#x3D;其他目录。</p>
+</li>
+<li><p><code>date</code>: 查看当前日期时间。</p>
+</li>
+<li><p><code>cp &lt;源文件名&gt; &lt;目标文件名&gt;</code>: 复制(<code>copy</code>)文件。</p>
+</li>
+<li><p><code>rm &lt;文件名&gt;</code>: 删除(<code>remove</code>)文件。</p>
+</li>
+<li><p><code>echo &lt;文本&gt;</code>: 原样&#x3D;&#x3D;显示&#x3D;&#x3D;文本。</p>
+</li>
+<li><p><code>cat &lt;文件名&gt;</code>: 查看文件内容(<code>catch</code>?)。</p>
+</li>
+</ul>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>​    有时，我们需要执行一些固定的命令，每次都输入这些命令会比较麻烦。这时，我们需要使用“脚本” (script) 来简化操作。脚本的基本功能就是将许多命令&#x3D;&#x3D;汇整&#x3D;&#x3D;写在一起，让使用者能够一键进行较为复杂的动作。</p>
+<p>我们可以像运行程序一样运行脚本。例如，上面提到的<code>hello.sh</code>就是一个脚本，在<strong>shell</strong>中输入<code>~/hello.sh</code>，就可以运行。</p>
+<p><code>hello.sh</code>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">#!/bin/bash<br><br># 使用 echo 命令打印文本<br>echo Hello, world!<br><br></code></pre></td></tr></table></figure>
+
+<p>脚本的实质为&#x3D;&#x3D;文本文件&#x3D;&#x3D;。<code>hello.sh</code>的第一行为[shebang](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/627316374">关于 Bash 脚本中 Shebang 的趣事 - 知乎 (zhihu.com)</a>)(用来指定脚本的解释器路径)，用于指定解释器为 bash，所有的 bash 脚本都需要带有这一行，否则无法正常执行。第二行为空行。第三行为注释。以<code>#</code>开头，类似python的写法。最后一行，脚本使用<code>echo</code>命令，完成一行输出。</p>
+<p>如果使用Sublime Text编写脚本并尝试运行，系统会提示 <code>fish: The file &#39;./1.sh&#39; is not executable by this user</code>。这是因为我们没有给脚本文件赋予执行权限。在用户主目录下运行<code>ls</code>命令，会发现<code>hello.sh</code>呈绿色加粗（表示有执行权限），而<code>xxx.sh</code>(xxx.sh为之前尝试运行的文件的文件名) 则呈现黑色（表示该文件为普通文件，无执行权限）。要赋予执行权限，只需运行<code>chmod +x xxx.sh</code>即可。赋予后，脚本就可以直接执行了。再次运行<code>ls</code>命令，发现<code>xxx.sh</code>也已经是绿色加粗了。  </p>
+<h2 id="智能补全与历史联想"><a href="#智能补全与历史联想" class="headerlink" title="智能补全与历史联想"></a>智能补全与历史联想</h2><p>如果每次<code>cd</code>或执行其他命令都要输入全名，未免有些麻烦。在<strong>shell</strong>下，按Tab键可以使用智能补全功能，根据当前目录下的对象名称进行补全。例如，要想进入<code>VCS-Example</code>目录，只需输入 <code>cd V</code>，然后按下键盘的Tab键，<strong>shell</strong>会自动帮你补全剩下的字符。</p>
+<p>虚拟机中的<strong>shell</strong>还提供了历史记录联想功能。输入命令的一部分后，如果你以前执行过类似命令，<strong>shell</strong>会以灰色显示联想出的部分。例如，如果你以前执行过<code>cd VCS-Example</code>，在输入<code>cd VC</code>后，终端会显示<code>cd VCS-Example</code>，灰色部分即为联想。这时，按下键盘上的&#x3D;&#x3D;右方向键&#x3D;&#x3D;，即可确认联想部分。注意按回车后，灰色的部分不会执行，需要确认后才能执行。若有多个联想，可用&#x3D;&#x3D;上下方向键&#x3D;&#x3D;来选择；如果联想的内容只有一部分是你想要的，则可用 &#x3D;&#x3D;Alt+右方向键&#x3D;&#x3D;来逐单词确认。</p>
+<h2 id="不同shell之间的差异"><a href="#不同shell之间的差异" class="headerlink" title="不同shell之间的差异"></a>不同shell之间的差异</h2><p>Debian、Ubuntu、CentOS 等 Linux 发行版默认的<strong>shell</strong>是bash，而本课程提供的虚拟机映像的默认<strong>shell</strong>是<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f6fe529434386d5c72468aa395/">fish</a>。</p>
+<p>fish的功能更加强大易用，但它与使用更广泛的 POSIX 兼容终端（如 bash）的行为不尽相同。以bash为例，fish和bash在命令替换语法、变量设置语法、流程控制语法等诸多方面上有显著不同。在尝试运行来源于网络的<strong>shell</strong>命令时，需要注意相关语法差异。</p>
+<p>关于fish和bash的详细区别，可以阅读官方文档：<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f6fe529434386d5c72468aa395/docs/current/fish_for_bash_users.html#fish-for-bash-users">Fish for bash users</a>。</p>
+<p>你也可以在fish中启动bash或者其他<strong>shell</strong>，以求正确地执行来源于网络的<strong>shell</strong>命令。</p>
+<p>关于在脚本文件中指定其执行<strong>shell</strong>，参考：<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f6fe529434386d5c72468aa395/docs/current/index.html#shebang-line">Shebang</a>。</p>
+<h1 id="虚拟机中的文件题目快速提交工具"><a href="#虚拟机中的文件题目快速提交工具" class="headerlink" title="虚拟机中的文件题目快速提交工具"></a>虚拟机中的文件题目快速提交工具</h1><p>在虚拟机中内置了<code>co-submit</code>工具，这个工具可以帮你更方便地提交“文件上传”类型的题目。</p>
+<p>要使用这个工具提交题目，首先需在题目页面中记下要提交的题号（题号位于题目名称的右侧），例如图中题目的题号为 <code>712-23</code>。  </p>
+<p><img src="/img/problem-number.png" alt="例题"></p>
+<p>在虚拟机中完成题目后，打开“终端”，使用<code>cd</code>命令切换到答案文件所在地，然后运行<code>co-submit 题号 文件或目录名</code>即可提交该题目。首次提交的时候会提示登录，输入自己的用户名和密码即可。</p>
+<p>![提交例题](&#x2F;img&#x2F;example of submission.png)</p>
+<p>Verilog题目可能需要提交多个.v文件。此时可以在参数列表中指定多个文件名，例如<code>co-submit 233-23 aaa.v bbb.v</code>；也可以指定通配符，例如<code>co-submit 233-23 *.v</code>；还可以提交一整个目录，例如<code>co-submit 233-23 directory-name</code>。工具会&#x3D;&#x3D;自动对多个文件进行压缩&#x3D;&#x3D;，无需手动压缩。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">http://ywxy12138.github.io/2024/08/20/Linux终端使用指南/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="/img/Linux.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/08/15/%E6%95%B0%E5%88%B6/" title="数制"><img class="cover" src="/img/%E6%95%B0%E5%88%B6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数制</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">Linux终端使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">主目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E4%B8%8Eshell"><span class="toc-number">1.2.</span> <span class="toc-text">终端与shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">当前目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">执行命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.1.</span> <span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.2.</span> <span class="toc-text">路径命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E6%AD%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.3.</span> <span class="toc-text">终止命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text">一些常用的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number">1.6.</span> <span class="toc-text">脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E8%A1%A5%E5%85%A8%E4%B8%8E%E5%8E%86%E5%8F%B2%E8%81%94%E6%83%B3"><span class="toc-number">1.7.</span> <span class="toc-text">智能补全与历史联想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8Cshell%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.8.</span> <span class="toc-text">不同shell之间的差异</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E9%A2%98%E7%9B%AE%E5%BF%AB%E9%80%9F%E6%8F%90%E4%BA%A4%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">虚拟机中的文件题目快速提交工具</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="Linux终端使用指南"><img src="/img/Linux.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux终端使用指南"/></a><div class="content"><a class="title" href="/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="Linux终端使用指南">Linux终端使用指南</a><time datetime="2024-08-20T15:28:27.000Z" title="发表于 2024-08-20 23:28:27">2024-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/15/%E6%95%B0%E5%88%B6/" title="数制"><img src="/img/%E6%95%B0%E5%88%B6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数制"/></a><div class="content"><a class="title" href="/2024/08/15/%E6%95%B0%E5%88%B6/" title="数制">数制</a><time datetime="2024-08-15T04:45:43.000Z" title="发表于 2024-08-15 12:45:43">2024-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/14/Python/" title="python"><img src="/img/python.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python"/></a><div class="content"><a class="title" href="/2024/08/14/Python/" title="python">python</a><time datetime="2024-08-14T10:09:00.000Z" title="发表于 2024-08-14 18:09:00">2024-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/14/logisim/" title="Logisim"><img src="/img/logisim.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Logisim"/></a><div class="content"><a class="title" href="/2024/08/14/logisim/" title="Logisim">Logisim</a><time datetime="2024-08-14T10:09:00.000Z" title="发表于 2024-08-14 18:09:00">2024-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/13/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法"><img src="/img/markdown.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown语法"/></a><div class="content"><a class="title" href="/2024/08/13/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法">Markdown语法</a><time datetime="2024-08-13T15:49:00.000Z" title="发表于 2024-08-13 23:49:00">2024-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

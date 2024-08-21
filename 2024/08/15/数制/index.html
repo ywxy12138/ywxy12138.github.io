@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数制 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数制介绍：此处指的数制指一般计算机系统中数字的表示方式。限于篇幅和实验需求，这里暂且只介绍整数的表示方式。    进制：进位制（positional notation 或 place-value notation），是一种编码数的方式。这里我们不形式化地介绍这个概念，只描述一个在应用层面较为准确的概念。在下面的说明中，默认十进制表示是个先验概念，如无特殊记号指明，所有数均为十进制表示。同时我们约定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数制">
+<meta property="og:url" content="http://ywxy12138.github.io/2024/08/15/%E6%95%B0%E5%88%B6/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="数制介绍：此处指的数制指一般计算机系统中数字的表示方式。限于篇幅和实验需求，这里暂且只介绍整数的表示方式。    进制：进位制（positional notation 或 place-value notation），是一种编码数的方式。这里我们不形式化地介绍这个概念，只描述一个在应用层面较为准确的概念。在下面的说明中，默认十进制表示是个先验概念，如无特殊记号指明，所有数均为十进制表示。同时我们约定">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/%E6%95%B0%E5%88%B6.jpg">
+<meta property="article:published_time" content="2024-08-15T04:45:43.000Z">
+<meta property="article:modified_time" content="2024-08-16T14:50:42.653Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="前置知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/%E6%95%B0%E5%88%B6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2024/08/15/%E6%95%B0%E5%88%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数制',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-08-16 22:50:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/%E6%95%B0%E5%88%B6.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-15T04:45:43.000Z" title="发表于 2024-08-15 12:45:43">2024-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-16T14:50:42.653Z" title="更新于 2024-08-16 22:50:42">2024-08-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数制"><a href="#数制" class="headerlink" title="数制"></a>数制</h1><h2 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h2><p>此处指的数制指一般计算机系统中数字的表示方式。限于篇幅和实验需求，这里暂且只介绍整数的表示方式。   </p>
+<h2 id="进制："><a href="#进制：" class="headerlink" title="进制："></a>进制：</h2><p>进位制（positional notation 或 place-value notation），是一种编码数的方式。这里我们不形式化地介绍这个概念，只描述一个在应用层面较为准确的概念。在下面的说明中，默认十进制表示是个先验概念，如无特殊记号指明，所有数均为十进制表示。同时我们约定：在下面的说明中，位都是从&#x3D;&#x3D;0&#x3D;&#x3D;开始编号的。不难修改相关定义使得位从 1 开始编号。</p>
+<p>一个 <strong>n</strong> 位 <strong>b</strong> 进制数（base-b number）为一个字符串 (b<del>n−1</del>b<del>n−2</del>…b<del>1</del>b<del>0</del>)(<del>b</del>），其中 bi∈{0,1,…,b−1}。定义其表示的值为</p>
+<p>(b<del>n−1</del>b<del>n−2</del>…b<del>1</del>b<del>0</del>)<del>b</del>&#x3D;∑<em>b<del>i</del><em>×</em>b^i^</em>(i从0取到n-1，<del>水平有限</del>，<del>打不出正规的∑来</del>)</p>
+<p>其中 <em><strong>b<del>i</del><em><strong>称为第 i位的位权。当不特殊指明位数时，代表在当前上下文中，位数不重要。</strong></em>b</strong></em>进制数也称作基数（base）为 <em><strong>b</strong></em> 的数。</p>
+<p>比如 10b<del>(16)</del>&#x3D;1×16^2^+0×16^1^+11×16^0^&#x3D;267，给出了267在十六进制下的表示。在十以上进制中，为了不造成解读上的困难，通常使用英文字母来表示 10及其以上的数。比如十六进制中的 a,b,c,d,e,f分别代表十进制的 10,11,12,13,14,15。字母的大小写一般不重要。</p>
+<p>由于十六进制的广泛使用，人们规定了一种十六进制数的表示，即在数前加 <code>0x</code> 以区分十进制数。比如 (5a)<del>(16)</del>可以写作 <code>0x5a</code>。</p>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换:"></a>进制转换:</h2><p> 对于一个数x，</p>
+<p>若x本身已为10进制数，想要转换为b进制数，可以&#x3D;&#x3D;通过不断求模b并在一次求模后用x整除b的结果代替x的方式来求出x在b进制下的每一位，直到x变为0时停止操作，则此时得到的字符串即为所求&#x3D;&#x3D;。例如，7<del>（10）</del> 转换为十六进制数就是先模一次16，得到1放在其十六进制下的个位，整除16后得到1，1再模16得到1，放在其十六进制下的十位，1整除16得到0，停止操作，则17<del>（10）</del> &#x3D;0x11<del>（16）</del>；  </p>
+<p>若x本身不为十进制数，想要转换为b进制数，  </p>
+<p>若b为10，则就为就将x第i位上的数乘以其原本a进制下的a^i^ 求和后得到的结果即为所求。例如，0x11<del>(16)</del> 转换为10进制数，就是将16^0^ *1+16^1^ *1&#x3D;17得到0x11在十进制下的数。</p>
+<p>若b不为10，则先将x转换为10进制数，再通过第二段的方法转换为相应进制下的数即可。   </p>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码:"></a>原码:</h2><p>由于计算机采用开关元件，现代计算机均使用二进制位的序列（bit sequence）来表示数，包括小数。实际上，历史上前苏联曾经尝试开发过&#x3D;&#x3D;三进制&#x3D;&#x3D;计算机，想深入了解的可以自行搜索。</p>
+<p>在数学上表示整数时，我们使用前缀负号（-）来表示负数。那么用二进制表示整数的最直观的想法，就是将其绝对值直接转为二进制，再用最高位表示正负号。这种表示方法被称作原码。举例来说，如果将1和−1表示为3位原码，则结果分别是 <code>001</code> 和 <code>101</code>。显然 n 位的原码系统可以表示 [−2^<em>n</em>−1^+1,2^<em>n</em>−1^−1] 内的整数。</p>
+<p>不过注意到，上述表示中,0有两种表示方法（正0和负0），这是原码带来的不便之一。其次，如果要做运算的话，原码不能直接相加，需要根据符号位做相应判断：同号绝对值相加，异号绝对值大的减去绝对值小的，最后置符号位。因此，在现代计算机中涉及整数的计算，一般不使用原码。</p>
+<p>根据 <a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Signed_number_representations#Sign-and-magnitude_method">Wikipedia 上的资料</a>，由于原码十分直观，因此在早期的计算机中得以使用。除此以外，&#x3D;&#x3D;原码在数制中的另一大用处即为表示浮点数的有效数字，也是当今几乎所有计算机表示浮点数的标准&#x3D;&#x3D;。其具体考量留待补码时做进一步说明。</p>
+<h2 id="反码："><a href="#反码：" class="headerlink" title="反码："></a>反码：</h2><p>设数制的位宽为 n≥1，如果将负数的绝对值的二进制&#x3D;&#x3D;按位取反（~）&#x3D;&#x3D;的话，我们就得到了反码系统（one’s complement）。</p>
+<p>对于 n 位的反码系统，其可以表示的数的范围为 [−2^<em>n</em>−1^+1,2^<em>n</em>−1^−1]。</p>
+<p>举例来说，在 3位反码系统中，1与−1的表示方法分别为 <code>001</code> 和 <code>110</code>。</p>
+<p>注意到，00 在反码的表示中也有两种表示方法，分别为全0和全1。</p>
+<p>尝试后容易发现，在反码系统中可以通过加法直接运算两个数的反码，但是需要一次循环进位（end-around carry），即如果有进位溢出（指两个n位数相加产生了第n位的进位，位的标号从0开始），则需要将该溢出进位当作1加入结果中。具体例子请参见<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Signed_number_representations#Ones.27_complement">这里</a>。</p>
+<p>因为上述不便，现在的绝大部分计算机都不采用这种方式。</p>
+<p>作为一个题外话，来谈谈反码运算溢出的问题。如果两个同号数相加变成一个异号数，则发生溢出，两个异号数相加不可能发生溢出。  </p>
+<h2 id="补码："><a href="#补码：" class="headerlink" title="补码："></a>补码：</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍:"></a>介绍:</h3><p>为了弥补反码的缺点，人们发明了补码（two’s complement）。一个n位的补码实际上是一个数在模2^n^意义下的表示。</p>
+<p>形式化地，在n位补码系统中，串 a<del>n−1</del>a<del>n−2</del>…a<del>0</del>表示的值是：</p>
+<p>w&#x3D;−a<del>n−1</del> * 2^n−1^+∑ai * 2^i^ (i从0到n-2)</p>
+<p>对于n位的补码系统，其可以表示的数的范围是[−2^n-1^,2^n−1^−1]。</p>
+<p>可以注意到，在补码中,0只有唯一的表示，即全0。因为2^n^是一个n+1位的数(二进制下），而补码长度只有n位，舍弃最高位之后恰好又全是0，所以0的表示是唯一的。补码的运算本质上是在模2^n^ 意义下的运算。不处理进位溢出，恰好相当于模2^n^。所以对于补码来说只需做正常的加法即可。</p>
+<p>举例来说，在3位补码系统中,1的表示是 1<del>comp</del>&#x3D;&#96;&#96;001<code>，−1~comp~=</code>111<code>。而 0~comp~=1~comp~+−1~comp~=(</code>001<code>+</code>111&#96;)%2^3^&#x3D;000&#x3D;0<del>comp</del>。</p>
+<p>对于一个负数，知道其绝对值，如何得到其补码呢？可以做2^n^(即二进制下在有效位数全为0的情况下，有效位最高位的下一位（超出有效位数范围了）置1的情况）减去其绝对值（例如，在3位补码系统中，−1<del>comp</del>&#x3D;<code>111</code>，2^3^ <del>comp</del>&#x3D;<code>1000</code> ,2^3^ <del>comp</del>-−1<del>comp</del> &#x3D;<code>1000</code>-<code>111</code>&#x3D;<code>001</code>&#x3D;1<del>comp</del> )，或将其绝对值逐位取反(~)后加上1(始终在二进制形式下）。</p>
+<p>因为 −x&#x3D;2^n^−(2^n^+x)，所以如果想得到一个负数的绝对值，只需要用 2^n^减去其补码表示即可，亦即按位取反再加1。</p>
+<p>补码的溢出判定准则和反码相同：两个同号数相加如果得到一个不同号数，则发生溢出；两个异号数相加不会出现溢出。在实际判断中，为了不区分是否是同号数相加还是异号数相加，设第n位符号位（此处从1开始编号）产生的进位为carry<del>MSB</del>，第n−1位最高数位产生的进位为 carry<del>MSB−1</del>，发生溢出当且仅当 carry<del>MSB</del>⊕carry<del>MSB−1</del>&#x3D;1。该溢出准则引用自维基百科补码页中关于<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Two's_complement#Addition">溢出检查</a>的部分。</p>
+<p>上段公式中的 MSB 为最高有效位 Most Significant Bit 的缩写，意为一个二进制数中有最大位权的位。举例来说，如果位是从0开始标号的话，则n位二进制数的 MSB 为第n−1位。(001)<del>2</del>为一个3位二进制数，其 MSB 为第2位。更详细的信息可以参见<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Most_significant_bit">这里</a>。</p>
+<h3 id="浮点数中的原码："><a href="#浮点数中的原码：" class="headerlink" title="浮点数中的原码："></a>浮点数中的原码：</h3><p>在原码中曾经提到过，在<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Single-precision_floating-point_format">浮点数</a>中表示有效数字时采用原码。既然整数的加减运算在补码中是一样的，那么为什么不同样使用补码表示浮点数中的有效数字呢？这里以个人之见谈谈其中的直觉。</p>
+<p>根据<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f3e40f8f33316b5b7b108aa4995b2430cbe69f43/questions/6048/why-floating-point-representation-uses-a-sign-bit-instead-of-2s-complement-to-i">这里</a>的说明，单位一不同时，用补码反而会较为麻烦。举例来说，乘二的幂次在原码表示中是十分简单的，只需将绝对值部分进行移位即可。而在补码表示中，乘二的幂可以通过左移解决，但是除二的幂就会出现问题，比如五位补码 −9<del>comp</del>&#x3D;(10111)<del>2</del>右移两位（右移时高位补进的位根据原来最高位补，例如， −9<del>comp</del>&#x3D;(10111)<del>2</del>右移两位得到(11101)<del>2</del>之后期望得到 −2<del>comp</del>，但实际上得到的却是 −3<del>comp</del>。为了得到正确结果，则需要将补码转换成原码再进行操作，所以在浮点数这种因为对齐幂次需要而对有效数字进行频繁调整的表示方法中，采取补码表示反而不如直接采用原码。这就是在浮点数标准中，表示有效数字使用原码而非补码的原因。</p>
+<p>作为题外话，浮点数的幂因为考虑到比较的需要，采用的是移码（offset binary）表示，具体参见<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/https/77726476706e69737468656265737421f5f90f8b2e3b61407b0c80add65a3132/wiki/Offset_binary">这里</a>。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2024/08/15/%E6%95%B0%E5%88%B6/">http://ywxy12138.github.io/2024/08/15/数制/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/">前置知识</a></div><div class="post_share"><div class="social-share" data-image="/img/%E6%95%B0%E5%88%B6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/08/14/Python/" title="python"><img class="cover" src="/img/python.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">python</div></div></a></div><div class="next-post pull-right"><a href="/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="Linux终端使用指南"><img class="cover" src="/img/Linux.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux终端使用指南</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">数制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">介绍：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">进制：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">进制转换:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">原码:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">反码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">补码：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.6.1.</span> <span class="toc-text">介绍:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81%EF%BC%9A"><span class="toc-number">1.6.2.</span> <span class="toc-text">浮点数中的原码：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="Linux终端使用指南"><img src="/img/Linux.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux终端使用指南"/></a><div class="content"><a class="title" href="/2024/08/20/Linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="Linux终端使用指南">Linux终端使用指南</a><time datetime="2024-08-20T15:28:27.000Z" title="发表于 2024-08-20 23:28:27">2024-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/15/%E6%95%B0%E5%88%B6/" title="数制"><img src="/img/%E6%95%B0%E5%88%B6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数制"/></a><div class="content"><a class="title" href="/2024/08/15/%E6%95%B0%E5%88%B6/" title="数制">数制</a><time datetime="2024-08-15T04:45:43.000Z" title="发表于 2024-08-15 12:45:43">2024-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/14/Python/" title="python"><img src="/img/python.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python"/></a><div class="content"><a class="title" href="/2024/08/14/Python/" title="python">python</a><time datetime="2024-08-14T10:09:00.000Z" title="发表于 2024-08-14 18:09:00">2024-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/14/logisim/" title="Logisim"><img src="/img/logisim.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Logisim"/></a><div class="content"><a class="title" href="/2024/08/14/logisim/" title="Logisim">Logisim</a><time datetime="2024-08-14T10:09:00.000Z" title="发表于 2024-08-14 18:09:00">2024-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/13/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法"><img src="/img/markdown.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown语法"/></a><div class="content"><a class="title" href="/2024/08/13/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法">Markdown语法</a><time datetime="2024-08-13T15:49:00.000Z" title="发表于 2024-08-13 23:49:00">2024-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
