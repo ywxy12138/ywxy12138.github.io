@@ -1,0 +1,796 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计组上机 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计组上机Pre第一题（Logisim）题目大意：输出一个持续填入数组的当前数an。而an根据输入端type做相应的变化： type &#x3D;&#x3D; 0 , an &#x3D; 0 type &#x3D;&#x3D; 1 , an &#x3D; an-1 + 1，a0 &#x3D;&#x3D; 0 type &#x3D;&#x3D; 2 , an &#x3D; a1 + …… + an-1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组上机">
+<meta property="og:url" content="http://ywxy12138.github.io/2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="计组上机Pre第一题（Logisim）题目大意：输出一个持续填入数组的当前数an。而an根据输入端type做相应的变化： type &#x3D;&#x3D; 0 , an &#x3D; 0 type &#x3D;&#x3D; 1 , an &#x3D; an-1 + 1，a0 &#x3D;&#x3D; 0 type &#x3D;&#x3D; 2 , an &#x3D; a1 + …… + an-1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/HDL.jpg">
+<meta property="article:published_time" content="2024-09-23T15:22:02.000Z">
+<meta property="article:modified_time" content="2024-11-16T11:50:17.931Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="上机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/HDL.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计组上机',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-11-16 19:50:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/HDL.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计组上机</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-23T15:22:02.000Z" title="发表于 2024-09-23 23:22:02">2024-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-16T11:50:17.931Z" title="更新于 2024-11-16 19:50:17">2024-11-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计组上机"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计组上机"><a href="#计组上机" class="headerlink" title="计组上机"></a>计组上机</h1><h2 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h2><h3 id="第一题（Logisim）"><a href="#第一题（Logisim）" class="headerlink" title="第一题（Logisim）"></a>第一题（Logisim）</h3><p>题目大意：输出一个持续填入数组的当前数a<del>n</del>。而a<del>n</del>根据输入端type做相应的变化：</p>
+<p><em>type &#x3D;&#x3D; 0 , a<del>n</del> &#x3D; 0</em></p>
+<p><em>type &#x3D;&#x3D; 1 , a<del>n</del> &#x3D; a<del>n-1</del> + 1，a<del>0</del> &#x3D;&#x3D; 0</em></p>
+<p><em>type &#x3D;&#x3D; 2 , a<del>n</del> &#x3D; a<del>1</del> + …… + a<del>n-1</del></em></p>
+<p>并且要求有一个reset复位输入端实现同步复位的功能，且电路外观<strong>一定要如下</strong>（<del>一定不同都不能有</del>）：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240923234941968.png" alt="image-20240923234941968"></p>
+<p>且要求是Moore状态机（输出值只与有限状态机当前状态值有关区别于Mealy状态机(输出值不仅同状态机当前状态值有关还与当前输入值有关）。</p>
+<p><strong>第一”坑“</strong>：因为如果左侧从上到下依次放输入，右端放一个输出的logisim默认电路外观是如下的图，在这种情况下评测机会以右侧输出端的绿线为支点，去按照上图的位置取输入的值，因此会导致下图中，左边中间的输入会对应到上图的左上输入端，其他以此类推，会得到意想不到的结果（本人是高位呈浮动数）。因此需要手动去调整，<strong>上机第一看：规定的电路外观，一定得要一模一样</strong>。</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240923234023706.png" alt="image-20240923234023706"></p>
+<p>回到题目本身，首先输出是a<del>n</del>，大多数情况下起作用的输入是type，又因为涉及到求和所以应该多一个存储前n-1项的和的状态sum。因此设计的状态转移电路的输入是nowan、nowsum、type，经过寄存器存储后状态转移电路的输出变为nextan和nextsum，将该电路独立出来，再搭配上输出函数以及输入就可实现了。<strong>特别注意：同步复位（置reset后时钟触发时复位）与异步复位（一置reset就复位）有本质的区别，因此在实现时会略有不同</strong>。</p>
+<p>根据题目要求可以得到状态转移电路如下，用一个子电路表示便于理解与修改：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240924092306667.png" alt="image-20240924092306667"></p>
+<p>之后便要考虑状态的存储的问题：即在状态转移后加上一个寄存器（由于sum也需要存储因此，需要两个寄存器），接下来就需要考虑要求的复位方式，若是异步复位则直接将reset输入同寄存器的cl端相连即可：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240924093004431.png" alt="image-20240924093004431"></p>
+<p>这样就能实现当reset置1时，当前状态直接复位，即寄存器直接被赋0，无需等时钟触发。</p>
+<p>由于题目要求的是<strong>同步复位即当reset置为1时，需等到时钟触发才复位</strong>，如此一来就不能再直接将reset接到寄存器的cl端了，需要在寄存器存入前去想方法，即转化为<strong>使0这个值也成为reset置1时寄存器存入的值</strong>，这样就可以像正常存入值时一样使之复位，因此联想到了，多路选择器和reset的搭配：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240924093650044.png" alt="image-20240924093650044"></p>
+<p>且该组合一定要在寄存器之前起到<strong>对于reset的一个特判的作用</strong>，当reset为0是寄存器存入正常值；为1时存入0即起到同步复位的作用。</p>
+<p>再将状态转移电路和状态存储电路相结合，便可以得到最终的答案：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240924094941008.png" alt="image-20240924094941008"></p>
+<p><strong>一定注意</strong>：<strong>主电路的外观十分重要</strong>。</p>
+<h3 id="第二题（Verilog"><a href="#第二题（Verilog" class="headerlink" title="第二题（Verilog)"></a>第二题（Verilog)</h3><p>本来是一道很简单的循环问题，但是由于忘记了for循环的正确写法，<del>导致硬控半小时</del>，不得不cv32个式子相加。注意着重理解Verilog语法种语句块的含义，与C语言的串行运行不同，是并行运行的。</p>
+<p>题面大意：<code>两个32位wire型输入端vector_a、vector_b，6位输出端result,求出vector_a和vector_b每一位相乘再相加的结果result。</code></p>
+<p>要体会到每个Verilog程序中每个大块都是同时进行的，即并行运行，其中<code>initial</code>块是在仿真一开始执行且只执行一次，而<code>always @(*)</code>块是从仿真开始，块中设计的变量一发生变化（<strong>注意并不是条件为真</strong>)就执行一次。&#x3D;&#x3D;<strong>尤其注意：这两个块中的语句会在波形图一帧内执行完，即若要在<code>always</code>块内进行循环，需要进行单独的初始化，可以将其理解成每一帧都是<code>always</code>块内的小语句块的重新执行一遍，且一定会执行完（前提是其内变量发生改变）</strong>&#x3D;&#x3D;。</p>
+<p>以下是<code>for</code>循环版本：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> dotProduct(<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] vector_a,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] vector_b,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] result<br>    );<br>    <span class="hljs-keyword">integer</span> i;<br>	 <span class="hljs-keyword">reg</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] ans;<br>	 <span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>		 ans = <span class="hljs-number">0</span>; <span class="hljs-comment">//initial the circle variate</span><br>		 <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">32</span>; i = i + <span class="hljs-number">1</span>) <span class="hljs-keyword">begin</span><br>           ans = ans + (vector_a[i] &amp; vector_b[i]);<span class="hljs-comment">//multipilication can be changed to and operation</span><br>       <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span>		 <span class="hljs-comment">// each always block can be referred to an independent function</span><br>    <span class="hljs-keyword">assign</span> result = ans;<br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+
+<p><code>while</code>版本：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> dotProduct(<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] vector_a,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] vector_b,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] result<br>    );<br>    <span class="hljs-keyword">integer</span> i;<br>	 <span class="hljs-keyword">reg</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] ans;<br>	 <span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>	    i = <span class="hljs-number">0</span>;<br>		 ans = <span class="hljs-number">0</span>; <span class="hljs-comment">//initial the circle variate</span><br>		<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">32</span>) <span class="hljs-keyword">begin</span><br>           ans = ans + (vector_a[i] &amp; vector_b[i]);<span class="hljs-comment">//multipilication can be changed to and operation</span><br>			  i = i + <span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span>		 <span class="hljs-comment">// each always block can be referred to an independent function</span><br>    <span class="hljs-keyword">assign</span> result = ans;<br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>谨记：always块内应该是每一帧都需要执行的一个“小主函数”</strong></p>
+<h3 id="第三题（MIPS）"><a href="#第三题（MIPS）" class="headerlink" title="第三题（MIPS）"></a>第三题（MIPS）</h3><p>依照C语言翻译成汇编即可，<strong>注意：循环或者函数要记得变量的循环变量的改变以及回转回循环开头的跳转指令</strong>。</p>
+<h2 id="P0"><a href="#P0" class="headerlink" title="P0"></a>P0</h2><h3 id="课下"><a href="#课下" class="headerlink" title="课下"></a>课下</h3><h4 id="CRC校验码计算电路的设计与测试"><a href="#CRC校验码计算电路的设计与测试" class="headerlink" title="CRC校验码计算电路的设计与测试"></a>CRC校验码计算电路的设计与测试</h4><p>CRC校验是数据通信领域中最常用的一种查错校验方式，它对数据进行多项式计算，并将得到的结果附在<strong>帧</strong>的后面，接收设备也执行类似的算法，以保证数据传输的正确性和完整性。（<strong>帧</strong>在此处指的是数据的二进制码）</p>
+<h5 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h5><p>”模二除法“：同算术除法类似，但除法过程中做减法时<strong>既不向上借位，也不比较除数和被除数相同位数值的大小</strong>；它的运算法则为 <code>1-1=0</code>，<code>0-1=1</code>，<code>1-0=1</code>，<code>0-0=0</code>，（即<strong>异或</strong>运算，因此该运算可以用异或运算来完成，来加快运算速度）例如 <code>1100-1001=0101</code>。</p>
+<h5 id="CRC校验码的计算"><a href="#CRC校验码的计算" class="headerlink" title="CRC校验码的计算"></a>CRC校验码的计算</h5><p>只需将<strong>原帧</strong>补上（被除数的位数-1）个0作为被除数，然后进行模二除法即可。例如：要发送的帧A为<code>10011</code>，<strong>发送端</strong>和<strong>接收端</strong>共同选定的除数B为<code>1110</code>，B为4位二进制数，因此需要在A后补上3个0，即可得到A‘&#x3D;<code>10011000</code>。再将A’作被除数，B作除数，进行“模二除法”，得到商<code>11001</code>，余数<code>110</code>，（注意：若最后的余数不是三位，也需要在余数前补零来凑齐三位），而这就是要求的<strong>校验码</strong>。将<strong>校验码</strong>拼接在原数据帧后就得到了要发送的A‘’&#x3D;<code>10011110</code>，如此一来就完成了CRC校验码的生成。</p>
+<p>如何利用Logisim实现CRC校验码的计算呢？即依照除数的位数构造对应位数的模二除法器，（例如：除数为4位，就构造4位的模二除法器），输入输出的位数均相同，那么，当被除数的最高位是1时，该模二除法器的商是1，余数便是被除数同除数的异或结果，舍去最高位（<strong>保证除数的最高位为1的情况下</strong>）；反之被除数最高位为0时，商为0，余数即为被除数舍去最高位0的结果。根据上述规则构造出低层的模二除法器并根据此模二除法器去构造相应的CRC校验码计算电路即可。</p>
+<h3 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h3><p>一定要深刻理解<code>Moore</code>机和<code>Mealy</code>机之间的差别：</p>
+<h4 id="前者的输出仅与状态机的当前状态有关，或者说输入并不直接参与输出的生成，仅根据判断输入的情况来就决定输出的情况，例题-P0-Q3-navagation-："><a href="#前者的输出仅与状态机的当前状态有关，或者说输入并不直接参与输出的生成，仅根据判断输入的情况来就决定输出的情况，例题-P0-Q3-navagation-：" class="headerlink" title="前者的输出仅与状态机的当前状态有关，或者说输入并不直接参与输出的生成，仅根据判断输入的情况来就决定输出的情况，例题:P0.Q3(navagation)："></a>前者的输出仅与状态机的当前状态有关，或者说输入并不直接参与输出的生成，仅根据判断输入的情况来就决定输出的情况，例题:P0.Q3(navagation)：</h4><p>计小组要去机房上机考试，需要去B机房，但是目前他在A机房。他现在的时间很充裕，就决定生成一串随机序列，告诉他下一步行走的方向，直到走到B机房。他希望用logisim搭建一个可以导航的<strong>Moore型</strong>有限状态机，来通过序列告诉他是否到达B机房。</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926201622833.png" alt="image-20240926201622833"></p>
+<p>题目要求：</p>
+<p>计小组只能往东南西北四个方向行走，且若能行走，则每次<strong>只能行走一格</strong>。若下一步不存在机房让计小组行走，那么计小组会撞到墙壁并且<strong>hit置高一周期</strong>，此时计小组仍<strong>保持原地</strong>不会移动，等待下一周期再进行运动。（如果下一步依旧撞墙， 则hit仍然置高；若下一步不会撞墙，则计小组将会继续行进，hit在此周期置0）</p>
+<p>计小组走到B机房后，<strong>“到达”信号需要置位</strong>，<strong>并保持一周期</strong>。到达B机房后计小组将会在下一周期回到原点，（下一周期的输入将被忽略掉）等待下下周期的输入，继续测试他的序列。</p>
+<p>计小组遵循上北下南左西右东的方向完成操作。</p>
+<p>计小组在时钟上升沿的时候就已经知道自己下一步的方向并且瞬移过去，并且立即做出判断。</p>
+<p>端口定义：</p>
+<table>
+<thead>
+<tr>
+<th align="left">信号名</th>
+<th align="left">方向</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dir[1:0]</td>
+<td align="left">I</td>
+<td align="left">表示行走的方向：00：向北走 01：向东走 10：向南走 11：向西走</td>
+</tr>
+<tr>
+<td align="left">clk</td>
+<td align="left">I</td>
+<td align="left">时钟信号</td>
+</tr>
+<tr>
+<td align="left">reset</td>
+<td align="left">I</td>
+<td align="left">异步复位信号</td>
+</tr>
+<tr>
+<td align="left">arrive</td>
+<td align="left">O</td>
+<td align="left">是否到达</td>
+</tr>
+<tr>
+<td align="left">hit</td>
+<td align="left">O</td>
+<td align="left">是否撞上墙壁</td>
+</tr>
+</tbody></table>
+<p>关注到<code>Moore</code>机的要求，说明最后的输出仅与当前的状态值有关，首先根据将每一块作为一个状态（因为当前状态值决定输出，所以最后的状态是需要进行保存的，区别于某些最后一个状态不需要保存的<code>Mealy</code>机），因此共需要5种状态，又因为2^2^&#x3D;4&lt;5&lt;2^3^&#x3D;8,所以需要3位来表示所有的5种状态。其中S0表示A块、S1表示A块北面那块、S2表示B西面那块、S3表示B南面那块、S4表示B块。</p>
+<p>则状态转移的真值表为：</p>
+<table>
+<thead>
+<tr>
+<th>nowstatus2</th>
+<th>nowstatus1</th>
+<th>nowstatus0</th>
+<th>dir1</th>
+<th>dir0</th>
+<th>nextstatus2</th>
+<th>nextstatus1</th>
+<th>nextstatus0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody></table>
+<p>由logisim生成相关状态转移电路后：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926203630827.png" alt="image-20240926203630827"></p>
+<p>就是将该转移模块放在主电路中，连接输入和初状态以及状态存储电路，之后便是处理输出的问题。</p>
+<p>关于输出：<code>hit</code>是在撞墙的那个状态置1一个周期，因此想到将当前状态同下一个状态比较，若相等则<strong>下一个状态周期，hit置1</strong>；否则置0。由此便产生了一些问题：如何让当前状态判断出来的hit置1情况到下一个状态周期才显现，答案是<strong>使用一个寄存器去给hit赋值</strong>，这样一来hit的值就是需要等到时钟触发也即就是下一个周期才会显现（如果当前周期判断出hit将置1），也就是说，该寄存器将hit当前判断出来且状态还未转移前的值，在状态转移的瞬间（即判断后的下一个时钟触发时刻）赋给hit并输出，这样一来原本在当前状态内判断出来的情况需要到下一个状态开始时才开始赋值，并持续到下下个状态，如此一来便解决了hit的置1一周期且撞墙周期才置1的效果。</p>
+<p>从题目关于<code>arrive</code>的描述可以看出，当状态已到达S4（B块）就置1一周期，因此想到了直接将当前状态同S4作比较的“等于”结果赋给arrive即可，又因为下一个时钟触发到来时当前状态已不是最终态，故arrive刚好可以实现置1一周期的效果。</p>
+<p>下图为主电路：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926205033843.png" alt="image-20240926205033843"></p>
+<h4 id="后者的输出不仅与状态机的当前状态有关还与输入值有关，或者说输入将参与到最终的输出"><a href="#后者的输出不仅与状态机的当前状态有关还与输入值有关，或者说输入将参与到最终的输出" class="headerlink" title="后者的输出不仅与状态机的当前状态有关还与输入值有关，或者说输入将参与到最终的输出"></a>后者的输出不仅与状态机的当前状态有关还与输入值有关，或者说输入将参与到最终的输出</h4><p>例题：P0.Q4（FSM）：</p>
+<p>使用Logisim搭建一个Mealy型有限状态机 检测串行输入字符串中的能匹配正则表达式b{1,2}[ac]{2}的子串并输出。具体模块端口定义如下：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>In[1:0]</td>
+<td>I</td>
+<td>串行方式输入字符串。 为简化电路，我们规定 00 表示 ‘a’，01 表示 ‘b’，10 表示 ‘c’，11 表示其他字符。</td>
+</tr>
+<tr>
+<td>CLR</td>
+<td>I</td>
+<td>清除置位信号</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>O</td>
+<td>输出是否检测到了与表达式匹配的子串 1：检测到了 0：未检测到</td>
+</tr>
+</tbody></table>
+<p>模块功能定义如下：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926205237566.png" alt="image-20240926205237566"></p>
+<ul>
+<li><p>必须严格按照模块的端口定义</p>
+</li>
+<li><p>文件内模块名: fsm</p>
+</li>
+<li><p><strong>注意: 每当匹配到一个子串时，需要输出一次1。例如对字符串bacbacac,模块应当在第1个c输入和第2个c输入时输出1,而在其他时刻保持输出为0。</strong></p>
+</li>
+<li><p><strong>注意：有限状态机的设计是Mealy型有限状态机。</strong></p>
+<p>关注到需求是<code>Mealy</code>机，因此在状态转换的电路图设计中应该考虑到输出的参与，即当前状态置值和输入都将会影响输出，根据题意应该有3种状态：S0(读入非法字符)、S1(读入”b“)、S2(读入”a”、”c”)，因此需要2位二进制码参与状态的表示。因此状态转移的真值表为：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>nowstatus1</th>
+<th>nowstatus0</th>
+<th>In1</th>
+<th>In0</th>
+<th>nextstatus1</th>
+<th>nextstatus0</th>
+<th>Z</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>得到如下：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926210132998.png" alt="image-20240926210132998"></p>
+<p>最终的主电路如下：</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20240926210207015.png" alt="image-20240926210207015"></p>
+<p>注意采用MUX+寄存器的方法解决同步复位的问题。</p>
+<h3 id="课上"><a href="#课上" class="headerlink" title="课上"></a>课上</h3><h4 id="第一题（组合逻辑）"><a href="#第一题（组合逻辑）" class="headerlink" title="第一题（组合逻辑）"></a>第一题（组合逻辑）</h4><p>求逆序数：给定输入：a<del>0</del>a<del>1</del>a<del>2</del>a<del>3</del>，a<del>i</del>为左数第（i+1）个数，求给输入的逆序数（∑((a<del>i</del>&gt;a<del>j</del>)?1:0)(0&lt;&#x3D;i&lt;j&lt;&#x3D;3))</p>
+<p>最简单的办法就是一个一个比较最后将比较得到的结果（1或0）相加即为逆序数。（注意要求是无符号数，所以比较时应是无符号比较）</p>
+<h4 id="第二题（Moore机）"><a href="#第二题（Moore机）" class="headerlink" title="第二题（Moore机）"></a>第二题（Moore机）</h4><p>与pre的第一题有异曲同工之妙。</p>
+<p>题目大意：统计两个教室101、102的总人数，输出至32位的out。每个时钟触发时根据输入room、[1:0] op决定相应的操作：</p>
+<p>room &#x3D;&#x3D; 0：对101教室进行操作；room &#x3D;&#x3D; 1：对102教室进行操作。</p>
+<p>op &#x3D;&#x3D; 00：教室人数保持不变；op &#x3D;&#x3D; 01：教室人数加1；op &#x3D;&#x3D; 10：教室人数减1；op &#x3D;&#x3D; 11：教室人数清零。</p>
+<p><strong>对其中一个教室进行操作时，另一个教室人数不变。</strong></p>
+<p>大体流程设计同pre的第一题，其中多出来的设计时对于room输入的处理，如何在room指示一个教室时，对另一个教室不进行处理，答案是：在状态转移电路的最后多一个是否对教室进行操作的选择（由多路选择器MUX+room选择是保持不变还是进行op处理）。</p>
+<h4 id="第三题（稍难一点的Moore机）"><a href="#第三题（稍难一点的Moore机）" class="headerlink" title="第三题（稍难一点的Moore机）"></a>第三题（稍难一点的Moore机）</h4><p>题目大意是输出串行输入的数串的最大严格递增长度，并且要求同步复位和初始化时输出至0。</p>
+<p>数串中任意输入后缀a<del>m-1</del>a<del>m-2</del>…a<del>0</del>,在这m个数中若a<del>m-1</del>&lt;a<del>m-2</del>&lt;…&lt;a<del>1</del>&lt;a<del>0</del>，且a<del>m</del>&gt;&#x3D;a<del>m-1</del>则a<del>0</del>的最大严格递增长度为m，以此类推。</p>
+<p>根据题意很快便可判断出需要两个寄存器，一个用来存储当前最大严格递增长度，另一个用来存储当前输入的前一个输入，通过比较实现状态的相应转移。</p>
+<p>在初始化处理方面，由于每次假若比较失败（即前一个输入大于等于当前输入），则此时由于严格递增序列的”重建“，最大长度应该为1，而不是初始化时的0，所以需要将0和1的赋值通过初始化计数器得到结果进行选择一下。</p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20241003204226512.png" alt="初始化计数器"></p>
+<p><img src="C:\Users\yumo\AppData\Roaming\Typora\typora-user-images\image-20241003204634471.png" alt="image-20241003204634471"></p>
+<p>其中indication是a<del>n</del>是否大于a<del>n-1</del>的结果。</p>
+<p>这样一来输出nowlength即可相应的结果。</p>
+<h2 id="P1课下"><a href="#P1课下" class="headerlink" title="P1课下"></a>P1课下</h2><h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><h4 id="用localparam命名状态机的各个状态"><a href="#用localparam命名状态机的各个状态" class="headerlink" title="用localparam命名状态机的各个状态"></a>用localparam命名状态机的各个状态</h4><p>编写状态机的时候，用<code>localparam</code>命名各个状态：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">localparam</span> sInit = <span class="hljs-number">2&#x27;d0</span>;<br><span class="hljs-keyword">localparam</span> sIdle = <span class="hljs-number">2&#x27;d1</span>;<br><span class="hljs-keyword">localparam</span> sWork = <span class="hljs-number">2&#x27;d2</span>;<br><span class="hljs-keyword">localparam</span> sDone = <span class="hljs-number">2&#x27;d3</span>;<br><br><span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] state;<br><br><span class="hljs-comment">//若仿真工具不支持在波形中显示为对应的状态名称，可采用以下方法：</span><br><span class="hljs-meta">`<span class="hljs-keyword">ifndef</span> SYNTHESIS</span><br> <span class="hljs-keyword">reg</span> [<span class="hljs-number">39</span>:<span class="hljs-number">0</span>] state_string; <span class="hljs-comment">// 40 bits = 5 bytes,a word needs 1 byte / 8 bits</span><br>  <br> <span class="hljs-keyword">always</span> @ (*) <span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">case</span>(state)<br>        sInit: state_string = <span class="hljs-string">&quot;sInit&quot;</span>;<br>        sIdle: state_string = <span class="hljs-string">&quot;sIdle&quot;</span>;<br>        sWork: state_string = <span class="hljs-string">&quot;sWork&quot;</span>;<br>        sDone: state_string = <span class="hljs-string">&quot;sDone&quot;</span>;<br>        <span class="hljs-keyword">default</span>: state_string = <span class="hljs-string">&quot;?????&quot;</span>;<br>    <span class="hljs-keyword">endcase</span><br> <span class="hljs-keyword">end</span><br><span class="hljs-meta">`<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="小型通用模板"><a href="#小型通用模板" class="headerlink" title="小型通用模板"></a>小型通用模板</h3><h4 id="MUX"><a href="#MUX" class="headerlink" title="MUX"></a>MUX</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> result = (Aluop == <span class="hljs-number">4&#x27;d0</span>) ? (srca + srcb) :<br>                   (Aluop == <span class="hljs-number">4&#x27;d1</span>) ? (srca - srcb) :<br>                   (Aluop == <span class="hljs-number">4&#x27;d2</span>) ? (srca &amp; srcb) :<br>                   (Aluop == <span class="hljs-number">4&#x27;d3</span>) ? (srca | srcb) :<br>                   (Aluop == <span class="hljs-number">4&#x27;d4</span>) ? (srca ^ srcb) :<br>                   (Aluop == <span class="hljs-number">4&#x27;d5</span>) ? (srca &gt; srcb) :<br>                   <span class="hljs-number">32&#x27;d0</span>;<br></code></pre></td></tr></table></figure>
+
+<p>若涉及有符号数的运算，不推荐使用三目运算符，因为需要考虑符号的确定，推荐使用always@(<em>)的方式，一般来说 always@(</em>) 配合 case 写出的类似 MUX 语句在仿真中的行为类似纯组合逻辑，但是 result 在写代码时应写为 reg 型（即新开一个reg变量）。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>      <span class="hljs-keyword">case</span>(Aluop)<br>        <span class="hljs-number">4&#x27;d0</span>:<span class="hljs-keyword">begin</span><br>            result = srca + srcb;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-number">4&#x27;d1</span>:<span class="hljs-keyword">begin</span><br>            result = srca - srcb;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-number">4&#x27;d2</span>:<span class="hljs-keyword">begin</span><br>            result = srca &amp; srcb;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-number">4&#x27;d3</span>:<span class="hljs-keyword">begin</span><br>            result = srca | srcb;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-number">4&#x27;d4</span>:<span class="hljs-keyword">begin</span><br>            result = srca ^ srcb;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-number">4&#x27;d5</span>:<span class="hljs-keyword">begin</span><br>            result = srca &gt; srcb;<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">endcase</span><br>  <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="流水线寄存器（P5）"><a href="#流水线寄存器（P5）" class="headerlink" title="流水线寄存器（P5）"></a>流水线寄存器（P5）</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> pipeline_sample(<br>   <span class="hljs-keyword">input</span> clk,<br>   <span class="hljs-keyword">input</span> reset,<br>   <span class="hljs-keyword">input</span> stall,<br>   <span class="hljs-keyword">input</span> flush,<br>   <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] aluResultAtExe,<br>   <span class="hljs-comment">// 可能还有其他来自前一级的输入</span><br>   <span class="hljs-keyword">output</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] aluResultAtMemory<br>   <span class="hljs-comment">// 可能还有要输出到后一级的</span><br>   <span class="hljs-comment">// 输入输出应配对</span><br>   );<br>   <span class="hljs-comment">// 根据端口定义，可能还要开其他的临时寄存器</span><br>   <span class="hljs-keyword">reg</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] aluResult;<br>   <span class="hljs-comment">// 根据临时寄存器的值，可能还要连其他的线</span><br>   <span class="hljs-keyword">assign</span> aluResultAtMemory = aluResult;<br><br>   <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clk)<br>   <span class="hljs-comment">// 可能还要处理其他的临时寄存器</span><br>   <span class="hljs-keyword">begin</span><br>       <span class="hljs-comment">// 复位 或者 清除流水线寄存器（阻塞，异常中断处理会用到）</span><br>       <span class="hljs-keyword">if</span>(reset | flush)<br>       <span class="hljs-keyword">begin</span><br>           aluResult &lt;= <span class="hljs-number">32&#x27;d0</span>;<br>       <span class="hljs-keyword">end</span><br>       <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>           <span class="hljs-comment">// 判定是否应阻塞该级，不阻塞时才更新为前一级的值</span><br>           <span class="hljs-keyword">if</span>(!stall)<br>           <span class="hljs-keyword">begin</span><br>               aluResult &lt;= aluResultAtExe;<br>           <span class="hljs-keyword">end</span><br>       <span class="hljs-keyword">end</span><br>   <span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="P1课上"><a href="#P1课上" class="headerlink" title="P1课上"></a>P1课上</h2><h3 id="第一题（组合逻辑）-1"><a href="#第一题（组合逻辑）-1" class="headerlink" title="第一题（组合逻辑）"></a>第一题（组合逻辑）</h3><p>题目大意:求两个32位数反序相比位数不同的个数。</p>
+<p>采用循环比较判断并用一个变量存储不同位数的个数即可。</p>
+<p><strong>注意</strong>:循环的写法，参照pre上机的第二题。</p>
+<h3 id="第二题（Moore状态机）"><a href="#第二题（Moore状态机）" class="headerlink" title="第二题（Moore状态机）"></a>第二题（Moore状态机）</h3><p>题目大意：判断串行输入的01序列是否满足奇偶序列（出现的个数为奇数或偶数）间隔排列，并且需要提供低电平边沿触发的异步复位。</p>
+<p><strong>显然，只出现0和1的序列是不满足要求的。</strong></p>
+<p>示例：0001111011001，一开始出现的3个0都是不符合要求的，因为此0序列的个数是奇数，所以此后的1序列个数为偶数时将输出check置1。此后的0序列个数为奇数，满足奇偶奇排列，此时也置1。但是需要注意<strong>假若出现偶偶排列（第二个偶已经确定）或奇奇排列</strong>需要将输出锁住，即不论此后输入是什么，输出都是0.</p>
+<p>方法一（状态少，逻辑复杂）：设计5种状态，空状态用于复位时返回的状态（000）、当前序列1个数为奇数（001）、当前序列1个数为偶数（010）、当前序列0个数为奇数（011）、当前序列0个数为偶数（100），还需要两个变量一个用来存储上一个相邻序列的情况用于判断此时是否满足条件，另一个用来判断此前所以序列是否满足要求（即判断输出是否需要锁住）。</p>
+<p>由于讨论区已给出相应方法的实现，这里就不赘述了，详见<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/http/77726476706e69737468656265737421f3e44293353526526b0988e29d51367b9787/#/discussion_area/1386/1692/posts">P1上机思路分享与反思</a></p>
+<p>方法二（状态多、逻辑简单）：设计13种变量和一个判断是否锁住输出的变量flag，如下图：</p>
+<p><img src="C:\Users\yumo\Desktop\tp_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4653111939887804961&skey=@crypt_76ddb36c_b8dbe30961d522e06763780f670ddb46&mmweb_appid=wx_webfilehelper.jpg" alt="_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&amp;MsgID=4653111939887804961&amp;skey=@crypt_76ddb36c_b8dbe30961d522e06763780f670ddb46&amp;mmweb_appid=wx_webfilehelper"></p>
+<p>虽然状态很多，但是很好想，不过一定要<strong>注意状态转移要对应清楚</strong>（<del>不然大有被硬控半小时的情况</del>）。</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><ul>
+<li>题面：输入序列满足格式 xxxx{key1 : value1, key2 : value2, ……} xxxx……</li>
+</ul>
+<ol>
+<li>其中xxxx是长度大于等于0的序列，不含，：{ }</li>
+<li>key是大小写字母和数字组成的连续字符串，其中首字符必须是字母，长度大于等于1</li>
+<li>value是数字组成的连续字符串，长度大于等于1</li>
+<li>key、value的必须是连续的，内部不允许有空格</li>
+<li>key、value、{、：、}、，之间可以有空格</li>
+<li>key、value有可能不出现，此时匹配不成功</li>
+<li>若至少有一对key-value，则最后一对后会有逗号，</li>
+<li>reset为高电平同步复位信号</li>
+</ol>
+<p>统计每一个键值集合中匹配成功的键值对个数each，以及在复位后所有集合中键值对匹配数目的最大值total</p>
+<p>简单的思路同样是列出所有可能的状态如下图：  </p>
+<p><img src="C:\Users\yumo\Desktop\tp_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=7316373017138194468&skey=@crypt_76ddb36c_b8dbe30961d522e06763780f670ddb46&mmweb_appid=wx_webfilehelper.jpg" alt="_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&amp;MsgID=7316373017138194468&amp;skey=@crypt_76ddb36c_b8dbe30961d522e06763780f670ddb46&amp;mmweb_appid=wx_webfilehelper"></p>
+<p>教训：<strong>对于每个状态，都要充分考虑所有的字符输入可能，这样才能实现所有可能序列的覆盖</strong>。例如在本题中，对于<code>key：value，</code>间的字符要充分考虑<code>:</code>、<code>,</code>的复用问题，（<code>d : 121,,</code>，这种其实也是正确的，但是若没有特判初始读入状态的下一个输入可能<code>,</code>就会出错)，由于题目对于空格的相关规定，还需要在特判空格，只有能够保证状态转移没问题的字符输入可以一同归入其他中。</p>
+<p>当然还有状态数少的方法，感觉不如状态多的直观方便，再次不表，详见zjy大佬的<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/http/77726476706e69737468656265737421f3e44293353526526b0988e29d51367b9787/#/discussion_area/1386/1692/posts">P1上机思路分享与反思</a>.</p>
+<h2 id="P2课下"><a href="#P2课下" class="headerlink" title="P2课下"></a>P2课下</h2><h5 id="高精度阶乘"><a href="#高精度阶乘" class="headerlink" title="高精度阶乘"></a>高精度阶乘</h5><p>题面：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs text">第一行读取n<br><br>计算并输出n的阶乘，输出字符串长度小于等于1000<br><br>步数限制为200,000<br><br>请使用syscall结束程序：<br><br>li $v0, 10<br>syscall<br>样例1<br>给出以下输入：<br><br>24<br>期望的输出为：<br><br>620448401733239439360000<br></code></pre></td></tr></table></figure>
+
+<p>由于int型整型数溢出问题，本题不可采用一位一位相乘的方法，因此用C写出如下朴素的利用int型数组将两个数的相乘转化为大数的每一位同小数相乘再进行进位处理：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c">   <span class="hljs-type">int</span> i = <span class="hljs-number">2</span>, j;<span class="hljs-comment">//i=2，从n=2开始计算，n=0和n=1的答案都是1</span><br><span class="hljs-type">int</span> length = <span class="hljs-number">0</span>;<br><span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span> (i; i &lt;= n; i++) &#123;<br>	<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;= length; j++) &#123;<br>		<span class="hljs-built_in">array</span>[j] *= i;<br>	&#125; <span class="hljs-comment">//大数的每一位都以小数</span><br>	<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; length; j++) &#123;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">array</span>[j] &gt;= <span class="hljs-number">10</span>) &#123;<br>			<span class="hljs-type">int</span> hold = <span class="hljs-built_in">array</span>[j];<br>			<span class="hljs-built_in">array</span>[j] %= <span class="hljs-number">10</span>;<br>			<span class="hljs-built_in">array</span>[j+<span class="hljs-number">1</span>] += hold / <span class="hljs-number">10</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">while</span> (<span class="hljs-built_in">array</span>[length] &gt;= <span class="hljs-number">10</span>) &#123;<br>		<span class="hljs-type">int</span> temp = <span class="hljs-built_in">array</span>[length];<br>		<span class="hljs-built_in">array</span>[length] %= <span class="hljs-number">10</span>;<br>		<span class="hljs-built_in">array</span>[++length] += temp / <span class="hljs-number">10</span>;<br>	&#125;<span class="hljs-comment">//进位处理，</span><br>&#125;<br><span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>	<span class="hljs-keyword">for</span> (i = length; i&gt;=<span class="hljs-number">0</span>; i--) &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, <span class="hljs-built_in">array</span>[i]);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>得到以上代码的汇编版本后却没有通过，个人认为是在进位处理时，后面的进位加到前面导致前面的溢出：</p>
+<p>因此考虑令数组的每一位储存大数的更多位数，即：提高进制到1000</p>
+<p>得到如下汇编代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs assembly"># adjust carry-out<br>.macro adjust(%now)<br>   getArrayi($t2, %now) #array[%now]<br>   move $t3, $t2 #hold = array[%now]<br>   <br>   li $v0, 1000<br>   div $t2, $v0<br>   mfhi $t2 #$t2 %= 1000<br>   sll $v0, %now, 2<br>   sw $t2, array($v0) #array[%now] %= 1000<br>   <br>   li $v0, 1000<br>   div $t3, $v0 #hold / 1000<br>   mflo $t4<br>   <br>   addi $t5, %now, 1 #$t5 = i + 1<br>   getArrayi($t6, $t5) #$t5 = array[i + 1]<br>   add $t6, $t6, $t4 <br>   sll $v0, $t5, 2<br>   sw $t6, array($v0) #array += hold/1000 <br>.end_macro<br><br>#because the higher binary, the leading zero needs to be adjusted when you print,because it wil print 0 while it actually is 000<br>           bne n, 1, if_else<br>           if:<br>             li $v0, 1<br>             printInt($v0)<br>           j for_4_end<br>           if_else:<br>           move i, length #i = length<br>           for_4_begin:<br>             blt i, 0, for_4_end #i&lt;0<br>             getArrayi($t2, i)<br>             beq i, length, three_print<br>             bge $t2, 100, three_print <br>             bge $t2, 10, two_print<br>             bge $t2, 1, one_print<br>             printInt($t2)<br>             printInt($t2)<br>             printInt($t2) #printf(&quot;000&quot;); avoid printing the single zero while there actually three zero<br>             j if_2_end<br>             <br>             two_print:<br>               printInt($0)<br>               printInt($t2)<br>               j if_2_end #print one leading zero<br>               <br>             one_print:<br>               printInt($0)<br>               printInt($0)<br>               printInt($t2) #print two leading zero<br>               j if_2_end<br>               <br>             three_print:<br>               printInt($t2) #printf<br>          <br>             if_2_end:<br>             addi i, i, -1 #i--<br>             j for_4_begin  #<br>            <br>           for_4_end:<br></code></pre></td></tr></table></figure>
+
+<p>注意<strong>前导零的处理</strong>，循环的书写一定要<strong>规范</strong>。</p>
+<h6 id="MARS小工具"><a href="#MARS小工具" class="headerlink" title="MARS小工具"></a>MARS小工具</h6><p>MARS的Tool菜单里有个叫做Instruction Counter的工具，点击Connect to MIPS后运行程序可以看见程序跑了多少条实际的指令，可以作为相应题目指令限制的参考。</p>
+<h2 id="P2课上反思与总结"><a href="#P2课上反思与总结" class="headerlink" title="P2课上反思与总结"></a>P2课上反思与总结</h2><p>虽然侥幸过了P2课上，但是自我感觉还是有很多错误与不好的习惯暴露出来了，特写此文与君共勉（<del>顺便提高一下讨论区参与度</del>）。</p>
+<h3 id="P2-Q1-具体题名忘了QAQ"><a href="#P2-Q1-具体题名忘了QAQ" class="headerlink" title="P2_Q1(具体题名忘了QAQ)"></a>P2_Q1(具体题名忘了QAQ)</h3><p>题目大意：</p>
+<p>一个有n个人的小班的小班长去取糖果来给所有n个人发糖，且取的K满足在最小值L和最大值R之间，即：$L &lt;&#x3D; K &lt;&#x3D; R$ ，并将剩余的糖果还回去。</p>
+<p>发糖规则：每个人发一个直到剩余的糖果不够n个人再发一次。小班长为了发给同学最多的糖果，同时剩最少的糖果还回去（<del>真是无私的小班长</del>）。（大致版本，记性不好，有误请不吝斧正）</p>
+<p>输出<strong>剩余糖的最小值</strong>，<strong>不是K</strong>。</p>
+<p>刚开始看到这道题的时候其实是挺懵。</p>
+<p>最初的想法是写一个循环来判断，然后用一个<code>min</code>变量来存取输出的值，虽然笨人不是用这个方法，但是听室友说有的点会超时，这里就不赘述此种方法了。</p>
+<p>虽然好像循环会更好想，但是我一开始却感觉判断会更麻烦，于是思考输出需求同输入的关系（<del>面向输出编程</del>），注意到<strong>输出只要剩余的糖果数</strong>，因此取$K &#x3D; mn$（其中m是满足$mn&lt;&#x3D;R$的最大正整数），易得：</p>
+<p>当$mn &lt;&#x3D; L$时，即<code>L= mn + l</code>,<code>R = mn + r</code>,<code>r&gt;l,(且r、l均为正整数)</code>时，所有同学能拿到的最大糖果数就是<code>m</code>，而此时还回去的糖果数就是<code>l</code>，因此此时输出<code>L%n</code>，<code>K = L </code>；</p>
+<p>当$mn &gt;&#x3D; L$时，那么此时由于<code>K = mn</code>在[L,R]之间，且m是满足$mn&lt;&#x3D;R$的最大正整数，因此此时所有同学能拿到的最大糖果数仍是<code>m</code>，而在<code>K = mn</code>与<code>R</code>之间的数都会增加还回去的糖果数，因此此时还回去的糖果数即输出就是<code>0</code>，<code>K = mn</code>。</p>
+<p>因此，本题只要判断<code>R/n</code>和<code>L/n</code>的大小关系即可，若相等输出<code>L%n</code>;不等则输出<code>0</code>。</p>
+<p>感觉像是<del>一道数学题</del>。</p>
+<h3 id="P2-Q2-具体题名忘了QAQ"><a href="#P2-Q2-具体题名忘了QAQ" class="headerlink" title="P2_Q2(具体题名忘了QAQ)"></a>P2_Q2(具体题名忘了QAQ)</h3><p>题目大意：</p>
+<p>利用欧拉筛判断一个输入<code>n</code>是否为质数，虽然题目说是用欧拉筛，但代码给的好像是埃式筛（如果没记错的话）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> Max 2000 <span class="hljs-comment">//代表判断质数的最大范围</span></span><br><span class="hljs-type">int</span> is_not_prime[Max]; <span class="hljs-comment">//用来判断2到Max间的某数是否为质数</span><br><span class="hljs-type">void</span> Euler <span class="hljs-title function_">sieve</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> i,j;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= Max; i++) &#123;<br>        <span class="hljs-keyword">if</span> (is_not_prime[i] == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//如果i是质数</span><br>            <span class="hljs-keyword">for</span> (j = i*<span class="hljs-number">2</span>; j &lt;= Max; j += i) &#123;<br>               <span class="hljs-comment">//i的倍数都不是质数，因为i的倍数都有i这个因子</span><br>                is_not_prime[j] = <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    Euler <span class="hljs-title function_">sieve</span><span class="hljs-params">()</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,is_not_prime[n]);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>既然有了C代码，那就只要快乐<del>肉编</del>就行了。</p>
+<p>需要注意的是：</p>
+<p>1.<code>for</code>循环的转换一定要将跳转条件放在<code>for</code>循环内的第一条，初始赋值在<code>for</code>循环上一条：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.eqv Max 2000<br>.eqv i $t0<br>……<br>  li i, 2<br>  for_begin:<br>    bgt i, Max, for_end<br>    ……<br>    addi i, i, 1<br>    j for_begin<br>  for_end:<br>  ……<br></code></pre></td></tr></table></figure>
+
+<p>2.然后就是善用一些常用的宏，如getInt等（相信大家都已经熟练掌握了吧，<del>这里就不赘述了</del>）。</p>
+<h3 id="P2-Q3-具体题名忘了QAQ"><a href="#P2-Q3-具体题名忘了QAQ" class="headerlink" title="P2_Q3(具体题名忘了QAQ)"></a>P2_Q3(具体题名忘了QAQ)</h3><p>题目大意：</p>
+<p>省流：给出在一个有向图中从给定出发点出发可到达的出度为0的点的个数（<del>忘了具体情景了</del>）</p>
+<p>输入是先输入三个整型数n、m、k（n为点个数、m为有向边的个数、k为出发点）、接下来的2*m行两行为一组第一行为有向边的起点，第二行为有向边的终点。(其中n&lt;&#x3D;105,m&lt;&#x3D;605)</p>
+<p>由于已给出了C代码，所以<del>直接肉编就行</del>了（有点忘了，<del>但是感觉用有向图矩阵来判断会不会更好想一点</del>）（大致的思路，未经正确，请大家批判的看，如有错误，请不吝斧正）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 105</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> M 605</span><br><span class="hljs-type">int</span> matrix[N+<span class="hljs-number">1</span>][N+<span class="hljs-number">1</span>];<br><span class="hljs-type">int</span> book[N+<span class="hljs-number">1</span>];<br><span class="hljs-type">int</span> out_degree[N+<span class="hljs-number">1</span>];<br><br><span class="hljs-type">int</span> ans;<br><span class="hljs-type">int</span> n, m, k;<br><span class="hljs-type">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;k);<br>	<span class="hljs-type">int</span> x,y;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i; i &lt; m; i++) &#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;x,&amp;y);<br>		matrix[x][y] = <span class="hljs-number">1</span>;<br>		out_degree[x]++;<br>	&#125;<span class="hljs-comment">// read the matrix</span><br>	<br>	<span class="hljs-keyword">if</span> (out_degree[k] == <span class="hljs-number">0</span>) &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0\n&quot;</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span> &#123;<br>		dfs(k);<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,ans);<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span> &#123;<br>	<span class="hljs-keyword">if</span>(u != k &amp;&amp; out_degree[u] == <span class="hljs-number">0</span> &amp;&amp; book[u] == <span class="hljs-number">0</span>)&#123;<br>		book[u] = <span class="hljs-number">1</span>;<br>		ans++;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span> ( i; i&lt;= n; i++) &#123;<br>		<span class="hljs-keyword">if</span> (matrix[u][i])&#123;<br>			dfs(i);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>一些做题中遇到的问题：</p>
+<p>1.字符串定义的前移导致后续定义的数组首地址出现<strong>字不对齐</strong>问题:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.data<br>enter: .asciiz &quot;\n&quot;<br>head: .space 420 #head数组首地址会出现字未对齐的问题，在对其进行写入和取数操作时会报错QAQ！<br>……<br></code></pre></td></tr></table></figure>
+
+<p>解决方案：将字符串放到数组定义的后段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.data<br>head: .space 420<br>……<br>enter: .asciiz &quot;\n&quot;<br>.text<br></code></pre></td></tr></table></figure>
+
+<p>2.宏定义的错乱问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.eqv n $s0<br>.eqv m $s1<br>.eqv k $s2<br>.eqv Max $s3<br>……<br>.eqv ans $s3 <br>#隔了好几行就会不知道用到哪个寄存器了<br>#（结果就是被硬控半小时）<br>#建议是把用了什么寄存器、对应用的别名一起写在草稿纸上，方便用取，不然真的会在不经意间碎掉<br></code></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/">http://ywxy12138.github.io/2024/09/23/计组上机/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%8A%E6%9C%BA/">上机</a></div><div class="post_share"><div class="social-share" data-image="/img/HDL.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/09/Git/" title="Git"><img class="cover" src="/img/GIT.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/22/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">计组上机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre"><span class="toc-number">1.1.</span> <span class="toc-text">Pre</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%88Logisim%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一题（Logisim）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88Verilog"><span class="toc-number">1.1.2.</span> <span class="toc-text">第二题（Verilog)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%88MIPS%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">第三题（MIPS）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0"><span class="toc-number">1.2.</span> <span class="toc-text">P0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%B8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">课下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CRC%E6%A0%A1%E9%AA%8C%E7%A0%81%E8%AE%A1%E7%AE%97%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">CRC校验码计算电路的设计与测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CRC%E6%A0%A1%E9%AA%8C%E7%A0%81%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">CRC校验码的计算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">1.2.2.</span> <span class="toc-text">有限状态机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%80%85%E7%9A%84%E8%BE%93%E5%87%BA%E4%BB%85%E4%B8%8E%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81%E6%9C%89%E5%85%B3%EF%BC%8C%E6%88%96%E8%80%85%E8%AF%B4%E8%BE%93%E5%85%A5%E5%B9%B6%E4%B8%8D%E7%9B%B4%E6%8E%A5%E5%8F%82%E4%B8%8E%E8%BE%93%E5%87%BA%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%8C%E4%BB%85%E6%A0%B9%E6%8D%AE%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E7%9A%84%E6%83%85%E5%86%B5%E6%9D%A5%E5%B0%B1%E5%86%B3%E5%AE%9A%E8%BE%93%E5%87%BA%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%8C%E4%BE%8B%E9%A2%98-P0-Q3-navagation-%EF%BC%9A"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">前者的输出仅与状态机的当前状态有关，或者说输入并不直接参与输出的生成，仅根据判断输入的情况来就决定输出的情况，例题:P0.Q3(navagation)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E8%80%85%E7%9A%84%E8%BE%93%E5%87%BA%E4%B8%8D%E4%BB%85%E4%B8%8E%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81%E6%9C%89%E5%85%B3%E8%BF%98%E4%B8%8E%E8%BE%93%E5%85%A5%E5%80%BC%E6%9C%89%E5%85%B3%EF%BC%8C%E6%88%96%E8%80%85%E8%AF%B4%E8%BE%93%E5%85%A5%E5%B0%86%E5%8F%82%E4%B8%8E%E5%88%B0%E6%9C%80%E7%BB%88%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">后者的输出不仅与状态机的当前状态有关还与输入值有关，或者说输入将参与到最终的输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E4%B8%8A"><span class="toc-number">1.2.3.</span> <span class="toc-text">课上</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%88%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%EF%BC%89"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">第一题（组合逻辑）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88Moore%E6%9C%BA%EF%BC%89"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">第二题（Moore机）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%88%E7%A8%8D%E9%9A%BE%E4%B8%80%E7%82%B9%E7%9A%84Moore%E6%9C%BA%EF%BC%89"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">第三题（稍难一点的Moore机）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P1%E8%AF%BE%E4%B8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">P1课下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.1.</span> <span class="toc-text">代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8localparam%E5%91%BD%E5%90%8D%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E5%90%84%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">用localparam命名状态机的各个状态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%9E%8B%E9%80%9A%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.3.2.</span> <span class="toc-text">小型通用模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MUX"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">MUX</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88P5%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">流水线寄存器（P5）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P1%E8%AF%BE%E4%B8%8A"><span class="toc-number">1.4.</span> <span class="toc-text">P1课上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%88%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%EF%BC%89-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">第一题（组合逻辑）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88Moore%E7%8A%B6%E6%80%81%E6%9C%BA%EF%BC%89"><span class="toc-number">1.4.2.</span> <span class="toc-text">第二题（Moore状态机）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98"><span class="toc-number">1.4.3.</span> <span class="toc-text">第三题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2%E8%AF%BE%E4%B8%8B"><span class="toc-number">1.5.</span> <span class="toc-text">P2课下</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E9%98%B6%E4%B9%98"><span class="toc-number">1.5.0.0.1.</span> <span class="toc-text">高精度阶乘</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#MARS%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">1.5.0.0.1.1.</span> <span class="toc-text">MARS小工具</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2%E8%AF%BE%E4%B8%8A%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">P2课上反思与总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P2-Q1-%E5%85%B7%E4%BD%93%E9%A2%98%E5%90%8D%E5%BF%98%E4%BA%86QAQ"><span class="toc-number">1.6.1.</span> <span class="toc-text">P2_Q1(具体题名忘了QAQ)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2-Q2-%E5%85%B7%E4%BD%93%E9%A2%98%E5%90%8D%E5%BF%98%E4%BA%86QAQ"><span class="toc-number">1.6.2.</span> <span class="toc-text">P2_Q2(具体题名忘了QAQ)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2-Q3-%E5%85%B7%E4%BD%93%E9%A2%98%E5%90%8D%E5%BF%98%E4%BA%86QAQ"><span class="toc-number">1.6.3.</span> <span class="toc-text">P2_Q3(具体题名忘了QAQ)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/22/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" title="无题">无题</a><time datetime="2024-10-22T15:39:32.273Z" title="发表于 2024-10-22 23:39:32">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/" title="计组上机"><img src="/img/HDL.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组上机"/></a><div class="content"><a class="title" href="/2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/" title="计组上机">计组上机</a><time datetime="2024-09-23T15:22:02.000Z" title="发表于 2024-09-23 23:22:02">2024-09-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/09/Git/" title="Git"><img src="/img/GIT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git"/></a><div class="content"><a class="title" href="/2024/09/09/Git/" title="Git">Git</a><time datetime="2024-09-09T04:48:31.000Z" title="发表于 2024-09-09 12:48:31">2024-09-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/09/English/" title="English"><img src="/img/English.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="English"/></a><div class="content"><a class="title" href="/2024/09/09/English/" title="English">English</a><time datetime="2024-09-09T02:04:08.000Z" title="发表于 2024-09-09 10:04:08">2024-09-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/07/%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="超级计算机"><img src="/img/%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="超级计算机"/></a><div class="content"><a class="title" href="/2024/09/07/%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="超级计算机">超级计算机</a><time datetime="2024-09-07T06:45:15.000Z" title="发表于 2024-09-07 14:45:15">2024-09-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
