@@ -1,0 +1,751 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>P3_L0_document | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="P3课下设计草稿设计要求处理器为32位单周期处理器，支持：add(000000 rs(5) rt(5) rd(5) 00000 100000), sub(000000 rs rt rd 00000 100010), ori(001101 rs rt imm), lw(100011 base(5) rt offset), sw(101011 base rt offset), beq(000100 r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P3_L0_document">
+<meta property="og:url" content="http://ywxy12138.github.io/2025/01/22/P3_L0_document/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="P3课下设计草稿设计要求处理器为32位单周期处理器，支持：add(000000 rs(5) rt(5) rd(5) 00000 100000), sub(000000 rs rt rd 00000 100010), ori(001101 rs rt imm), lw(100011 base(5) rt offset), sw(101011 base rt offset), beq(000100 r">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/HDL.jpg">
+<meta property="article:published_time" content="2025-01-22T07:08:02.000Z">
+<meta property="article:modified_time" content="2025-01-22T07:22:49.010Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/HDL.jpg"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2025/01/22/P3_L0_document/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'P3_L0_document',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-01-22 15:22:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('../../../../img/HDL.jpg')"><nav id="nav"><span id="blog-info"><a href="../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">P3_L0_document</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-22T07:08:02.000Z" title="发表于 2025-01-22 15:08:02">2025-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-22T07:22:49.010Z" title="更新于 2025-01-22 15:22:49">2025-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="P3_L0_document"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="P3课下"><a href="#P3课下" class="headerlink" title="P3课下"></a>P3课下</h1><h2 id="设计草稿"><a href="#设计草稿" class="headerlink" title="设计草稿"></a>设计草稿</h2><h3 id="设计要求"><a href="#设计要求" class="headerlink" title="设计要求"></a>设计要求</h3><p>处理器为32位单周期处理器，支持：<code>add(000000 rs(5) rt(5) rd(5) 00000 100000), sub(000000 rs rt rd 00000 100010), ori(001101 rs rt imm), lw(100011 base(5) rt offset), sw(101011 base rt offset), beq(000100 rs rt offset(16)), lui(001111 00000 rt immediate)(将立即数加载至高位), nop(0x00000000)</code></p>
+<p>对于每一条指令的执行，应该可以拆分成取指令、译码、执行、访存和回写5个主要的步骤。</p>
+<h3 id="模块规格"><a href="#模块规格" class="headerlink" title="模块规格"></a>模块规格</h3><h4 id="IFU（取指令单元）"><a href="#IFU（取指令单元）" class="headerlink" title="IFU（取指令单元）"></a>IFU（取指令单元）</h4><p>模块端口：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>异步复位信号，将PC寄存器的值复位为起始地址0x00003000（即将PC置0：其中1：复位；0：无效。)</td>
+</tr>
+<tr>
+<td>NPC</td>
+<td>I</td>
+<td>32位，代表下一条指令的地址，读入后用PC寄存器存储起来</td>
+</tr>
+<tr>
+<td>PC</td>
+<td>O</td>
+<td>32位，代表当前指令的地址，输出给NPC模块来生成下一条指令的地址</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>O</td>
+<td>32位，当前指令的机器码</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>复位</td>
+<td>reset有效时，将PC寄存器复位为起始地址</td>
+</tr>
+<tr>
+<td>2</td>
+<td>取指令</td>
+<td>通过当前PC值读取并输出当前指令</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.1.png" alt="IFU模块"></p>
+<h4 id="GRF（寄存器单元）"><a href="#GRF（寄存器单元）" class="headerlink" title="GRF（寄存器单元）"></a>GRF（寄存器单元）</h4><p>模块端口：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>复位信号，将32个寄存器中的值全都清零，其中，1：复位；0：无效</td>
+</tr>
+<tr>
+<td>WE</td>
+<td>I</td>
+<td>写使能信号，1：可向GRF中写入数据；0：不可写入</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个，将其中存储的数据读出到RD1</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个，将其中存储的数据读出到RD2</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个作为写入的目标寄存器</td>
+</tr>
+<tr>
+<td>WD</td>
+<td>I</td>
+<td>32位数据输入信号</td>
+</tr>
+<tr>
+<td>RD1</td>
+<td>O</td>
+<td>输出A1指定的寄存器中的32位数据</td>
+</tr>
+<tr>
+<td>RD2</td>
+<td>O</td>
+<td>输出A2指定的寄存器中的32位数据</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>复位</td>
+<td>reset信号有效时，所有寄存器存储的数据清零。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>读数据</td>
+<td>读出A1，A2地址对应寄存器中所存储的数据到RD1，RD2中。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>写数据</td>
+<td>当WE有效且时钟上升沿来临时，将WD写入A3对应寄存器中。</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.2.png" alt="GRF模块"></p>
+<h4 id="NPC（指令转移单元）"><a href="#NPC（指令转移单元）" class="headerlink" title="NPC（指令转移单元）"></a>NPC（指令转移单元）</h4><p>模块端口：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>I</td>
+<td>32位，当前指令的地址</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>I</td>
+<td>1位，表示当前指令是否为<code>beq</code></td>
+</tr>
+<tr>
+<td>zero</td>
+<td>I</td>
+<td>1位，表示是否满足相等关系</td>
+</tr>
+<tr>
+<td>imm</td>
+<td>I</td>
+<td>16位，16位立即数</td>
+</tr>
+<tr>
+<td>NPC</td>
+<td>O</td>
+<td>32位，下一条指令的地址</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>非跳转指令的PC自增</td>
+<td>对于非跳转指令，需要通过PC自加4完成向下一条指令的转移</td>
+</tr>
+<tr>
+<td>2</td>
+<td>跳转指令的PC跳转</td>
+<td>针对类如<code>beq</code>等跳转指令的在PC自增功能的基础下的PC地址偏移即将再加上立即数左移两位后符号扩展成32位的结果，进而实现PC的跳转</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.3.png" alt="NPC模块"></p>
+<h4 id="DM（数据寄存器）"><a href="#DM（数据寄存器）" class="headerlink" title="DM（数据寄存器）"></a>DM（数据寄存器）</h4><p>模块端口：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WD</td>
+<td>I</td>
+<td>32位，写入数据</td>
+</tr>
+<tr>
+<td>A</td>
+<td>I</td>
+<td>32位，地址选择信号</td>
+</tr>
+<tr>
+<td>RE</td>
+<td>I</td>
+<td>1位，是否读出信号</td>
+</tr>
+<tr>
+<td>WE</td>
+<td>I</td>
+<td>1位，是否写入信号</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>复位信号</td>
+</tr>
+<tr>
+<td>RD</td>
+<td>O</td>
+<td>输出信号</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>读数据</td>
+<td>RE有效时，地址选择信号A选择的存储字放在RD输出总线上输出</td>
+</tr>
+<tr>
+<td>2</td>
+<td>写数据</td>
+<td>WE有效且时钟信号上升沿到来时，WD上数据被写入地址A选择的存储单元中</td>
+</tr>
+<tr>
+<td>3</td>
+<td>复位</td>
+<td>reset有效时，将RAM地址复位为起始地址0x00000000</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.4.png" alt="DM模块"></p>
+<h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>op</td>
+<td>I</td>
+<td>6位，区分非R型指令的标识</td>
+</tr>
+<tr>
+<td>func</td>
+<td>I</td>
+<td>6位，区分R型指令的标识</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>O</td>
+<td>1位，表示是否要将结果写回寄存器中</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>O</td>
+<td>1位，表示是否要将结果写入DM中</td>
+</tr>
+<tr>
+<td>ifSignExt</td>
+<td>O</td>
+<td>1位，表示立即数是否进行符号扩展</td>
+</tr>
+<tr>
+<td>ALUctr</td>
+<td>O</td>
+<td>2位，表示ALU将进行什么类型的运算操作</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>O</td>
+<td>1位，表示当前指令是否为<code>beq</code></td>
+</tr>
+<tr>
+<td>MemToReg</td>
+<td>O</td>
+<td>1位，表示在写使能端有效前提下判断是否从DM读取数据写入寄存器中，其余情况均是从ALU运算得到结果写入寄存器中</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>O</td>
+<td>1位，表示回写的寄存器是否为rd</td>
+</tr>
+<tr>
+<td>ALUsec</td>
+<td>O</td>
+<td>1位，表示ALU进行操作的第二个操作数是否是立即数</td>
+</tr>
+</tbody></table>
+<p>输入与输出之间的关系表：</p>
+<table>
+<thead>
+<tr>
+<th>func</th>
+<th>100000</th>
+<th>100010</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>000000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>op</td>
+<td>000000</td>
+<td>000000</td>
+<td>001101</td>
+<td>001111</td>
+<td>100011</td>
+<td>101011</td>
+<td>000100</td>
+<td>000000</td>
+</tr>
+<tr>
+<td>variate</td>
+<td>add</td>
+<td>sub</td>
+<td>ori</td>
+<td>lui</td>
+<td>lw</td>
+<td>sw</td>
+<td>beq</td>
+<td>nop</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUsec</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MemToReg</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ifSignExt</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUctr[0]</td>
+<td>(add(00))0</td>
+<td>(sub(01))1</td>
+<td>(or(10))0</td>
+<td>(lui(11))1</td>
+<td>(add(00))0</td>
+<td>(add(00))0</td>
+<td>(sub(01))1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUctr[1]</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.5.png" alt="Controller"></p>
+<h4 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALUctr</td>
+<td>I</td>
+<td>2位，进行I1和I2的相关运算</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>I</td>
+<td>32位，操作数一</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>I</td>
+<td>32位，操作数二</td>
+</tr>
+<tr>
+<td>Out</td>
+<td>O</td>
+<td>32位，ALU计算结果</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>O</td>
+<td>1位，判断减操作的结果是否为0</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>加操作</td>
+<td>ALUctr为<code>00</code>时进行I1和I2的加操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>减操作</td>
+<td>ALUctr为<code>01</code>时进行I1-I2的操作</td>
+</tr>
+<tr>
+<td>3</td>
+<td>或操作</td>
+<td>ALUctr为<code>10</code>时进行I1|I2的操作</td>
+</tr>
+<tr>
+<td>4</td>
+<td>加载到高位的操作</td>
+<td>ALUctr为<code>11</code>时进行将imm加载到高位</td>
+</tr>
+</tbody></table>
+<p><img src="/img/P3.6..png" alt="ALU模块"></p>
+<h2 id="测试方案"><a href="#测试方案" class="headerlink" title="测试方案"></a>测试方案</h2><p>首先先根据所给样例和Pre提供的测试样例进行相应的测试（采用内存对照和实时查看指令名称及对应寄存器变化的方式），再加强Pre样例的覆盖面并通过上述方法再次进行测试。并且还参考了讨论区中大佬提供的评测机加上随机生成的一系列测试数据对拍完成了相应的测试。</p>
+<p>加强版Pre样例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.text<br>ori $a0, $0, 123 #$a0 = 123<br>ori $a1, $a0, 456<br>ori $0, $a0, 456<br>ori $a0, $0, 1<br>ori $a0, $a0, 2<br>ori $a0, $0, 65534<br>ori $a0, $a0, 42528<br>lui $a2, 123           <br>lui $a3, 0xffff    <br>lui $0, 13<br>lui $a2, 2<br>lui $a2, 65535<br>lui $a2, 25779  <br>ori $a0, $0, 1<br>ori $a1, $0, 2<br>loop:<br>sub $a1, $a1, $a0<br>beq $a1, $a0, loop<br>ori $a3, $a3, 0xffff    <br>add $s0, $a0, $a2      <br>add $s1, $a0, $a3      <br>add $s2, $a3, $a3     <br>add $a3, $a3, $a3<br>add $a3, $a3, $a3<br>sub $s0, $a0, $a2      <br>sub $s1, $a0, $a3      <br>sub $s2, $a3, $a3     <br>sub $a3, $a3, $a3<br>sub $a3, $a3, $a3<br>ori $t0, $0, 0x0000<br>sw $a0, 0($t0)<br>sw $a1, 4($t0)<br>sw $a2, 8($t0)<br>sw $a3, 12($t0)<br>ori $a0, $0, 8<br>add $t0, $t0, $a0<br>sw $a3, -4($t0)<br>lw $a2, -8($t0)<br>sub $t0, $t0, $t0<br>sub $t0, $0, $a0<br>sw $a3, 8($t0)<br>lw $a2, 8($t0)<br>ori $t0, $0, 0<br>sw $s0, 16($t0)<br>sw $s1, 20($t0)<br>sw $s2, 24($t0)<br>lw $a0, 0($t0)<br>lw $a1, 12($t0)<br>sw $a0, 28($t0)<br>sw $a1, 32($t0)<br>sw $t0, 32($a3)<br>lw $0, 0($t0)<br>lw $0, 4($t0)<br>loop4:<br>ori $a0, $0, 1<br>ori $a1, $0, 2<br>ori $a2, $0, 1<br>loop3:<br>beq $a0, $a1, loop3<br>beq $a0, $a1, loop<br>beq $a0, $a1, loop1     <br>beq $a0, $a2, loop2   <br>loop1:sw $a0, 36($t0)<br>loop2:sw $a1, 40($t0)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>随机生成数据代码(改编自向巨)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random <span class="hljs-comment">#导入随机生成库</span><br><span class="hljs-keyword">import</span> time <span class="hljs-comment">#导入时间模块</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>: <span class="hljs-comment">#判断当前python模块是否是独立的脚本</span><br>    <span class="hljs-keyword">for</span> fi <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>        random.seed(time.time()) <span class="hljs-comment">#设置固定随机数种子为当前时间的时间戳</span><br>        lenth = <span class="hljs-number">300</span> <span class="hljs-comment">#单个文件的最多指令数</span><br>        labelCount = <span class="hljs-number">0</span> <span class="hljs-comment">#label的个数</span><br>        file = <span class="hljs-built_in">open</span>(<span class="hljs-string">f&quot;C:\\Users\\yumo\\Desktop\\logisim_tester\\tools\\result<span class="hljs-subst">&#123;fi&#125;</span>.asm&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-comment">#打开相应文件，并将首指针传给file</span><br>        file.write(<span class="hljs-string">&quot;.text\n&quot;</span>) <span class="hljs-comment">#首行写入.text标志着代码段的开始</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(lenth): <span class="hljs-comment">#循环300次生成300条指令</span><br>            tmp = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">8</span>) <span class="hljs-comment">#随机生成一个选择8条指令中其中一条的标识数</span><br>            num0 = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)<br>            <span class="hljs-keyword">while</span> (num0 == <span class="hljs-number">1</span>):<br>                num0 = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)<br>            <span class="hljs-comment">#虽然有概率死循环，但是这样的num0可以避免写入寄存器$1中，防止对$at寄存器的修改，但是目前的实现好像还不用管这些？（未经）</span><br>            <br>            <span class="hljs-keyword">match</span> (tmp):<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>                    file.write(<span class="hljs-string">f&quot;add $<span class="hljs-subst">&#123;num0&#125;</span>,$<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>,$<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>\n&quot;</span>) <span class="hljs-comment">#生成add指令</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                    file.write(<span class="hljs-string">f&quot;sub $<span class="hljs-subst">&#123;num0&#125;</span>,$<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>,$<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>\n&quot;</span>) <span class="hljs-comment">#生成sub指令</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                    file.write(<span class="hljs-string">f&quot;ori $<span class="hljs-subst">&#123;num0&#125;</span>,$<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>,<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">65535</span>)&#125;</span>\n&quot;</span>) <span class="hljs-comment">#生成ori指令</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>                    file.write(<span class="hljs-string">f&quot;lw $<span class="hljs-subst">&#123;num0&#125;</span>,<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">3071</span>)&lt;&lt;<span class="hljs-number">2</span>&#125;</span>($0)\n&quot;</span>) <span class="hljs-comment">#生成lw指令，lw指令原本应为：lw $rt, offset($rs),这里为了避免出现地址偏移出现超出给定范围的情况，采用在给定地址范围上随机产生offset，$rs赋为$0，则本质上地址偏移量是在给定地址范围上，符合规定，只是缺少了offset为负数，$rs为正负数的情况的指令判断。</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>                    file.write(<span class="hljs-string">f&quot;sw $<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)&#125;</span>,<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">3071</span>)&lt;&lt;<span class="hljs-number">2</span>&#125;</span>($0)\n&quot;</span>) <span class="hljs-comment">#原理和生成依据与lw指令类似</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>                    <span class="hljs-keyword">if</span>(labelCount &gt;= <span class="hljs-number">1</span>):<br>                        num1 = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">31</span>)<br>                        file.write(<span class="hljs-string">f&quot;ori $<span class="hljs-subst">&#123;num0&#125;</span>,$<span class="hljs-subst">&#123;num1&#125;</span>,<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">65535</span>)&#125;</span>\n&quot;</span>)<br>                        file.write(<span class="hljs-string">f&quot;beq $<span class="hljs-subst">&#123;num0&#125;</span>,$0,label<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,labelCount-<span class="hljs-number">1</span>)&#125;</span>\n&quot;</span>) <span class="hljs-comment">#在跳转指令前跟上ori指令改变相应判断的情况，避免死循环的出现</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>                    file.write(<span class="hljs-string">f&quot;lui $<span class="hljs-subst">&#123;num0&#125;</span>,<span class="hljs-subst">&#123;random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">65535</span>)&#125;</span>\n&quot;</span>) <span class="hljs-comment">#写入lui指令</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<br>                    file.write(<span class="hljs-string">f&quot;nop\n&quot;</span>) <span class="hljs-comment">#写入nop</span><br>                <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>                    file.write(<span class="hljs-string">f&quot;label<span class="hljs-subst">&#123;labelCount&#125;</span>:\n&quot;</span>)<br>                    labelCount += <span class="hljs-number">1</span> <span class="hljs-comment">#写label</span><br>                <br>            <br>        file.close()<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。"><a href="#1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。" class="headerlink" title="1.上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。"></a>1.上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。</h3><p>在”取指令”的环节，即依据当前地址值取出指令并计算出下一条指令的地址的过程中，用到了NPC模块和IFU模块，这两者组成一个<strong>Moore型有限状态机</strong>，而其中IFU模块中的PC寄存器起到存储并稳定输出当前指令的地址值的状态存储功能，NPC模块通过当前PC寄存器的值生成下一条指令的地址，起到状态转移功能。</p>
+<p>在译码、执行、访存和回写的环节，用到了Controller、ALU、GRF、DM等模块，这四者根据ALU的输出或者DM的读出数据形成了<strong>Mealy型有限状态机</strong>。其中Controller模块完成了<strong>译码</strong>的功能，得到当前具体的指令以及操作；GRF用于<strong>寄存器的状态存储、改变和输出功能</strong>；ALU起到了运算的功能，得到了当前指令操作的运算值；DM起到了<strong>RAM的状态存储、改变和输出功能</strong>。因此其中，Controller、GRF和ALU共同发挥了状态转移的功能，而GRF和DM分别发挥了状态存储功能。</p>
+<h3 id="2-现在我们的模块中-IM-使用-ROM，DM-使用-RAM，GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。"><a href="#2-现在我们的模块中-IM-使用-ROM，DM-使用-RAM，GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。" class="headerlink" title="2.现在我们的模块中 IM 使用 ROM，DM 使用 RAM，GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。"></a>2.现在我们的模块中 IM 使用 ROM，DM 使用 RAM，GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。</h3><p>合理。因为IM模块的功能是<strong>依据当前指令的PC地址值，取出当前指令</strong>；DM模块的功能是<strong>依据给定的地址值将给定寄存器中的数据写入或者输出数据写入给定寄存器</strong>；GRF的功能是<strong>进行寄存器的状态存储、改变和输出功能</strong>。其中对IM存储的数据的要求是一旦写入就不再改变，因为一个程序的全部指令是在运行之前就全部写入的了，不会出现运行过程中还能添加指令的情况，因此使用只能读取的ROM是十分合理的，观察到Logisim内置的RAM在<code>Data Interface</code>状态为<code>One asynchronous load/store port</code>且<code>sel</code>端口输入始终为高电平时，应该同样可以完成依据地址取相应的指令，不过<del>不知道评测机写入时是否能够成功写入？</del>；对于DM中的数据应该支持多地址存储、写入和输出的功能，而使用只能ROM无法实现写入功能，Register无法实现多地址存储功能，因此使用RAM是最合理的；对于GRF中的数据有单地址存储、单地址写入和双地址输出的需求，因此使用32个Register可以很好的满足需求，而ROM并不支持写入的功能，但是<del>原本</del>“感觉”使用两个<code>Data Interface</code>状态为<code>Separate load and store ports</code>的RAM，利用RAM的32个32位地址作为相对应寄存器，写入数据时两个RAM同时写入，写出时两个RAM分别输出也可以达到同样的效果，对于复位功能采用以复位信号作为选择端将0同写入数据作为输入端进行多路选择来达到复位功能，实践证明<strong>两个RAM并不能实现读入的同时也输出</strong>，<img src="/img/P3.7.png" alt="两个RAM">     因此RAM也不能很好的实现GRF的需求，因此使用Register构造GRF是很合理的。</p>
+<h3 id="3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。"><a href="#3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。" class="headerlink" title="3.在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。"></a>3.在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。</h3><p>还设计了NPC（指令转换的模块），就如同设计草稿中的对于NPC模块的定义，主要实现的是正常的指令地址转移（PC值自增4）和跳转指令的转移（在PC值自增4的基础上进行地址偏移的计算与叠加）。</p>
+<h3 id="4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？"><a href="#4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？" class="headerlink" title="4.事实上，实现 nop 空指令，我们并不需要将它加入控制信号真值表，为什么？"></a>4.事实上，实现 <code>nop</code> 空指令，我们并不需要将它加入控制信号真值表，为什么？</h3><p>因为<code>nop</code>指令的机器码为<code>0x00000000</code>，且<code>nop</code>指令下CPU并不进行任何操作，那么对于<code>nop</code>空指令来说，加入控制信号表后，控制部件的输出全为0，而不加入<code>nop</code>指令时，控制部件的输出也全为0，这样一来加入不加入并不影响最终的输出，因此考虑到资源的节省以及电路的构造简约性，并不需要将其加入控制信号真值表。</p>
+<h3 id="5-阅读-Pre-的“MIPS-指令集及汇编语言”一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。"><a href="#5-阅读-Pre-的“MIPS-指令集及汇编语言”一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。" class="headerlink" title="5.阅读 Pre 的“MIPS 指令集及汇编语言”一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。"></a>5.阅读 Pre 的<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/http/77726476706e69737468656265737421f3e44293353526526b0988e29d51367b9787/tutorial/mips/mips-6/mips6-1/">“MIPS 指令集及汇编语言”</a>一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</h3><p>测试样例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs assembly">ori $a0, $0, 123<br>ori $a1, $a0, 456<br>lui $a2, 123            # 符号位为 0<br>lui $a3, 0xffff         # 符号位为 1<br>ori $a3, $a3, 0xffff    # $a3 = -1<br>add $s0, $a0, $a2      # 正正<br>add $s1, $a0, $a3      # 正负<br>add $s2, $a3, $a3      # 负负<br>ori $t0, $0, 0x0000<br>sw $a0, 0($t0) #$a0为正<br>sw $a1, 4($t0) #$a1为正<br>sw $a2, 8($t0) #$a2为正<br>sw $a3, 12($t0) #$a3为负<br>sw $s0, 16($t0) #$s0为正<br>sw $s1, 20($t0) #$s1为正<br>sw $s2, 24($t0) #$s2为负<br>lw $a0, 0($t0)<br>lw $a1, 12($t0)<br>sw $a0, 28($t0)<br>sw $a1, 32($t0)<br>ori $a0, $0, 1<br>ori $a1, $0, 2<br>ori $a2, $0, 1<br>beq $a0, $a1, loop1     # 不相等<br>beq $a0, $a2, loop2     # 相等<br>loop1:sw $a0, 36($t0)<br>loop2:sw $a1, 40($t0)<br></code></pre></td></tr></table></figure>
+
+<p>测试样例是针对支持<code>ori</code>、<code>lui</code>、<code>add</code>、<code>sw</code>、<code>lw</code>、<code>beq</code>这些指令的CPU设计的。</p>
+<p>其中第1、2、5、9、21、22和23是针对<code>ori</code>指令设计的，测试了一些正常范围内的立即数以及大于0附近的立即数的或运算，没有测试一些边界数据，如小于0附近的数据、16位无符号数边界附近的数，且没有考虑到目标寄存器是$0的情况。</p>
+<p>第3、4行测试了<code>lui</code>指令，同样未考虑到一些边界数据，覆盖效果较差。</p>
+<p>第6、7、8行测试了<code>add</code>指令，计算了正正相加、正负相加和负负相加的情况，但是同样并没有考虑一些边界数据的测试。且没有针对<code>sub</code>指令的测试，指令覆盖不够全面。</p>
+<p>第10、11、12、13、14、19和20行是针对<code>sw</code>的测试，其中从寄存器写入内存的值覆盖了正负值，但没有考虑0，以及一些边界数据，且都是顺序写入，既没有考虑复写，也没有考虑偏移为负数或0的情况，<code>$base</code>寄存器中的值全为0，没有覆盖正负数的情况。</p>
+<p>第17、18行是针对<code>lw</code>指令的测试，同样offset只考虑了0和整数的情况，没考虑负数；<code>$base</code>只考虑了0的情况，没考虑正负数；且目标寄存器没有考虑<code>$0</code>这个永远为0的情况。</p>
+<p>第24、25、26、27行是针对<code>beq</code>指令的测试，只考虑了不跳转且目标在跳转指令之后和跳转且目标在跳转指令之后的情况，并未考虑跳转，且目标在此跳转指令之前；跳转，且目标是此跳转指令；不跳转，且目标在此跳转指令之前；不跳转，且目标是此跳转指令这四种情况。</p>
+<h1 id="P3课上"><a href="#P3课上" class="headerlink" title="P3课上"></a>P3课上</h1><h2 id="第一道题（增加cwp指令）"><a href="#第一道题（增加cwp指令）" class="headerlink" title="第一道题（增加cwp指令）"></a>第一道题（增加cwp指令）</h2><p>仔细认真增加相应控制信号并完成相应连线即可。</p>
+<h2 id="第二道题（增加bgc指令）"><a href="#第二道题（增加bgc指令）" class="headerlink" title="第二道题（增加bgc指令）"></a>第二道题（增加bgc指令）</h2><p>将GPR[rs]的从0~31的每二位转换为格雷码后计算其中1的个数再通过同rt的零扩展比较完成相应的跳转：</p>
+<p>主要困难的地方在于格雷码转换并得到1的个数：</p>
+<p>2位格雷码转换先封装一个模块单独处理：</p>
+<p>1.把转换后的每一位扩展成32位后相加：</p>
+<p>  1）整31个加法器（如果头脑混乱的话，这就是<del>考场最佳做法</del>）</p>
+<p>  2）整两个2位相加、两个4位相加等模块减少单一模块的多次复制</p>
+<p>2.<strong>使用<code>Bit Adder</code>可以直接得出输入的二进制形式中的1的个数</strong>。</p>
+<h2 id="第三道题（增加lwso指令）"><a href="#第三道题（增加lwso指令）" class="headerlink" title="第三道题（增加lwso指令）"></a>第三道题（增加lwso指令）</h2><p>文字过于绕直接上伪代码：</p>
+<p><strong>#lwso rs, rt, offset</strong><br>        <strong>h_type &lt;- GPR[rt]<del>3…0</del></strong></p>
+<p><strong>reg_right &lt;- (GPR[rt] &gt;&gt; h_type)<del>4…0</del></strong></p>
+<p><strong>reg_left &lt;- GPR[rt] &lt;&lt; h_type)<del>4…0</del></strong></p>
+<p><strong>memdata &lt;- (GPRrs] + sign_ext(offset))</strong></p>
+<p><strong>if memdata<del>0</del></strong> </p>
+<p><strong>GPR[reg_left] &lt;- memdata</strong></p>
+<p><strong>else</strong> </p>
+<p><strong>GPR[reg_right] &lt;- memdata&#96;</strong></p>
+<p>需要注意：控制信号要基本上跟lw一致（因为本质上<code>lwso</code>和<code>lw</code>都是将内存中的数<code>load</code>进入寄存器中），再增加一个<code>ifLWSO</code>指令来判断当前指令是否为<code>lwso</code>作为多加的写入判断的多路选择器的选择端。其中就顺其自然，连线不要连错，完全按RTL要求来即可。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>增加指令一定要充分考虑原有指令的适配性，例如增加R型指令一定要注意R型指令的<strong>op是000000，func代表对应指令</strong>。</p>
+<p>此外，如果要更改电路外观一定要<strong>注意连线与布局的相对应</strong>（不然大有可能被硬控一节课）。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2025/01/22/P3_L0_document/">http://ywxy12138.github.io/2025/01/22/P3_L0_document/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="../../../../img/HDL.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../../21/CPP/" title="C++"><img class="cover" src="../../../../img/cpp.svg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++</div></div></a></div><div class="next-post pull-right"><a href="../P4-L0-document/" title="P4_L0_document"><img class="cover" src="../../../../img/HDL.jpg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">P4_L0_document</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../P4-L0-document/" title="P4_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P4_L0_document</div></div></a></div><div><a href="../P6-L0-document/" title="P6_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P6_L0_document</div></div></a></div><div><a href="../P5-L0-document/" title="P5_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P5_L0_document</div></div></a></div><div><a href="../P7-L0-document/" title="P7_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P7_L0_document</div></div></a></div><div><a href="../../../../2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/" title="计组上机（Pre-P2）"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-23</div><div class="title">计组上机（Pre-P2）</div></div></a></div><div><a href="../%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">计组理论重点与易错点</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P3%E8%AF%BE%E4%B8%8B"><span class="toc-number">1.</span> <span class="toc-text">P3课下</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%8D%89%E7%A8%BF"><span class="toc-number">1.1.</span> <span class="toc-text">设计草稿</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">设计要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E8%A7%84%E6%A0%BC"><span class="toc-number">1.1.2.</span> <span class="toc-text">模块规格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IFU%EF%BC%88%E5%8F%96%E6%8C%87%E4%BB%A4%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">IFU（取指令单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GRF%EF%BC%88%E5%AF%84%E5%AD%98%E5%99%A8%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">GRF（寄存器单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NPC%EF%BC%88%E6%8C%87%E4%BB%A4%E8%BD%AC%E7%A7%BB%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">NPC（指令转移单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DM%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">DM（数据寄存器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">Controller</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ALU"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">ALU</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text">测试方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">思考题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8A%E9%9D%A2%E6%88%91%E4%BB%AC%E4%BB%8B%E7%BB%8D%E4%BA%86%E9%80%9A%E8%BF%87-FSM-%E7%90%86%E8%A7%A3%E5%8D%95%E5%91%A8%E6%9C%9F-CPU-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E3%80%82%E8%AF%B7%E5%A4%A7%E5%AE%B6%E6%8C%87%E5%87%BA%E5%8D%95%E5%91%A8%E6%9C%9F-CPU-%E6%89%80%E7%94%A8%E5%88%B0%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B8%AD%EF%BC%8C%E5%93%AA%E4%BA%9B%E5%8F%91%E6%8C%A5%E7%8A%B6%E6%80%81%E5%AD%98%E5%82%A8%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%93%AA%E4%BA%9B%E5%8F%91%E6%8C%A5%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%8A%9F%E8%83%BD%E3%80%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8E%B0%E5%9C%A8%E6%88%91%E4%BB%AC%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B8%AD-IM-%E4%BD%BF%E7%94%A8-ROM%EF%BC%8CDM-%E4%BD%BF%E7%94%A8-RAM%EF%BC%8CGRF-%E4%BD%BF%E7%94%A8-Register%EF%BC%8C%E8%BF%99%E7%A7%8D%E5%81%9A%E6%B3%95%E5%90%88%E7%90%86%E5%90%97%EF%BC%9F-%E8%AF%B7%E7%BB%99%E5%87%BA%E5%88%86%E6%9E%90%EF%BC%8C%E8%8B%A5%E6%9C%89%E6%94%B9%E8%BF%9B%E6%84%8F%E8%A7%81%E4%B9%9F%E8%AF%B7%E4%B8%80%E5%B9%B6%E7%BB%99%E5%87%BA%E3%80%82"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.现在我们的模块中 IM 使用 ROM，DM 使用 RAM，GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8%E4%B8%8A%E8%BF%B0%E6%8F%90%E7%A4%BA%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B9%8B%E5%A4%96%EF%BC%8C%E4%BD%A0%E6%98%AF%E5%90%A6%E5%9C%A8%E5%AE%9E%E9%99%85%E5%AE%9E%E7%8E%B0%E6%97%B6%E8%AE%BE%E8%AE%A1%E4%BA%86%E5%85%B6%E4%BB%96%E7%9A%84%E6%A8%A1%E5%9D%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%98%AF%E7%9A%84%E8%AF%9D%EF%BC%8C%E8%AF%B7%E7%BB%99%E5%87%BA%E4%BB%8B%E7%BB%8D%E5%92%8C%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%B7%AF%E3%80%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BA%8B%E5%AE%9E%E4%B8%8A%EF%BC%8C%E5%AE%9E%E7%8E%B0-nop-%E7%A9%BA%E6%8C%87%E4%BB%A4%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81%E5%B0%86%E5%AE%83%E5%8A%A0%E5%85%A5%E6%8E%A7%E5%88%B6%E4%BF%A1%E5%8F%B7%E7%9C%9F%E5%80%BC%E8%A1%A8%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.事实上，实现 nop 空指令，我们并不需要将它加入控制信号真值表，为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%98%85%E8%AF%BB-Pre-%E7%9A%84%E2%80%9CMIPS-%E6%8C%87%E4%BB%A4%E9%9B%86%E5%8F%8A%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E2%80%9D%E4%B8%80%E8%8A%82%E4%B8%AD%E7%BB%99%E5%87%BA%E7%9A%84%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8B%EF%BC%8C%E8%AF%84%E4%BB%B7%E5%85%B6%E5%BC%BA%E5%BA%A6%EF%BC%88%E5%8F%AF%E4%BB%8E%E5%90%84%E4%B8%AA%E6%8C%87%E4%BB%A4%E7%9A%84%E8%A6%86%E7%9B%96%E6%83%85%E5%86%B5%EF%BC%8C%E5%8D%95%E4%B8%80%E6%8C%87%E4%BB%A4%E5%90%84%E7%A7%8D%E8%A1%8C%E4%B8%BA%E7%9A%84%E8%A6%86%E7%9B%96%E6%83%85%E5%86%B5%E7%AD%89%E6%96%B9%E9%9D%A2%E5%88%86%E6%9E%90%EF%BC%89%EF%BC%8C%E5%B9%B6%E6%8C%87%E5%87%BA%E5%85%B7%E4%BD%93%E7%9A%84%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84%E3%80%82"><span class="toc-number">1.3.5.</span> <span class="toc-text">5.阅读 Pre 的“MIPS 指令集及汇编语言”一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3%E8%AF%BE%E4%B8%8A"><span class="toc-number">2.</span> <span class="toc-text">P3课上</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%81%93%E9%A2%98%EF%BC%88%E5%A2%9E%E5%8A%A0cwp%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">第一道题（增加cwp指令）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%93%E9%A2%98%EF%BC%88%E5%A2%9E%E5%8A%A0bgc%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">第二道题（增加bgc指令）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%81%93%E9%A2%98%EF%BC%88%E5%A2%9E%E5%8A%A0lwso%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">第三道题（增加lwso指令）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.</span> <span class="toc-text">注意</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="计组理论重点与易错点"/></a><div class="content"><a class="title" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点">计组理论重点与易错点</a><time datetime="2025-01-22T08:33:38.000Z" title="发表于 2025-01-22 16:33:38">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P7-L0-document/" title="P7_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P7_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P7-L0-document/" title="P7_L0_document">P7_L0_document</a><time datetime="2025-01-22T07:24:28.000Z" title="发表于 2025-01-22 15:24:28">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P6-L0-document/" title="P6_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P6_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P6-L0-document/" title="P6_L0_document">P6_L0_document</a><time datetime="2025-01-22T07:24:15.000Z" title="发表于 2025-01-22 15:24:15">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P5-L0-document/" title="P5_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P5_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P5-L0-document/" title="P5_L0_document">P5_L0_document</a><time datetime="2025-01-22T07:24:04.000Z" title="发表于 2025-01-22 15:24:04">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P4-L0-document/" title="P4_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P4_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P4-L0-document/" title="P4_L0_document">P4_L0_document</a><time datetime="2025-01-22T07:23:39.000Z" title="发表于 2025-01-22 15:23:39">2025-01-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

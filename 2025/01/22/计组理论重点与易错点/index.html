@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计组理论重点与易错点 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计组理论重点与易错点Cache1.时间局部性：最近的未来要用到的信息，很可能是现在正在使用的数据，因为程序中存在循环和需要多次重复执行的子程序段，以及对数组的存储和访问操作。 空间局部性：最近的未来要用到的信息，很可能与现在正在使用的信息在存储空间上是邻近的，因为指令通常是顺序存放、执行指令的，数据也一般是以向量、数组等形式簇聚地存储的。 2.Cache与主存间按数据块为单位进行数据交换，Cach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组理论重点与易错点">
+<meta property="og:url" content="http://ywxy12138.github.io/2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="计组理论重点与易错点Cache1.时间局部性：最近的未来要用到的信息，很可能是现在正在使用的数据，因为程序中存在循环和需要多次重复执行的子程序段，以及对数组的存储和访问操作。 空间局部性：最近的未来要用到的信息，很可能与现在正在使用的信息在存储空间上是邻近的，因为指令通常是顺序存放、执行指令的，数据也一般是以向量、数组等形式簇聚地存储的。 2.Cache与主存间按数据块为单位进行数据交换，Cach">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/HDL.jpg">
+<meta property="article:published_time" content="2025-01-22T08:33:38.000Z">
+<meta property="article:modified_time" content="2025-01-22T08:38:01.949Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/HDL.jpg"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计组理论重点与易错点',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-01-22 16:38:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('../../../../img/HDL.jpg')"><nav id="nav"><span id="blog-info"><a href="../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计组理论重点与易错点</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-22T08:33:38.000Z" title="发表于 2025-01-22 16:33:38">2025-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-22T08:38:01.949Z" title="更新于 2025-01-22 16:38:01">2025-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计组理论重点与易错点"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计组理论重点与易错点"><a href="#计组理论重点与易错点" class="headerlink" title="计组理论重点与易错点"></a>计组理论重点与易错点</h1><h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><p>1.时间局部性：最近的未来要用到的信息，很可能是现在正在使用的数据，因为程序中存在循环和需要多次重复执行的子程序段，以及对数组的存储和访问操作。</p>
+<p>空间局部性：最近的未来要用到的信息，很可能与现在正在使用的信息在存储空间上是邻近的，因为指令通常是顺序存放、执行指令的，数据也一般是以向量、数组等形式簇聚地存储的。</p>
+<p>2.Cache与主存间按数据块为单位进行数据交换，Cache与CPU之间以字为单位进行数据交换。</p>
+<p>3.<strong>CPU与Cache间数据交换以字为单位，而Cache与主存间的数据交换以Cache块为单位。</strong></p>
+<p>4.当集中访问的存储区超过Cache组的大小时，命中率可能变得很低，这种现象被称为<strong>抖动</strong>。</p>
+<p>5.Cache一致性问题：主要针对写操作。</p>
+<p>一、写命中：</p>
+<p>1）.<strong>全写法&#x2F;直写法</strong>：CPU对Cache写命中时，必须将数据同时写入Cache和主存，实现简单，能够随时保持主存数据的正确性。但增加了访存次数。改进：<strong>写缓冲</strong>，CPU写命中时同时写入Cache和写缓冲（位于Cache和主存之间的一个FIFO队列）中，其可解决速度不匹配问题，但若出现频繁写会使写缓冲饱和溢出。</p>
+<p>2）.<strong>回写法</strong>：CPU写命中时，只将数据写入Cache，不立即写入主存，只有当此块被替换时才写回主存，减少访存次数，但存在数据不一致的隐患。</p>
+<p>二、写不命中：</p>
+<p>1）.<strong>写分配法</strong>：更新主存单元，后将该主存块调入Cache，试图利用程序的空间局部性，但每												次写不命中都需要从主存中读一个块到Cache中。</p>
+<p>2）.<strong>非写分配法</strong>：只更新主存单元，不把主存块调入Cache中。</p>
+<p><strong>注意</strong>：通常<strong>非写分配法同全写法</strong>合用，<strong>写分配法同回写法</strong>合用。</p>
+<p>6.在Cache与主存的映射关系实现中，“比较器”用于并行地比较分组中所有Cache行的Tag标记位与要访问物理地址的Tag标记位，则比较器的个数就是<strong>分组中的Cache行数即块数</strong>，比较器位数即为<strong>Tag标记位数</strong>。</p>
+<p>7.&#x3D;&#x3D;主存地址空间代表的是地址的总位数，也就是所有主存总共的地址数，其中按字节编址和按字编址的区别在于，<strong>前者的一条主存地址代表的是一个字节内存的地址，而后者的一条主存地址代表的是一个字内存的地址</strong>，而由于Cache的存在，将主存地址空间根据Cache块的大小分为若干块，因此计算每一条地址对应的块号，需要先从主存的具体大小得到其对应的地址再除去每一主存块储存的大小再除以组相联对应的组数（若为全相联则无需此步），或者也可以通过将首地址加上偏移量（注意：<strong>此处的偏移量一定要是同编址方式一致即一条地址对应的内存大小要一致）</strong>再通过主存地址格式得到相应的块号，注意：<strong>一定要认真计算，切记想当然</strong>&#x3D;&#x3D;</p>
+<p>8.一些Cache的简述题：32位主存地址，按字节编址，采用直写写策略和LRU替换算法，Tag为20位，Index为6位，offset为6位，初始时Cache为空。若CPU一开始的访问操做是读取主存单元00010003中的指令，简要说明从Cache中访问该指令的过程，包括Cache缺失处理。</p>
+<p>00010003H根据主存地址格式可得，组号为0，因此该地址所在主存块映射到指令Cache的第0组，又因为Cache初始为空，则所有Cache行的有效位均为0，则Cache访问缺失，此时，将该主存块取出后存入指令Cache的第0组中的任意一行，<strong>并将主存地址高20位填入该行的标记字段，设置有效位，修改LRU位，最后再根据块内地址从该行中读出相应的内容。</strong></p>
+<h2 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h2><p>1.<strong>虚拟存储器的实际容量小于主存+辅存</strong>。</p>
+<p>2.<strong>虚拟存储器在处理一致性问题时，只能使用回写法+写分配</strong></p>
+<p>3.每个进程有一个页表，这里是由OS维护的内存中的页表，其中每一个页表项由<strong>实页号、装入位、修改位和替换控制位等</strong>，注意<strong>同TLB的页表项做区分，没有Tag位</strong>。</p>
+<p>4.<strong>虚页偏移位&#x3D;&#x3D;实页偏移位</strong>。</p>
+<p>5.<strong>一个页表项代表一个虚页，页大小是指内存划分的单元大小，一般以字节为单位，是一个页能存储数据的大小；而页表项二进制位数是指存储映射关系和控制信息的二进制位数，以比特为单位</strong>。</p>
+<p>6.<strong>TLB一个页表项由有效位、脏位、使用位、TLB与Cache映射关系下的Tag标记位、实页号组成</strong>。</p>
+<p>7.TLB、Cache和Page缺失</p>
+<p><img src="/img/TLB%E3%80%81Cache%E5%92%8CPage%E7%BC%BA%E5%A4%B1.jpg" alt="TLB、Cache和Page缺失"></p>
+<p>其中，TLB和Cache任一个缺失都要访问一次主存，Page缺失需要访问磁盘。Cache缺失处理由<strong>硬件</strong>完成、缺页缺失由<strong>软件</strong>完成，OS通过“缺页异常处理程序”实现。TLB缺失既可由<strong>硬件</strong>也可由<strong>软件</strong>。</p>
+<p>8.Cache全由硬件实现，对所有程序员透明；虚拟存储器由OS和硬件共同实现，<strong>对系统程序员透明，对应用程序员不透明</strong>。</p>
+<p>9.虚拟存储器运用了局部性原理，因此所运行程序应具有局部性原理才可充分发挥其作用。</p>
+<p>10.<strong>只能由OS和硬件访问页表</strong>。</p>
+<p>11.缺页中断：在请求分页系统中，当要访问的页面不在内存时，就会产生缺页中断。当查找页表发现状态位为0，则产生缺页中断，将缺页的进程阻塞，如果有空闲块，则要调入的页直接装入，并修改相应的页表项，若无空闲块，则根据替换算法淘汰某页后再装入，最后恢复CPU环境，返回缺页的进程继续执行程序。</p>
+<p>12.虚拟地址空间并不是总大于物理地址空间。可能相等也可能小于。</p>
+<h2 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h2><p>1.闪存本质上是带电可擦除可编程ROM</p>
+<p>2.半导体存储器分类，SRAM一般用作Cache、DRAM一般用作主存。</p>
+<p><img src="/img/image-20241216144211062.png" alt="半导体存储器"></p>
+<p>3.DRAM刷新的原因：1.内部保持二进制信息”1”即高电平的情况下，内部的Cs电容的电荷会发生泄漏，状态不能长久保持，为了保持数据性质不变，需要进行电荷的补充即<strong>刷新</strong>，对所有数据进行行刷新。2.读出是破坏性的，即会破坏内部的数据性质，只进行被破坏数据的再生。</p>
+<p>4.DRAM芯片封装的特殊性：由于<strong>行列地址管脚复用</strong>，行列地址线位数一般<strong>均分总字位数</strong>。</p>
+<p>5.存取时间不等于存取周期，存取周期等于存取时间加上恢复时间（恢复内部状态的复原时间），对于破坏性读出的存储器，存取周期往往比存取时间大很多，由于存储器中的信息读出后需要马上进行再生。</p>
+<p>6.Cache-主存层主要解决CPU和主存速度不匹配的问题，数据调动由<strong>硬件自动完成</strong>，对所有程序员透明。主存-辅存层解决存储系统的容量问题，数据调动由<strong>硬件和OS共同完成</strong>，对应用程序员透明。</p>
+<p>7.按存取方式的存储器：</p>
+<p>1）.随机存储器（RAM）：主要用作<strong>主存或Cache</strong>，分为<strong>SRAM</strong>和<strong>DRAM</strong></p>
+<p>2）.只读存储器（ROM）：<strong>可与RAM共同作为主存的一部分</strong>，统一构成主存的地址域。由其派生出的存储器包含可反复重写的类型，存取方式为随机存取。广义上的只读存储器有可通过电擦除等方式进行写入的，虽不是“只读”，但是保留了断电内容保留、随机读取特性</p>
+<p>3）.<strong>串行访问存储器</strong>：对存储单元进行读&#x2F;写操作时，需按其物理位置的先后顺序进行寻址，包含<strong>顺序存取存储器（磁带）</strong>和<strong>直接存取存储器（磁盘、光盘（CD-ROM是只读光盘不算是只读存储器ROM，是直接存取存储器）</strong>。前者内容只能按某种顺序执行，存取速度慢。后者存取信息时通常先寻找整个存储器中的某个小区域，再在小区域内顺序查找。速度介于随机存储器和顺序存取存储器之间。</p>
+<p>8.Cache与主存访问类型问题，除非题目中有说明同时访问Cache和主存（此时<strong>不命中时间为访问主存的时间</strong>），否则应为<strong>访问Cache和主存的时间之和</strong>。</p>
+<p>9.DRAM集成度高、位价低、功耗低，存取速度比SRAM慢，须<strong>定时刷新和读后再生</strong>，一般用于大容量的主存系统。</p>
+<p>10.刷新以行为单位，对同一行进行相邻两次刷新的时间间隔称为<strong>刷新周期</strong>，通常取2ms，常用刷新方式：</p>
+<p>1）.集中刷新：一个刷新周期内，用一段固定时间依次对存储器的所有行进行逐一再生即刷新，此期间停止对存储器的读&#x2F;写操做，即<strong>死时间</strong>&#x2F;<strong>访存死区</strong>。</p>
+<p>2）.分散刷新：将存储器系统工作周期分为两部分：前半部分用于正常读&#x2F;写，后半部分刷新，该方式增加了系统存取周期。</p>
+<p>3）.异步刷新：将刷新周期除以行数，得相邻两行间刷新的时间间隔t，每隔t产生一次刷新请求，分散“死时间”。</p>
+<p>刷新不依赖外部访问。</p>
+<p>11.MDR的位数与数据线的位数相同，MAR的位数与地址线的位数相同。</p>
+<p>12.数据总线的位数与工作频率的乘积正比于数据传输速率。</p>
+<p>13.若存储器容量为32K*16位，则32K &#x3D; 2^15^，因此一共需要15根地址线，行列地址线的总和，此外还需要16根数据线。对于SRAM，地址引脚总和为15；而对于DRAM，由于地址引脚复用，只需要8根地址引脚。</p>
+<p>14.按信息的可保存性分类：RAM为<strong>易失性存储器</strong>，而ROM、磁表面存储器和光存储器为<strong>非易失性存储器</strong>。</p>
+<p>15.SRAM依靠双稳态电路的两个稳定状态分别存储0和1.</p>
+<p>16.U盘采用Flash存储器计术，是在E^2^PROM的基础上发展起来的，属于ROM的一种，由于擦写速度和性价比可观，常用作辅存。</p>
+<p>17.计算机OS保存在硬盘上，需要BIOS的引导程序将OS引导到主存（RAM）中，而引导程序固化在ROM中。</p>
+<p>18.动态半导体存储器的特点：1.每隔一段时间，需根据原存内容重新写入。2.一次完整的刷新过程只需要占用一个存储周期。</p>
+<p>19.DRAM的刷新也是一个读取的过程，根据读出内容对相应单元进行重写，会和CPU的访存冲突，有访存“死时间”，且刷新是每隔一段时间向栅极电容补充一次电荷，以行为单位。</p>
+<p>20.在主存中，<strong>地址存储器MAR</strong>用来存放当前CPU访问的内存单元地址，或存放CPU写入内存的内存单元地址。<strong>数据存储器MDR</strong>用来存放由内存中读出的信息或写入内存的信息。且<strong>MAR的位数通常决定了主存地址空间的大小</strong>，<strong>MDR位数由存储字长决定</strong>。</p>
+<p>21.DRAM依据<strong>栅极电容</strong>原理存储信息，SRAM依据<strong>双稳态触发器</strong>原理存储信息。</p>
+<p>22.刷新地址计数器提供刷新地址(按行刷新)，<strong>位数同行地址相同</strong>。</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p>&#x3D;&#x3D;存储器的扩展&#x3D;&#x3D;、&#x3D;&#x3D;DRAM的刷新&#x3D;&#x3D;</p>
+<h2 id="指令系统与MIPS汇编"><a href="#指令系统与MIPS汇编" class="headerlink" title="指令系统与MIPS汇编"></a>指令系统与MIPS汇编</h2><p>1.定长指令：操作码长度固定不变，硬件设计简单、指令译码时间开销小、指令空间利用率低。（MIPS）</p>
+<p>变长指令：设计复杂、开销大、利用率高。（x86）</p>
+<p>2.形式地址：指令中直接给出的地址编码；</p>
+<p>有效地址：根据<strong>形式地址</strong>和<strong>寻址方式</strong>计算出的操作数在内存单元中的地址。；</p>
+<p>常用寻址方式：立即寻址、寄存器直接寻址、基址寻址、相对寻址、堆栈寻址；</p>
+<p>寻址方式的确定分为<strong>操作码直接确定寻址方式</strong>和<strong>指令代码包含寻址方式字段</strong>，前者无需寻址方式字段。</p>
+<p>立即寻址：<strong>操作数直接在指令代码中给出</strong>，只能作为双操作数指令的源操作数。</p>
+<p><em>寄存器直接寻址：操作数在寄存器中，指令地址字段给出寄存器的地址（了解）</em></p>
+<p>基址寻址：操作数在存储器中，指令地址字段给出<strong>基址寄存器和形式地址</strong>，基址寄存器的值+形式地址为有效地址（load&#x2F;store指令），<strong>可使较短形式地址长度实现较大存储空间的寻址</strong>。</p>
+<p>相对寻址：基址寻址的特例，下一条PC+偏移量为有效地址，即PC计数器即为基址寄存器（如分支跳转指令）。</p>
+<p>3.MIPS架构中每种指令只有唯一寻址方式，无需寻址方式编码，对Load&#x2F;Store指令只有一种<strong>基址寻址</strong>的方式。其中j类型的跳转的寻址方式称为<strong>伪直接寻址</strong>，I类型指令的寻址方式为<strong>立即寻址</strong>，ALU运算指令的寻址方式为<strong>寄存器直接寻址</strong>。</p>
+<p>4.数据伪指令：.BYTE，在内存中以8位字节存储数值；.HALF，在内存中以16位半字存储数值，分配时需要满足<strong>分配地址半字对齐的条件，即地址值要是2的倍数</strong>；.WORD，在内存中以32位字存储数值，分配时需要满足<strong>分配地址字对齐的条件，即地址值是4的倍数</strong>。.FLOAT和.DOUBLE同理，前者存储单精度后者存储双精度。</p>
+<p>字符串伪指令：.ASCII，为一个字符串分配字节序列，且不以NULL结尾；.ASCIIZ以NULL结尾。.SPACE为数据段n个未初始化<strong>字节</strong>分配空间。</p>
+<p>5.时钟周期Tc &gt;&#x3D; Tctq（一个寄存器从输入到输出的时间，可以理解为<strong>在一个寄存器里经过的时间)</strong> + Tcd（组合逻辑电路的最长延时） + Tsetup(输出稳定下来的时间) + 时钟偏移</p>
+<p>6.<strong>哈佛体系结构</strong>：使用指令存储区（IM）和数据存储区（DM）分别保存指令和数据。</p>
+<p>7.<strong>普林斯顿结构</strong>：指令和数据使用同一<strong>存储器</strong>。</p>
+<p>8.<strong>规格化浮点数</strong>是为了<strong>增加浮点数的表示精度</strong>。</p>
+<p>8.&#x3D;&#x3D;<strong>jr</strong>和<strong>JALR</strong>&#x3D;&#x3D;指令是R型指令。</p>
+<p>9.根据指令集的复杂程度，可以将指令集架构(ISA)分为<strong>CISC</strong>和<strong>RISC</strong>。</p>
+<h2 id="外存与IO"><a href="#外存与IO" class="headerlink" title="外存与IO"></a>外存与IO</h2><p>1.扇区的地址表示：从左至右：柱面（磁道）号、磁头号、扇区号。只考虑CAV，即恒定角速度的磁盘存储结构。</p>
+<p>2.CPU响应中断、程序断点(PC)入栈、关中断、获取中断向量-&gt;PC等由<strong>中断隐指令硬件实现</strong>。<strong>中断服务子程序通过软件实现</strong>。</p>
+<p>3.在独立请求方式下，若要支持N个设备，则需要N个总线请求信号和<strong>N个</strong>总线响应信号。建立完全的一对一的请求响应关系。</p>
+<p>4.RAID（独立冗余磁盘阵列），多个物理盘组成，被OS当成一个逻辑磁盘，数据分布在不同的物理磁盘上，冗余磁盘用于保存数据校验信息，校验信息保证在出现磁盘损坏时能有效的恢复数据。</p>
+<p>六种模式：</p>
+<p>RAID0：无差错控制的带区组，完全没冗余，数据条带化分布在不同的物理盘上。</p>
+<p>RAID1：镜像结构，成本太高，即完全复制一份物理盘，读操作性能改善，写操作性能不高。</p>
+<p>RAID2：带海明检验，并行访问技术，磁盘任何时刻都并行地相应I&#x2F;O请求。根据磁盘数据计算错误校验码，校验码按位分布在冗余磁盘对应位置。</p>
+<p>RAID3：带奇偶校验码的并行传送，校验码是简单的奇偶校验码，保存在独立的冗余磁盘对应位置上。</p>
+<p>RAID4：带奇偶校验码的独立磁盘结构，数据按较大的条带分布在不同的磁盘上，校验码也为奇偶校验码，保存在独立的冗余磁盘对应位置上。</p>
+<p>RAID5：分布式奇偶校验码的独立磁盘结构，与RAID4区别在于校验信息的保存位置，数据校验码作为条带的一部分保存在磁盘组不同的磁盘中，有效避免了RAID4的校验盘写入瓶颈。</p>
+<p>5.按信息交换的单位划分，I&#x2F;O设备可以分为<strong>字符设备和块设备</strong>。</p>
+<p>6.DMA方式和中断方式之间的差别：</p>
+<p>1）.后者是程序的切换，需要保护和恢复现场；但前者除了预处理和后处理，其他时候不占用CPU的任何资源。</p>
+<p>2）.对中断请求的响应只能发生在每条指令执行完毕时（即指令的执行周期后）；而对DMA请求的响应可发生在每个机器周期结束时（取指、间址和执行周期之后均可），只要CPU不占用总线就可被响应。</p>
+<p>3）.中断传送过程需要CPU的干预，但DMA传送过程不需要CPU干预。</p>
+<p>4）.DMA请求的优先级高于中断请求。</p>
+<p>5）.中断方式具有对异常事件的处理能力，但DMA仅局限于传送数据块的I&#x2F;O操作。</p>
+<p>6）.从数据传送看，后者靠程序传送，前者靠硬件传送。</p>
+<p>7.I&#x2F;O总线分为三类：<strong>数据线、地址线和控制线</strong>。数据缓冲寄存器和命令&#x2F;状态寄存器中的内容都是通过数据线来传送的，如I&#x2F;O接口中的命令字和状态字；地址线用以传送与CPU交换数据的端口地址；而控制线用于给I&#x2F;O端口发送读&#x2F;写信号，仅用于对端口进行读&#x2F;写控制。</p>
+<p>8.I&#x2F;O接口即为I&#x2F;O控制器，功能为接收主机发送的I&#x2F;O控制信号，并实现主机和外设间的信息交换。<strong>磁盘驱动器</strong>是由磁头、磁盘和读&#x2F;写电路等组成的，即<strong>日常所说的磁盘本身</strong>。可编程中断控制器也为I&#x2F;O接口。</p>
+<p>9.<strong>外部中断</strong>是指CPU执行指令以外的事件产生的中断，通常指来自CPU与内存以外的中断，如键盘输入。</p>
+<p>10.中断处理过程为：1.关中断；2.保存断点；3.识别中断源，即引出中断服务程序（形成中断服务程序入口地址并送给PC）；（这三步都是由<strong>中断隐指令</strong>完成的，由<strong>硬件</strong>实现）4.保存现场和屏蔽字（现场信息指用户可见的工作寄存器的内容，存放程序执行到断点处的现行值），例如保存通用寄存器的内容；5.开中断，允许更高级中断请求得到响应，以实现中断嵌套（<strong>单重中断没有该步</strong>）；6.执行中断服务程序；7.关中断，保证在下一步执行过程中不被中断（<strong>单重中断没有该步</strong>）；8.恢复现场和屏蔽字；9.开中断、中断返回。第4-9步由<strong>中断服务程序（软件）</strong>实现。</p>
+<p>11.中断I&#x2F;O方式申请使用的是CPU处理时间，它不适合<strong>高速外设</strong>，外设通过<strong>中断控制器</strong>向CPU发送中断请求信号，CPU响应中断请求后开始执行中断服务程序，中断服务程序执行完后CPU自行返回，<strong>无需外设发送中断结束信号</strong>；而DMA方式申请的是总线的使用权，除了适合快速外设，多路型DMA控制器也适合同时为多个慢速外设服务，DMA传送结束后的处理由<strong>中断服务程序</strong>完成。采用周期挪用法时，DMA控制器挪用一个或几个主存周期来访问主存，传送完一个<strong>数据字（即总线位宽）</strong>后释放总线，是一种单字传送方式，每个字传送完后CPU可以访问主存。</p>
+<h2 id="计算机性能指标"><a href="#计算机性能指标" class="headerlink" title="计算机性能指标"></a>计算机性能指标</h2><h3 id="1-机器字长："><a href="#1-机器字长：" class="headerlink" title="1.机器字长："></a>1.机器字长：</h3><p>即字长，指计算机进行一次整数运算（即定点整数运算）所能处理的二进制数据的位数，通常与CPU的寄存器位数、ALU有关，其一般等于通用寄存器的位数或ALU的宽度，字长越长，数表示的范围越大，计算精度越高。</p>
+<h3 id="2-数据通路带宽"><a href="#2-数据通路带宽" class="headerlink" title="2.数据通路带宽"></a>2.数据通路带宽</h3><p>数据总线一次所能并行传送信息的位数，该数据通路带宽指的是外部数据总线的宽度，与CPU内部的数据总线宽度可能有所不同。</p>
+<p><strong>数据通路</strong>：各个子系统通过数据总线连接形成的数据传送路径。</p>
+<h3 id="3-主存容量"><a href="#3-主存容量" class="headerlink" title="3.主存容量"></a>3.主存容量</h3><p>指主存储器所能存储信息的最大容量，通常以字节衡量。其中，MAR的位数反映了<strong>存储单元的个数</strong>，MDR的位数反映了<strong>存储单元的字长</strong>。</p>
+<h3 id="4-运算速度"><a href="#4-运算速度" class="headerlink" title="4.运算速度"></a>4.运算速度</h3><h4 id="1）吞吐量与响应时间"><a href="#1）吞吐量与响应时间" class="headerlink" title="1）吞吐量与响应时间"></a>1）吞吐量与响应时间</h4><p>吞吐量：系统在单位时间内处理请求的数量，主要取决于<strong>主存的存取周期</strong>。</p>
+<p>响应时间：从用户向计算机发送一个请求，到系统对该请求做出响应并获得所需结果的等待时间，包含<strong>CPU时间</strong>(运行一个程序所需的时间)与<strong>等待时间</strong>(用于磁盘访问、存储器访问、I&#x2F;O操作、OS开销等的时间)。</p>
+<h4 id="2）主频和CPU时钟周期"><a href="#2）主频和CPU时钟周期" class="headerlink" title="2）主频和CPU时钟周期"></a>2）主频和CPU时钟周期</h4><p>主频（<strong>CPU时钟频率</strong>）：时钟周期的倒数。</p>
+<p>CPU时钟周期：机器内部<strong>主时钟脉冲信号的宽度</strong>。<strong>时钟脉冲信号</strong>由机器脉冲源发出的脉冲信号经整形和分频后形成。<strong>时钟周期</strong>以<strong>相邻状态单元间组合逻辑电路的最大延迟</strong>为基准确定，也以指令流水线的<strong>每个流水段的最大延迟时间</strong>确定。</p>
+<h4 id="3）CPI"><a href="#3）CPI" class="headerlink" title="3）CPI"></a>3）CPI</h4><p>执行一条指令所需的时钟周期数。</p>
+<p>一般指的是该程序或机器指令集中所有指令执行所需的平均时钟周期数，是一个平均值。</p>
+<p><strong>IPS &#x3D; 主频&#x2F;平均CPI</strong></p>
+<h4 id="4）CPU执行时间"><a href="#4）CPU执行时间" class="headerlink" title="4）CPU执行时间"></a>4）CPU执行时间</h4><p>CPU执行时间 &#x3D; CPU时钟周期数 &#x2F; 主频 &#x3D; （指令条数 * CPI） &#x2F; 主频。</p>
+<h4 id="5）MIPS"><a href="#5）MIPS" class="headerlink" title="5）MIPS"></a>5）MIPS</h4><p>每秒执行多少百万条指令，（Million Instructions Per Second）</p>
+<p><strong>MIPS &#x3D; 指令条数 &#x2F; （执行时间 * 10^6^）&#x3D; 主频 &#x2F; （CPI * 10^6^）</strong></p>
+<h4 id="6-FLOPS"><a href="#6-FLOPS" class="headerlink" title="6)FLOPS"></a>6)FLOPS</h4><p>每秒执行多少次浮点运算。</p>
+<p><strong>MFLOPS</strong>：每秒执行多少百万次浮点运算；</p>
+<p><strong>GFLOPS</strong>: ……十亿（10^9^）……；</p>
+<p><strong>TFLOPS</strong>: ……万亿（10^12^）……；</p>
+<p><strong>PFLOPS</strong>: ……千万亿（<strong>10^15^</strong>）……；</p>
+<p><strong>EFLOPS</strong>: ……百京（<strong>10^18^</strong>）……；</p>
+<p><strong>ZFLOPS</strong>: ……十万京（<strong>10^21^</strong>）……；</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>描述存储容量、文件大小时，K、M、G、T通常用2的幂次表示。描述速率、频率等时，k，M，G，T通常用10的幂次表示。</p>
+<p>浮点数运算的三个基本操作是<strong>阶码运算、尾数运算和结果规格化</strong>。浮点数阶码和尾数都为0时认为是0；阶码为255，尾数为0时表示无穷大，由符号位决定正负。</p>
+<h3 id="5-反码"><a href="#5-反码" class="headerlink" title="5.反码"></a>5.反码</h3><p>符号位为0的数反码与原码<strong>相同</strong>；符号位为1的数反码是符号位不变，<strong>原码剩下位取反</strong>；也就是<strong>反码的正数取反就得到相应的负数</strong>。</p>
+<h2 id="计算机系统层次结构"><a href="#计算机系统层次结构" class="headerlink" title="计算机系统层次结构"></a>计算机系统层次结构</h2><p>1.硬件系统和软件系统共同构成了一个完整的计算机系统。</p>
+<p>2.计算机硬件：</p>
+<p>1）.冯诺依曼机：“存储程序”的思想：1.计算机硬件系统由运算器、存储器、控制器、输入输出设备组成；2.指令和数据同等地位存储在存储器中，且均由二进制代码给出。冯诺依曼机的基本工作方式是<strong>控制流驱动方式</strong>，按照指令的执行序列，依次读取指令，后根据指令的控制信息，调用数据信息进行处理。因此工作过程中始终以<strong>控制信息流</strong>为重，数据信息流只是被动的被调用而已。</p>
+<p>2）.功能部件：IO、存储器（主存和辅存，主存采用按<strong>地址存取方式</strong>进行存取）、运算器（<strong>包含若干通用寄存器，用于暂存操作数和中间结果，如累加器、乘商寄存器、操作数寄存器等，还有程序状态寄存器（PSW)</strong>)、控制器（**程序计数器(PC，存放当前的指令地址，有自加1的功能，“1”指指令长度，可自动形成下一条指令地址)、指令寄存器(IR，存放当前指令，内容来自主存的MDR)、控制单元(CU)**）</p>
+<p>运算器和控制器集成在同一芯片上，称为CPU。CPU和主存共同构成<strong>主机</strong>，CPU和主存间通过地址、控制、数据组成的总线连接，主机外的其他硬件设备称为外部设备，即外设。</p>
+<p>3.<strong>地址译码器</strong>是主存的构成部分，不属于CPU，地址寄存器(MAR)虽属于主存，但现代计算机绝大多数CPU内集成了地址寄存器，<strong>并未集成到运算器和控制器中</strong>。</p>
+<p>4.<strong>编译程序</strong>是先完整编译后运行的程序，如C、C++等；<strong>解释程序</strong>是逐句翻译且边翻译边执行的程序，如JavaScript、Python等，因此一般速度较编译程序慢。</p>
+<p>C语言编译过程：源程序(.c)——（编译器，编译）—-&gt;汇编源程序 ——-(汇编)——-&gt; 目标程序 ——–(链接程序) ——–&gt;可执行程序</p>
+<p>5.相联存储器既可以<strong>按地址寻址</strong>又可以<strong>按内容（通常是某些字段）寻址</strong>。</p>
+<p>6.<strong>翻译程序</strong>是指高级语言源程序转换为<strong>机器语言程序</strong>的软件，分为两种：1.编译程序，将源程序一次全部翻译成<strong>目标程序</strong>，并生成<strong>目标代码文件</strong>。2.解释程序，将源程序的一条语句翻译成<strong>机器目标代码</strong>，并立即执行，翻一条执行一条，<strong>并不会产生目标代码文件</strong>。3.汇编程序，将汇编语言源程序翻译为机器语言程序</p>
+<p>7.<strong>指令计数器（PC）：保存指令所在存储单元地址</strong>。<strong>指令寄存器（IR）：保存指令二进制代码。</strong> <strong>指令译码器（ID）：解释指令</strong>。</p>
+<h2 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h2><h3 id="1-仲裁方式"><a href="#1-仲裁方式" class="headerlink" title="1.仲裁方式"></a>1.仲裁方式</h3><h4 id="1-链式查询方式"><a href="#1-链式查询方式" class="headerlink" title="1.链式查询方式"></a>1.链式查询方式</h4><p>总线控制器收到总线申请BR,BG逐个下传，遇到某接口有总线申请，停止下传，该接口获得总线使用权，建立总线忙信号BS。</p>
+<h4 id="2-计数器定时查询方式"><a href="#2-计数器定时查询方式" class="headerlink" title="2.计数器定时查询方式"></a>2.计数器定时查询方式</h4><p>总线控制器收到总线申请BR，计数器开始计数，当某个有总线申请的设备地址与计数器一致，其获得总线使用权，建立BS，若每次计数从上一次计数的终止点开始，则可以实现<strong>每个设备使用总线的机会相等。</strong></p>
+<h4 id="3-独立请求方式"><a href="#3-独立请求方式" class="headerlink" title="3.独立请求方式"></a>3.独立请求方式</h4><p>每个设备都有独立的请求信号和总线同意信号。总线控制器根据设备的优先级决定将总线的使用权交给谁。</p>
+<h3 id="2-可屏蔽中断和不可屏蔽中断"><a href="#2-可屏蔽中断和不可屏蔽中断" class="headerlink" title="2.可屏蔽中断和不可屏蔽中断"></a>2.可屏蔽中断和不可屏蔽中断</h3><p>通过<strong>INTR</strong>线发出的是<strong>可屏蔽</strong>中断，通过<strong>NMT</strong>线发出的是<strong>不可屏蔽</strong>中断。前者优先级最低，在关中断模式下不被响应，后者用于处理紧急和重要事件，优先级最高，内部异常在中间。</p>
+<p>中断响应判优通常是通过<strong>硬件排队器（或中断查询程序）</strong>实现的。</p>
+<p>中断优先级分为<strong>响应优先级和处理优先级</strong>，前者由<strong>硬件线路或查询程序的查询顺序决定，不可动态改变</strong>；后者<strong>可利用中断屏蔽计术动态调整，来实现多重中断，如屏蔽字。</strong>如不使用中断屏蔽技术，则这两者相同，每个中断源都有一个<strong>屏蔽触发器</strong>，1表示屏蔽该中断源的请求，0反之。所有屏蔽触发器组合在一起便能构成一个<strong>屏蔽字寄存器</strong>，内容为<strong>屏蔽字</strong>。</p>
+<h3 id="3-CPU响应中断的时间是在每条指令执行阶段的结束时刻，这里仅指I-O中断，异常不属于此类。"><a href="#3-CPU响应中断的时间是在每条指令执行阶段的结束时刻，这里仅指I-O中断，异常不属于此类。" class="headerlink" title="3.CPU响应中断的时间是在每条指令执行阶段的结束时刻，这里仅指I&#x2F;O中断，异常不属于此类。"></a>3.CPU响应中断的时间是在每条指令执行阶段的结束时刻，这里仅指I&#x2F;O中断，异常不属于此类。</h3><h3 id="4-每个中断服务子程序的入口地址——中断向量。存放中断向量的存储区域——中断向量表。依靠计算得出中断向量地址并在中断向量表中取中断服务程序入口地址，转去执行相应中断服务程序的方式称为-中断向量法-，采用这种方式的中断称为-向量中断-。"><a href="#4-每个中断服务子程序的入口地址——中断向量。存放中断向量的存储区域——中断向量表。依靠计算得出中断向量地址并在中断向量表中取中断服务程序入口地址，转去执行相应中断服务程序的方式称为-中断向量法-，采用这种方式的中断称为-向量中断-。" class="headerlink" title="4.每个中断服务子程序的入口地址——中断向量。存放中断向量的存储区域——中断向量表。依靠计算得出中断向量地址并在中断向量表中取中断服务程序入口地址，转去执行相应中断服务程序的方式称为&#x3D;&#x3D;中断向量法&#x3D;&#x3D;，采用这种方式的中断称为&#x3D;&#x3D;向量中断&#x3D;&#x3D;。"></a>4.每个中断服务子程序的入口地址——中断向量。存放中断向量的存储区域——中断向量表。依靠计算得出中断向量地址并在中断向量表中取中断服务程序入口地址，转去执行相应中断服务程序的方式称为&#x3D;&#x3D;中断向量法&#x3D;&#x3D;，采用这种方式的中断称为&#x3D;&#x3D;向量中断&#x3D;&#x3D;。</h3><h3 id="5-DMA方式适用于磁盘、显卡、声卡、网卡等高速设备大批量数据的传送，硬件开销较大。在该方式中，中断的作用仅限于故障和正常传送结束时的处理。"><a href="#5-DMA方式适用于磁盘、显卡、声卡、网卡等高速设备大批量数据的传送，硬件开销较大。在该方式中，中断的作用仅限于故障和正常传送结束时的处理。" class="headerlink" title="5.DMA方式适用于磁盘、显卡、声卡、网卡等高速设备大批量数据的传送，硬件开销较大。在该方式中，中断的作用仅限于故障和正常传送结束时的处理。"></a>5.DMA方式适用于磁盘、显卡、声卡、网卡等高速设备大批量数据的传送，硬件开销较大。在该方式中，中断的作用仅限于故障和正常传送结束时的处理。</h3><h3 id="6-大致顺序是-1-外设准备好数据后，请求写入DMA，即发出DMA请求（是由外设发出的），由DMA向CPU发出总线请求。-2-CPU响应请求，DMA接管总线控制权，进入DMA操作周期。-3-确定传送数据的主存起始地址及长度，自动修改主存地址计数和传送长度计数。-4-规定数据在主存和外设间的传送方向，发出读-写控制信号，执行数据传送操作。-5-通过中断向CPU报告DMA操作结束。"><a href="#6-大致顺序是-1-外设准备好数据后，请求写入DMA，即发出DMA请求（是由外设发出的），由DMA向CPU发出总线请求。-2-CPU响应请求，DMA接管总线控制权，进入DMA操作周期。-3-确定传送数据的主存起始地址及长度，自动修改主存地址计数和传送长度计数。-4-规定数据在主存和外设间的传送方向，发出读-写控制信号，执行数据传送操作。-5-通过中断向CPU报告DMA操作结束。" class="headerlink" title="6.大致顺序是 1.外设准备好数据后，请求写入DMA，即发出DMA请求（是由外设发出的），由DMA向CPU发出总线请求。 2.CPU响应请求，DMA接管总线控制权，进入DMA操作周期。 3.确定传送数据的主存起始地址及长度，自动修改主存地址计数和传送长度计数。 4.规定数据在主存和外设间的传送方向，发出读&#x2F;写控制信号，执行数据传送操作。 5.通过中断向CPU报告DMA操作结束。"></a>6.大致顺序是 1.外设准备好数据后，请求写入DMA，即发出DMA请求（是由外设发出的），由DMA向CPU发出总线请求。 2.CPU响应请求，DMA接管总线控制权，进入DMA操作周期。 3.确定传送数据的主存起始地址及长度，自动修改主存地址计数和传送长度计数。 4.规定数据在主存和外设间的传送方向，发出读&#x2F;写控制信号，执行数据传送操作。 5.通过中断向CPU报告DMA操作结束。</h3><h3 id="7-DMA响应时间为一个机器周期结束时（取指、间址、执行周期后均可），采用周期窃取方式，窃取的是总线周期。"><a href="#7-DMA响应时间为一个机器周期结束时（取指、间址、执行周期后均可），采用周期窃取方式，窃取的是总线周期。" class="headerlink" title="7.DMA响应时间为一个机器周期结束时（取指、间址、执行周期后均可），采用周期窃取方式，窃取的是总线周期。"></a>7.DMA响应时间为一个机器周期结束时（取指、间址、执行周期后均可），采用周期窃取方式，窃取的是总线周期。</h3><h3 id="8-DMA请求的优先级高于中断请求，前者仅局限于大批数据的传送，靠硬件传送数据；后者有处理异常事件的能力，靠程序传送数据。"><a href="#8-DMA请求的优先级高于中断请求，前者仅局限于大批数据的传送，靠硬件传送数据；后者有处理异常事件的能力，靠程序传送数据。" class="headerlink" title="8.DMA请求的优先级高于中断请求，前者仅局限于大批数据的传送，靠硬件传送数据；后者有处理异常事件的能力，靠程序传送数据。"></a>8.DMA请求的优先级高于中断请求，前者仅局限于大批数据的传送，靠硬件传送数据；后者有处理异常事件的能力，靠程序传送数据。</h3><h3 id="9-PCI-Express-16总线采用串行数据包传输数据。"><a href="#9-PCI-Express-16总线采用串行数据包传输数据。" class="headerlink" title="9.PCI-Express*16总线采用串行数据包传输数据。"></a>9.PCI-Express*16总线采用串行数据包传输数据。</h3><h3 id="10。异步总线采用握手的方式进行通信，每次握手的过程完成一次通信，但一次通信往往会交换多位而非一位数据。"><a href="#10。异步总线采用握手的方式进行通信，每次握手的过程完成一次通信，但一次通信往往会交换多位而非一位数据。" class="headerlink" title="10。异步总线采用握手的方式进行通信，每次握手的过程完成一次通信，但一次通信往往会交换多位而非一位数据。"></a>10。异步总线采用握手的方式进行通信，每次握手的过程完成一次通信，但一次通信往往会交换多位而非一位数据。</h3><h2 id="时序逻辑"><a href="#时序逻辑" class="headerlink" title="时序逻辑"></a>时序逻辑</h2><p>1.基本RS锁存器有保持、置0、置1功能；</p>
+<p>钟控RS锁存器：时钟信号CP有效时状态随输入变化，反之不变化；</p>
+<p>钟控D锁存器，将RS钟控锁存器双端输入改为单端输入，电平敏感；</p>
+<p>D触发器：两个反向钟控D锁存器构成，时钟信号边沿触发，边沿敏感。</p>
+<p>2.<strong>数据寄存器</strong>由多位边沿触发器组成，通常由同步时钟信号控制，属于脉冲敏感型；</p>
+<p><strong>数据锁存器</strong>由电位触发器（D锁存器）组成，电平敏感型。</p>
+<p>3.时钟周期T<del>C</del> &gt;&#x3D; T<del>ctq</del> + T<del>cd</del>  + T<del>setup</del> + 时钟偏移，T<del>ctq</del> + T<del>cd</del> &gt;&#x3D; T<del>hold</del></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/">http://ywxy12138.github.io/2025/01/22/计组理论重点与易错点/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="../../../../img/HDL.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="../P7-L0-document/" title="P7_L0_document"><img class="cover" src="../../../../img/HDL.jpg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">P7_L0_document</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../P3_L0_document/" title="P3_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P3_L0_document</div></div></a></div><div><a href="../P4-L0-document/" title="P4_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P4_L0_document</div></div></a></div><div><a href="../P6-L0-document/" title="P6_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P6_L0_document</div></div></a></div><div><a href="../P5-L0-document/" title="P5_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P5_L0_document</div></div></a></div><div><a href="../P7-L0-document/" title="P7_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P7_L0_document</div></div></a></div><div><a href="../../../../2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/" title="计组上机（Pre-P2）"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-23</div><div class="title">计组上机（Pre-P2）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">计组理论重点与易错点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache"><span class="toc-number">1.1.</span> <span class="toc-text">Cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟存储器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">主存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">重点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E4%B8%8EMIPS%E6%B1%87%E7%BC%96"><span class="toc-number">1.4.</span> <span class="toc-text">指令系统与MIPS汇编</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E5%AD%98%E4%B8%8EIO"><span class="toc-number">1.5.</span> <span class="toc-text">外存与IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.6.</span> <span class="toc-text">计算机性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%BA%E5%99%A8%E5%AD%97%E9%95%BF%EF%BC%9A"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.机器字长：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E5%B8%A6%E5%AE%BD"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.数据通路带宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E5%AD%98%E5%AE%B9%E9%87%8F"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.主存容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%90%E7%AE%97%E9%80%9F%E5%BA%A6"><span class="toc-number">1.6.4.</span> <span class="toc-text">4.运算速度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%90%9E%E5%90%90%E9%87%8F%E4%B8%8E%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">1）吞吐量与响应时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E4%B8%BB%E9%A2%91%E5%92%8CCPU%E6%97%B6%E9%92%9F%E5%91%A8%E6%9C%9F"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">2）主频和CPU时钟周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89CPI"><span class="toc-number">1.6.4.3.</span> <span class="toc-text">3）CPI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89CPU%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4"><span class="toc-number">1.6.4.4.</span> <span class="toc-text">4）CPU执行时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89MIPS"><span class="toc-number">1.6.4.5.</span> <span class="toc-text">5）MIPS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-FLOPS"><span class="toc-number">1.6.4.6.</span> <span class="toc-text">6)FLOPS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.6.4.7.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%8F%8D%E7%A0%81"><span class="toc-number">1.6.5.</span> <span class="toc-text">5.反码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.</span> <span class="toc-text">计算机系统层次结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BA%BF"><span class="toc-number">1.8.</span> <span class="toc-text">总线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%B2%E8%A3%81%E6%96%B9%E5%BC%8F"><span class="toc-number">1.8.1.</span> <span class="toc-text">1.仲裁方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%93%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">1.链式查询方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%A1%E6%95%B0%E5%99%A8%E5%AE%9A%E6%97%B6%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">2.计数器定时查询方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%8B%AC%E7%AB%8B%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">3.独立请求方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD"><span class="toc-number">1.8.2.</span> <span class="toc-text">2.可屏蔽中断和不可屏蔽中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CPU%E5%93%8D%E5%BA%94%E4%B8%AD%E6%96%AD%E7%9A%84%E6%97%B6%E9%97%B4%E6%98%AF%E5%9C%A8%E6%AF%8F%E6%9D%A1%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E7%BB%93%E6%9D%9F%E6%97%B6%E5%88%BB%EF%BC%8C%E8%BF%99%E9%87%8C%E4%BB%85%E6%8C%87I-O%E4%B8%AD%E6%96%AD%EF%BC%8C%E5%BC%82%E5%B8%B8%E4%B8%8D%E5%B1%9E%E4%BA%8E%E6%AD%A4%E7%B1%BB%E3%80%82"><span class="toc-number">1.8.3.</span> <span class="toc-text">3.CPU响应中断的时间是在每条指令执行阶段的结束时刻，这里仅指I&#x2F;O中断，异常不属于此类。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%AF%8F%E4%B8%AA%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E5%AD%90%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%E2%80%94%E2%80%94%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E3%80%82%E5%AD%98%E6%94%BE%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E5%8C%BA%E5%9F%9F%E2%80%94%E2%80%94%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8%E3%80%82%E4%BE%9D%E9%9D%A0%E8%AE%A1%E7%AE%97%E5%BE%97%E5%87%BA%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%9C%B0%E5%9D%80%E5%B9%B6%E5%9C%A8%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8%E4%B8%AD%E5%8F%96%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%EF%BC%8C%E8%BD%AC%E5%8E%BB%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%BA%94%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E7%A7%B0%E4%B8%BA-%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E6%B3%95-%EF%BC%8C%E9%87%87%E7%94%A8%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%AD%E6%96%AD%E7%A7%B0%E4%B8%BA-%E5%90%91%E9%87%8F%E4%B8%AD%E6%96%AD-%E3%80%82"><span class="toc-number">1.8.4.</span> <span class="toc-text">4.每个中断服务子程序的入口地址——中断向量。存放中断向量的存储区域——中断向量表。依靠计算得出中断向量地址并在中断向量表中取中断服务程序入口地址，转去执行相应中断服务程序的方式称为&#x3D;&#x3D;中断向量法&#x3D;&#x3D;，采用这种方式的中断称为&#x3D;&#x3D;向量中断&#x3D;&#x3D;。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-DMA%E6%96%B9%E5%BC%8F%E9%80%82%E7%94%A8%E4%BA%8E%E7%A3%81%E7%9B%98%E3%80%81%E6%98%BE%E5%8D%A1%E3%80%81%E5%A3%B0%E5%8D%A1%E3%80%81%E7%BD%91%E5%8D%A1%E7%AD%89%E9%AB%98%E9%80%9F%E8%AE%BE%E5%A4%87%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BC%A0%E9%80%81%EF%BC%8C%E7%A1%AC%E4%BB%B6%E5%BC%80%E9%94%80%E8%BE%83%E5%A4%A7%E3%80%82%E5%9C%A8%E8%AF%A5%E6%96%B9%E5%BC%8F%E4%B8%AD%EF%BC%8C%E4%B8%AD%E6%96%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E4%BB%85%E9%99%90%E4%BA%8E%E6%95%85%E9%9A%9C%E5%92%8C%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%81%E7%BB%93%E6%9D%9F%E6%97%B6%E7%9A%84%E5%A4%84%E7%90%86%E3%80%82"><span class="toc-number">1.8.5.</span> <span class="toc-text">5.DMA方式适用于磁盘、显卡、声卡、网卡等高速设备大批量数据的传送，硬件开销较大。在该方式中，中断的作用仅限于故障和正常传送结束时的处理。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A4%A7%E8%87%B4%E9%A1%BA%E5%BA%8F%E6%98%AF-1-%E5%A4%96%E8%AE%BE%E5%87%86%E5%A4%87%E5%A5%BD%E6%95%B0%E6%8D%AE%E5%90%8E%EF%BC%8C%E8%AF%B7%E6%B1%82%E5%86%99%E5%85%A5DMA%EF%BC%8C%E5%8D%B3%E5%8F%91%E5%87%BADMA%E8%AF%B7%E6%B1%82%EF%BC%88%E6%98%AF%E7%94%B1%E5%A4%96%E8%AE%BE%E5%8F%91%E5%87%BA%E7%9A%84%EF%BC%89%EF%BC%8C%E7%94%B1DMA%E5%90%91CPU%E5%8F%91%E5%87%BA%E6%80%BB%E7%BA%BF%E8%AF%B7%E6%B1%82%E3%80%82-2-CPU%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%8CDMA%E6%8E%A5%E7%AE%A1%E6%80%BB%E7%BA%BF%E6%8E%A7%E5%88%B6%E6%9D%83%EF%BC%8C%E8%BF%9B%E5%85%A5DMA%E6%93%8D%E4%BD%9C%E5%91%A8%E6%9C%9F%E3%80%82-3-%E7%A1%AE%E5%AE%9A%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%BB%E5%AD%98%E8%B5%B7%E5%A7%8B%E5%9C%B0%E5%9D%80%E5%8F%8A%E9%95%BF%E5%BA%A6%EF%BC%8C%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%E8%AE%A1%E6%95%B0%E5%92%8C%E4%BC%A0%E9%80%81%E9%95%BF%E5%BA%A6%E8%AE%A1%E6%95%B0%E3%80%82-4-%E8%A7%84%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%9C%A8%E4%B8%BB%E5%AD%98%E5%92%8C%E5%A4%96%E8%AE%BE%E9%97%B4%E7%9A%84%E4%BC%A0%E9%80%81%E6%96%B9%E5%90%91%EF%BC%8C%E5%8F%91%E5%87%BA%E8%AF%BB-%E5%86%99%E6%8E%A7%E5%88%B6%E4%BF%A1%E5%8F%B7%EF%BC%8C%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%93%8D%E4%BD%9C%E3%80%82-5-%E9%80%9A%E8%BF%87%E4%B8%AD%E6%96%AD%E5%90%91CPU%E6%8A%A5%E5%91%8ADMA%E6%93%8D%E4%BD%9C%E7%BB%93%E6%9D%9F%E3%80%82"><span class="toc-number">1.8.6.</span> <span class="toc-text">6.大致顺序是 1.外设准备好数据后，请求写入DMA，即发出DMA请求（是由外设发出的），由DMA向CPU发出总线请求。 2.CPU响应请求，DMA接管总线控制权，进入DMA操作周期。 3.确定传送数据的主存起始地址及长度，自动修改主存地址计数和传送长度计数。 4.规定数据在主存和外设间的传送方向，发出读&#x2F;写控制信号，执行数据传送操作。 5.通过中断向CPU报告DMA操作结束。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-DMA%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%9C%BA%E5%99%A8%E5%91%A8%E6%9C%9F%E7%BB%93%E6%9D%9F%E6%97%B6%EF%BC%88%E5%8F%96%E6%8C%87%E3%80%81%E9%97%B4%E5%9D%80%E3%80%81%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F%E5%90%8E%E5%9D%87%E5%8F%AF%EF%BC%89%EF%BC%8C%E9%87%87%E7%94%A8%E5%91%A8%E6%9C%9F%E7%AA%83%E5%8F%96%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%AA%83%E5%8F%96%E7%9A%84%E6%98%AF%E6%80%BB%E7%BA%BF%E5%91%A8%E6%9C%9F%E3%80%82"><span class="toc-number">1.8.7.</span> <span class="toc-text">7.DMA响应时间为一个机器周期结束时（取指、间址、执行周期后均可），采用周期窃取方式，窃取的是总线周期。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-DMA%E8%AF%B7%E6%B1%82%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E9%AB%98%E4%BA%8E%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%89%8D%E8%80%85%E4%BB%85%E5%B1%80%E9%99%90%E4%BA%8E%E5%A4%A7%E6%89%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BC%A0%E9%80%81%EF%BC%8C%E9%9D%A0%E7%A1%AC%E4%BB%B6%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE%EF%BC%9B%E5%90%8E%E8%80%85%E6%9C%89%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%83%BD%E5%8A%9B%EF%BC%8C%E9%9D%A0%E7%A8%8B%E5%BA%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE%E3%80%82"><span class="toc-number">1.8.8.</span> <span class="toc-text">8.DMA请求的优先级高于中断请求，前者仅局限于大批数据的传送，靠硬件传送数据；后者有处理异常事件的能力，靠程序传送数据。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-PCI-Express-16%E6%80%BB%E7%BA%BF%E9%87%87%E7%94%A8%E4%B8%B2%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%8C%85%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E3%80%82"><span class="toc-number">1.8.9.</span> <span class="toc-text">9.PCI-Express*16总线采用串行数据包传输数据。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%82%E5%BC%82%E6%AD%A5%E6%80%BB%E7%BA%BF%E9%87%87%E7%94%A8%E6%8F%A1%E6%89%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%EF%BC%8C%E6%AF%8F%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B%E5%AE%8C%E6%88%90%E4%B8%80%E6%AC%A1%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BD%86%E4%B8%80%E6%AC%A1%E9%80%9A%E4%BF%A1%E5%BE%80%E5%BE%80%E4%BC%9A%E4%BA%A4%E6%8D%A2%E5%A4%9A%E4%BD%8D%E8%80%8C%E9%9D%9E%E4%B8%80%E4%BD%8D%E6%95%B0%E6%8D%AE%E3%80%82"><span class="toc-number">1.8.10.</span> <span class="toc-text">10。异步总线采用握手的方式进行通信，每次握手的过程完成一次通信，但一次通信往往会交换多位而非一位数据。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-number">1.9.</span> <span class="toc-text">时序逻辑</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="计组理论重点与易错点"/></a><div class="content"><a class="title" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点">计组理论重点与易错点</a><time datetime="2025-01-22T08:33:38.000Z" title="发表于 2025-01-22 16:33:38">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P7-L0-document/" title="P7_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P7_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P7-L0-document/" title="P7_L0_document">P7_L0_document</a><time datetime="2025-01-22T07:24:28.000Z" title="发表于 2025-01-22 15:24:28">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P6-L0-document/" title="P6_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P6_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P6-L0-document/" title="P6_L0_document">P6_L0_document</a><time datetime="2025-01-22T07:24:15.000Z" title="发表于 2025-01-22 15:24:15">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P5-L0-document/" title="P5_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P5_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P5-L0-document/" title="P5_L0_document">P5_L0_document</a><time datetime="2025-01-22T07:24:04.000Z" title="发表于 2025-01-22 15:24:04">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P4-L0-document/" title="P4_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P4_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P4-L0-document/" title="P4_L0_document">P4_L0_document</a><time datetime="2025-01-22T07:23:39.000Z" title="发表于 2025-01-22 15:23:39">2025-01-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

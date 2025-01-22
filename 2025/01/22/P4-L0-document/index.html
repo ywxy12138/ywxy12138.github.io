@@ -1,0 +1,1137 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>P4_L0_document | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="P4课下目标将P3中使用Logisim搭建的MIPS单周期CPU电路转用Verilog HDL描述，并在其基础上支持更多指令。 完成的只是从Logisim电路到Verilog代码的映射。 设计草稿整体设计 具体模块化与层次化设计单周期处理器顶层模块、控制器和数据通路，放置在顶层目录下。code.txt存储相应的机器码。处理器为32位单周期处理器，不考虑延迟槽，支持指令为add, sub, ori,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P4_L0_document">
+<meta property="og:url" content="http://ywxy12138.github.io/2025/01/22/P4-L0-document/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="P4课下目标将P3中使用Logisim搭建的MIPS单周期CPU电路转用Verilog HDL描述，并在其基础上支持更多指令。 完成的只是从Logisim电路到Verilog代码的映射。 设计草稿整体设计 具体模块化与层次化设计单周期处理器顶层模块、控制器和数据通路，放置在顶层目录下。code.txt存储相应的机器码。处理器为32位单周期处理器，不考虑延迟槽，支持指令为add, sub, ori,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/HDL.jpg">
+<meta property="article:published_time" content="2025-01-22T07:23:39.000Z">
+<meta property="article:modified_time" content="2025-01-22T07:30:19.133Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/HDL.jpg"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2025/01/22/P4-L0-document/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'P4_L0_document',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-01-22 15:30:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('../../../../img/HDL.jpg')"><nav id="nav"><span id="blog-info"><a href="../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">P4_L0_document</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-22T07:23:39.000Z" title="发表于 2025-01-22 15:23:39">2025-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-22T07:30:19.133Z" title="更新于 2025-01-22 15:30:19">2025-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0/">北航计组笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="P4_L0_document"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="P4课下"><a href="#P4课下" class="headerlink" title="P4课下"></a>P4课下</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>将P3中使用Logisim搭建的MIPS单周期CPU电路转用Verilog HDL描述，并在其基础上支持更多指令。</p>
+<p>完成的只是从Logisim电路到Verilog代码的映射。</p>
+<h2 id="设计草稿"><a href="#设计草稿" class="headerlink" title="设计草稿"></a>设计草稿</h2><h3 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h3><p><img src="/img/P4.1.png" alt="整体设计"></p>
+<h3 id="具体模块化与层次化设计"><a href="#具体模块化与层次化设计" class="headerlink" title="具体模块化与层次化设计"></a>具体模块化与层次化设计</h3><h4 id="单周期处理器"><a href="#单周期处理器" class="headerlink" title="单周期处理器"></a>单周期处理器</h4><p>顶层模块、控制器和数据通路，放置在顶层目录下。code.txt存储相应的机器码。处理器为32位单周期处理器，不考虑延迟槽，支持指令为<code>add, sub, ori, lw, sw, beq, lui, jal, jr, nop</code>,<code>nop</code>为空指令，不进行任何操作，<code>add, sub</code> 按<strong>无符号加减法</strong>处理（不考虑溢出）。</p>
+<h4 id="控制器模块"><a href="#控制器模块" class="headerlink" title="控制器模块"></a>控制器模块</h4><p>用一个独立的Verilog HDL文件，实现控制器这个单一的职责，降低模块间耦合度。</p>
+<h3 id="顶层目录"><a href="#顶层目录" class="headerlink" title="顶层目录"></a>顶层目录</h3><p>其中每个module都由一个独立的Verilog HDL文件组成。</p>
+<p>顶层文件为<strong>mips.v</strong>，有效驱动信号要求包括且仅包括<strong>同步复位信号 reset</strong> 和<strong>时钟信号 clk</strong>，接口定义如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> mips(<br>    <span class="hljs-keyword">input</span> clk,<br>    <span class="hljs-keyword">input</span> reset<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="数据通路设计"><a href="#数据通路设计" class="headerlink" title="数据通路设计"></a>数据通路设计</h3><h4 id="P3遗产（我的丑陋的数据通路图）"><a href="#P3遗产（我的丑陋的数据通路图）" class="headerlink" title="P3遗产（我的丑陋的数据通路图）"></a>P3遗产（我的丑陋的数据通路图）</h4><p><img src="/img/P4.2.png" alt="P3遗产"></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>根据设计的数据通路架构图及各个部件的输入输出端口，在顶层Verilog文件中定义一些内部的wire型变量，利用模块间的逻辑关系，对各个部件模块进行<strong>实例化</strong>，串接在一起，使之成为一个整体，最后预留出控制器信号的输入和输出端口即可。（省流：<strong>类似于Logisim中使用标签的方法</strong>）</p>
+<h4 id="IFU（取指令单元）"><a href="#IFU（取指令单元）" class="headerlink" title="IFU（取指令单元）"></a>IFU（取指令单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>同步复位信号，将PC寄存器的值复位为起始地址0x00003000</td>
+</tr>
+<tr>
+<td>NPC[31:0]</td>
+<td>I</td>
+<td>32位，代表下一条指令的地址，读入后用PC寄存器存储起来</td>
+</tr>
+<tr>
+<td>PC[31:0]</td>
+<td>O</td>
+<td>32位，代表当前指令的地址，输出给NPC模块来生成下一条指令的地址</td>
+</tr>
+<tr>
+<td>Data[31:0]</td>
+<td>O</td>
+<td>32位，当前指令的机器码</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>同步复位</td>
+<td>当时钟上升沿到来且reset有效时，将PC寄存器的值复位为起始地址0x00003000，PC寄存器通过一个内部的32位<code>reg</code>型变量存储。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>取指令</td>
+<td>通过当前PC值读取ROM中相应位置的指令并输出当前指令，而ROM则通过对<code>reg</code>型变量建立数组的方式来表示，例如<code>reg [31:0] ROM [0:4095]</code>，根据实验要求一开始使用<code>initial</code>块通过<code>$readmemh</code>将<code>code.txt</code>中的十六进制指令读入存储器ROM中。</td>
+</tr>
+</tbody></table>
+<h4 id="GRF（寄存器单元）"><a href="#GRF（寄存器单元）" class="headerlink" title="GRF（寄存器单元）"></a>GRF（寄存器单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>同步复位信号，将32个寄存器中的值全都清零。</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>I</td>
+<td>写使能信号，1：可向GRF中写入数据；0：不可写入</td>
+</tr>
+<tr>
+<td>rs[4:0]</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个，将其中存储的数据读出到RD1</td>
+</tr>
+<tr>
+<td>rt[4:0]</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个，将其中存储的数据读出到RD2</td>
+</tr>
+<tr>
+<td>RegAddr[4:0]</td>
+<td>I</td>
+<td>5为地址输入信号，指定32个寄存器中一个作为写入的目标寄存器</td>
+</tr>
+<tr>
+<td>RegData[31:0]</td>
+<td>I</td>
+<td>32位输入数据</td>
+</tr>
+<tr>
+<td>PC[31:0]</td>
+<td>I</td>
+<td>32位，表示相应指令的存储地址</td>
+</tr>
+<tr>
+<td>Rs[31:0]</td>
+<td>O</td>
+<td>输出rs寄存器中的32位数据</td>
+</tr>
+<tr>
+<td>Rt[31:0]</td>
+<td>O</td>
+<td>输出rt寄存器中的32位数据</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>同步复位</td>
+<td>时钟上升沿到来且reset信号有效时，所有寄存器存储的数据清零。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>读数据</td>
+<td>读出rs，rt地址对应寄存器中所存储的数据到Rs，Rt中。寄存器堆的实现方式同IFU模块中的ROM器件类似。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>写数据</td>
+<td>当RegWrite有效且时钟上升沿来临时，将RegData写入RegAddr寄存器中。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>输出数据，用于评测</td>
+<td>每个<strong>时钟上升沿</strong>到来时若要<strong>写入数据</strong>（即写使能信号为 1 且非 reset 时）则输出写入的位置及写入的值</td>
+</tr>
+</tbody></table>
+<h4 id="NPC（指令转移单元）"><a href="#NPC（指令转移单元）" class="headerlink" title="NPC（指令转移单元）"></a>NPC（指令转移单元）</h4><p>模块端口定义:</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC[31:0]</td>
+<td>I</td>
+<td>32位，当前指令的地址</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>I</td>
+<td>1位，表示当前指令是否为<code>beq</code></td>
+</tr>
+<tr>
+<td>zero</td>
+<td>I</td>
+<td>1位，表示是否满足相等关系</td>
+</tr>
+<tr>
+<td>imm[15:0]</td>
+<td>I</td>
+<td>16位，16位立即数</td>
+</tr>
+<tr>
+<td>Rs[31:0]</td>
+<td>I</td>
+<td>32位，rs寄存器的值，作为<code>jr</code>指令成立时的跳转地址</td>
+</tr>
+<tr>
+<td>ifJr</td>
+<td>I</td>
+<td>1位，表示当前指令是否为<code>jr</code></td>
+</tr>
+<tr>
+<td>NPC[31:0]</td>
+<td>O</td>
+<td>32位，下一条指令的地址</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>非跳转指令的PC自增</td>
+<td>对于非跳转指令，需要通过PC自加4完成向下一条指令的转移</td>
+</tr>
+<tr>
+<td>2</td>
+<td>跳转指令的PC跳转</td>
+<td>针对类如<code>beq</code>等跳转指令的在PC自增功能的基础下的PC地址偏移即将再加上立即数左移两位后符号扩展成32位的结果，进而实现PC的跳转;针对<code>jr</code>指令需要将输入的寄存器存储的值赋值给PC即可实现相应的指令地址的转移。</td>
+</tr>
+</tbody></table>
+<h4 id="DM（数据寄存器）"><a href="#DM（数据寄存器）" class="headerlink" title="DM（数据寄存器）"></a>DM（数据寄存器）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MemData[31:0]</td>
+<td>I</td>
+<td>32位，写入数据</td>
+</tr>
+<tr>
+<td>MemAddr[31:0]</td>
+<td>I</td>
+<td>32位，地址选择信号</td>
+</tr>
+<tr>
+<td>MemToRead</td>
+<td>I</td>
+<td>1位，是否读出信号</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>I</td>
+<td>1位，是否写入信号</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>复位信号</td>
+</tr>
+<tr>
+<td>pc[31:0]</td>
+<td>I</td>
+<td>32位，当前指令的地址</td>
+</tr>
+<tr>
+<td>RD[31:0]</td>
+<td>O</td>
+<td>32位，输出数据</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>读数据</td>
+<td>MemToRead有效时，地址选择信号MemAddr选择的存储字放在RD输出总线上输出</td>
+</tr>
+<tr>
+<td>2</td>
+<td>写数据</td>
+<td>MemWrite有效且时钟信号上升沿到来时，MemData上数据被写入地址MemAddr选择的存储单元中</td>
+</tr>
+<tr>
+<td>3</td>
+<td>同步复位</td>
+<td>时钟上升沿到来且reset有效时，将RAM地址复位为起始地址0x00000000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>输出数据，用于评测</td>
+<td>每个<strong>时钟上升沿</strong>到来时若<strong>要写入数据</strong>（即写使能信号为 1 且非 reset 时）则输出写入的位置及写入的值</td>
+</tr>
+</tbody></table>
+<h4 id="ALU（运算单元）"><a href="#ALU（运算单元）" class="headerlink" title="ALU（运算单元）"></a>ALU（运算单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALUctr[2:0]</td>
+<td>I</td>
+<td>3位，进行I1和I2的相关运算，课下目前只需要2位就可以了，但是多留一位给P4课上做准备（）</td>
+</tr>
+<tr>
+<td>I1[31:0]</td>
+<td>I</td>
+<td>32位，操作数一</td>
+</tr>
+<tr>
+<td>I2[31:0]</td>
+<td>I</td>
+<td>32位，操作数二</td>
+</tr>
+<tr>
+<td>Out[31:0]</td>
+<td>O</td>
+<td>32位，ALU计算结果</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>O</td>
+<td>1位，判断减操作的结果是否为0</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>加操作</td>
+<td>ALUctr为<code>00</code>时进行I1和I2的加操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>减操作</td>
+<td>ALUctr为<code>01</code>时进行I1-I2的操作</td>
+</tr>
+<tr>
+<td>3</td>
+<td>或操作</td>
+<td>ALUctr为<code>10</code>时进行I1|I2的操作</td>
+</tr>
+<tr>
+<td>4</td>
+<td>加载到高位的操作</td>
+<td>ALUctr为<code>11</code>时进行将imm加载到高位</td>
+</tr>
+</tbody></table>
+<h4 id="Ext（扩展单元）"><a href="#Ext（扩展单元）" class="headerlink" title="Ext（扩展单元）"></a>Ext（扩展单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>imm[15:0]</td>
+<td>I</td>
+<td>16位立即数输入</td>
+</tr>
+<tr>
+<td>ifSignExt</td>
+<td>I</td>
+<td>1位，表示是否进行符号位的扩展</td>
+</tr>
+<tr>
+<td>immediate[31:0]</td>
+<td>O</td>
+<td>32位，立即数扩展后的结果</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0扩展</td>
+<td>将16位立即数进行0扩展</td>
+</tr>
+<tr>
+<td>2</td>
+<td>符号扩展</td>
+<td>将16位立即数进行符号位扩展</td>
+</tr>
+</tbody></table>
+<h4 id="RegAddrSel-寄存器堆写入地址选择单元"><a href="#RegAddrSel-寄存器堆写入地址选择单元" class="headerlink" title="RegAddrSel(寄存器堆写入地址选择单元)"></a>RegAddrSel(寄存器堆写入地址选择单元)</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rt[4:0]</td>
+<td>I</td>
+<td>5位rt地址数</td>
+</tr>
+<tr>
+<td>rd[4:0]</td>
+<td>I</td>
+<td>5位rd地址数</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>I</td>
+<td>1位，表示是否选择rd作为写入地址</td>
+</tr>
+<tr>
+<td>ifJal</td>
+<td>I</td>
+<td>1位，表示当前指令是否为<code>jal</code></td>
+</tr>
+<tr>
+<td>RegAddr</td>
+<td>O</td>
+<td>5位，最终的写入地址</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>RegDst选择</td>
+<td>通过<code>RegDst</code>选择是否将<code>rd</code>地址数作为写入地址</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jal选择</td>
+<td>通过<code>ifJal</code>选择是否将<code>$ra</code>作为写入寄存器</td>
+</tr>
+</tbody></table>
+<h4 id="RegDataSel-寄存器堆写入数据选择单元"><a href="#RegDataSel-寄存器堆写入数据选择单元" class="headerlink" title="RegDataSel(寄存器堆写入数据选择单元)"></a>RegDataSel(寄存器堆写入数据选择单元)</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALUout[31:0]</td>
+<td>I</td>
+<td>32位，ALU模块计算结果</td>
+</tr>
+<tr>
+<td>RD[31:0]</td>
+<td>I</td>
+<td>32位，<code>lw</code>指令下DM模块提供的读取入寄存器的数据</td>
+</tr>
+<tr>
+<td>pc[31:0]</td>
+<td>I</td>
+<td>32位，当前指令地址</td>
+</tr>
+<tr>
+<td>MemToReg</td>
+<td>I</td>
+<td>1位，表示选择RD作为写入数据</td>
+</tr>
+<tr>
+<td>ifJal</td>
+<td>I</td>
+<td>1位，表示当前指令是不是<code>jal</code></td>
+</tr>
+<tr>
+<td>RegData[31:0]</td>
+<td>O</td>
+<td>32位，最终写入数据</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选择RD</td>
+<td>通过MemToReg选择是否将RD作为写入数据</td>
+</tr>
+<tr>
+<td>2</td>
+<td>选择下一条指令的地址</td>
+<td>通过ifJal选择是否将PC+4作为写入数据</td>
+</tr>
+</tbody></table>
+<h4 id="ALUInSel-ALU模块的操作数选择单元"><a href="#ALUInSel-ALU模块的操作数选择单元" class="headerlink" title="ALUInSel(ALU模块的操作数选择单元)"></a>ALUInSel(ALU模块的操作数选择单元)</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Rs[31:0]</td>
+<td>I</td>
+<td>32位，GPR[rs]（对于课下，其实本可以不用传入的，但是传入方便课上加有可能的相关指令）</td>
+</tr>
+<tr>
+<td>Rt[31:0]</td>
+<td>I</td>
+<td>32位，GPR[rt]</td>
+</tr>
+<tr>
+<td>immediate[31:0]</td>
+<td>I</td>
+<td>32位，经过扩展Ext模块的立即数</td>
+</tr>
+<tr>
+<td>ALUsec</td>
+<td>I</td>
+<td>1位，选择ALU的第二操作数为立即数</td>
+</tr>
+<tr>
+<td>I1[31:0]</td>
+<td>O</td>
+<td>32位，ALU模块的第一个操作数</td>
+</tr>
+<tr>
+<td>I2[31:0]</td>
+<td>O</td>
+<td>32位，ALU模块的第二个操作数</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选择ALU模块的第二个操作数</td>
+<td>通过ALUsec选择ALU模块的第二个操作数</td>
+</tr>
+</tbody></table>
+<h4 id="jump（处理J跳转指令的NPC处理单元）"><a href="#jump（处理J跳转指令的NPC处理单元）" class="headerlink" title="jump（处理J跳转指令的NPC处理单元）"></a>jump（处理J跳转指令的NPC处理单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pc[31:0]</td>
+<td>I</td>
+<td>32位，当前指令地址</td>
+</tr>
+<tr>
+<td>norNPC[31:0]</td>
+<td>I</td>
+<td>32位，不进行J跳转指令的正常NPC</td>
+</tr>
+<tr>
+<td>instr[31:0]</td>
+<td>I</td>
+<td>32位，当前指令</td>
+</tr>
+<tr>
+<td>jump</td>
+<td>I</td>
+<td>1位，表示当前指令是否是<code>jal</code>跳转指令</td>
+</tr>
+<tr>
+<td>NPC</td>
+<td>O</td>
+<td>32位，最终的NPC</td>
+</tr>
+</tbody></table>
+<p>模块功能定义：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>处理跳转地址</td>
+<td>处理<code>jal</code>跳转指令的跳转地址</td>
+</tr>
+<tr>
+<td>2</td>
+<td>选择NPC是否为跳转地址</td>
+<td>通过<code>jump</code>选择是否进行地址的跳转</td>
+</tr>
+</tbody></table>
+<h4 id="Controller（控制器单元）"><a href="#Controller（控制器单元）" class="headerlink" title="Controller（控制器单元）"></a>Controller（控制器单元）</h4><p>模块端口定义：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>op[5:0]</td>
+<td>I</td>
+<td>6位，区分非R型指令的标识</td>
+</tr>
+<tr>
+<td>func[5:0]</td>
+<td>I</td>
+<td>6位，区分R型指令的标识</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>O</td>
+<td>1位，表示是否要将结果写回寄存器中</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>O</td>
+<td>1位，表示是否要将结果写入DM中</td>
+</tr>
+<tr>
+<td>ifSignExt</td>
+<td>O</td>
+<td>1位，表示立即数是否进行符号扩展</td>
+</tr>
+<tr>
+<td>ALUctr[2:0]</td>
+<td>O</td>
+<td>3位，作为ALU模块的运算控制器</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>O</td>
+<td>1位，表示当前指令是否为<code>beq</code></td>
+</tr>
+<tr>
+<td>MemToReg</td>
+<td>O</td>
+<td>1位，表示在写使能端有效前提下判断是否从DM读取数据写入寄存器中，其余情况均是从ALU运算得到结果写入寄存器中</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>O</td>
+<td>1位，表示回写的寄存器是否为rd</td>
+</tr>
+<tr>
+<td>ALUsec</td>
+<td>O</td>
+<td>1位，表示ALU进行操作的第二个操作数是否是立即数</td>
+</tr>
+<tr>
+<td>jump</td>
+<td>O</td>
+<td>1位，表示是否执行<code>jal</code>的跳转指令</td>
+</tr>
+<tr>
+<td>ifJr</td>
+<td>O</td>
+<td>1位，表示当前指令是否为<code>jr</code></td>
+</tr>
+<tr>
+<td>ifJal</td>
+<td>O</td>
+<td>1位，表示当前指令是否为<code>jal</code></td>
+</tr>
+</tbody></table>
+<p>输入与输出之间的关系表：</p>
+<table>
+<thead>
+<tr>
+<th>func</th>
+<th>100000</th>
+<th>100010</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>n&#x2F;a</th>
+<th>000000</th>
+<th>n&#x2F;a</th>
+<th>001000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>op</td>
+<td>000000</td>
+<td>000000</td>
+<td>001101</td>
+<td>001111</td>
+<td>100011</td>
+<td>101011</td>
+<td>000100</td>
+<td>000000</td>
+<td>000011</td>
+<td>000000</td>
+</tr>
+<tr>
+<td>variate</td>
+<td>add</td>
+<td>sub</td>
+<td>ori</td>
+<td>lui</td>
+<td>lw</td>
+<td>sw</td>
+<td>beq</td>
+<td>nop</td>
+<td>jal</td>
+<td>jr</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUsec</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MemToReg</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ifBeq</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ifSignExt</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUctr[0]</td>
+<td>(add(00))0</td>
+<td>(sub(01))1</td>
+<td>(or(10))0</td>
+<td>(lui(11))1</td>
+<td>(add(00))0</td>
+<td>(add(00))0</td>
+<td>(sub(01))1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUctr[1]</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ALUctr[2]</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jump</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ifJr</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ifJal</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h2 id="测试方案"><a href="#测试方案" class="headerlink" title="测试方案"></a>测试方案</h2><p>在上一次的随机生成代码的基础上加上了<del>人工调试</del>，得到了下列覆盖较为全面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.text<br>lui $28, 0<br>lui $29, 0<br>sub $12,$30,$3<br>nop<br>lui $3,1767<br>lw $29,2296($0)<br>sw $19,1624($0)<br>lui $16,32170<br>sw $27,3672($0)<br>nop<br>ori $25,$21,33535<br>ori $28,$4,1<br>beq $21,$0,label1<br>label1:<br>add $19,$2,$0<br>sw $11,7608($0)<br>lw $23,9240($0)<br>ori $21,$22,40405<br>lui $15,47634<br>ori $17,$23,1<br>beq $27,$0,label2<br>label2:<br>lw $11,7960($0)<br>ori $27,$20,1<br>beq $16,$0,label1<br>lui $3,30484<br>nop<br>label3:<br>nop<br>nop<br>label4:<br>label5:<br>nop<br>ori $30,$31,1<br>beq $30,$0,label1<br>add $21,$21,$24<br>sw $15,10204($0)<br>nop<br>label6:<br>sub $31,$8,$5<br>sw $26,12252($0)<br>label7:<br>lw $25,2020($0)<br>jal label8<br>ori $12,$22,1<br>beq $9,$0,label6<br>sub $20,$15,$17<br>sub $3,$23,$2<br><br>beq $0, $0, label23<br>label8:<br>label9:<br>ori $7,$15,1<br>beq $7,$0,label5<br>lw $30,9120($0)<br>label13:<br>sw $10,5384($0)<br>nop<br>add $9,$4,$12<br>ori $24,$0,26097<br>lui $2,15307<br>lui $18,18182<br>ori $9,$17,36182<br>nop<br>label15:<br>ori $17,$31,1<br>beq $5,$0,label11<br>lui $26,1870<br>nop<br>add $30,$25,$6<br>label16:<br>lw $9,6312($0)<br>lui $31,13768<br>add $28,$31,$0<br>label17:<br>label10:<br>lw $10,8312($0)<br>ori $15,$30,57904<br>lw $3,8328($0)<br>nop<br>ori $5,$12,1<br>beq $5,$0,label5<br>sw $17,8680($0)<br>sw $25,436($0)<br>label11:<br>add $17,$0,$23<br>lw $10,11608($0)<br>sw $11,9676($0)<br>add $3,$19,$28<br>sub $3,$2,$11<br>ori $5,$9,57311<br>lw $24,10428($0)<br>ori $9,$3,21056<br>lw $13,4776($0)<br>lui $18,46677<br>label12:<br>lui $4,30794<br>lui $21,16977<br>lui $7,32533<br>sw $17,1532($0)<br>jr $ra<br><br>label23:<br>beq $0, $0, label21<br>label20:<br>  jr $ra<br><br>label21:<br>jal label20<br>sw $0, 4($0)<br>lui $0, 555<br></code></pre></td></tr></table></figure>
+
+<p>得到相应机器码导入ISE后，检查出了许多的bugs:</p>
+<p>1.在DM模块中，将传入的地址右移2位赋给变量<code>actAddr</code>，而<code>actAddr</code>的定义为：<code>wire actAddr; </code>显然位宽不对应，而恰好给的样例只涉及了0、1位置的存入（一开始认为输出的是实际的RAM的地址（这也是第三个bug）），且并没有认真看样例输出的是8位16进制数，被硬控一小时。</p>
+<p>2.传入评测前一定要确保IM模块导入的文本名称为:<code>code.txt</code>，否则将什么都没有传入。</p>
+<p>3.输出的是右移前的地址，即按字节的地址，不是按字的地址。</p>
+<p>同时我利用P3随机生成的代码测试了对于<code>add</code>、<code>sub</code>、<code>lui</code>、<code>ori</code>、<code>lw</code>、<code>sw</code>、<code>beq</code>指令的测试情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br><span class="line">749</span><br><span class="line">750</span><br><span class="line">751</span><br><span class="line">752</span><br><span class="line">753</span><br><span class="line">754</span><br><span class="line">755</span><br><span class="line">756</span><br><span class="line">757</span><br><span class="line">758</span><br><span class="line">759</span><br><span class="line">760</span><br><span class="line">761</span><br><span class="line">762</span><br><span class="line">763</span><br><span class="line">764</span><br><span class="line">765</span><br><span class="line">766</span><br><span class="line">767</span><br><span class="line">768</span><br><span class="line">769</span><br><span class="line">770</span><br><span class="line">771</span><br><span class="line">772</span><br><span class="line">773</span><br><span class="line">774</span><br><span class="line">775</span><br><span class="line">776</span><br><span class="line">777</span><br><span class="line">778</span><br><span class="line">779</span><br><span class="line">780</span><br><span class="line">781</span><br><span class="line">782</span><br><span class="line">783</span><br><span class="line">784</span><br><span class="line">785</span><br><span class="line">786</span><br><span class="line">787</span><br><span class="line">788</span><br><span class="line">789</span><br><span class="line">790</span><br><span class="line">791</span><br><span class="line">792</span><br><span class="line">793</span><br><span class="line">794</span><br><span class="line">795</span><br><span class="line">796</span><br><span class="line">797</span><br><span class="line">798</span><br><span class="line">799</span><br><span class="line">800</span><br><span class="line">801</span><br><span class="line">802</span><br><span class="line">803</span><br><span class="line">804</span><br><span class="line">805</span><br><span class="line">806</span><br><span class="line">807</span><br><span class="line">808</span><br><span class="line">809</span><br><span class="line">810</span><br><span class="line">811</span><br><span class="line">812</span><br><span class="line">813</span><br><span class="line">814</span><br><span class="line">815</span><br><span class="line">816</span><br><span class="line">817</span><br><span class="line">818</span><br><span class="line">819</span><br><span class="line">820</span><br><span class="line">821</span><br><span class="line">822</span><br><span class="line">823</span><br><span class="line">824</span><br><span class="line">825</span><br><span class="line">826</span><br><span class="line">827</span><br><span class="line">828</span><br><span class="line">829</span><br><span class="line">830</span><br><span class="line">831</span><br><span class="line">832</span><br><span class="line">833</span><br><span class="line">834</span><br><span class="line">835</span><br><span class="line">836</span><br><span class="line">837</span><br><span class="line">838</span><br><span class="line">839</span><br><span class="line">840</span><br><span class="line">841</span><br><span class="line">842</span><br><span class="line">843</span><br><span class="line">844</span><br><span class="line">845</span><br><span class="line">846</span><br><span class="line">847</span><br><span class="line">848</span><br><span class="line">849</span><br><span class="line">850</span><br><span class="line">851</span><br><span class="line">852</span><br><span class="line">853</span><br><span class="line">854</span><br><span class="line">855</span><br><span class="line">856</span><br><span class="line">857</span><br><span class="line">858</span><br><span class="line">859</span><br><span class="line">860</span><br><span class="line">861</span><br><span class="line">862</span><br><span class="line">863</span><br><span class="line">864</span><br><span class="line">865</span><br><span class="line">866</span><br><span class="line">867</span><br><span class="line">868</span><br><span class="line">869</span><br><span class="line">870</span><br><span class="line">871</span><br><span class="line">872</span><br><span class="line">873</span><br><span class="line">874</span><br><span class="line">875</span><br><span class="line">876</span><br><span class="line">877</span><br><span class="line">878</span><br><span class="line">879</span><br><span class="line">880</span><br><span class="line">881</span><br><span class="line">882</span><br><span class="line">883</span><br><span class="line">884</span><br><span class="line">885</span><br><span class="line">886</span><br><span class="line">887</span><br><span class="line">888</span><br><span class="line">889</span><br></pre></td><td class="code"><pre><code class="hljs assembly">.text<br>lui $28, 0<br>lui $29, 0<br>lw $3,12220($0)<br>label0:<br>ori $27,$0,21838<br>ori $7,$24,64446<br>lui $26,30601<br>sub $4,$6,$29<br>add $3,$21,$18<br>lui $12,58593<br>label1:<br>ori $23,$29,57521<br>ori $10,$11,17197<br>ori $2,$29,45846<br>add $27,$11,$30<br>label2:<br>ori $4,$23,49583<br>nop<br>ori $29,$28,30889<br>add $15,$18,$9<br>label3:<br>lw $23,3588($0)<br>lui $31,13061<br>lw $16,7444($0)<br>add $7,$20,$20<br>ori $29,$20,45341<br>ori $12,$19,2231<br>lui $0,33119<br>sw $28,7880($0)<br>ori $16,$9,261<br>nop<br>sw $31,1508($0)<br>nop<br>sub $16,$20,$15<br>ori $4,$24,1<br>beq $4,$0,label3<br>sw $19,2188($0)<br>ori $16,$29,38043<br>lui $6,38905<br>lw $17,6932($0)<br>ori $25,$17,15558<br>lw $24,7704($0)<br>label4:<br>nop<br>sub $8,$3,$2<br>add $27,$1,$30<br>lui $19,44506<br>ori $14,$21,42642<br>ori $23,$26,1<br>beq $23,$0,label3<br>sub $13,$13,$11<br>sw $18,4460($0)<br>sw $1,12280($0)<br>lw $26,8516($0)<br>lui $14,46761<br>lw $29,9312($0)<br>ori $15,$9,24066<br>sub $21,$7,$20<br>ori $5,$16,1<br>beq $5,$0,label0<br>lw $12,6112($0)<br>ori $14,$16,27619<br>nop<br>sw $13,1312($0)<br>sub $19,$18,$5<br>lui $4,8845<br>add $15,$17,$26<br>ori $7,$25,1<br>beq $7,$0,label3<br>ori $22,$11,64348<br>ori $4,$10,58104<br>sw $30,5464($0)<br>lui $21,42924<br>ori $21,$25,52424<br>lui $12,59166<br>lui $4,12477<br>ori $13,$20,1<br>beq $13,$0,label1<br>ori $14,$21,4942<br>label5:<br>lw $18,1508($0)<br>ori $11,$30,7863<br>add $2,$12,$13<br>sw $4,4792($0)<br>sub $12,$26,$20<br>ori $9,$0,62628<br>add $14,$18,$30<br>nop<br>label6:<br>ori $9,$28,38349<br>ori $25,$23,57791<br>ori $5,$16,6305<br>nop<br>nop<br>lw $0,9012($0)<br>sub $30,$18,$27<br>ori $12,$0,1<br>beq $12,$0,label0<br>label7:<br>lui $17,1875<br>add $7,$4,$20<br>lui $13,2614<br>ori $12,$26,9653<br>ori $2,$23,10334<br>label8:<br>ori $6,$14,1<br>beq $6,$0,label4<br>ori $7,$7,34426<br>lui $27,21272<br>sw $19,10020($0)<br>sw $18,10164($0)<br>lui $24,59243<br>add $13,$1,$5<br>sw $25,1920($0)<br>lui $23,3008<br>sub $7,$6,$13<br>ori $0,$27,3389<br>sw $30,10952($0)<br>lw $9,1552($0)<br>sub $2,$28,$10<br>add $19,$27,$11<br>lw $13,7064($0)<br>sw $21,6820($0)<br>sw $3,12264($0)<br>nop<br>ori $22,$26,8102<br>add $25,$26,$3<br>label9:<br>sub $4,$18,$5<br>sw $27,9624($0)<br>lui $21,33721<br>nop<br>add $31,$6,$14<br>add $2,$25,$11<br>lw $12,10700($0)<br>ori $14,$3,53956<br>add $12,$31,$8<br>ori $26,$6,61476<br>add $31,$16,$11<br>lw $3,1500($0)<br>ori $5,$5,1<br>beq $5,$0,label8<br>lui $21,60746<br>label10:<br>add $13,$5,$2<br>label11:<br>nop<br>lui $2,2438<br>sw $6,9924($0)<br>lw $12,7504($0)<br>sw $11,6452($0)<br>label12:<br>sub $30,$0,$11<br>nop<br>lw $31,2320($0)<br>sw $24,7828($0)<br>lw $0,356($0)<br>sub $29,$24,$1<br>sw $24,8056($0)<br>ori $29,$7,28337<br>ori $3,$2,45291<br>nop<br>ori $2,$26,42574<br>nop<br>ori $2,$17,1<br>beq $2,$0,label5<br>ori $26,$15,1<br>beq $26,$0,label8<br>lui $26,35318<br>sub $28,$14,$30<br>sw $0,12212($0)<br>ori $2,$25,1<br>beq $2,$0,label1<br>lui $23,47561<br>label13:<br>add $18,$23,$6<br>nop<br>lw $2,7136($0)<br>ori $16,$29,1<br>beq $16,$0,label2<br>add $29,$13,$24<br>sub $29,$17,$27<br>nop<br>add $19,$1,$2<br>label14:<br>add $26,$9,$26<br>ori $13,$12,1<br>beq $13,$0,label10<br>label15:<br>ori $28,$17,1<br>beq $28,$0,label13<br>sw $10,5636($0)<br>lw $20,2236($0)<br>lui $9,17416<br>nop<br>nop<br>ori $18,$25,43604<br>ori $28,$30,1<br>beq $28,$0,label6<br>add $12,$4,$22<br>add $30,$2,$12<br>ori $29,$17,4625<br>label16:<br>ori $9,$9,1<br>beq $9,$0,label9<br>ori $24,$18,1<br>beq $24,$0,label0<br>label17:<br>sub $24,$28,$4<br>sub $22,$11,$11<br>ori $9,$31,1<br>beq $9,$0,label2<br>nop<br>sw $29,3032($0)<br>sw $14,4308($0)<br>sub $9,$6,$29<br>ori $20,$21,1<br>beq $20,$0,label6<br>ori $15,$13,18405<br>nop<br>label18:<br>add $13,$20,$20<br>label19:<br>label20:<br>ori $25,$10,36791<br>label21:<br>sub $31,$29,$27<br>sw $10,6028($0)<br>sub $21,$11,$16<br>label22:<br>add $26,$7,$18<br>lui $10,51227<br>nop<br>add $15,$25,$21<br>add $8,$25,$26<br>lw $17,3696($0)<br>add $6,$21,$22<br>add $29,$15,$9<br>lw $4,6908($0)<br>sub $18,$11,$28<br>add $25,$18,$4<br>ori $17,$1,1<br>beq $17,$0,label10<br>sub $22,$15,$0<br>add $18,$25,$21<br>label23:<br>lw $25,10224($0)<br>lw $16,3804($0)<br>add $29,$4,$8<br>sw $21,3840($0)<br>ori $13,$3,1<br>beq $13,$0,label10<br>add $31,$8,$4<br>ori $16,$17,1<br>beq $16,$0,label1<br>add $2,$7,$13<br>ori $10,$1,46102<br>lui $11,14865<br>nop<br>ori $3,$18,1<br>beq $3,$0,label2<br>sub $15,$31,$3<br>add $2,$13,$23<br>sub $25,$9,$15<br>add $6,$27,$22<br>ori $14,$19,1<br>beq $14,$0,label9<br>sw $25,4216($0)<br>sw $5,8268($0)<br>add $10,$26,$20<br>ori $0,$1,1<br>beq $8,$0,label2<br>label24:<br>lui $17,12049<br>lw $9,11064($0)<br>add $25,$4,$0<br>add $26,$13,$0<br>lw $5,1156($0)<br>add $16,$3,$5<br>label25:<br>nop<br>label26:<br>label27:<br>ori $17,$10,27638<br>sub $22,$9,$27<br>add $11,$2,$28<br>sub $23,$24,$10<br>sub $29,$19,$22<br>lw $23,9268($0)<br>label28:<br>ori $20,$8,29632<br>add $9,$12,$6<br>sub $14,$13,$18<br>sw $19,9220($0)<br>lw $5,10944($0)<br>ori $26,$6,1<br>beq $26,$0,label6<br>ori $19,$7,1<br>beq $19,$0,label5<br>add $19,$23,$6<br>ori $26,$11,54795<br>ori $24,$18,1<br>beq $24,$0,label6<br>add $29,$12,$19<br>nop<br>add $11,$31,$26<br>ori $20,$11,1<br>beq $20,$0,label19<br>lw $6,11752($0)<br>sw $17,5696($0)<br>nop<br>ori $12,$13,50862<br>lui $24,52897<br>sw $13,988($0)<br>lw $22,3236($0)<br>nop<br>nop<br>sub $12,$10,$8<br>ori $29,$9,46063<br>lui $25,11123<br>lw $19,11136($0)<br>label29:<br>sub $18,$15,$10<br>ori $16,$19,1<br>beq $16,$0,label25<br>sw $0,3476($0)<br>add $21,$16,$28<br>add $11,$13,$6<br>ori $3,$5,1627<br>ori $25,$10,15550<br>sw $10,9104($0)<br>lw $11,3376($0)<br>ori $16,$3,51561<br>lw $6,5904($0)<br>lw $4,1568($0)<br>lw $28,10928($0)<br>lui $6,60075<br>sw $30,3952($0)<br>lw $22,1176($0)<br>sub $23,$22,$31<br>add $8,$23,$30<br>ori $6,$15,1<br>beq $6,$0,label21<br>lui $13,14176<br>sub $15,$12,$3<br>sw $21,1552($0)<br>lui $7,32607<br>sw $7,5304($0)<br>nop<br>sw $12,3276($0)<br>nop<br>sw $31,2100($0)<br>lui $25,55147<br>label30:<br>lui $28,56215<br>label31:<br>nop<br>ori $9,$23,1<br>beq $9,$0,label9<br>label32:<br>sub $17,$14,$2<br>lui $31,43398<br>label33:<br>lw $6,1340($0)<br>sub $16,$28,$18<br>lw $3,9024($0)<br>lw $18,2860($0)<br>ori $28,$24,38276<br>label34:<br>nop<br>ori $9,$29,1<br>beq $9,$0,label3<br>ori $25,$27,1<br>beq $25,$0,label30<br>label35:<br>nop<br>ori $17,$14,1<br>beq $17,$0,label15<br>ori $8,$9,1<br>beq $8,$0,label27<br>label36:<br>ori $16,$30,34953<br>lui $19,56697<br>sub $6,$16,$20<br>label37:<br>nop<br>sw $25,4464($0)<br>lw $18,6328($0)<br>lui $17,3622<br>lw $31,1376($0)<br>lw $25,12208($0)<br>nop<br>lui $27,5198<br>lw $20,12172($0)<br>label38:<br>add $21,$14,$0<br>lui $5,657<br>lui $6,26369<br>sub $14,$13,$3<br>ori $30,$17,11214<br>lui $22,28626<br>add $16,$27,$12<br>ori $19,$23,1<br>beq $19,$0,label32<br>lw $22,10328($0)<br>sw $26,1480($0)<br>label39:<br>ori $6,$31,1<br>beq $6,$0,label28<br>nop<br>ori $3,$23,1<br>beq $3,$0,label21<br>ori $22,$12,1<br>beq $22,$0,label16<br>label40:<br>ori $15,$24,45255<br>ori $22,$2,5574<br>nop<br>lui $5,27025<br>lw $13,6444($0)<br>lw $13,2348($0)<br>lui $31,57095<br>sw $1,9828($0)<br>label41:<br>sub $17,$0,$22<br>add $30,$14,$24<br>nop<br>lui $24,41495<br>lui $15,42543<br>nop<br>sw $21,6540($0)<br>label42:<br>sub $26,$11,$0<br>sub $9,$15,$10<br>lw $5,456($0)<br>ori $2,$29,1<br>beq $2,$0,label28<br>ori $17,$23,1<br>beq $17,$0,label14<br>lw $4,11800($0)<br>ori $3,$29,33610<br>lui $5,28901<br>sub $30,$6,$26<br>lw $31,5568($0)<br>ori $2,$22,1<br>beq $2,$0,label1<br>sub $7,$20,$19<br>ori $23,$7,51582<br>lw $5,1708($0)<br>nop<br>sub $25,$15,$10<br>lui $16,18718<br>lw $6,9568($0)<br>nop<br>label43:<br>lw $23,3556($0)<br>label44:<br>sub $30,$31,$29<br>add $6,$1,$10<br>add $10,$0,$19<br>sub $23,$18,$18<br>ori $22,$18,19799<br>lui $12,15794<br>lui $24,56738<br>ori $11,$12,43867<br>label45:<br>add $0,$18,$12<br>lw $7,12092($0)<br>lw $0,5688($0)<br>add $7,$13,$13<br>sub $7,$15,$0<br>sw $2,11324($0)<br>sw $17,11384($0)<br>lw $30,9848($0)<br>nop<br>nop<br>ori $27,$16,20349<br>add $20,$16,$9<br>sub $3,$31,$4<br>add $11,$29,$10<br>ori $25,$19,1<br>beq $25,$0,label12<br>ori $14,$7,8373<br>lw $5,2352($0)<br>ori $3,$14,1<br>beq $3,$0,label39<br>sw $20,1876($0)<br>add $25,$20,$8<br>label46:<br>lw $26,7104($0)<br>nop<br>lui $3,20194<br>sub $28,$5,$7<br>sw $7,7108($0)<br>sub $16,$27,$29<br>add $13,$22,$31<br>sw $16,1932($0)<br>label47:<br>ori $20,$2,1<br>beq $20,$0,label17<br>ori $9,$0,58783<br>ori $0,$31,1<br>beq $20,$0,label46<br>add $3,$13,$9<br>lui $12,49615<br>label48:<br>lw $9,5448($0)<br>sw $24,3604($0)<br>label49:<br>lui $14,18765<br>ori $27,$12,1<br>beq $27,$0,label47<br>sub $30,$10,$0<br>ori $8,$13,1<br>beq $8,$0,label45<br>ori $26,$25,1<br>beq $26,$0,label16<br>nop<br>ori $11,$30,31651<br>lw $11,9516($0)<br>sub $24,$19,$10<br>sw $16,3988($0)<br>label50:<br>add $28,$10,$29<br>sw $15,5476($0)<br>add $21,$11,$30<br>add $8,$3,$25<br>lui $6,39793<br>nop<br>sub $27,$8,$25<br>add $24,$24,$9<br>sub $17,$20,$10<br>sub $26,$1,$14<br>ori $31,$1,25923<br>lw $23,9296($0)<br>nop<br>ori $14,$28,1<br>beq $14,$0,label0<br>add $15,$5,$7<br>add $27,$13,$28<br>lui $19,40446<br>sw $1,10300($0)<br>add $5,$3,$23<br>nop<br>add $3,$6,$1<br>lui $29,1782<br>sub $12,$8,$0<br>nop<br>lw $30,500($0)<br>add $15,$20,$31<br>lui $2,13017<br>ori $16,$31,52737<br>add $31,$1,$19<br>lw $25,1260($0)<br>label51:<br>ori $14,$20,41954<br>add $16,$11,$28<br>sw $0,20($0)<br>lui $4,40850<br>nop<br>sw $20,960($0)<br>add $17,$15,$8<br>add $30,$6,$0<br>sw $12,2172($0)<br>lui $9,15237<br>ori $8,$20,1<br>beq $8,$0,label4<br>lui $30,62874<br>nop<br>label52:<br>add $9,$1,$18<br>lw $0,1896($0)<br>add $26,$13,$22<br>add $31,$22,$17<br>lui $26,42417<br>sub $25,$2,$28<br>lui $30,11154<br>label53:<br>sub $8,$18,$11<br>lui $19,12122<br>sub $29,$5,$27<br>label54:<br>lui $11,11385<br>nop<br>nop<br>add $27,$6,$8<br>lw $31,4284($0)<br>lui $2,25045<br>lw $30,136($0)<br>add $17,$13,$24<br>sw $21,4884($0)<br>sw $20,476($0)<br>label55:<br>ori $27,$19,1<br>beq $27,$0,label50<br>lw $24,8116($0)<br>ori $22,$8,7234<br>ori $2,$8,38417<br>nop<br>sub $7,$17,$6<br>add $11,$11,$10<br>sw $7,5700($0)<br>add $25,$21,$0<br>ori $13,$3,1<br>beq $13,$0,label31<br>sw $21,1700($0)<br>sub $8,$5,$0<br>sw $3,9772($0)<br>nop<br>nop<br>label56:<br>add $10,$6,$11<br>nop<br>lw $24,4104($0)<br>label57:<br>lui $12,44568<br>lw $10,11176($0)<br>ori $9,$16,1<br>beq $9,$0,label31<br>add $16,$13,$24<br>add $3,$21,$0<br>sub $18,$4,$12<br>lui $20,58662<br>ori $17,$21,53372<br>nop<br>sub $30,$3,$17<br>lw $12,6104($0)<br>sub $30,$10,$19<br>ori $11,$16,12874<br>add $5,$9,$15<br>nop<br>sub $8,$24,$4<br>nop<br>sub $3,$1,$10<br>lw $7,492($0)<br>lui $26,17837<br>add $0,$9,$0<br>sub $29,$21,$2<br>ori $0,$5,1<br>beq $29,$0,label39<br>nop<br>sw $25,2312($0)<br>ori $14,$8,1<br>beq $14,$0,label52<br>sub $7,$27,$10<br>sw $24,9652($0)<br>nop<br>sub $11,$7,$22<br>add $5,$23,$1<br>sub $14,$18,$31<br>sub $2,$19,$3<br>lw $12,1208($0)<br>ori $24,$26,61574<br>ori $2,$18,1<br>beq $2,$0,label22<br>sub $26,$4,$0<br>lui $3,38777<br>ori $27,$12,1<br>beq $27,$0,label26<br>sub $27,$25,$21<br>sw $23,11272($0)<br>sw $7,2864($0)<br>add $10,$18,$12<br>ori $30,$26,1<br>beq $30,$0,label4<br>nop<br>ori $9,$19,1<br>beq $9,$0,label29<br>label58:<br>lw $18,628($0)<br>ori $11,$30,1<br>beq $11,$0,label34<br>label59:<br>ori $7,$31,27144<br>lui $13,55049<br>lui $31,44033<br>lui $18,59825<br>label60:<br>sw $20,10120($0)<br>nop<br>ori $4,$0,1<br>beq $4,$0,label40<br>sub $23,$23,$31<br>label61:<br>sub $11,$18,$20<br>sub $22,$23,$2<br>ori $8,$4,44665<br>label62:<br>lui $23,21916<br>nop<br>label63:<br>ori $19,$28,53475<br>add $31,$13,$1<br>lui $5,979<br>label64:<br>label65:<br>ori $21,$25,1<br>beq $21,$0,label50<br>nop<br>add $19,$26,$8<br>sw $5,10336($0)<br>label66:<br>sw $15,1276($0)<br>sw $5,8268($0)<br>ori $16,$28,50290<br>lui $3,37254<br>sub $20,$3,$26<br>add $6,$6,$28<br>sub $10,$9,$20<br>sub $8,$27,$3<br>ori $22,$12,1<br>beq $22,$0,label17<br>sub $18,$0,$10<br>sub $11,$20,$3<br>lw $14,2968($0)<br>ori $13,$30,17489<br>lw $16,7500($0)<br>ori $12,$11,1<br>beq $12,$0,label30<br>lui $11,22838<br>lw $8,4924($0)<br>sw $13,10004($0)<br>sub $25,$31,$31<br>add $4,$12,$1<br>label67:<br>lw $13,11536($0)<br>lw $30,876($0)<br>lui $31,38524<br>nop<br>ori $25,$7,1<br>beq $25,$0,label11<br>lui $3,27665<br>ori $26,$0,54481<br>ori $21,$22,4068<br>label68:<br>ori $31,$5,54164<br>label69:<br>lui $5,27389<br>nop<br>sw $28,7864($0)<br>lw $0,4184($0)<br>add $7,$14,$30<br>lui $7,21275<br>sub $5,$25,$30<br>sw $14,756($0)<br>lw $16,516($0)<br>lui $8,53761<br>nop<br>add $24,$27,$11<br>lw $21,608($0)<br>add $12,$28,$26<br>ori $17,$8,1<br>beq $17,$0,label38<br>ori $31,$28,24527<br>lw $5,7220($0)<br>ori $8,$20,1<br>beq $8,$0,label62<br>ori $17,$7,58126<br>ori $26,$9,1<br>beq $26,$0,label31<br>nop<br>ori $11,$5,10972<br>sub $10,$3,$10<br>add $18,$9,$14<br>lui $2,57164<br>nop<br>ori $27,$30,1<br>beq $27,$0,label69<br>sub $25,$22,$28<br>lw $15,3968($0)<br>lw $23,8572($0)<br>label70:<br>ori $29,$20,33811<br>ori $18,$27,25008<br>sw $18,6436($0)<br>sw $22,580($0)<br>nop<br>nop<br>ori $30,$14,1<br>beq $30,$0,label20<br>lui $2,62902<br>add $14,$19,$11<br>lw $4,5044($0)<br>sub $22,$28,$8<br>lw $10,3180($0)<br>ori $3,$16,1<br>beq $3,$0,label63<br>lw $10,9180($0)<br>add $20,$29,$30<br>add $9,$16,$14<br>label71:<br>ori $19,$18,1<br>beq $19,$0,label45<br>nop<br>sw $4,2112($0)<br>label72:<br>sw $10,8812($0)<br>sw $22,8848($0)<br>lui $6,25020<br>sub $24,$2,$18<br>sw $14,5600($0)<br>nop<br>ori $25,$5,1<br>beq $25,$0,label24<br>sub $29,$8,$4<br>ori $21,$12,47976<br>sub $5,$24,$30<br>label73:<br>ori $12,$6,53368<br>ori $29,$30,1<br>beq $29,$0,label70<br>ori $20,$30,36773<br>lw $18,6536($0)<br>ori $8,$7,1<br>beq $8,$0,label49<br>label74:<br>lui $0,25494<br>add $21,$5,$30<br>lui $10,35398<br>sw $13,8780($0)<br>sub $20,$28,$7<br>lui $31,3412<br>sw $1,10548($0)<br>sw $25,5548($0)<br>label75:<br>ori $8,$1,1<br>beq $8,$0,label63<br>label76:<br>lw $21,10192($0)<br>label77:<br>sub $3,$26,$31<br>add $29,$9,$0<br>sw $0,11592($0)<br>sw $5,2700($0)<br>sub $28,$25,$13<br>sub $29,$12,$5<br>ori $12,$15,1<br>beq $12,$0,label55<br>ori $4,$23,23253<br>ori $9,$12,1<br>beq $9,$0,label39<br>lw $7,11368($0)<br>label78:<br>sub $15,$6,$15<br>sw $5,1908($0)<br>ori $25,$29,35187<br>label79:<br>ori $15,$23,1<br>beq $15,$0,label78<br>sub $29,$28,$27<br>sw $14,688($0)<br>add $27,$28,$5<br>label80:<br>ori $25,$7,1<br>beq $25,$0,label24<br>nop<br>add $10,$13,$25<br>ori $19,$25,46463<br>ori $25,$12,1<br>beq $25,$0,label20<br>add $7,$8,$19<br>add $28,$13,$26<br>sw $7,10468($0)<br>label81:<br>lui $21,45861<br>add $24,$4,$19<br>add $13,$11,$7<br>sub $12,$14,$9<br>ori $18,$24,7397<br>ori $21,$8,1<br>beq $21,$0,label33<br>ori $29,$10,1<br>beq $29,$0,label5<br>add $25,$25,$30<br>nop<br>add $16,$13,$7<br>add $12,$19,$27<br>label82:<br>ori $3,$22,57371<br>ori $20,$25,7784<br>ori $23,$28,49146<br>sub $19,$14,$12<br>add $2,$21,$18<br>ori $11,$2,1<br>beq $11,$0,label35<br>sub $11,$14,$20<br>sw $26,144($0)<br>add $5,$0,$1<br></code></pre></td></tr></table></figure>
+
+<p>源码如上，再通过学长的魔改版mars的输出，同ISE波形图输出进行IDEA的输出对拍，发现除了对$0的写入不同（前者会忽略，即输出并不造成影响），其他完全一致。</p>
+<p>因此只需要单独测试<code>jal</code>和<code>jr</code>指令即可。</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h2 id="1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？"><a href="#1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？" class="headerlink" title="1.阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ？"></a>1.阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ？</h2><p><img src="/img/P4.3.png" alt="模块接口定义"></p>
+<p>1.这个addr信号是ALU模块的结果输出，代表了<code>lw</code>和<code>sw</code>指令下对DM中的对应地址。</p>
+<p>2.因为地址是以字节表示的，又因为处理器是32位的，因此两个地址间相差一个字即4个字节，在数值上表现为相差4。而DM中的RAM是按字表示，即RAM中两个相邻存储数值在DM存储位置的数值上差1，因此外界传入的对于RAM的地址索引需要经过除四即右移两位再传给RAM，而DM的容量为4KB（2^12^B)，共需要12位，加上右移两位的影响，因此对于ALU模块提供的地址数应取其2<del>11位而不是 0</del>9位。</p>
+<h2 id="2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。"><a href="#2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。" class="headerlink" title="2.思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。"></a>2.思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</h2><p>两种译码方式：可以记录下<strong>指令对应的控制信号如何取值</strong>，也可以记录下<strong>控制信号每种取值所对应的指令</strong>。</p>
+<p>前者<del>可能</del>代码示例：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-comment">//以进行了“和”逻辑的运算转换</span><br><span class="hljs-keyword">reg</span> RW, MW, iSE, ALUSEC, iB, MTR, RD, JUMP, iJA, iJR;<br><span class="hljs-keyword">reg</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] ALUCTR;<br><span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>    RW = <span class="hljs-number">0</span>;<br>    MW = <span class="hljs-number">0</span>;<br>    iSE = <span class="hljs-number">0</span>;<br>    ALUCTR = <span class="hljs-number">3&#x27;b0</span>;<br>    iB = <span class="hljs-number">0</span>;<br>    MTR = <span class="hljs-number">0</span>;<br>    RD = <span class="hljs-number">0</span>;<br>    ALUSEC = <span class="hljs-number">0</span>;<br>    JUMP = <span class="hljs-number">0</span>;<br>    iJA = <span class="hljs-number">0</span>;<br>    iJR = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (jal) <span class="hljs-keyword">begin</span> <br>        RW = <span class="hljs-number">1</span>;<br>        JUMP = <span class="hljs-number">1</span>;<br>        iJA = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (add) <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">1</span>;<br>        RD = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sub) <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">1</span>;<br>        ALUCTR[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        RD = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ori) <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">1</span>;<br>        ALUCTR[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        ALUSEC = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lui) <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">1</span>;<br>        ALUCTR[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        ALUCTR[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        ALUSEC = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lw) <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">1</span>;<br>        iSE = <span class="hljs-number">1</span>;<br>        MTR = <span class="hljs-number">1</span>;<br>        ALUSEC = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sw) <span class="hljs-keyword">begin</span><br>        MW = <span class="hljs-number">1</span>;<br>        iSE = <span class="hljs-number">1</span>;<br>        ALUSEC = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beq) <span class="hljs-keyword">begin</span><br>        ALUCTR[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        iB = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (jr) <span class="hljs-keyword">begin</span><br>        iJR = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>        RW = <span class="hljs-number">0</span>;<br>        MW = <span class="hljs-number">0</span>;<br>        iSE = <span class="hljs-number">0</span>;<br>        ALUCTR = <span class="hljs-number">3&#x27;b0</span>;<br>        iB = <span class="hljs-number">0</span>;<br>        MTR = <span class="hljs-number">0</span>;<br>        RD = <span class="hljs-number">0</span>;<br>        ALUSEC = <span class="hljs-number">0</span>;<br>        JUMP = <span class="hljs-number">0</span>;<br>        iJA = <span class="hljs-number">0</span>;<br>        iJR = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">assign</span> RegWrite = RW;<br><span class="hljs-keyword">assign</span> MemWrite = MW;<br><span class="hljs-keyword">assign</span> ifSignExt = iSE;<br><span class="hljs-keyword">assign</span> ALUctr = ALUCTR;<br><span class="hljs-keyword">assign</span> ifBeq = iB;<br><span class="hljs-keyword">assign</span> MemToReg = MTR;<br><span class="hljs-keyword">assign</span> RegDst = RD;<br><span class="hljs-keyword">assign</span> ALUsec = ALUSEC;<br><span class="hljs-keyword">assign</span> jump = JUMP;<br><span class="hljs-keyword">assign</span> ifJal = iJA;<br><span class="hljs-keyword">assign</span> ifJr = iJR;<br></code></pre></td></tr></table></figure>
+
+<p>后者k代码示例：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-comment">//已进行了&quot;和&quot;逻辑的运算转换     </span><br>     <span class="hljs-keyword">assign</span> RegWrite = (jal | add | sub | ori | lui | lw);<br>	 <span class="hljs-keyword">assign</span> MemWrite = sw;<br>	 <span class="hljs-keyword">assign</span> ifSignExt = (lw | sw);<br>	 <span class="hljs-keyword">assign</span> ALUctr = &#123;<span class="hljs-number">0</span>, (ori | lui), (sub | lui | beq)&#125;;<br>	 <span class="hljs-keyword">assign</span> ifBeq = beq;<br>	 <span class="hljs-keyword">assign</span> MemToReg = lw;<br>	 <span class="hljs-keyword">assign</span> RegDst = (add | sub);<br>	 <span class="hljs-keyword">assign</span> ALUsec = (ori | lui | lw | sw);<br>	 <span class="hljs-keyword">assign</span> jump = jal;<br>	 <span class="hljs-keyword">assign</span> ifJal = jal;<br>	 <span class="hljs-keyword">assign</span> ifJr = jr;<br></code></pre></td></tr></table></figure>
+
+<p>1.前者的代码是针对每一个指令去输出对应的控制信号的，一个很显然的优点就是当增加指令时，只需要增加对应指令成立时对应的控制信号输出为1即可。但是虽然个人感觉代码编写上过于繁琐，因为得判断多条指令是否成立，在指令少的时候可能很清晰，但一旦指令数过多，会导致代码的冗长。</p>
+<p>2.后者的代码是针对每一条控制信号采用或逻辑将每个控制信号对应的所有指令或起来达到相应效果，在逻辑上会更加清晰，代码行数也较少。但是缺点就是增加指令时，需要在多条控制信号处增加，较为繁琐。</p>
+<p>总的看来，前者是面向指令译码而后者是面向控制信号译码，二者各有优劣。</p>
+<h2 id="3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。"><a href="#3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。" class="headerlink" title="3.在相应的部件中，复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。"></a>3.在相应的部件中，复位信号的设计都是<strong>同步复位</strong>，这与 P3 中的设计要求不同。请对比<strong>同步复位</strong>与<strong>异步复位</strong>这两种方式的 reset 信号与 clk 信号优先级的关系。</h2><p>在同步复位中，<code>clk</code>信号是优先于<code>reset</code>信号的，只有当<code>clk</code>信号到达触发沿且<code>reset</code>有效时，<code>reset</code>才会起作用，否则<code>reset</code>不起作用。</p>
+<p>在异步复位中，<code>reset</code>信号是优先于<code>clk</code>信号的，当<code>reset</code>信号一有效，即发挥作用，不用考虑此时的<code>clk</code>信号。</p>
+<h2 id="4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分（详见文档-page-34、page-35）。"><a href="#4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分（详见文档-page-34、page-35）。" class="headerlink" title="4.C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分（详见文档 page 34、page 35）。"></a>4.C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读<a target="_blank" rel="noopener" href="https://d.buaa.edu.cn/http/77726476706e69737468656265737421f3e44293353526526b0988e29d51367b9787/assets/cscore-assets/MIPS_Vol2_%E6%8C%87%E4%BB%A4%E9%9B%86_.pdf">《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》</a>中相关指令的 Operation 部分（详见文档 page 34、page 35）。</h2><p>在忽略溢出的前提下，<code>add</code>和<code>addu</code>在不溢出的情况下得到的结果一致，且在溢出的情况下，两者溢出后剩下的数也一致，且<code>add</code>并不会报溢出错误，所以此情况下<code>add</code>和<code>addu</code>等价，同理，对于<code>addi</code>和<code>addiu</code>在忽略溢出的情况下，两者等价。</p>
+<h2 id="P4课上"><a href="#P4课上" class="headerlink" title="P4课上"></a>P4课上</h2><h3 id="注意：过度的模块化会导致课上添加指令时的不便，建议在顶层模块中留一些多路选择器，不然加端口会及其麻烦。"><a href="#注意：过度的模块化会导致课上添加指令时的不便，建议在顶层模块中留一些多路选择器，不然加端口会及其麻烦。" class="headerlink" title="注意：过度的模块化会导致课上添加指令时的不便，建议在顶层模块中留一些多路选择器，不然加端口会及其麻烦。"></a>注意：过度的模块化会导致课上添加指令时的不便，建议在顶层模块中留一些多路选择器，不然加端口会及其麻烦。</h3><h3 id="第一题（eam）"><a href="#第一题（eam）" class="headerlink" title="第一题（eam）"></a>第一题（eam）</h3><p>将GRF[rs]低16位被模数看作有符号数，对17求模（得到的是最小非负整数，例如：16’h23得到结果为16’h1、而16’hffff得到的结果为16’h10），再根据GRF[rt]的最高位对求模结果进行扩展得到的结果返回GRF[rd]，关键在于求模一定要是正数，可以采取（(a%b + b)%b)的方式来确保得到的数是0-b-1的正数。<del>不然大有被硬控一小时的风险。</del></p>
+<h3 id="第二题（cptl）"><a href="#第二题（cptl）" class="headerlink" title="第二题（cptl）"></a>第二题（cptl）</h3><p>判断GRF[rs]的低18位中是否有连续的6位数是1，若是将PC+4传给GRF[rt]，否则传给GRF[31]，同时进行<code>beq</code>指令的无条件跳转。没啥好说的，认真加端口就行了。</p>
+<p>注意：判断6位连续1的方法可以通过循环的方式实现：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">integer</span> i,cnt,max;<br><span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>    cnt = <span class="hljs-number">0</span>;<br>    max = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">18</span>; i = i + <span class="hljs-number">1</span>) <span class="hljs-keyword">begin</span><br>        <span class="hljs-keyword">if</span> (Rs[i]) <span class="hljs-keyword">begin</span><br>            cnt = cnt + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (cnt &gt; max) max = cnt;<br>            <span class="hljs-keyword">else</span> max = max;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> cnt = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">if</span> (max &gt;= <span class="hljs-number">6</span>) signal = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span> signal = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">end</span>    <br></code></pre></td></tr></table></figure>
+
+<h3 id="第三题（olw）"><a href="#第三题（olw）" class="headerlink" title="第三题（olw）"></a>第三题（olw）</h3><p>如指令名，有条件<code>lw</code>，<code>olw $rt, offset($rs) </code>:若获取的内存值是非递减序列，就写入，否则不写入。非递减序列：只要该位为1，那么低于该位的位上都为1.</p>
+<p>重要的是如何判断非递减序列，大致思路如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">integer</span> i, k, cnt;<br><span class="hljs-keyword">always</span> @(*) <span class="hljs-keyword">begin</span><br>    cnt = <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">31</span>; i = i + <span class="hljs-number">1</span>) <span class="hljs-keyword">begin</span><br>        <span class="hljs-keyword">if</span> (RD[i]) <span class="hljs-keyword">begin</span><br>            cnt = cnt + <span class="hljs-number">1</span>;<br>            k = i;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> cnt = cnt;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">if</span> (k + <span class="hljs-number">1</span> == cnt) signal = <span class="hljs-number">1</span>; <span class="hljs-comment">//到最左边的一位1的1的个数刚好是位数+1即为非递减序列</span><br>    <span class="hljs-keyword">else</span> signal = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>由于第一题被硬控好久，导致第三题没时间做，一定要充分思考，牢记教训！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2025/01/22/P4-L0-document/">http://ywxy12138.github.io/2025/01/22/P4-L0-document/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="../../../../img/HDL.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../P3_L0_document/" title="P3_L0_document"><img class="cover" src="../../../../img/HDL.jpg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">P3_L0_document</div></div></a></div><div class="next-post pull-right"><a href="../P5-L0-document/" title="P5_L0_document"><img class="cover" src="../../../../img/HDL.jpg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">P5_L0_document</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../P3_L0_document/" title="P3_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P3_L0_document</div></div></a></div><div><a href="../P6-L0-document/" title="P6_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P6_L0_document</div></div></a></div><div><a href="../P5-L0-document/" title="P5_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P5_L0_document</div></div></a></div><div><a href="../P7-L0-document/" title="P7_L0_document"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">P7_L0_document</div></div></a></div><div><a href="../../../../2024/09/23/%E8%AE%A1%E7%BB%84%E4%B8%8A%E6%9C%BA/" title="计组上机（Pre-P2）"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-23</div><div class="title">计组上机（Pre-P2）</div></div></a></div><div><a href="../%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点"><img class="cover" src="../../../../img/HDL.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">计组理论重点与易错点</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P4%E8%AF%BE%E4%B8%8B"><span class="toc-number">1.</span> <span class="toc-text">P4课下</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%8D%89%E7%A8%BF"><span class="toc-number">1.2.</span> <span class="toc-text">设计草稿</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">整体设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E5%B1%82%E6%AC%A1%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">具体模块化与层次化设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">单周期处理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">控制器模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E5%B1%82%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">顶层目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">数据通路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#P3%E9%81%97%E4%BA%A7%EF%BC%88%E6%88%91%E7%9A%84%E4%B8%91%E9%99%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E5%9B%BE%EF%BC%89"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">P3遗产（我的丑陋的数据通路图）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IFU%EF%BC%88%E5%8F%96%E6%8C%87%E4%BB%A4%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">IFU（取指令单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GRF%EF%BC%88%E5%AF%84%E5%AD%98%E5%99%A8%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">GRF（寄存器单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NPC%EF%BC%88%E6%8C%87%E4%BB%A4%E8%BD%AC%E7%A7%BB%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.5.</span> <span class="toc-text">NPC（指令转移单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DM%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">1.2.4.6.</span> <span class="toc-text">DM（数据寄存器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ALU%EF%BC%88%E8%BF%90%E7%AE%97%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.7.</span> <span class="toc-text">ALU（运算单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ext%EF%BC%88%E6%89%A9%E5%B1%95%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.8.</span> <span class="toc-text">Ext（扩展单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RegAddrSel-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E5%86%99%E5%85%A5%E5%9C%B0%E5%9D%80%E9%80%89%E6%8B%A9%E5%8D%95%E5%85%83"><span class="toc-number">1.2.4.9.</span> <span class="toc-text">RegAddrSel(寄存器堆写入地址选择单元)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RegDataSel-%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%8D%95%E5%85%83"><span class="toc-number">1.2.4.10.</span> <span class="toc-text">RegDataSel(寄存器堆写入数据选择单元)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ALUInSel-ALU%E6%A8%A1%E5%9D%97%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%B0%E9%80%89%E6%8B%A9%E5%8D%95%E5%85%83"><span class="toc-number">1.2.4.11.</span> <span class="toc-text">ALUInSel(ALU模块的操作数选择单元)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jump%EF%BC%88%E5%A4%84%E7%90%86J%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4%E7%9A%84NPC%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.12.</span> <span class="toc-text">jump（处理J跳转指令的NPC处理单元）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller%EF%BC%88%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.4.13.</span> <span class="toc-text">Controller（控制器单元）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">测试方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%98%85%E8%AF%BB%E4%B8%8B%E9%9D%A2%E7%BB%99%E5%87%BA%E7%9A%84-DM-%E7%9A%84%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B%E4%B8%AD%EF%BC%88%E7%A4%BA%E4%BE%8B-DM-%E5%AE%B9%E9%87%8F%E4%B8%BA-4KB%EF%BC%8C%E5%8D%B3-32bit-%C3%97-1024%E5%AD%97%EF%BC%89%EF%BC%8C%E6%A0%B9%E6%8D%AE%E4%BD%A0%E7%9A%84%E7%90%86%E8%A7%A3%E5%9B%9E%E7%AD%94%EF%BC%8C%E8%BF%99%E4%B8%AA-addr-%E4%BF%A1%E5%8F%B7%E5%8F%88%E6%98%AF%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5%E7%9A%84%EF%BC%9F%E5%9C%B0%E5%9D%80%E4%BF%A1%E5%8F%B7-addr-%E4%BD%8D%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-11-2-%E8%80%8C%E4%B8%8D%E6%98%AF-9-0-%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">1.阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%9D%E8%80%83%E4%B8%8A%E8%BF%B0%E4%B8%A4%E7%A7%8D%E6%8E%A7%E5%88%B6%E5%99%A8%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AF%91%E7%A0%81%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%BB%99%E5%87%BA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%EF%BC%8C%E5%B9%B6%E5%B0%9D%E8%AF%95%E5%AF%B9%E6%AF%94%E5%90%84%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BC%98%E5%8A%A3%E3%80%82"><span class="toc-number">1.6.</span> <span class="toc-text">2.思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9C%A8%E7%9B%B8%E5%BA%94%E7%9A%84%E9%83%A8%E4%BB%B6%E4%B8%AD%EF%BC%8C%E5%A4%8D%E4%BD%8D%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%AE%BE%E8%AE%A1%E9%83%BD%E6%98%AF%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D%EF%BC%8C%E8%BF%99%E4%B8%8E-P3-%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82%E4%B8%8D%E5%90%8C%E3%80%82%E8%AF%B7%E5%AF%B9%E6%AF%94%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84-reset-%E4%BF%A1%E5%8F%B7%E4%B8%8E-clk-%E4%BF%A1%E5%8F%B7%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E5%85%B3%E7%B3%BB%E3%80%82"><span class="toc-number">1.7.</span> <span class="toc-text">3.在相应的部件中，复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-C-%E8%AF%AD%E8%A8%80%E6%98%AF%E4%B8%80%E7%A7%8D%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E3%80%82C-%E8%AF%AD%E8%A8%80%E4%B8%AD%E4%B8%8D%E5%AF%B9%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E6%BA%A2%E5%87%BA%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86%EF%BC%8C%E8%BF%99%E6%84%8F%E5%91%B3%E7%9D%80-C-%E8%AF%AD%E8%A8%80%E8%A6%81%E6%B1%82%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E9%A1%BB%E5%BE%88%E6%B8%85%E6%A5%9A%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E6%98%AF%E5%90%A6%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%BA%A2%E5%87%BA%E3%80%82%E5%9B%A0%E6%AD%A4%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%BB%85%E4%BB%85%E6%94%AF%E6%8C%81-C-%E8%AF%AD%E8%A8%80%EF%BC%8CMIPS-%E6%8C%87%E4%BB%A4%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%A1%E7%AE%97%E6%8C%87%E4%BB%A4%E5%9D%87%E5%8F%AF%E4%BB%A5%E5%BF%BD%E7%95%A5%E6%BA%A2%E5%87%BA%E3%80%82-%E8%AF%B7%E8%AF%B4%E6%98%8E%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%BF%BD%E7%95%A5%E6%BA%A2%E5%87%BA%E7%9A%84%E5%89%8D%E6%8F%90%E4%B8%8B%EF%BC%8Caddi-%E4%B8%8E-addiu-%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84%EF%BC%8Cadd-%E4%B8%8E-addu-%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84%E3%80%82%E6%8F%90%E7%A4%BA%EF%BC%9A%E9%98%85%E8%AF%BB%E3%80%8AMIPS32%C2%AE-Architecture-For-Programmers-Volume-II-The-MIPS32%C2%AE-Instruction-Set%E3%80%8B%E4%B8%AD%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4%E7%9A%84-Operation-%E9%83%A8%E5%88%86%EF%BC%88%E8%AF%A6%E8%A7%81%E6%96%87%E6%A1%A3-page-34%E3%80%81page-35%EF%BC%89%E3%80%82"><span class="toc-number">1.8.</span> <span class="toc-text">4.C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分（详见文档 page 34、page 35）。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P4%E8%AF%BE%E4%B8%8A"><span class="toc-number">1.9.</span> <span class="toc-text">P4课上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A%E8%BF%87%E5%BA%A6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E4%BC%9A%E5%AF%BC%E8%87%B4%E8%AF%BE%E4%B8%8A%E6%B7%BB%E5%8A%A0%E6%8C%87%E4%BB%A4%E6%97%B6%E7%9A%84%E4%B8%8D%E4%BE%BF%EF%BC%8C%E5%BB%BA%E8%AE%AE%E5%9C%A8%E9%A1%B6%E5%B1%82%E6%A8%A1%E5%9D%97%E4%B8%AD%E7%95%99%E4%B8%80%E4%BA%9B%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%B8%8D%E7%84%B6%E5%8A%A0%E7%AB%AF%E5%8F%A3%E4%BC%9A%E5%8F%8A%E5%85%B6%E9%BA%BB%E7%83%A6%E3%80%82"><span class="toc-number">1.9.1.</span> <span class="toc-text">注意：过度的模块化会导致课上添加指令时的不便，建议在顶层模块中留一些多路选择器，不然加端口会及其麻烦。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%88eam%EF%BC%89"><span class="toc-number">1.9.2.</span> <span class="toc-text">第一题（eam）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88cptl%EF%BC%89"><span class="toc-number">1.9.3.</span> <span class="toc-text">第二题（cptl）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%88olw%EF%BC%89"><span class="toc-number">1.9.4.</span> <span class="toc-text">第三题（olw）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="计组理论重点与易错点"/></a><div class="content"><a class="title" href="../2025/01/22/%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E9%87%8D%E7%82%B9%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9/" title="计组理论重点与易错点">计组理论重点与易错点</a><time datetime="2025-01-22T08:33:38.000Z" title="发表于 2025-01-22 16:33:38">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P7-L0-document/" title="P7_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P7_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P7-L0-document/" title="P7_L0_document">P7_L0_document</a><time datetime="2025-01-22T07:24:28.000Z" title="发表于 2025-01-22 15:24:28">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P6-L0-document/" title="P6_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P6_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P6-L0-document/" title="P6_L0_document">P6_L0_document</a><time datetime="2025-01-22T07:24:15.000Z" title="发表于 2025-01-22 15:24:15">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P5-L0-document/" title="P5_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P5_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P5-L0-document/" title="P5_L0_document">P5_L0_document</a><time datetime="2025-01-22T07:24:04.000Z" title="发表于 2025-01-22 15:24:04">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/01/22/P4-L0-document/" title="P4_L0_document"><img src="../img/HDL.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="P4_L0_document"/></a><div class="content"><a class="title" href="../2025/01/22/P4-L0-document/" title="P4_L0_document">P4_L0_document</a><time datetime="2025-01-22T07:23:39.000Z" title="发表于 2025-01-22 15:23:39">2025-01-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
