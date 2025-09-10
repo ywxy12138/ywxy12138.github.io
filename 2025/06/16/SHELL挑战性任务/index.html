@@ -1,0 +1,476 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SHELL挑战性任务 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SHELL挑战性任务实现报告任务要求基于lab6实现的shell进行增强。    任务内容支持相对路径为每个进程维护工作目录这一状态(明示在PCB中加东西)，实现cd、pwd等内建指令，并为其他与路径相关的指令提供路径支持。    工作目录：进程当前所在目录，来解析相对路径。      绝对路径：以&#x2F;开头路径，始于根目录。    相对路径：不以&#x2F;开头路径，相对于当前工作目录解析，可能含有.(当前路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SHELL挑战性任务">
+<meta property="og:url" content="http://ywxy12138.github.io/2025/06/16/SHELL%E6%8C%91%E6%88%98%E6%80%A7%E4%BB%BB%E5%8A%A1/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="SHELL挑战性任务实现报告任务要求基于lab6实现的shell进行增强。    任务内容支持相对路径为每个进程维护工作目录这一状态(明示在PCB中加东西)，实现cd、pwd等内建指令，并为其他与路径相关的指令提供路径支持。    工作目录：进程当前所在目录，来解析相对路径。      绝对路径：以&#x2F;开头路径，始于根目录。    相对路径：不以&#x2F;开头路径，相对于当前工作目录解析，可能含有.(当前路">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/os.jpg">
+<meta property="article:published_time" content="2025-06-16T13:09:03.000Z">
+<meta property="article:modified_time" content="2025-06-28T03:36:14.713Z">
+<meta property="article:author" content="聿尛">
+<meta property="article:tag" content="OS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/os.jpg"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2025/06/16/SHELL%E6%8C%91%E6%88%98%E6%80%A7%E4%BB%BB%E5%8A%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SHELL挑战性任务',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-06-28 11:36:14'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('../../../../img/os.jpg')"><nav id="nav"><span id="blog-info"><a href="../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SHELL挑战性任务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-16T13:09:03.000Z" title="发表于 2025-06-16 21:09:03">2025-06-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-28T03:36:14.713Z" title="更新于 2025-06-28 11:36:14">2025-06-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/BUAA-OS/">BUAA_OS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SHELL挑战性任务"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="SHELL挑战性任务实现报告"><a href="#SHELL挑战性任务实现报告" class="headerlink" title="SHELL挑战性任务实现报告"></a>SHELL挑战性任务实现报告</h1><h2 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h2><p>基于lab6实现的<code>shell</code>进行增强。   </p>
+<h2 id="任务内容"><a href="#任务内容" class="headerlink" title="任务内容"></a>任务内容</h2><h3 id="支持相对路径"><a href="#支持相对路径" class="headerlink" title="支持相对路径"></a>支持相对路径</h3><p>为每个进程维护<strong>工作目录</strong>这一状态(明示在<code>PCB</code>中加东西)，实现<code>cd</code>、<code>pwd</code>等内建指令，并为其他与路径相关的指令提供路径支持。  </p>
+<blockquote>
+<p><strong>工作目录</strong>：进程当前所在目录，来解析相对路径。     </p>
+<p><strong>绝对路径</strong>：以<code>/</code>开头路径，始于根目录。   </p>
+<p><strong>相对路径</strong>：不以<code>/</code>开头路径，<strong>相对于当前工作目录解析</strong>，可能含有<code>.</code>(当前路径)和<code>..</code>(上一级路径)特殊符号(<strong>要特殊处理</strong>)。   </p>
+</blockquote>
+<p>其中，<code>cd</code>的具体要求：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>输入</strong></th>
+<th align="left"><strong>行为</strong></th>
+<th align="left"><strong>输出</strong></th>
+<th align="left"><strong>返回值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>cd</code></td>
+<td align="left">切换工作目录到 <code>/</code></td>
+<td align="left">无</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>cd &lt;abspath&gt;</code></td>
+<td align="left">若绝对路径 <code>&lt;abspath&gt;</code> 存在且为目录，切换到该目录</td>
+<td align="left">无</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>cd &lt;relpath&gt;</code></td>
+<td align="left">根据当前工作路径，对相对路径<code>&lt;relpath&gt;</code>，若存在且为目录，切换到该目录</td>
+<td align="left">无</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>cd &lt;noexist_path&gt;</code></td>
+<td align="left">路径不存在</td>
+<td align="left"><code>cd: The directory &#39;原始输入&#39; does not exist\n</code></td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>cd &lt;filepath&gt;</code></td>
+<td align="left">路径存在但不是目录</td>
+<td align="left"><code>cd: &#39;原始输入&#39; is not a directory\n</code></td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>cd &lt;arg1&gt;..&lt;argn&gt;</code></td>
+<td align="left">输入多于 1 个参数</td>
+<td align="left"><code>Too many args for cd command\n</code></td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>cd .</code></td>
+<td align="left">解析为当前目录 <code>/dir1/dir2</code>，无变化</td>
+<td align="left">无</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>cd ..</code></td>
+<td align="left">解析为 <code>/dir1</code>，若存在且为目录，切换到该目录</td>
+<td align="left">无</td>
+<td align="left">0</td>
+</tr>
+</tbody></table>
+<p><code>pwd</code>的具体要求：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>输入</strong></th>
+<th align="left"><strong>行为</strong></th>
+<th align="left"><strong>输出</strong></th>
+<th align="left"><strong>返回值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>pwd</code></td>
+<td align="left">输出当前工作目录</td>
+<td align="left"><code>/dir1/dir2\n</code></td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>pwd arg1 ... argn</code></td>
+<td align="left">参数数量错误</td>
+<td align="left"><code>pwd: expected 0 arguments; got n\n</code></td>
+<td align="left">2</td>
+</tr>
+</tbody></table>
+<p><strong>注意：父进程能将工作路径传递给子进程</strong>。  </p>
+<h3 id="环境变量管理"><a href="#环境变量管理" class="headerlink" title="环境变量管理"></a>环境变量管理</h3><p>规定在命令中以<code>$</code>开头，名称同<code>C</code>语言，<strong>长度不超过16</strong>。  </p>
+<p>分为<strong>局部变量</strong>和<strong>非局部变量</strong>两种，仅有后者可以传入子<code>Shell</code>中，且只有非只读变量可被修改。  </p>
+<p>具体实现要求如下：</p>
+<ol>
+<li><p>支持内建命令<code>declare [-xr] [NAME [=VALUE]]</code>：</p>
+<ul>
+<li><code>-x</code>指变量为非局部变量，否则为局部变量。前者可被子进程(子<code>shell</code>)继承，并且可以读取并修改；后者不能被子<code>shell</code>继承。</li>
+<li><code>-r</code>表示变量<strong>只读不可修改</strong>，即不能被<code>declare</code>重赋值或被<code>unset</code>删除。    </li>
+<li>若变量不存在则创建，否则，重新赋值。   </li>
+<li><code>VALUE</code>为可选参数，缺省时将变量赋为空字符串。   </li>
+<li>若只输入了<code>declare</code>则输出当前<code>shell</code>到的所有变量，包括局部和非局部，以<code>&lt;var&gt;=&lt;val&gt;</code>的形式输出。</li>
+</ul>
+</li>
+<li><p>支持内建指令<code>unset NAME</code>命令，若变量不为只读变量，则删除其。  </p>
+</li>
+<li><p>支持在命令中展开变量的值，如用<code>echo.b $NAME</code>打印变量的值。  </p>
+</li>
+<li><p><strong>注意：子<code>shell</code>继承的非局部变量被其修改后并不影响父<code>shell</code>，且<code>declare</code>不能正常执行时要返回非零值</strong>。</p>
+</li>
+</ol>
+<h3 id="输入指令优化"><a href="#输入指令优化" class="headerlink" title="输入指令优化"></a>输入指令优化</h3><h4 id="指令自由输入"><a href="#指令自由输入" class="headerlink" title="指令自由输入"></a>指令自由输入</h4><p>需实现：键入命令时，可使用左箭头和右箭头来移动光标，并可在当前光标位置进行字符增减。<strong>要求每次在不同位置键入后都可完整回显修改后的命令，且键入回车后可以正常运行修改后的命令</strong>。   </p>
+<h4 id="不带-b后缀指令"><a href="#不带-b后缀指令" class="headerlink" title="不带.b后缀指令"></a>不带<code>.b</code>后缀指令</h4><p>需实现不带<code>.b</code>后缀指令且兼容带有<code>.b</code>后缀指令。   </p>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">left-arrow</td>
+<td align="left">光标尝试向左移动，如果可以移动则移动</td>
+</tr>
+<tr>
+<td align="left">right-arrow</td>
+<td align="left">光标尝试向右移动，如果可以移动则移动</td>
+</tr>
+<tr>
+<td align="left">backspace</td>
+<td align="left">删除光标左侧 1 个字符并将光标向左移动 1 列；若已在行首则无动作</td>
+</tr>
+<tr>
+<td align="left">Ctrl-E</td>
+<td align="left">光标跳至最后</td>
+</tr>
+<tr>
+<td align="left">Ctrl-A</td>
+<td align="left">光标跳至最前</td>
+</tr>
+<tr>
+<td align="left">Ctrl-K</td>
+<td align="left">删除从当前光标处到最后的文本</td>
+</tr>
+<tr>
+<td align="left">Ctrl-U</td>
+<td align="left">删除从最开始到光标前的文本</td>
+</tr>
+<tr>
+<td align="left">Ctrl-W</td>
+<td align="left">向左删除最近一个 word：先越过空白(如果有)，再删除连续非空白字符</td>
+</tr>
+</tbody></table>
+<h4 id="历史指令"><a href="#历史指令" class="headerlink" title="历史指令"></a>历史指令</h4><p>实现保存历史指令的功能，并且可以通过上下箭头选择所保存的指令并执行，需将历史指令保存在<code>/.mos_history</code>文件中(一条指令一行)，且最多只保存最近的20条指令，并且需要支持<code>history</code>指令输出其内容。   </p>
+<blockquote>
+<p>注意此处需要将<code>history</code>实现为内建指令，且写入<code>/.mos_history</code>的时机应该在指令输入完成后，执行之前。</p>
+</blockquote>
+<p>使用上下箭头切换指令时，可选指令范围为：用户输入指令与<code>/.mos_history</code>中保存的所有指令。   </p>
+<blockquote>
+<p>注意：此处切换到新指令时光标应该自动恢复到输入最末端。</p>
+</blockquote>
+<h4 id="实现注释功能"><a href="#实现注释功能" class="headerlink" title="实现注释功能"></a>实现注释功能</h4><p>使用<code>#</code>实现注释功能，将抛弃<code>#</code>之后的内容。   </p>
+<h4 id="实现反引号"><a href="#实现反引号" class="headerlink" title="实现反引号"></a>实现反引号</h4><p>需将反引号内指令执行的所有标准输出代替原有指令中的反引号内容。   </p>
+<h4 id="实现一行多指令"><a href="#实现一行多指令" class="headerlink" title="实现一行多指令"></a>实现一行多指令</h4><p>支持使用<code>;</code>将指令隔开按序执行。   </p>
+<h3 id="指令条件执行"><a href="#指令条件执行" class="headerlink" title="指令条件执行"></a>指令条件执行</h3><p>实现<code>&amp;&amp;</code>和<code>||</code>，对于 <code>command1 &amp;&amp; command2</code>，<code>command2</code> 被执行当且仅当 <code>command1</code> 返回 0；对于 <code>command1 || command2</code>，<code>command2</code> 被执行当且仅当 <code>command1</code> 返回非 0 值。   </p>
+<blockquote>
+<p>注意这两者的优先级相同，若多个同时出现则从左到右依次执行。   </p>
+<p>提示：可能需要修改MOS中对用户进程<code>exit</code>的实现，使其能返回值。   </p>
+</blockquote>
+<h3 id="更多指令"><a href="#更多指令" class="headerlink" title="更多指令"></a>更多指令</h3><ul>
+<li><p><code>touch &lt;file&gt;</code>：创建空文件，若文件存在则放弃创建，正常退出无输出。 若创建文件的父目录不存在则输出 <code>touch: cannot touch &#39;&lt;file&gt;&#39;: No such file or directory</code>。</p>
+</li>
+<li><p><code>mkdir</code>:</p>
+<ul>
+<li><code>mkdir &lt;dir&gt;</code>：若目录已存在则输出 <code>mkdir: cannot create directory &#39;&lt;dir&gt;&#39;: File exists</code>，若创建目录的父目录不存在则输出 <code>mkdir: cannot create directory &#39;&lt;dir&gt;&#39;: No such file or directory</code>，否则正常创建目录。</li>
+<li><code>mkdir -p &lt;dir&gt;</code>：当使用 <code>-p</code> 选项时忽略错误，若目录已存在则直接退出，<strong>若创建目录的父目录不存在则递归创建目录</strong>。</li>
+</ul>
+</li>
+<li><p><code>rm</code>:</p>
+<ul>
+<li><code>rm &lt;file&gt;</code>：若文件存在则删除 <code>&lt;file&gt;</code>，否则输出 <code>rm: cannot remove &#39;&lt;file&gt;&#39;: No such file or directory</code>。</li>
+<li><code>rm &lt;dir&gt;</code>：命令行输出: <code>rm: cannot remove &#39;&lt;dir&gt;&#39;: Is a directory</code>。</li>
+<li><code>rm -r &lt;dir&gt;|&lt;file&gt;</code>：若文件或文件夹存在则删除，否则输出 <code>rm: cannot remove &#39;&lt;dir&gt;|&lt;file&gt;&#39;: No such file or directory</code>。</li>
+<li><code>rm -rf &lt;dir&gt;|&lt;file&gt;</code>：如果对应文件或文件夹存在则删除，否则直接退出。</li>
+</ul>
+</li>
+<li><p>(内建指令)<code>exit</code>：退出当前<code>shell</code></p>
+</li>
+</ul>
+<blockquote>
+<p>对<code>rm、mkdir、touch</code>指令，成功执行则返回0，否则返回非零值。</p>
+</blockquote>
+<h3 id="追加重定向"><a href="#追加重定向" class="headerlink" title="追加重定向"></a>追加重定向</h3><p>实现<code>&gt;&gt;</code>。    </p>
+<h2 id="具体修改部分和一些重要的实现细节"><a href="#具体修改部分和一些重要的实现细节" class="headerlink" title="具体修改部分和一些重要的实现细节"></a>具体修改部分和一些重要的实现细节</h2><h3 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h3><p><del>由于我并不想通过构建AST语法树</del>，所以我是采用直接对命令字符串进行处理的方式来解析相应的指令并运行的。<br>在原有框架的基础上，总体流程是<code>sh.c</code>程序从<code>main</code>主函数进入（相当于启动<code>shell</code>），打印好提示词后，尝试将<code>/.mos_history</code>文件中的内容载入到内存，此后做好一些模式的判定后，循环读取输入的命令行，将其中非空且不与前一条指令重复的指令暂存到内存并写入<code>.mos_history</code>文件，并对命令行进行诸如<strong>裁剪前后导空格</strong>、<strong>展开可展环境变量</strong>、<strong>展开反引号并执行</strong>、<strong>去除注释内容</strong>等操作。<br>最后若该命令行非空且不以注释开头，则运行该命令行，其中可能包括由于<code>;</code>分割的多组指令，按顺序运行分割后的每组指令，每组指令中可能包含了条件指令和管道嵌套指令等。           </p>
+<h3 id="新建工具函数"><a href="#新建工具函数" class="headerlink" title="新建工具函数"></a>新建工具函数</h3><p>为了便于后续的操作，并且将<code>OO</code>课程中的“封装”思想应用，在<code>lib/string.c</code>中添加了如下函数的实现，对应也在<code>include/string.h</code>中添加了相应的声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *<span class="hljs-title function_">strncpy</span><span class="hljs-params">(<span class="hljs-type">char</span> *dst, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *src, <span class="hljs-type">size_t</span> n)</span>;<br><span class="hljs-type">char</span> *<span class="hljs-title function_">strcat</span><span class="hljs-params">(<span class="hljs-type">char</span> *dst, <span class="hljs-type">const</span> <span class="hljs-type">char</span> * src)</span>;<br><span class="hljs-type">char</span> *<span class="hljs-title function_">strtok</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *delimiters)</span>;<br><span class="hljs-type">char</span> *<span class="hljs-title function_">strstr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *haystack, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *needle)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">resolve_path</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *original_path, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *current_directory, </span><br><span class="hljs-params">    <span class="hljs-type">char</span> *resolved_path_buffer)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>其中前四个函数与C语言函数库中对应的函数的功能和实现大致一致，而最后一个函数承担了将传入的待解析路径<code>original_path</code>（绝对路径不做处理，相对路径在处理了<code>.</code>和<code>..</code>特殊符号后同当前工作目录<code>current_directory</code>拼接）经过处理后放入解析后的<code>resolved_path_buffer</code>中，以供后续其他函数的使用，而由于相对路径的出现，在一些需要对路径进行操作的函数中需要考虑相对路径，也就是先用该函数来处理一下。     </p>
+<h3 id="一些重要细节"><a href="#一些重要细节" class="headerlink" title="一些重要细节"></a>一些重要细节</h3><h4 id="支持相对路径-1"><a href="#支持相对路径-1" class="headerlink" title="支持相对路径"></a>支持相对路径</h4><p>通过在<code>PCB</code>中设置工作路径并提供获得和修改工作路径的系统调用来为内建指令<code>cd</code>和<code>pwd</code>提供使用便利，对于相对路径的处理，我是在所有用到路径的地方，例如:<code>file.c</code>中的<code>open</code>和<code>remove</code>函数等，都使用了<code>resolve_path</code>函数解析成绝对路径来实现。<br>需要注意的是，<strong>工作路径是需要在<code>fork</code>的时候由父进程传递给子进程</strong>，也就是在<code>env.c</code>中的<code>env_alloc</code>函数中将能获取到的父进程工作路径传给子进程。   </p>
+<h4 id="环境变量管理-1"><a href="#环境变量管理-1" class="headerlink" title="环境变量管理"></a>环境变量管理</h4><p>我的处理是在<code>PCB</code>中增加存储环境变量的数组和相应的总个数，其中对每个环境变量单独设置一个结构体变量存储其相应的属性，如<strong>变量名、变量值、是否可传递给子进程、是否只读</strong>等。同样需要在<code>env.c</code>中的<code>env_alloc</code>函数进行初始化，即全置零，并且需要在<code>kern/syscall_all.c</code>中的<code>sys_exofork</code>函数中进行父子进程之间的环境变量继承，对于不可传递的变量则无需传递给子进程。<br>同样的，<code>declare</code>和<code>unset</code>等内建指令，也是通过系统调用来进行处理。<br><code>declare</code>在没有参数时会同通过<code>syscall_all_args</code>系统调用将当前进程拥有的所有环境变量(局部和非局部)的名和值写入传入的指针中，直接输出即可；并会在有参数时对于有等号(即同时传入名和值)和无等号(只传入名而无值)进行不同的处理(通过<code>syscall_set_args</code>系统调用前者传入相应值后者传入空串)。<br>而<code>unset</code>则是会通过调用<code>syscall_unset_args</code>的系统调用来解除当前进程中可能的环境变量。   </p>
+<h4 id="输入指令优化-1"><a href="#输入指令优化-1" class="headerlink" title="输入指令优化"></a>输入指令优化</h4><h5 id="不带-b后缀指令-1"><a href="#不带-b后缀指令-1" class="headerlink" title="不带.b后缀指令"></a>不带<code>.b</code>后缀指令</h5><p>这个只需要在通过<code>spawn</code>函数运行需要烧录的指令时，按顺序运行指令和加上<code>.b</code>后缀的指令(就算是原来就带有<code>.b</code>后缀的也没事，因为只要这两者一个成功就会停止运行，因为前者要是没成功说明本身就未被定义，那么加上<code>.b</code>后缀也仍未被定义)。   </p>
+<h5 id="指令自由输入和快捷键"><a href="#指令自由输入和快捷键" class="headerlink" title="指令自由输入和快捷键"></a>指令自由输入和快捷键</h5><p>由于这个的实现类似，其实左右移动和快捷键表现在终端就是输入一串字符序列，而我们要做的就是在读取命令行时，通过循环读入的方式不断判断读入的字符可能表示的操作，并在判断出相应操作后进行处理。<br>这里给出一张快捷键和左右移动对应字符序列表格(摘自<a target="_blank" rel="noopener" href="https://lazyfish-lc.github.io/2025/06/16/BUAA-OS-shell-challenge/">zzy的博客</a>):   </p>
+<table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">输入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">up-arrow</td>
+<td align="left">0x1b[A</td>
+</tr>
+<tr>
+<td align="left">down-arrow</td>
+<td align="left">0x1b[B</td>
+</tr>
+<tr>
+<td align="left">left-arrow</td>
+<td align="left">0x1b[D</td>
+</tr>
+<tr>
+<td align="left">right-arrow</td>
+<td align="left">0x1b[C</td>
+</tr>
+<tr>
+<td align="left">backspace</td>
+<td align="left">\b或者0x7f</td>
+</tr>
+<tr>
+<td align="left">Ctrl-E</td>
+<td align="left">0x5</td>
+</tr>
+<tr>
+<td align="left">Ctrl-A</td>
+<td align="left">0x1</td>
+</tr>
+<tr>
+<td align="left">Ctrl-K</td>
+<td align="left">0xb</td>
+</tr>
+<tr>
+<td align="left">Ctrl-U</td>
+<td align="left">0x15</td>
+</tr>
+<tr>
+<td align="left">Ctrl-W</td>
+<td align="left">0x17</td>
+</tr>
+</tbody></table>
+<p>大致思路就是修改<code>read_line</code>函数的逻辑，首先设置光标位置<code>index</code>用来表示光标在命令行缓冲区中的索引，用<code>len</code>来代表当前命令行的总长度，避免出现超出命令行长度的情况出现。这两个参数也是用来回显的重要参数，回显函数<code>redisplay_line</code>通过打印<code>\r$ </code>将光标移动到行首，打印<code>\033[K</code>来清除光标后到行尾的内容，并打印修改后的内容，通过打印<code>\033[%dG</code>来移动光标位置，注意传入<code>%d</code>的参数应该是<code>index + 3</code>，因为一开始有<code>\r$ </code>三个字符占位了。   </p>
+<p>上述快捷指令通过修改<code>len</code>和<code>index</code>并调用回显函数，即可实现相应的快捷操作，这里需要注意的一点就是使用上下键时，由于需要和历史指令进行交互，因此需要尤其注意内存区的指令会因为切换的修改而被修改，除非它最终被执行，也就是当你对某条历史指令进行修改后切换走再切换回来时是<strong>需要留存上次修改后的结果的</strong>，而对于在某条历史指令上进行修改后并执行是不会保留到内存区的；<strong>同时切换后的<code>index</code>即光标位置应该定位在新命令行末尾，相应的<code>len</code>也需要进行改变</strong>。   </p>
+<p>退出循环的时机是输入了<code>\n</code>或<code>\r</code>的换行符，或者长度超过了最大命令行长度。    </p>
+<h5 id="历史指令-1"><a href="#历史指令-1" class="headerlink" title="历史指令"></a>历史指令</h5><p>大致思路是维护一个20*最大命令行长度的二维数组<code>history_lines</code>、一个当前输入的指令区存放使用上下键切换后的当前输入<code>current_cmd</code>、总共的历史指令数量<code>history_lines_num</code>和当前浏览的历史指令在二维数组中的索引<code>history_current_index</code>(对于当前输入，其值为-1，其余则为对应数组索引)。    </p>
+<p>其中尤其需要注意<code>history_lines</code>的维护，因为仅保有最近使用的20条指令，因此，需要格外注意溢出情况的发生。   </p>
+<p>搭配着上下键的使用，需要注意当浏览到最老指令时，上键将失灵；同样对于当前输入指令，下键也将失灵。    </p>
+<p>根据指导书给定的样例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> `<span class="hljs-built_in">ls</span> | <span class="hljs-built_in">cat</span>`<br>...<br>$ <span class="hljs-built_in">echo</span> meow <span class="hljs-comment"># comment</span><br>meow<br>$ <span class="hljs-built_in">history</span><br>1 <span class="hljs-built_in">echo</span> `<span class="hljs-built_in">ls</span> | <span class="hljs-built_in">cat</span>`<br>2 <span class="hljs-built_in">echo</span> meow <span class="hljs-comment"># comment</span><br>3 <span class="hljs-built_in">history</span><br>$ <span class="hljs-built_in">history</span> | <span class="hljs-built_in">cat</span><br>1 <span class="hljs-built_in">echo</span> `<span class="hljs-built_in">ls</span> | <span class="hljs-built_in">cat</span>`<br>2 <span class="hljs-built_in">echo</span> meow <span class="hljs-comment"># comment</span><br>3 <span class="hljs-built_in">history</span><br>4 <span class="hljs-built_in">history</span> | <span class="hljs-built_in">cat</span><br></code></pre></td></tr></table></figure>
+
+<p>发现指令写入<code>/.mos_history</code>的时机应该是<strong>指令输入完毕</strong>(即键入换行符)之后，到<strong>指令执行之前</strong>，这点是需要尤其关注的。    </p>
+<h5 id="注释功能"><a href="#注释功能" class="headerlink" title="注释功能"></a>注释功能</h5><p>大致思路是在解析命令行时，在遇到<code>#</code>时将其置为<code>\0</code>，即可在之后对其进行处理时忽略掉原来<code>#</code>之后的内容，进而实现了注释的效果。  </p>
+<h5 id="实现反引号-1"><a href="#实现反引号-1" class="headerlink" title="实现反引号"></a>实现反引号</h5><p>大致思路是在解析命令行阶段，提取出命令行中潜在的反引号中的内容，单独开一个子进程来运行该内容后将运行结果的内容替换掉原来的内容即可，可以新开一个字符数组，循环寻找第一个反引号，第一个反引号之前的内容一字不差的写入新数组，提取反引号内的内容，若未找到第二个则把包括之前第一个反引号在内到末尾的所有内容写入新数组；反之，则将获取到的输出结果填入新数组中。    </p>
+<h5 id="实现一行多指令-1"><a href="#实现一行多指令-1" class="headerlink" title="实现一行多指令"></a>实现一行多指令</h5><p>大致思路是在运行命令行阶段，根据<code>;</code>分割命令行成不同组的命令行，按顺序依次运行即可。   </p>
+<h4 id="指令条件执行-1"><a href="#指令条件执行-1" class="headerlink" title="指令条件执行"></a>指令条件执行</h4><p>大致思路是在需要在将命令行分完组后，对于每个单独的命令组再进行对<code>&amp;&amp;</code>和<code>||</code>的识别，分割成不同的命令<code>token</code>，并根据运算规则，依次进行命令<code>token</code>的运行，</p>
+<blockquote>
+<p>&#x2F;&#x2F;摘自指导书</p>
+<p>对于 <code>command1 &amp;&amp; command2</code>，<code>command2</code> 被执行当且仅当 <code>command1</code> 返回 0；对于 <code>command1 || command2</code>，<code>command2</code> 被执行当且仅当 <code>command1</code> 返回非 0 值。</p>
+</blockquote>
+<p>对于样例提到的运算优先级相同的情况，我的方法是采用“跳过法”，首先用一个变量<code>last_status</code>存储当前运行到的命令<code>token</code>之前所有 命令<code>token</code>的执行结果，若当前操作是<code>&amp;&amp;</code>且<code>last_status</code>为0或者<code>||</code>且<code>last_status</code>不为0时才可进行当前命令<code>token</code>的运行，否则就应跳过下一个命令进而执行下下个命令<code>token</code>。   </p>
+<p>大致代码如下(发现昨天提交上去的代码貌似还是有点问题，啸修改后如下)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//i==0代表一开始什么操作符都没有的时候需要直接运行</span><br><span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || (ops[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;&amp;&#x27;</span> &amp;&amp; last_status == <span class="hljs-number">0</span>) <br>        || (ops[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;|&#x27;</span> &amp;&amp; last_status != <span class="hljs-number">0</span>)) &#123;<br>            last_status = run_single_cmd(seg[i]);<br>        &#125;<br><br>        <span class="hljs-comment">// 如果是 &amp;&amp;，上一条失败就跳过下一条指令</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; ops[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;&amp;&#x27;</span> &amp;&amp; last_status != <span class="hljs-number">0</span>) &#123;<br>            i++;<br>        &#125;<br><br>        <span class="hljs-comment">// 如果是 ||，上一条成功就跳过下一条指令</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; ops[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;|&#x27;</span> &amp;&amp; last_status == <span class="hljs-number">0</span>) &#123;<br>            i++;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="更多指令-touch、mkdir、rm"><a href="#更多指令-touch、mkdir、rm" class="headerlink" title="更多指令(touch、mkdir、rm)"></a>更多指令(<code>touch</code>、<code>mkdir</code>、<code>rm</code>)</h4><h5 id="touch"><a href="#touch" class="headerlink" title="touch"></a><code>touch</code></h5><p>大致实现思路就是先判断用法使用是否正确，再检查文件是否存在，尤其注意<strong>不需要重复创建存在的文件</strong>，因此，若存在则直接返回即可，否则通过创建模式打开指定的路径便会创建相对应的文件，最后再通过<code>close(fd)</code>关闭相应文件即可。   </p>
+<h5 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a><code>mkdir</code></h5><p>大致思路就是判断完参数输入要求后，由于此处有选项<code>-p</code>的加入，因此还需要去多进行一步的判断，任何非<code>-p</code>的选项输入都要认定为非法输入(<del>因为只要求实现这个</del>)，大致流程就是先通过路径的<code>Stat</code>结构体来判断目录文件是否存在，对于已存在一模一样的目录或者创建目录的父目录不存在，未加<code>-p</code>选项的报错；反之加了<code>-p</code>选项，对已存在的情况正常退出，对父目录不存在的则递归创建目录。   </p>
+<p>递归的思路大致是从根目录开始逐级分解传入的目录路径，对于不存在的目录进行创建，<strong>这里采用的是使用<code>O_MKDIR</code>模式打开文件</strong>，相应的需要在<code>fs/serv.c</code>文件的<code>serve_open</code>函数中实现对于<code>O_MKDIR</code>模式的判断与处理，其实也就是同创建普通文件一样通过<code>file_creat</code>创建一个新文件，将其设置为目录文件的属性即可。(<del>目录就是文件的含金量还在升高</del>)      </p>
+<h5 id="rm"><a href="#rm" class="headerlink" title="rm"></a><code>rm</code></h5><p>大致思路是在判断完命令行参数数量后，循环解析命令行选项<code>-r</code>(递归删除)和<code>-f</code>(强制删除)，获取完相应路径后进行相应的删除操作，尤其注意有无选项以及不同选项下的输出反馈的不同，无选项时只能删除存在的文件，否则会报错；存在<code>-r</code>选项时递归删除存在的文件或文件夹，否则报错；存在<code>-rf</code>时递归删除存在文件或文件夹，否则正常退出。  </p>
+<p>其中需要注意递归删除的大致流程：</p>
+<ol>
+<li><strong>打开目录：</strong> 使用 <code>open</code> 函数打开目录，获取文件描述符 <code>fd</code>。若打开失败，则返回 -1。</li>
+<li><strong>读取目录内容：</strong> 使用循环和 <code>readn</code> 函数读取目录中的所有文件和子目录的信息，存储在 <code>struct File</code> 结构体 <code>f</code> 中。</li>
+<li><strong>构建完整路径：</strong> 对于每个文件或子目录，构建其完整路径 <code>full_path</code>。</li>
+<li><strong>判断类型：</strong> 使用 <code>stat</code> 函数获取文件或子目录的类型，存储在 <code>struct Stat</code> 结构体 <code>st</code> 中。</li>
+<li><strong>递归删除</strong>：<ul>
+<li>如果 <code>st.st_isdir</code> 为真，表示当前项是一个子目录，则递归调用 <code>remove_directory_recursive</code> 函数删除该子目录。</li>
+<li>否则，表示当前项是一个文件，使用 <code>remove</code> 函数删除该文件。</li>
+</ul>
+</li>
+<li><strong>关闭目录：</strong> 关闭文件描述符 <code>fd</code>。</li>
+<li><strong>删除空目录：</strong> 使用 <code>remove</code> 函数删除已经为空的目录。</li>
+</ol>
+<p>以上这三种命令都是外部命令，而非内建命令，也就是是需要烧录到生成镜像中才可使用的，因此还需要在<code>new.mk</code>中加入如下代码来实现烧录：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs makefile">INITAPPS += <br><br>USERLIB	+= <br><br>USERAPPS += rm.b \<br>			mkdir.b \<br>			touch.b<br></code></pre></td></tr></table></figure>
+
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><p>由于原有环境并未提供重定向模式，因此我自行设计了一个判断是否为追加模式的变量<code>append_mode</code>在解析参数<code>token</code>时，若遇到<code>&gt;&gt;</code>则将其置为1表示是重定向，在之后的操作中只需要在对文件操作前判断出是重定向模式后将文件读写指针移动到文件末尾即可(可通过<code>Stat</code>结构体获取文件大小再通过<code>seek</code>函数移动文件读写指针)，实现重定向模式。   </p>
+<h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><p>这次的挑战性任务繁复杂多，但只要抽丝剥茧，厘清其中脉络，还是可以较好的完成的。收获颇多！</p>
+<script src="https://utteranc.es/client.js"
+        repo="ywxy12138/ywxy12138.github.io"
+        issue-term="pathname"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2025/06/16/SHELL%E6%8C%91%E6%88%98%E6%80%A7%E4%BB%BB%E5%8A%A1/">http://ywxy12138.github.io/2025/06/16/SHELL挑战性任务/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/OS/">OS</a></div><div class="post_share"><div class="social-share" data-image="../../../../img/os.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%82%B9%E6%9D%82%E7%83%A9/" title="军事理论知识点杂烩"><img class="cover" src="../../../../img/%E8%B5%B5%E4%BA%91%E5%92%8C%E9%A9%AC%E4%BA%91%E7%A6%84.jpeg" onerror="onerror=null;src='../../../../img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">军事理论知识点杂烩</div></div></a></div><div class="next-post pull-right"><a href="../../../07/12/backend/" title="backend"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">backend</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../../../03/14/Lab0%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="OS_lab0"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-14</div><div class="title">OS_lab0</div></div></a></div><div><a href="../../../03/15/OS%E7%90%86%E8%AE%BA/" title="OS理论"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">OS理论</div></div></a></div><div><a href="../../../02/18/OS%E5%AE%9E%E9%AA%8C/" title="OS实验"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-18</div><div class="title">OS实验</div></div></a></div><div><a href="../../12/SWAP%E6%8C%91%E6%88%98%E6%80%A7%E4%BB%BB%E5%8A%A1/" title="SWAP挑战性任务"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="title">SWAP挑战性任务</div></div></a></div><div><a href="../../../03/15/lab1%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="OS_lab1"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">OS_lab1</div></div></a></div><div><a href="../../../04/14/lab3%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="OS_lab3"><img class="cover" src="../../../../img/os.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-14</div><div class="title">OS_lab3</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SHELL%E6%8C%91%E6%88%98%E6%80%A7%E4%BB%BB%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%8A%A5%E5%91%8A"><span class="toc-number">1.</span> <span class="toc-text">SHELL挑战性任务实现报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">任务要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.</span> <span class="toc-text">任务内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">支持相对路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">环境变量管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">输入指令优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E8%87%AA%E7%94%B1%E8%BE%93%E5%85%A5"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">指令自由输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6-b%E5%90%8E%E7%BC%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">不带.b后缀指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">历史指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%B3%A8%E9%87%8A%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">实现注释功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="toc-number">1.2.3.6.</span> <span class="toc-text">实现反引号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E8%A1%8C%E5%A4%9A%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.3.7.</span> <span class="toc-text">实现一行多指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E6%9D%A1%E4%BB%B6%E6%89%A7%E8%A1%8C"><span class="toc-number">1.2.4.</span> <span class="toc-text">指令条件执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.5.</span> <span class="toc-text">更多指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%BD%E5%8A%A0%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.6.</span> <span class="toc-text">追加重定向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BF%AE%E6%94%B9%E9%83%A8%E5%88%86%E5%92%8C%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-number">1.3.</span> <span class="toc-text">具体修改部分和一些重要的实现细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">大体流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">新建工具函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E7%BB%86%E8%8A%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">一些重要细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84-1"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">支持相对路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%AE%A1%E7%90%86-1"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">环境变量管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4%E4%BC%98%E5%8C%96-1"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">输入指令优化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6-b%E5%90%8E%E7%BC%80%E6%8C%87%E4%BB%A4-1"><span class="toc-number">1.3.3.3.1.</span> <span class="toc-text">不带.b后缀指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E8%87%AA%E7%94%B1%E8%BE%93%E5%85%A5%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.3.3.3.2.</span> <span class="toc-text">指令自由输入和快捷键</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E6%8C%87%E4%BB%A4-1"><span class="toc-number">1.3.3.3.3.</span> <span class="toc-text">历史指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.3.3.4.</span> <span class="toc-text">注释功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%BC%95%E5%8F%B7-1"><span class="toc-number">1.3.3.3.5.</span> <span class="toc-text">实现反引号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E8%A1%8C%E5%A4%9A%E6%8C%87%E4%BB%A4-1"><span class="toc-number">1.3.3.3.6.</span> <span class="toc-text">实现一行多指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E6%9D%A1%E4%BB%B6%E6%89%A7%E8%A1%8C-1"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">指令条件执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%8C%87%E4%BB%A4-touch%E3%80%81mkdir%E3%80%81rm"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">更多指令(touch、mkdir、rm)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#touch"><span class="toc-number">1.3.3.5.1.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mkdir"><span class="toc-number">1.3.3.5.2.</span> <span class="toc-text">mkdir</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rm"><span class="toc-number">1.3.3.5.3.</span> <span class="toc-text">rm</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.3.3.6.</span> <span class="toc-text">重定向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">心得体会</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/09/09/%E5%B9%B6%E8%A1%8C/" title="并行">并行</a><time datetime="2025-09-09T11:09:12.000Z" title="发表于 2025-09-09 19:09:12">2025-09-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/09/06/compile/" title="compile">compile</a><time datetime="2025-09-06T09:31:36.000Z" title="发表于 2025-09-06 17:31:36">2025-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../2025/08/27/%E6%95%B0%E6%A8%A1/" title="数模">数模</a><time datetime="2025-08-27T02:03:34.000Z" title="发表于 2025-08-27 10:03:34">2025-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/07/27/redis/" title="redis"><img src="../img/redis.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="redis"/></a><div class="content"><a class="title" href="../2025/07/27/redis/" title="redis">redis</a><time datetime="2025-07-27T12:00:49.000Z" title="发表于 2025-07-27 20:00:49">2025-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../2025/07/24/ESEE%E5%92%8Ceye301%E9%A1%B9%E7%9B%AE%E5%B0%8F%E8%AE%B0/" title="ESEE和eye301项目小记"><img src="../img/English.jpg" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="ESEE和eye301项目小记"/></a><div class="content"><a class="title" href="../2025/07/24/ESEE%E5%92%8Ceye301%E9%A1%B9%E7%9B%AE%E5%B0%8F%E8%AE%B0/" title="ESEE和eye301项目小记">ESEE和eye301项目小记</a><time datetime="2025-07-24T01:55:17.000Z" title="发表于 2025-07-24 09:55:17">2025-07-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
