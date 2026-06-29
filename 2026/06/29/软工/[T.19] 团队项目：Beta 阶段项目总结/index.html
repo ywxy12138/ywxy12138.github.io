@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>yumooo | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目 内容    这个作业属于哪个课程 课程社区   这个作业的要求在哪里 作业要求   我在这个课程的目标是 凝聚整个团队通过一定的软件开发流程，在预计时间内发布”足够好”的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。   这个作业在哪个具体方面帮助我实现目标 事后分析总结，总结团队在开发过程中遇到困难时克服的经验以及收获的成长经历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yumooo">
+<meta property="og:url" content="http://ywxy12138.github.io/2026/06/29/%E8%BD%AF%E5%B7%A5/[T.19]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="项目 内容    这个作业属于哪个课程 课程社区   这个作业的要求在哪里 作业要求   我在这个课程的目标是 凝聚整个团队通过一定的软件开发流程，在预计时间内发布”足够好”的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。   这个作业在哪个具体方面帮助我实现目标 事后分析总结，总结团队在开发过程中遇到困难时克服的经验以及收获的成长经历">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg">
+<meta property="article:published_time" content="2026-06-29T02:40:39.164Z">
+<meta property="article:modified_time" content="2026-06-29T02:40:42.914Z">
+<meta property="article:author" content="聿尛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg"><link rel="shortcut icon" href="../../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2026/06/29/%E8%BD%AF%E5%B7%A5/[T.19]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'yumooo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2026-06-29 10:40:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('../../../../../img/%E8%B5%B5%E4%BA%91%E5%92%8C%E9%A9%AC%E4%BA%91%E7%A6%84.jpeg')"><nav id="nav"><span id="blog-info"><a href="../../../../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-29T02:40:39.164Z" title="发表于 2026-06-29 10:40:39">2026-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-29T02:40:42.914Z" title="更新于 2026-06-29 10:40:42">2026-06-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><table>
+<thead>
+<tr>
+<th><strong>项目</strong></th>
+<th><strong>内容</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>这个作业属于哪个课程</td>
+<td><a target="_blank" rel="noopener" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR">课程社区</a></td>
+</tr>
+<tr>
+<td>这个作业的要求在哪里</td>
+<td><a target="_blank" rel="noopener" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR/homework/15685">作业要求</a></td>
+</tr>
+<tr>
+<td>我在这个课程的目标是</td>
+<td>凝聚整个团队通过一定的软件开发流程，在预计时间内发布”足够好”的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。</td>
+</tr>
+<tr>
+<td>这个作业在哪个<strong>具体方面</strong>帮助我实现目标</td>
+<td>事后分析总结，总结团队在开发过程中遇到困难时克服的经验以及收获的成长经历，为后续的实际软件开发工作总结经验。</td>
+</tr>
+</tbody></table>
+<h1 id="设想和目标"><a href="#设想和目标" class="headerlink" title="设想和目标"></a>设想和目标</h1><ol>
+<li>我们的软件要解决什么问题？是否定义得很清楚？是否对典型用户和典型场景有清晰的描述？</li>
+</ol>
+<p>我们的软件，旨在解决卡牌自定义规则无法线上游玩，以及开发门槛高的问题。</p>
+<p>这是一个明确的问题定义。</p>
+<p>我们在选题时，已经明确了三类用户，及其典型的场景：</p>
+<ul>
+<li>平台管理员：负责审核上架到平台上的规则，以及处理用户的举报。</li>
+<li>规则开发者：负责开发平台上可游玩的自定义卡牌规则。</li>
+<li>玩家：负责在平台上玩。</li>
+</ul>
+<ol start="2">
+<li>我们达到目标了么(原计划的功能做到了几个？  按照原计划交付时间交付了么？ 原计划达到的用户数量达到了么?)</li>
+</ol>
+<p>在功能实现方面，我们按时完成了开题时预期的所有功能：</p>
+<ul>
+<li>图形化规则构建</li>
+<li>对局系统</li>
+<li>规则市场</li>
+<li>对局回放</li>
+<li>管理功能：规则审核、举报系统</li>
+</ul>
+<p>唯受可用的服务器资源所限，该平台于课程阶段无法支撑较大流量的访问，并没能达到预期的用户数量。</p>
+<ol start="3">
+<li>和上一个阶段相比，团队软件工程的质量提高了么？ 在什么地方有提高，具体提高了多少，如何衡量的？</li>
+</ol>
+<p>与上一个阶段相比，软件工程质量维持稳定。</p>
+<p>如果说有改进的话：</p>
+<ul>
+<li>在本阶段内，我们在分工上配置更为合理，将上一阶段任务分配较少的两位负责测试的同学也加入了前后端开发中。</li>
+<li>我们在本阶段沟通项目进度更及时，确保了项目的如期交付。</li>
+</ul>
+<ol start="4">
+<li>用户量, 用户对重要功能的接受程度和我们事先的预想一致么? 我们离目标更近了么?</li>
+</ol>
+<p>再次，受可用的服务器资源所限，该平台于课程阶段无法支撑较大流量的访问，并没能达到预期的用户数量。</p>
+<p>对于图形化规则构建这一重点功能，用户反馈与我们的预期一致。该功能确降低了此类规则的开发门槛，但出于其组件原子化的特性，这套构建系统仍然具有学习成本，且使用较为不便。</p>
+<p>自搭建出一个可以构建自定义卡牌规则，并联机游玩的这个目标而言，我们确实离其更近了。</p>
+<blockquote>
+<p>有什么经验教训? 如果历史重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p>选题的时候，还是要充分考虑选题难度的，对项目进展还是尽可能悲观的好。</p>
+<p>历史重来一遍的话，我们可能会考虑换一个更容易实现的选题（笑）</p>
+<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><ol>
+<li>是否有充足的时间来做计划?</li>
+</ol>
+<p>有。我们在选题时，就已经通过多次会议，确定好了我们的选题，要实现的功能，以及各个阶段需要实现的功能。</p>
+<ol start="2">
+<li>团队在计划阶段是如何解决同事们对于计划的不同意见的？</li>
+</ol>
+<p>有两种方式：</p>
+<ul>
+<li>协商。通过协调组内各位同学的意见，得到大家都同意的方案。</li>
+<li>由一位有决定权的人拍板决定。在本门课程的场景下，这个人是PM。</li>
+</ul>
+<ol start="3">
+<li>你原计划的工作是否最后都做完了? 如果有没做完的，为什么?</li>
+</ol>
+<p>是的，工作都做完了。</p>
+<ol start="4">
+<li>有没有发现你做了一些事后看来没必要或没多大价值的事?</li>
+</ol>
+<p>每两天把所有人拉起来开 Scrum Meeting。</p>
+<p>且不论把所有人聚在一起，协调共同的时间、地点所需的精力，本项目的PM还发现：</p>
+<ul>
+<li>频繁的 Scrum Meeting，组员的情绪普遍是不乐意；此外，开会过程中，显著注意到组员处于汇报进度的高压状态，这并不利于组员之间的相互协作。</li>
+<li>每次开会，都会占据至少40min的时间。按每周至少3次而言，每周我们就需要浪费两小时以上，仅仅用于开会对进度；有这时间，项目的简单功能都已经实现了。沟通进度？发一条短信 &#x2F; 在 Github repo 上看 Commit 就能问到，何苦把所有人都聚一块轮流汇报？</li>
+</ul>
+<ol start="5">
+<li>是否每一项任务都有清楚定义和衡量的交付件?</li>
+</ol>
+<p>有。</p>
+<p>对于前端开发，交付件就是前端网页；对于后端开发，交付件就是后端服务逻辑；对于测试开发，交付件就是单元测试；对于运维，就是服务端的稳定部署；对于PM，就是各项文档。</p>
+<ol start="6">
+<li>是否项目的整个过程都按照计划进行，项目出了什么意外？有什么风险是当时没有估计到的，为什么没有估计到?</li>
+</ol>
+<p>整体而言是按计划进行的，意外基本出现在 Alpha 阶段：</p>
+<ul>
+<li>规则执行引擎的开发进度滞后，这是包括规则执行引擎在内的后端开发，当时仅由一位开发同学负责，且其进度沟通不积极导致的；</li>
+<li>申请的域名无法备案，政策规定个人无法申请在线游戏平台有关的域名。</li>
+</ul>
+<p>对于第一点，这是我们对于开发任务工作量估计过于乐观，且不强制要求沟通进度引起的。在 Beta 阶段，我们通过在后端加入更多人手，且要求组员及时沟通进度解决了这一问题。</p>
+<p>对于第二点，这是我们对于有关政策文件考虑不周导致的。</p>
+<ol start="7">
+<li>在计划中有没有留下缓冲区，缓冲区有作用么?</li>
+</ol>
+<p>有。Alpha 和 Beta 阶段我们都留了最后一周作为缓冲。</p>
+<p>是有用的，我们事实上在两个阶段的最后一周，都在处理尚未完成的任务。</p>
+<p>缓冲区可以理解成，用于防止计划不及预期的，而灵活分配的一段保险时间。</p>
+<ol start="8">
+<li>将来的计划会做什么修改？（例如：缓冲区的定义，加班）</li>
+</ol>
+<p> 可能的修改是，缓冲区不再是用于保险，而是用于做更详尽的测试。</p>
+<blockquote>
+<p>我们学到了什么? 如果历史重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p> 学到的是“计划不如变化快”。一开始充分的计划，在后面实施的时候难免会出变数，不留足用于灵活变通的时间，对于项目的实施是非常危险的事情。</p>
+<p>历史重来一遍的话，开发进度里面留的缓存区应该留大一点。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ol>
+<li>我们有足够的资源来完成各项任务么?</li>
+</ol>
+<p>时间而言略为局促，我们在开题时事实上低估了实现一套图形化编程语言及其执行器的难度。</p>
+<p>人力而言是足够的。</p>
+<p>硬件资源方面，我们可用的服务器资源相当有限，以至于我们的发布范围只能限制于较小范围。</p>
+<ol start="2">
+<li>各项任务所需的时间和其他资源是如何估计的，精度如何?</li>
+</ol>
+<p>通过开题时，PM和组员集体讨论决定。</p>
+<p>对于简单的功能，比如用户系统等，这部分的估计是精确的；而对于图形化规则构建这一部分的估计，我们均低估了其难度和开发所需时间。</p>
+<ol start="3">
+<li>测试的时间，人力和软件&#x2F;硬件资源是否足够? 对于那些不需要编程的资源 (美工设计&#x2F;文案)是否低估难度?</li>
+</ol>
+<p>测试时间因为开发时间占比高，事实上做得相当局促。</p>
+<p>对于测试和开发而言，人力是足够的。</p>
+<p>硬件资源，再次，我们可用的服务器资源相当有限。</p>
+<p>不需编程部分的资源，我们在本项目中涉及较少，故没有低估其难度。</p>
+<ol start="4">
+<li>你有没有感到你做的事情可以让别人来做（更有效率）?</li>
+</ol>
+<p>自团队整体而言，这个问题并没有出现。</p>
+<p>硬要说的话，本项目的具体实现接口是由PM确定的，这一部分如果交给前后端的同学做决定可能会更高效。</p>
+<blockquote>
+<p>有什么经验教训? 如果历史重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p>经验教训是，给定有限的人力资源，做好分工是比较重要的。在 Alpha 阶段，我们将后端开发仅交予一人进行，这导致了我们于那一阶段的开发迟缓。</p>
+<p>历史重来一遍的话，也就是把分工在一开始就设计成一个合理的状况。</p>
+<h1 id="变更管理"><a href="#变更管理" class="headerlink" title="变更管理"></a>变更管理</h1><ol>
+<li>每个相关的员工都及时知道了变更的消息?</li>
+</ol>
+<p>是。有 Merge 都会在项目群中转告其他组员。</p>
+<ol start="2">
+<li>我们采用了什么办法决定“推迟”和“必须实现”的功能?</li>
+</ol>
+<p>按功能优先级排序。举例而言，我们的图形化规则构建作为核心功能，其优先级最高。其他诸如规则回放的附加功能，优先级较低，被放在了 Beta 阶段。</p>
+<ol start="3">
+<li>项目的出口条件（Exit Criteria – 什么叫“做好了”）有清晰的定义么?</li>
+</ol>
+<p>有。定义可以认为是：</p>
+<ul>
+<li>在前端，能够按预期设计展示交互逻辑</li>
+<li>在后端，能够执行预期的逻辑</li>
+<li>在测试，能够通过所有预期的单元测试</li>
+</ul>
+<ol start="4">
+<li>对于可能的变更是否能制定应急计划?</li>
+</ol>
+<p>事实上，我们的项目在开题的时候就把各阶段的任务规划做好了，包括其分工和开始、截止时间，对于应急计划的应变能力相当有限。</p>
+<ol start="5">
+<li>员工是否能够有效地处理意料之外的工作请求？</li>
+</ol>
+<p>再次，因为我们倾向于事前完全做规划，且我们的开发计划相当紧凑，员工处理意料之外的工作请求的能力有限。</p>
+<blockquote>
+<p>我们学到了什么? 如果历史重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p> 再次，“计划不如变化快”。再来一次的话，我们一开始就不会把计划写得那么细，而是每隔几天开会的时候灵活调整。</p>
+<h1 id="设计-实现"><a href="#设计-实现" class="headerlink" title="设计&#x2F;实现"></a>设计&#x2F;实现</h1><ol>
+<li>设计工作在什么时候，由谁来完成的？是合适的时间，合适的人么？</li>
+</ol>
+<p>功能设计由PM在开题时，结合会议上各组员意见完成。</p>
+<p>前端、后端的具体设计交由前、后端的开发人员自行决定，PM只参与了部分API的确定。</p>
+<p>设计的时间是合理的，负责设计的人也基本合理。</p>
+<ol start="2">
+<li>设计工作有没有碰到模棱两可的情况，团队是如何解决的？</li>
+</ol>
+<p>有。比如前后端如何交互。</p>
+<p>团队通过由PM确定统一方案来解决此类问题。</p>
+<ol start="3">
+<li>团队是否运用单元测试（unit test），测试驱动的开发（TDD）、UML, 或者其他工具来帮助设计和实现？这些工具有效么？ 比较项目开始的 UML 文档和现在的状态有什么区别？这些区别如何产生的？是否要更新 UML 文档？</li>
+</ol>
+<p>团队运用了单元测试，来保证项目的实现符合预期。</p>
+<p>单元测试确实帮助我们发现了一些 Bug，是有用的。</p>
+<p>我们并没有使用UML。如果就其他设计文档而言，项目一开始的文档就现在的状态而言，少了一部分新增功能，以及部分边界条件的考虑。开发过程中，我们也确实对其进行了更新。</p>
+<ol start="4">
+<li>什么功能产生的Bug最多，为什么？在发布之后发现了什么重要的bug? 为什么我们在设计&#x2F;开发的时候没有想到这些情况?</li>
+</ol>
+<p>用于对局的规则执行引擎产生的 Bug 最多。</p>
+<p>其原因大概有：</p>
+<ul>
+<li>逻辑自身相当复杂，其不仅需要负责规则本身的执行，还需要负责与客户端的网络通信</li>
+<li>这一部分的开发进度事实上较慢，留给测试的时间较少</li>
+<li>初期开发人手不足，后端仅一位同学负责</li>
+</ul>
+<p>发布后未发现重大 Bug。</p>
+<p>未想到这些情况的原因，是因为我们对于自定义规则执行引擎开发所需的工作量过于乐观。</p>
+<ol start="5">
+<li>代码复审（Code Review）是如何进行的，是否严格执行了代码规范？</li>
+</ol>
+<p>代码复审通过在关闭 Issue，由审核者在 Merge 前统一检查来进行。</p>
+<p>执行了简单的代码规范。</p>
+<blockquote>
+<p>我们学到了什么? 如果历史重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p>我们学到了，事先做好计划对开发工作是有好处的，至少我们在开发过程中没有出现任何将已有功能计划推倒重来的情况。</p>
+<p>历史重来一遍的话，这一部分的执行我认为很好，没有进一步改进的空间。</p>
+<h1 id="测试-发布"><a href="#测试-发布" class="headerlink" title="测试&#x2F;发布"></a>测试&#x2F;发布</h1><ol>
+<li>团队是否有一个测试计划？为什么没有？</li>
+</ol>
+<p>有。具体而言，在每个功能实现完成后，负责测试的同学就对应编写单元测试。</p>
+<ol start="2">
+<li>是否进行了正式的验收测试？</li>
+</ol>
+<p>有。在开发完成后，我们对所有功能都进行了简单的测试，确保其行为符合预期。</p>
+<ol start="3">
+<li><p>团队是否有测试工具来帮助测试？</p>
+<p> 很多团队用大量低效率的手动测试，请提出改进计划：至少一个方面的测试要用自动化的测试工具，自动化的测试结果报告，比较测试结果的差异，等等。</p>
+</li>
+</ol>
+<p>我们利用编写单元测试 + Github Actions的 CI&#x2F;CD 方式来辅助测试。</p>
+<p>对于低效率手动测试的改进计划：</p>
+<ul>
+<li>引入单元测试。</li>
+<li>部署基于单元测试的CI&#x2F;CD流程。</li>
+</ul>
+<ol start="4">
+<li>团队是如何测量并跟踪软件的效能（Performance）的？压力测试（Stress Test）呢？ 从软件实际运行的结果来看，这些测试工作有用么？应该有哪些改进？</li>
+</ol>
+<p>我们主要对我们项目进行功能测试，压力测试主要在于组内多个成员同时开房间游玩这一情况进行。</p>
+<p>这一测试发现了我们的平台受服务器制约，无法支撑大规模玩家同时进行游玩的问题。</p>
+<p>后续改进也只能是想办法更换更好的服务器资源。</p>
+<ol start="5">
+<li>在发布的过程中发现了哪些意外问题？</li>
+</ol>
+<p>邮件系统再次失效。后发现是SMTP配置有问题，后续已修正。</p>
+<blockquote>
+<p>我们学到了什么? 如果重来一遍, 我们会做什么改进?</p>
+</blockquote>
+<p>我们学到了，测试时间要留足，在开发完成后永远应该假设程序有 Bug。</p>
+<p>历史重来一遍，会多留用来测试的时间。</p>
+<h1 id="团队的角色，管理，合作"><a href="#团队的角色，管理，合作" class="headerlink" title="团队的角色，管理，合作"></a>团队的角色，管理，合作</h1><ol>
+<li>团队的每个角色是如何确定的，是不是人尽其才？</li>
+</ol>
+<p>团队角色通过在项目开题时，各位毛遂自荐，并结合自己学期内可用的时间来确定。</p>
+<p>确实做到了人尽其才，各部分的负责的同学，均有各自负责部分的开发经验。</p>
+<ol start="2">
+<li>团队成员之间有互相帮助么？</li>
+</ol>
+<p>有。</p>
+<p>举例而言，在 Alpha 阶段的最后两周，负责后端的同学汇报进度难以完成，我们组内有空的同学均参与了剩余未完成工作的开发。</p>
+<ol start="3">
+<li>当出现项目管理、合作方面的问题时，团队成员如何解决问题？</li>
+</ol>
+<p>在 Scrum Meeting 上面直接指出问题怎么解决，期间可能有PM的协调。</p>
+<p>每个成员明确公开地表示对成员帮助的感谢 （并且写在各自的博客里）：</p>
+<ul>
+<li>彭子峻：感谢田锦煜同学在 Beta 阶段，承担了大部分功能开发工作的努力！</li>
+<li>王梓恒：感谢彭子峻同学在代表团队进行汇报时所做出的努力以及精彩演讲！</li>
+<li>田锦煜：我感谢陈耕同学能够就在这里不躲、不藏 、不绕、不逃，稳稳地接住每一个开发工作的测试任务</li>
+<li>邓志航：感谢王梓恒同学对项目的整体部署与维护，让平台能够在网络中有一席之地</li>
+<li>陈耕：我感谢田锦煜同学能够始终在这里不推、不怨、不拖、不闪，稳稳地搞定每一个紧急需求的功能开发。</li>
+<li>王靖茹：我感谢王梓恒同学积极组织会议对齐大家的进度，让项目以可预知的速度推进。</li>
+<li>李奕宽：我感谢彭子峻对项目的设计。包括WebSocket 方案中的连接管理、心跳机制、异常重连等；以及规则构建方案中的规则链编排、优先级设计、业务与执行引擎解耦等。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>你觉得团队目前的状态属于 CMM&#x2F;CMMI 中的哪个档次?</li>
+</ul>
+<p>可重复级。</p>
+<ul>
+<li><p>有代码规范、评审记录和构建脚本，建立了基本的管理流程。</p>
+</li>
+<li><p>管理与工程过程在部分情况仍有脱离文档，直接口头&#x2F;人为干预的情况，因而需要进一步完善。</p>
+</li>
+<li><p>你觉得团队目前处于 萌芽&#x2F;磨合&#x2F;规范&#x2F;创造 阶段的哪一个阶段?</p>
+</li>
+</ul>
+<p>规范阶段。协作工具链、流程等都已确定，能够维持稳定产出。</p>
+<ul>
+<li>你觉得团队在这个里程碑相比前一个里程碑有什么改进?</li>
+</ul>
+<p>在进度交流方面更流畅，从而允许更灵活的分工，保证任务及时完成。</p>
+<ul>
+<li>你觉得目前最需要改进的一个方面是什么?</li>
+</ul>
+<p>团队追DDL的能力。事实上，我们在 Alpha 和 Beta 阶段都是卡点完成任务。</p>
+<p>要解决这个问题的话，可能就需要把DDL划得更细一点，分功能设置最晚期限。</p>
+<ul>
+<li>对照敏捷开发的原则, 你觉得你们小组做得最好的是哪几个原则? 请列出具体的事例。</li>
+</ul>
+<p><strong>做得最好的两个原则：</strong></p>
+<ol>
+<li><strong>“可工作的软件是衡量进度的主要标准”</strong></li>
+</ol>
+<ul>
+<li>事例：我们尽可能减少了不必要的文档说明，将大部分时间直接用于代码编写。</li>
+</ul>
+<ol start="2">
+<li><strong>“团队定期反思如何提高效率”</strong></li>
+</ol>
+<ul>
+<li><p>事例：在 Scrum Meeting 和 Alpha 阶段结束时，我们会核对过去几天的进度如何，并对应反思原因，并对分工等进行了相应的调整。</p>
+</li>
+<li><p>正如我们前面提到的， 软件的质量 &#x3D; 程序的质量 + 软件工程的质量，那团队在下一阶段应该如何提高软件工程的质量呢？</p>
+<ol>
+<li>代码管理的质量具体应该如何提高？ 代码复审和代码规范的质量应该如何提高？</li>
+</ol>
+<p>  对于上述两个问题，有以下几种办法：</p>
+<ul>
+<li>初始设计：使用UML等工具，在实际编码前辅助建模实现框架</li>
+<li>测试：单元测试覆盖率必须达到某个预设值（比如说，75%），才允许被合并入主分支</li>
+<li>交叉验证：负责开发的人员，相互检查编写的代码是否符合预期的代码规范。</li>
+</ul>
+<ol start="2">
+<li>整个程序的架构如何具体提高？ 如何通过重构等方法提高质量，如何衡量质量的提高？</li>
+</ol>
+<p>  给出架构设计，及其背后思路的说明，这样后人才可以在此基础上继续迭代。这个说明的形式，可以是文档，也可以是UML图。</p>
+<p>  重构的思路，自然是需要现在已知的 Bug 有什么，现在的性能瓶颈在哪，这样才能对症下药。要衡量是否提高也很简单：</p>
+<ul>
+<li>Bug 是否被解决？</li>
+<li>性能提升了多少百分比？</li>
+<li>单元测试覆盖率有多少？</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>其它软件工具的应用，应该如何提高？</li>
+</ol>
+<p>我们现在使用了“微信”、“飞书”这两个”其他软件工具“，旨在服务我们的项目管理和进度追踪。</p>
+<p>这引起的问题是，进度交流并不处在统一平台上。后续应考虑统一迁移到飞书这一平台上进行沟通。</p>
+<ol start="4">
+<li>项目管理有哪些具体的提高？</li>
+</ol>
+<p>首先，通过部署CI&#x2F;CD流程，我们整个开发、测试流程都趋于规范化。其次，我们逐渐注意到了进度追踪的重要性。</p>
+<ol start="5">
+<li>项目跟踪用户数据方面，计划要提高什么地方？例如你们是如何知道每日&#x2F;周活跃用户等数据的？</li>
+</ol>
+<p>我们目前基于云服务平台提供的访问数据，来跟踪用户使用情况。这存在一个问题，即流量统计与我们的用户系统分离。日后可考虑在我们的项目中整合流量统计模块，并将其与用户系统关联起来。</p>
+<ol start="6">
+<li>项目文档的质量如何提高？</li>
+</ol>
+<p><strong>首先是减少不必要的文档需求。</strong> 为了完成要求写出的文档，只可能为了应付要求而敷衍了事。</p>
+<p>其次，对于API等影响具体开发行为的文档，应有统一的格式要求，并显式要求说明其功能与行为。</p>
+<ol start="7">
+<li>对于人的领导和管理， 有什么具体可以改进的地方？ 请看《构建之法》关于PM、绩效考核的章节， 或者 《人件》等参考书</li>
+</ol>
+<ul>
+<li>可以引入更多维的考核和奖励机制。例如，对于我们当前组员人数少的情况，可以鼓励项目组成员在闲暇时帮助其他组员完成开发工作。</li>
+<li>建立一个安全的氛围，减少组员压力，而不是以频繁开会&#x2F;查询进度的方式推进项目进行。</li>
+</ul>
+<ol start="8">
+<li>对于软件工程的理论，规律有什么心得体会或不同意见？ 请看阅读作业。 (这个作业的期中阅读)</li>
+</ol>
+<p>我们感受最深的是“没有银弹”。这反映在我们的整个选题上。</p>
+<p>选题之初，我们希望是构建一套基于图形化语言的自定义规则构建系统。其客观上确实免去了规则开发者需要学习计算机编程语言的门槛，但他又引起了学习我们这一套图形化语言的学习门槛。此外，这套语言的组件原子化相当高，使用起来远提不上好用。</p>
+<ul>
+<li>发布博客时，要附上全组讨论的照片。<br><img src="https://img2024.cnblogs.com/blog/3772760/202605/3772760-20260525110621621-1368295670.png" alt="讨论照片"></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2026/06/29/%E8%BD%AF%E5%B7%A5/[T.19]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">http://ywxy12138.github.io/2026/06/29/软工/[T.19] 团队项目：Beta 阶段项目总结/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="../../../../../img/%E8%8A%B1%E9%AC%98.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="../%5BT.18%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../../../../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E6%83%B3%E5%92%8C%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">设想和目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E5%88%92"><span class="toc-number">2.</span> <span class="toc-text">计划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%84%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">变更管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1-%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">设计&#x2F;实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-%E5%8F%91%E5%B8%83"><span class="toc-number">6.</span> <span class="toc-text">测试&#x2F;发布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E7%9A%84%E8%A7%92%E8%89%B2%EF%BC%8C%E7%AE%A1%E7%90%86%EF%BC%8C%E5%90%88%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">团队的角色，管理，合作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.19%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-29T02:40:39.164Z" title="发表于 2026-06-29 10:40:39">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.18%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA/" title="无题">无题</a><time datetime="2026-06-29T02:40:11.952Z" title="发表于 2026-06-29 10:40:11">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.4%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E9%A2%98%E5%92%8C%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" title="无题">无题</a><time datetime="2026-06-29T02:34:31.693Z" title="发表于 2026-06-29 10:34:31">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/25/%E8%BD%AF%E5%B7%A5/%5BI.3%5D%20%E4%B8%AA%E4%BA%BA%E4%BD%9C%E4%B8%9A%EF%BC%9A%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-25T01:43:24.223Z" title="发表于 2026-06-25 09:43:24">2026-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/23/cloud_shit/" title="无题">无题</a><time datetime="2026-06-23T03:26:22.824Z" title="发表于 2026-06-23 11:26:22">2026-06-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../../js/utils.js?v=4.13.0"></script><script src="../../../../../js/main.js?v=4.13.0"></script><script src="../../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,1319 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>yumooo | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目 内容   这个作业属于哪个课程 课程社区   这个作业的要求在哪里 作业要求   我在这个课程的目标是 凝聚整个团队通过一定的软件开发流程，在预计时间内发布&quot;足够好&quot;的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。   这个作业在哪个具体方面帮助我实现目标 通过实验作业，明确了平台实现所有功能所需的技术规范，以及相应测试流程和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yumooo">
+<meta property="og:url" content="http://ywxy12138.github.io/2026/04/16/%E8%BD%AF%E5%B7%A5/[T.6]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E6%8A%80%E6%9C%AF%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="项目 内容   这个作业属于哪个课程 课程社区   这个作业的要求在哪里 作业要求   我在这个课程的目标是 凝聚整个团队通过一定的软件开发流程，在预计时间内发布&quot;足够好&quot;的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。   这个作业在哪个具体方面帮助我实现目标 通过实验作业，明确了平台实现所有功能所需的技术规范，以及相应测试流程和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg">
+<meta property="article:published_time" content="2026-04-16T07:21:29.887Z">
+<meta property="article:modified_time" content="2026-06-29T02:36:25.272Z">
+<meta property="article:author" content="聿尛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg"><link rel="shortcut icon" href="../../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2026/04/16/%E8%BD%AF%E5%B7%A5/[T.6]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E6%8A%80%E6%9C%AF%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'yumooo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2026-06-29 10:36:25'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('../../../../../img/%E8%B5%B5%E4%BA%91%E5%92%8C%E9%A9%AC%E4%BA%91%E7%A6%84.jpeg')"><nav id="nav"><span id="blog-info"><a href="../../../../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-16T07:21:29.887Z" title="发表于 2026-04-16 15:21:29">2026-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-29T02:36:25.272Z" title="更新于 2026-06-29 10:36:25">2026-06-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div data-page-id="FXPLd4rPwoSpaoxfG2Jcx33bnhd" data-lark-html-role="root" data-docx-has-block-data="true">
+<div class=" old-record-id-VblUdglAJojn69xkpvccM4Evnre" data-type="sheet">
+<table><colgroup><col width="105" /><col width="507" /></colgroup>
+<tbody>
+<tr>
+<td>项目</td>
+<td>内容</td>
+</tr>
+<tr>
+<td>这个作业属于哪个课程</td>
+<td data-sheet-value="[{&quot;type&quot;:&quot;url&quot;,&quot;text&quot;:&quot;课程社区&quot;,&quot;link&quot;:&quot;https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR&quot;}]"><a target="_blank" rel="noopener" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR">课程社区</a></td>
+</tr>
+<tr>
+<td>这个作业的要求在哪里</td>
+<td data-sheet-value="[{&quot;type&quot;:&quot;url&quot;,&quot;text&quot;:&quot;作业要求&quot;,&quot;link&quot;:&quot;https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR/homework/15651&quot;}]"><a target="_blank" rel="noopener" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR/homework/15651">作业要求</a></td>
+</tr>
+<tr>
+<td>我在这个课程的目标是</td>
+<td>凝聚整个团队通过一定的软件开发流程，在预计时间内发布"足够好"的符合用户需求的软件，并证明其是可维护和持续发展的，并在其中做出应有的贡献，提升进行软件工程开发的能力。</td>
+</tr>
+<tr>
+<td data-sheet-value="[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;这个作业在哪个&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;具体方面&quot;,&quot;style&quot;:{&quot;font&quot;:&quot;bold 10pt/1.5 MonospacedNumber, LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, \&quot;Helvetica Neue\&quot;, Tahoma, \&quot;PingFang SC\&quot;, \&quot;Microsoft Yahei\&quot;, Arial, \&quot;Hiragino Sans GB\&quot;, sans-serif, \&quot;Apple Color Emoji\&quot;, \&quot;Segoe UI Emoji\&quot;, \&quot;Segoe UI Symbol\&quot;, \&quot;Noto Color Emoji\&quot;&quot;,&quot;foreColor&quot;:&quot;rgb(0, 0, 0)&quot;}},{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;帮助我实现目标&quot;}]">这个作业在哪个具体方面帮助我实现目标</td>
+<td>通过实验作业，明确了平台实现所有功能所需的技术规范，以及相应测试流程和部署维护方式，为后续敏捷开发打下了坚实的基础。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 class="heading-1 ace-line old-record-id-SuChd3i0noy0V3xKFrjcQNNVnTb">说明</h1>
+<div class="ace-line ace-line old-record-id-VVZLdLHE3oUi3mxOON1ceW40nHf">该文档旨在说明WildCard系统的技术设计方案，明确各部分的技术边界、模块划分、功能实现、测试标准、性能指标和风险控制等，为后续实现、联调、测试和维护提供统一依据。</div>
+<h1 class="heading-1 ace-line old-record-id-ApCMdwHJ8oiRYBxGscUczHzAnfh">系统概述</h1>
+<div class="ace-line ace-line old-record-id-BsYSdx2wQoNuE4xhTlyc8MF7nhe">WildCard是一款支持用户通过低代码形式构建卡牌游戏规则的产品，用户可以构建游戏规则、游玩自定义游戏、上传自定义规则以及游玩他人构建游戏等。</div>
+<h1 class="heading-1 ace-line old-record-id-RhwEd8xVSodtBGxk4zAcoqzWn8b">概念与术语</h1>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-JKC6dlJQTodZcTxujyxcgLT9nSh" data-list="bullet">
+<div><strong>Web app</strong>：指基于浏览器运行、具备接近原生应用交互体验的网页应用。本项目采用 Web App 形式，以支持跨平台访问，包括桌面端浏览器和移动端浏览器。</div>
+</li>
+<li class="ace-line ace-line old-record-id-YMEVdOdlHoq11IxT79kckHTknJh" data-list="bullet">
+<div><strong>规则</strong>：规则是对某种卡牌游戏玩法的结构化描述，包含基础信息、牌属性定义、玩家属性定义、牌型规则等内容，支持导出为json。</div>
+</li>
+<li class="ace-line ace-line old-record-id-AMX7dn6msoF899xPzYtcv1H2nUc" data-list="bullet">
+<div><strong>规则编辑器</strong>：规则编辑器是面向创作者的低代码图形化构建界面，用于配置牌、玩家、牌桌属性，绘制流程图，构建牌型规则、对局流程、结算流程和自定义方法流程。</div>
+</li>
+<li class="ace-line ace-line old-record-id-E3dKd5uAvopz64xXnDscdUUanCb" data-list="bullet">
+<div><strong>流程图节点（前端中可视化节点）</strong>：规则编辑器中的基本构建单元，对应执行组件、值组件、运算组件、逻辑组件、控制流组件等可视化模块。</div>
+</li>
+<li class="ace-line ace-line old-record-id-PxvQdHCwkoSRnexhcJ1c0ck2nVg" data-list="bullet">
+<div><strong>房间</strong>：一次联机对局的会话载体。</div>
+</li>
+<li class="ace-line ace-line old-record-id-XLqZdq332oLQWDx3boOcuTtgnn2" data-list="bullet">
+<div><strong>响应式适配</strong>：根据屏幕尺寸、方向和交互设备差异，动态调整布局和组件表现，基于媒体查询等方法实现。</div>
+</li>
+</ul>
+<h1 class="heading-1 ace-line old-record-id-Kb2ad86fqo98zUxWfihc8CfYnbd">技术栈说明</h1>
+<h2 class="heading-2 ace-line old-record-id-ZoK3doLlnoZA9mxhk8ScTppznBd">程序设计语言</h2>
+<div class="ace-line ace-line old-record-id-FEigdNYgdoI9Mkx0LZkcSZpJntb">前端：html + typescript + css（本项目包含规则编辑器、流程图节点等内容，静态类型有助于降低维护成本，因此采用typescript而不使用javascript）</div>
+<h2 class="heading-2 ace-line old-record-id-J8QZdPF1doghiTxpgzUceHyVn7f">开发框架</h2>
+<h3 class="heading-3 ace-line old-record-id-Kd9Ddn5Qvoqguax0fAtcEdABnNd">前端</h3>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-BDgtd2O7HoPHnCxszjgcqVPQn3f" data-list="bullet">
+<div><strong>vue3</strong>：前端核心框架，负责组件化开发和响应式视图更新</div>
+</li>
+<li class="ace-line ace-line old-record-id-OI1ldNvTeo5ayrxbaa7c2C7CnIg" data-list="bullet">
+<div><strong>Vue Router</strong>：负责单页应用路由管理</div>
+</li>
+<li class="ace-line ace-line old-record-id-PVnZdrDdyoj8Y1xcOCec0wMqnyF" data-list="bullet">
+<div><strong>Pinia</strong>：负责全局状态管理</div>
+</li>
+<li class="ace-line ace-line old-record-id-PWL8dW7YYoO8CuxjboXcjg5BnTb" data-list="bullet">
+<div><strong>WebSocket</strong>：负责实时通信</div>
+</li>
+<li class="ace-line ace-line old-record-id-FaCsdttoxo9ujNxLMdVcFYS4nae" data-list="bullet">
+<div><strong>辅助工具</strong>：针对规则编辑器可使用Vue Flow；针对游戏对局等华丽效果考虑vue3-pixi；对于普通页面设计可采用Element UI、Naive UI；使用vite进行项目构建；使用vitest进行单元测试</div>
+</li>
+</ul>
+<h1 class="heading-1 ace-line old-record-id-OqiDdthzGoP7z9xjXDyc9ZVjnNe">运行环境</h1>
+<h2 class="heading-2 ace-line old-record-id-ZJ51dnNmMo4nkyxGRRBcHH2unzs">前端</h2>
+<h4 class="heading-4 ace-line old-record-id-FjmSdoKjqoLNuAxyQhec72MwnNh">开发环境</h4>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-EO1Bd1oG0ovxD8xaSdEcIU1TnOP" data-list="bullet">
+<div>Node.js 20.x 或更高 LTS 版本</div>
+</li>
+<li class="ace-line ace-line old-record-id-Bt8idfGWvoX7ftxBw9QcttK7nbd" data-list="bullet">
+<div>现代浏览器</div>
+</li>
+<li class="ace-line ace-line old-record-id-Jqg2diq2Kokuyfx9LBKctRcVnSQ" data-list="bullet">
+<div>Npm</div>
+</li>
+</ul>
+<h4 class="heading-4 ace-line old-record-id-XpqtdXcVmojBlsxZS3PcT6vxnOb">用户运行环境</h4>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-V8KkdJfMwoFi5DxXXlscfrHSnte" data-list="bullet">
+<div>支持现代 JavaScript 特性的主流浏览器。前端基于vue3开发，最低要求需支持原生ES2016的现代浏览器</div>
+</li>
+<li class="ace-line ace-line old-record-id-HLKidygDGooifDxGaiNcFjvXnhc" data-list="bullet">
+<div>项目实际开发与部署以Chrome、Edge、Firefox及Safari为主要兼容目标（可改）</div>
+</li>
+</ul>
+<h2 class="heading-2 ace-line old-record-id-Lr9ldUnB0oVNyHxAvQhcNynZnne">后端</h2>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-KxREdCc1uo2TlEx5WV6cZnkOnLn" data-list="bullet">
+<div>Rust: Edition 2024, 1.95.0</div>
+</li>
+</ul>
+<h1 class="heading-1 ace-line old-record-id-WsoDdBLwaoRkAXxsiZUcBRG2nrb">软件架构</h1>
+<div class="ace-line ace-line old-record-id-OmoNd0DxXoug05x2Ri8cz5B2nYd">WildCard可以分为<strong>前端</strong><strong>Web App</strong><strong>子系统</strong>、<strong>后端业务服务子系统</strong>、<strong>数据存储与日志子系统。</strong></div>
+<h2 class="heading-2 ace-line old-record-id-EJSPdESYVox1jjxBS0cciQRMn2b">前端Web App子系统</h2>
+<h3 class="heading-3 ace-line old-record-id-IBzLddkulovtTJxlE95cnwbwnBc">主要功能</h3>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-TXNIdtdTYoiVphxnG4hciBK6nHc" data-list="bullet">
+<div>页面渲染与用户交互</div>
+</li>
+<li class="ace-line ace-line old-record-id-ApbFd3vsfo5jKzxoC9ocQN7gnEd" data-list="bullet">
+<div>规则编辑可视化</div>
+</li>
+<li class="ace-line ace-line old-record-id-CWzQdVd0KooIfpxrG3BcPHrJnAh" data-list="bullet">
+<div>规则市场浏览与搜索</div>
+</li>
+<li class="ace-line ace-line old-record-id-MWJQdgCBroaZzyx37NycPhzan2f" data-list="bullet">
+<div>房间创建、加入</div>
+</li>
+<li class="ace-line ace-line old-record-id-PlajdZhsEoruwLxZkbmcYF6Enbf" data-list="bullet">
+<div>游戏对局界面展示</div>
+</li>
+<li class="ace-line ace-line old-record-id-RUF1d5IVOoQbAyxhqmocrEcsn4e" data-list="bullet">
+<div>对局历史和回放播放</div>
+</li>
+<li class="ace-line ace-line old-record-id-Dh36dDnfNog0RixowvXcSp2inIy" data-list="bullet">
+<div>评论、收藏与举报</div>
+</li>
+<li class="ace-line ace-line old-record-id-TMYjdW2AtookM3xUsTPcnyO9ntf" data-list="bullet">
+<div>用户资料展示</div>
+</li>
+</ul>
+<h3 class="heading-3 ace-line old-record-id-X6lBdajcOovqsIxIxXtchf4bn8d">模块划分</h3>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-NjQcdjQjYoJ3A1xyrShcul2GnUo" data-list="bullet">
+<div><strong>用户模块</strong>：支持用户通过页面登录、注册与找回密码等操作，支持用户修改昵称与头像等操作，展示基础的用户信息，同时维护和记住用户登录状态</div>
+</li>
+<li class="ace-line ace-line old-record-id-Xa7adoDlLoLoryxrZDeciaSfnvc" data-list="bullet">
+<div><strong>规则市场模块</strong>：支持游戏规则的展示，支持搜索、筛选、排序等操作，支持游戏规则详情展示，支持收藏、评论与举报</div>
+</li>
+<li class="ace-line ace-line old-record-id-Ud1udajNzoCjxhxs9ghcnHdEnmc" data-list="bullet">
+<div><strong>规则编辑器模块</strong>：支持通过图形化界面进行包括规则基础信息编辑、牌属性定义、玩家属性定义、对局流程编辑、结算流程编辑等在内的各种操作，构建自定义规则</div>
+</li>
+<li class="ace-line ace-line old-record-id-SIArdttYwosLrCxTS3jcvUFQnQe" data-list="bullet">
+<div><strong>房间与联机模块</strong>：支持创建房间，支持通过房间号、链接以及二维码等方式加入房间进行游戏，支持房间内玩家展示，支持游戏开始、结束与掉线提示，支持实时对局操作与局内互动</div>
+</li>
+<li class="ace-line ace-line old-record-id-GwSMdOxTTo8M4Uxy9tmcmwwxnOc" data-list="bullet">
+<div><strong>回放模块</strong>：支持对局历史展示与回放播放</div>
+</li>
+</ul>
+<h1 class="heading-1 ace-line old-record-id-RkrEd8cxRoW6H5xdVLGcJ2Ijnce">软件设计与实现</h1>
+<h2 class="heading-2 ace-line old-record-id-EaQddmn4qoKou3xJoQmc6iW9nZb">前端</h2>
+<h3 class="heading-3 ace-line old-record-id-AamidFGd8ohoudxcSPAc7X1Snrf">代码编写</h3>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-W365duCMNoqQVixv41ncDLoqnwf" data-list="bullet">
+<div><strong>页面与路由</strong>：实现系统全部页面与路由守卫，包括公共页面路由、登录态保护路由、房间与回放动态路由、异常跳转页等</div>
+</li>
+<li class="ace-line ace-line old-record-id-JctadbrSGou9V3xxLrKcwjCgnVd" data-list="bullet">
+<div><strong>通用组件</strong>：实现跨页面复用的通用组件，例如弹窗、标签、按钮等</div>
+</li>
+<li class="ace-line ace-line old-record-id-WRxjd21guoEhmExLlcpcmcSynkf" data-list="bullet">
+<div><strong>业务组件</strong>：实现规则卡片、玩家面板、手牌区、出牌区、评论面板、编辑器节点面板、属性配置等业务级组件</div>
+</li>
+<li class="ace-line ace-line old-record-id-RyFhd1W9roTWcexpp8ZcfQVhnWb" data-list="bullet">
+<div><strong>状态管理</strong>：实现各业务模块的状态管理，包括全局状态、错误状态等</div>
+</li>
+<li class="ace-line ace-line old-record-id-PdSOdVh78oPeD4xHkwrcsiVznBc" data-list="bullet">
+<div><strong>图形化编辑器</strong>：实现节点模型定义、边连接规则、节点属性表单、类型校验、草稿保存恢复等</div>
+</li>
+<li class="ace-line ace-line old-record-id-MtYwds65ioQ801xJwNScri3Wndb" data-list="bullet">
+<div><strong>对局交互</strong>：实现出牌选择、不出牌操作、房间聊天、对局状态更新、回放播放等</div>
+</li>
+</ul>
+<h2 class="heading-2 ace-line old-record-id-R6O1dJXamoaZsWx9rjgcyH91nub">后端</h2>
+<h3 class="heading-3 ace-line old-record-id-NmrndVBmNoRa0rx5DbLcYgVmnRf">需求</h3>
+<div class="ace-line ace-line old-record-id-LGRpdH9SloSmx5xdlDUcUT43nbd">首先整理后端架构中需要实现的需求。</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-ZmcUdvwrDoQ4EaxTtdocY4NznZ6" data-list="bullet">
+<div>网络联机：支持多名玩家通过网络连接至同一个游戏房间进行实时对战。</div>
+</li>
+<li class="ace-line ace-line old-record-id-MmnXdpJNqodH74xMTvWcZXtvnte" data-list="bullet">
+<div>规则解耦与高扩展性：框架必须将&ldquo;底层网络通信/房间管理&rdquo;与&ldquo;上层具体游戏规则&rdquo;严格分离。游戏规则应作为可插拔的模块（接口实现）接入系统。</div>
+</li>
+<li class="ace-line ace-line old-record-id-PFcSdSKFGoraQ8xMDybcYPagnMf" data-list="bullet">
+<div>状态驱动：将游戏对局抽象为有限状态机（FSM），通过状态转移及其副作用（Side Effects）来推进游戏进程。</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-NuVudfpY4oENiYx3EM7cHnMAnlc">根据以上的需求，设计总体架构如下：</div>
+<h3 class="heading-3 ace-line old-record-id-Bx6odYNPJoQ1R6xAhBNccETonFg">总体架构设计</h3>
+<div class="ace-line ace-line old-record-id-VBgtdGq6no4PoZxF8kccU3w1nif">系统采用中心式架构（Client-Server），服务器作为绝对的权威节点，负责维护全局状态、校验操作合法性并驱动状态机流转。客户端作为&ldquo;纯展示与输入采集终端&rdquo;（Dumb Client），基于服务器下发的数据渲染界面。</div>
+<div class="ace-line ace-line old-record-id-QtiLdBR9CoqRkoxH73Ecx9Xzn1A">架构分层：</div>
+<h4 class="heading-4 ace-line old-record-id-Yfk2dReDCoAlvzxreNfcJcpTnLb">1. 网络与会话层</h4>
+<div class="ace-line ace-line old-record-id-X48JdtNvtoEcD4xQhXGcMau0n0b">系统在网络层采用非阻塞的异步 I/O，负责维持长连接。前期 Demo 采用 TCP, 成品中使用 WebSocket。这一层管理玩家的接入、离开以及房间的生命周期。</div>
+<div class="ace-line ace-line old-record-id-UB98dqdChohnnlxXVf0clxpFnWb">网络层 IO 需要具备的接口如下：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-WDNzdc6AtoY4zIxiG1BcRjBAnMe" data-list="bullet">
+<div>广播：服务器单向将当前状态或事件通知给房间内的所有玩家。</div>
+</li>
+<li class="ace-line ace-line old-record-id-P8VhdPjrqocphaxfWMgcZUQXnTe" data-list="bullet">
+<div>单点问答：服务器向指定客户端发送需要玩家做出回应的消息，并挂起当前协程，等待该客户端的异步响应。</div>
+</li>
+</ul>
+<h4 class="heading-4 ace-line old-record-id-T2EIdAiieok65Xx1olCciLsrnJf">2. 通用状态机引擎层</h4>
+<div class="ace-line ace-line old-record-id-VruYdbEHwovBltxVAMJcV7NVnyg">游戏的整个生命周期被抽象为有限状态机。状态的转移由服务器主动发起询问并由玩家的输入事件驱动。</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-OdVgdBWvHokYU6xCzGpckUDhnyh" data-list="bullet">
+<div>状态：表示游戏当前所处的阶段。</div>
+</li>
+<li class="ace-line ace-line old-record-id-YvZldrDeoolK1txLxULcw4QEnge" data-list="bullet">
+<div>转移条件：对玩家的相应的判断（如：玩家的输入是否合法，判断玩家相应的出牌是否大于上家）。</div>
+</li>
+<li class="ace-line ace-line old-record-id-XtFWd74bUoPzDgxQIJrcv9NGn2e" data-list="bullet">
+<div>转移副作用：</div>
+<ul class="list-bullet2">
+<li class="ace-line ace-line old-record-id-Z6Gnd82zsoK0rixSgk1czaL1nve" data-list="bullet">
+<div>状态变更</div>
+</li>
+<li class="ace-line ace-line old-record-id-KjURdhKNBo0Y1lxvZObc1LB8nTd" data-list="bullet">
+<div>牌桌数据更新</div>
+</li>
+<li class="ace-line ace-line old-record-id-BtXudEAsiokPBSxamtlcYKzpn4d" data-list="bullet">
+<div>网络分发（调用网络层的广播、单点问答）</div>
+</li>
+<li class="ace-line ace-line old-record-id-WFvGdivtJogT7IxmkKmcu7L7nTb" data-list="bullet">
+<div>每次转移的过程，对应着一次协程的挂起</div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-GUN3dFfhZo9itDxC5z4c2yk9n2c"><strong>以斗地主为例的状态流转：</strong></div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-XFOIdVzFLoNYWwxBA7JcGHwknOh" data-list="bullet">
+<p>`State A (抢地主阶段)`：轮询玩家叫分 &rarr; 确定地主并分配底牌 &rarr; 转移至 C。</p>
+</li>
+<li class="ace-line ace-line old-record-id-XFOIdVzFLoNYWwxBA7JcGHwknOh" data-list="bullet">`State B (出牌阶段)`：轮询出牌 &rarr; 校验牌型 &rarr; 某玩家手牌清空 &rarr; 转移至 D。</li>
+<li class="ace-line ace-line old-record-id-XFOIdVzFLoNYWwxBA7JcGHwknOh" data-list="bullet">
+<p><em id="__mceDel">`State C (结算状态)`：计算得分，广播赢家。</em></p>
+</li>
+</ul>
+<h4 class="heading-4 ace-line old-record-id-LcBTdY25woIga2xgsp6c4yPKnKc">3. 游戏逻辑实现层</h4>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-ItBPdZwNSo8DzPxMewCcyecOnEg" data-list="bullet">
+<div>实现具体的游戏规则模块</div>
+</li>
+<li class="ace-line ace-line old-record-id-Vkv4dvxDxornvixTn3lcCAwMnrf" data-list="bullet">
+<div>定义该游戏特有的状态集合（如准备、抢地主、出牌、结算）。</div>
+</li>
+<li class="ace-line ace-line old-record-id-W3I2dqKWWohbalxgDqBcFjFinJb" data-list="bullet">
+<div>封装牌型解析与合法性校验算法。</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-RCwMd7KyLotPy1xPPGvcYl0RnYd">在中心式服务器架构下，状态数据实行严格的信息隔离：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-Uodfd2QvEoTsPuxOO0acJll9nxg" data-list="bullet">
+<div>全局数据：驻留在服务器内存中，包含完整牌堆和所有人的手牌。</div>
+</li>
+<li class="ace-line ace-line old-record-id-BXkudfhBJoFkvixQGbdcy56Sn8d" data-list="bullet">
+<div>局部视图：服务器在广播或单播时，仅下发该玩家有权知晓的数据（如自身手牌、公共桌面牌、其他玩家的剩余牌数）。</div>
+</li>
+</ul>
+<h4 class="heading-4 ace-line old-record-id-WhG1dDPUHorP9vxERPbcFIyhnOf">4. 客户端/UI 展现层</h4>
+<div class="ace-line ace-line old-record-id-Ju0Dd5qpnonxuBxLACOcfxLtn6d">采用了此架构后，前端只需要完成下面的渲染任务和本地校验：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-OzSOdrPN6oYGiax152mcu8TUnxg" data-list="bullet">
+<div>牌桌区：渲染服务器下发的公共信息（上一家出的牌等）</div>
+</li>
+<li class="ace-line ace-line old-record-id-SuZsd51dOohq3CxRiASc3gLQnNf" data-list="bullet">
+<div>手牌区：渲染服务器下发的己方卡牌，支持多选交互。</div>
+</li>
+<li class="ace-line ace-line old-record-id-T0KrdKMMJoL73JxK5DvcSvNEn7f" data-list="bullet">
+<div>操作区：渲染服务器询问所能回应的操作。</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-HQrhdFwuroGzDrx1toFcEixtnOd"><strong>客户端本地校验：</strong></div>
+<div class="ace-line ace-line old-record-id-WcXLdSMmNoMOY8xX93NcVcwHnMh">如果每次出牌都必须等服务器返回 <code>true/false</code>，在弱网环境下，玩家点击&ldquo;出牌&rdquo;按钮后会卡顿几百毫秒，体验极其糟糕。这就要求客户端和服务器必须运行同一套规则校验代码。</div>
+<div class="ace-line ace-line old-record-id-MO73dyWpio3cYAxMzIxckJsynCd">玩家点击出牌。客户端立刻在本地运行算法，如果选的牌连&ldquo;顺子&rdquo;都构不成，或者打不过上家，本地直接警告&ldquo;出牌不合法&rdquo;，无需网络请求。</div>
+<div class="ace-line ace-line old-record-id-FKgodype9osSykxog5Nc7rFhnrc">只有本地校验通过，才发给服务器。服务器再算一遍，确认无误后，执行状态转移。</div>
+<div class="ace-line ace-line old-record-id-JGIsdo07Sol1muxZRl1cMB4Ln3Q">一次完整的&ldquo;出牌&rdquo;流程如下：</div>
+<ol class="list-number1" start="1">
+<li class="ace-line ace-line old-record-id-Z2gWdvaiuooF8cxGzBaciiUTnab" data-list="number">
+<div><strong>[服务器]</strong> 广播轮到 Player 1 出牌，上家牌型是&ldquo;对 3&rdquo;。</div>
+</li>
+<li class="ace-line ace-line old-record-id-AEWfdaIO6oz3xgxk8IacUOdlndh" data-list="number">
+<div><strong>[客户端]</strong> P1 选中&ldquo;对 5&rdquo;，点击出牌。</div>
+</li>
+<li class="ace-line ace-line old-record-id-RtcHd7dZBo2SKAxaN5XcONYInid" data-list="number">
+<div><strong>[客户端逻辑库]</strong> 本地执行 <code>compare([5, 5], [3, 3])</code>，返回 <code>True</code>。</div>
+</li>
+<li class="ace-line ace-line old-record-id-P5qPdL8Evoy6mKxNxricjavAnog" data-list="number">
+<div><strong>[客户端 </strong><strong>UI</strong><strong>]</strong> UI 立即响应，从手牌移出两个 5，并向服务器发送相应。</div>
+</li>
+<li class="ace-line ace-line old-record-id-HCOwdMUvKoPsUmxDNHLcmICRnSh" data-list="number">
+<div><strong>[服务器逻辑库]</strong> 收到请求，同样执行 <code>compare([5, 5], [3, 3])</code>，确认合法。</div>
+</li>
+<li class="ace-line ace-line old-record-id-RtvadMJohoAc33x9tdNcBqgvndg" data-list="number">
+<div><strong>[服务器]</strong> 执行状态转移，向全房间广播 Player 1 打出的牌。</div>
+</li>
+<li class="ace-line ace-line old-record-id-MqjQdDEp2oPnobxmtFicYolOnUh" data-list="number">
+<div><strong>[其他客户端]</strong> 收到广播，更新桌面显示。</div>
+</li>
+</ol>
+<h2 class="heading-2 ace-line old-record-id-UVJidfvIToYmjXx82wecLU2dnHc">系统文档编写</h2>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-BhKnderkjoRkDdxtcRpcR4mYnqe" data-list="bullet">
+<div><strong>功能规格说明书</strong>：在需求/功能产生变动时进行维护</div>
+</li>
+<li class="ace-line ace-line old-record-id-ZcS0deTltosaKKxhatlcH3NdnOy" data-list="bullet">
+<div><strong>技术规格说明书</strong>：在实现阶段补充功能的详细逻辑设计、数据库设计和API接口设计</div>
+<ul class="list-bullet2">
+<li class="ace-line ace-line old-record-id-MIl2dB6TdoXMgwx7kW5c9V1VnPh" data-list="bullet">
+<div><strong>功能的详细逻辑设计</strong>：输入、具体流程、输出、边界条件、错误处理、依赖关系</div>
+</li>
+<li class="ace-line ace-line old-record-id-BQXWdTNqjoanh8x1bHCcBXtCnYg" data-list="bullet">
+<div><strong>数据库设计</strong>：表名、字段名、类型、约束、说明</div>
+</li>
+<li class="ace-line ace-line old-record-id-OcCodvCD6oOdmlx2t2rc4akrn6b" data-list="bullet">
+<div><strong>API</strong><strong>接口设计</strong>：接口名称、接口类型、接口路径、接口行为、请求字段、响应字段、错误处理（错误码和含义）</div>
+</li>
+</ul>
+</li>
+<li class="ace-line ace-line old-record-id-ER6ZdHypooU7egxe8JjcejYbnLg" data-list="bullet">
+<div><strong>每日例会报告</strong>：每个人的工作（昨天已完成的工作、今日计划完成的工作、遇到的困难）、燃尽图、每日例会的照片</div>
+</li>
+</ul>
+<h1 class="heading-1 ace-line old-record-id-WUQUdC0RwoLuLFx3ZnlcLGB1nXe">测试计划</h1>
+<h2 class="heading-2 ace-line old-record-id-VWmjdaE2ton9ILxRjwbcAs5Kn6f">测试架构总体设计</h2>
+<h3 class="heading-3 ace-line old-record-id-Mob9dbgdEo4eP3x9HcMcSHw5nJd">测试设计</h3>
+<div class="ace-line ace-line old-record-id-JBOWdJQbrosPGcxicTocqDmhnEe">本项目采用经典测试金字塔模型，从下至上分为三层：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-YgIedasOIoNEuqxlXvFci0kfnTf" data-list="bullet">
+<div><strong>底层：单元测试</strong>，覆盖后端核心逻辑，运行速度快，不依赖外部服务，每次代码提交都要执行</div>
+</li>
+<li class="ace-line ace-line old-record-id-LIqQdTPJ1oPApkx65T1coWBunFh" data-list="bullet">
+<div><strong>中间层：集成测试</strong>，覆盖 API 接口、数据库交互、缓存、WebSocket 信令、多客户端场景，需要启动真实服务或模拟客户端，在合并到开发分支前执行</div>
+</li>
+<li class="ace-line ace-line old-record-id-U2Q8dYsdfoYLRux4OaKccLLonOe" data-list="bullet">
+<div><strong>顶层：端到端测试</strong>，模拟真实用户在浏览器中的完整操作流程，在部署前执行</div>
+</li>
+</ul>
+<h3 class="heading-3 ace-line old-record-id-Do01dXmqAoPK1AxPVvAcjKCwnch">统一测试技术栈</h3>
+<div class=" old-record-id-J38YdGOC7ojSzbxZvZgcHiQpnte" data-type="sheet">
+<table><colgroup><col width="105" /><col width="547" /></colgroup>
+<tbody>
+<tr>
+<td>类别</td>
+<td>选用技术</td>
+</tr>
+<tr>
+<td>后端单元测试</td>
+<td>Rust 内置测试框架（cargo test + mockall）</td>
+</tr>
+<tr>
+<td>后端集成测试</td>
+<td>Axum TestClient、模拟 WebSocket 客户端</td>
+</tr>
+<tr>
+<td>前端测试</td>
+<td>Vitest + Vue Test Utils + jsdom</td>
+</tr>
+<tr>
+<td>端到端测试</td>
+<td>Cypress</td>
+</tr>
+<tr>
+<td>压力测试</td>
+<td>Locust</td>
+</tr>
+<tr>
+<td>网络故障测试</td>
+<td>Linux tc 命令 / Mahimahi</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=" old-record-id-YjbHddRmjoOfSaxMmZCc9nMhnwd" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-VYbOdf6NMoHJQxxYmcuc0pn2nfc">后端单元测试</h2>
+<div class="ace-line ace-line old-record-id-YWXWdldZCoORvXxEpZkc1CEanTd"><strong>测试目标</strong>：验证核心业务逻辑的正确性，不依赖数据库、网络或外部服务。使用 mockall 模拟外部依赖。</div>
+<div class="ace-line ace-line old-record-id-GQvBdWax6o0B2ixK9i1cN7wbnDh"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-OGpxdtHIQoRNeZxFPzTc3RnpnWd" data-list="bullet">
+<div>房间状态机：等待中、游戏中、已结束等状态的合法转换</div>
+</li>
+<li class="ace-line ace-line old-record-id-UGFmdjAPaoM915xznPacsQcongh" data-list="bullet">
+<div>短码生成器：房间 ID 和规则 ID 的唯一性生成</div>
+</li>
+<li class="ace-line ace-line old-record-id-AOgqdDrMuoQ6IvxIoqic39U7nOh" data-list="bullet">
+<div>牌型匹配器：各种牌型的识别准确性</div>
+</li>
+<li class="ace-line ace-line old-record-id-JjZJdbTdHoUPfXxvm84cOHbvn4d" data-list="bullet">
+<div>等等</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-NIg4dWYnroSzEyxXMZ4cHfs7nPc"><strong>测试方法</strong>：使用 Rust 内置测试框架（cargo test），mockall 模拟外部依赖。</div>
+<div class="ace-line ace-line old-record-id-DeNAdfuDfo1PMqxKk3CchS1jnjI"><strong>执行频率</strong>：每次代码提交时执行。</div>
+<div class=" old-record-id-PvHtd5t5gonP6QxZx5ycqlAhndi" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-TNj8dCzlyoFXxax3ivbcGtJCn6p">后端集成测试</h2>
+<div class="ace-line ace-line old-record-id-JUJvdTb3xoWCWuxX7T0cYHePndf"><strong>测试目标</strong>：验证各模块之间的协作，需要启动真实服务或模拟客户端。</div>
+<h3 class="heading-3 ace-line old-record-id-Vby6dfm0joi5erxnGEVcJgiNnfb">API 接口测试</h3>
+<div class="ace-line ace-line old-record-id-C3mbdL6k1oBTxqxRLdScueXAnob"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-XmZqdQjRkotjefxIEbqcDScXnpU" data-list="bullet">
+<div>用户系统接口：注册、登录、密码修改、用户名修改</div>
+</li>
+<li class="ace-line ace-line old-record-id-LiEGdKvYsocjMGx2mzScVwEfn6f" data-list="bullet">
+<div>房间管理接口：创建房间、加入房间、退出房间</div>
+</li>
+<li class="ace-line ace-line old-record-id-ND6Gd1lEXoHXHhx5sAUc9J5Tnke" data-list="bullet">
+<div>规则管理接口：保存规则、加载规则、提交审核</div>
+</li>
+<li class="ace-line ace-line old-record-id-Jw4PdrxTooB1efxBmsUc9LQjn2d" data-list="bullet">
+<div>等等</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-JakLdgPQroHm3pxR03GcxCtanCf"><strong>测试方法</strong>：使用 Axum TestClient 发送请求并验证响应。数据库相关测试使用测试数据库，每个测试用例使用事务回滚保证隔离。缓存相关测试使用测试环境缓存实例，每个测试用例执行后清理测试数据。</div>
+<h3 class="heading-3 ace-line old-record-id-WilJdUAw8oLnduxhv5Qc1ePjncd">WebSocket 信令与多客户端场景测试</h3>
+<div class="ace-line ace-line old-record-id-RDg2dP5gEoG1Ixxxmaic2JgvnSc"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-Zs1RdMLuUoxqfIxX87Kck8G3nVc" data-list="bullet">
+<div>连接建立与断开</div>
+</li>
+<li class="ace-line ace-line old-record-id-Gq35d6afno7q0SxtT6mckzZ8nvc" data-list="bullet">
+<div>房间加入与离开</div>
+</li>
+<li class="ace-line ace-line old-record-id-ZepddevrQo6WovxbWDecERc5nFg" data-list="bullet">
+<div>重连机制</div>
+</li>
+<li class="ace-line ace-line old-record-id-P3eXdoLyToIZaTxNcNscXjgvnTb" data-list="bullet">
+<div>主动断线重连后的状态恢复</div>
+</li>
+<li class="ace-line ace-line old-record-id-TmfYdlXNsokPuOxjQ7qchkF4n6e" data-list="bullet">
+<div>状态同步</div>
+</li>
+<li class="ace-line ace-line old-record-id-XnADd8qP1o28HixsL5lcozJtnLh" data-list="bullet">
+<div>多人对局正常流程</div>
+</li>
+<li class="ace-line ace-line old-record-id-TJGndnxDZo8zk5xHnbQcd7Dfnoc" data-list="bullet">
+<div>等等</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-Brb4dQT6iofs2Xx2t4VcPV6Vn7c"><strong>测试方法</strong>：模拟多个 WebSocket 客户端，模拟多人加入、消息广播、离开房间、断线重连等操作，断言消息接收正确性及各客户端状态一致性。</div>
+<div class="ace-line ace-line old-record-id-Rbp7dkr3hoQUkbxc5QZcr1XCngg"><strong>执行频率</strong>：每次代码提交和 Pull Request 时执行。</div>
+<div class=" old-record-id-GYVXdXjL4opLpQxoiupcPJHQnbH" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-NEo5dCjwgov27Axci74cJeaKnXe">前端测试设计</h2>
+<div class="ace-line ace-line old-record-id-Uarmd7wbzoaZzvx1O83conOfnth"><strong>测试目标</strong>：验证 Vue 组件渲染、用户交互和前端逻辑的正确性。</div>
+<div class="ace-line ace-line old-record-id-NWTJd1vO0o0lm8xsM1XcWlTbnzg"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-SVGrdlPoYooicIx5ZbjcNoCBnye" data-list="bullet">
+<div>通用组件：弹窗、标签、按钮等组件的渲染和点击事件</div>
+</li>
+<li class="ace-line ace-line old-record-id-S6dxdAFQLoid5nxGoV5cWHn5nad" data-list="bullet">
+<div>业务组件：规则卡片、玩家面板、手牌区、出牌区、评论面板、编辑器节点面板、属性配置等组件的独立渲染和交互</div>
+</li>
+<li class="ace-line ace-line old-record-id-D5gVdr7CNoW8e8x2TYEc6o5Lnlg" data-list="bullet">
+<div>图形化编辑器：节点模型数据结构验证、边连接规则校验、节点属性表单的类型校验、草稿保存恢复逻辑、撤销/重做功能、规则导出JSON正确性</div>
+</li>
+<li class="ace-line ace-line old-record-id-VVMUdAVJho1yTqxyQUYcXvLkn2b" data-list="bullet">
+<div>状态管理：用户状态（登录退出）、游戏状态（回合切换、出牌、状态更新）、编辑器状态（节点增删改查、选中状态）</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-IvfjddY4Mo7ohlxZyVhclhEtnXd"><strong>测试方法</strong>：使用 Vitest 作为测试运行器，Vue Test Utils 进行组件挂载和交互模拟，jsdom 模拟浏览器 DOM 环境。</div>
+<div class="ace-line ace-line old-record-id-LY1fdsr7Jo8mkSxivOucHA5AnPb"><strong>执行频率</strong>：每次代码提交时执行。</div>
+<div class=" old-record-id-LDdHdnMKCo4nS5x8luqc7smnneL" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-KXv6dZqnVo31iGxU5iPcxWVhnyb">端到端测试设计</h2>
+<div class="ace-line ace-line old-record-id-O1GLdGc2joNCJ5xszAYc2Fp6nMf"><strong>测试目标</strong>：模拟真实用户在浏览器中的完整操作流程，验证前后端集成正确性。</div>
+<div class="ace-line ace-line old-record-id-FslWduLVLoKv33xXrhgcZlXDnAc"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-E1HSd6fIAotojixwnOpcTJC3nTd" data-list="bullet">
+<div>用户注册登录全流程</div>
+</li>
+<li class="ace-line ace-line old-record-id-C0kxdSRnRoINHYx8FCmcq1xonyb" data-list="bullet">
+<div>开发者创建规则并提交审核全流程</div>
+</li>
+<li class="ace-line ace-line old-record-id-EIc8dmAzwo07fIxD1QWceLItn4d" data-list="bullet">
+<div>多人联机完整对局</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-WMyNdns3Xo8wbpxJeMqcVYqknzc"><strong>测试方法</strong>：使用 Cypress 在真实浏览器中运行。</div>
+<div class=" old-record-id-A410dFWtuoaSP2xyiRocUBxinFf" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-UU2Kd63sXowRY4xPKZ0czCjQnXc">网络故障测试</h2>
+<div class="ace-line ace-line old-record-id-N5pcdf7rzovWclxOssjc40EUnwd"><strong>测试目标</strong>：验证在网络层异常环境下系统的健壮性。</div>
+<div class="ace-line ace-line old-record-id-Y0IGdXAhMoFpC3xp8G8c3uJAnNh"><strong>测试范围</strong>：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-MJzedrkC8oXG4rx96HzcaUCFnOu" data-list="bullet">
+<div>网络连接突然中断后的恢复能力</div>
+</li>
+<li class="ace-line ace-line old-record-id-X2V0d121ZoWAAKxJQy1cWurcnhg" data-list="bullet">
+<div>基础延迟环境下的操作响应</div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-R8AedVzueoDvh1xn9FZcX0JcnLb"><strong>测试方法</strong>：使用 Linux tc 命令或 Mahimahi 工具模拟网络延迟、丢包、连接中断。</div>
+<div class=" old-record-id-HYNQd5ymGokvWSxEaAgc3AZmnIh" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-GVw9dA542oCHBIx1glXcsYvOnhc">压力测试设计</h2>
+<h3 class="heading-3 ace-line old-record-id-RmJEdGcCzodRMixXDZycVoP4nJd">测试工具</h3>
+<div class="ace-line ace-line old-record-id-RPCmdoVQbobPOxxFndtcsokMnxd">使用 <strong>Locust</strong> 进行压力测试。Locust 是一个基于 Python 的开源压力测试工具，支持 Web 界面实时监控、分布式运行、自定义测试场景。</div>
+<h3 class="heading-3 ace-line old-record-id-UC5mdyqFVoUPnwx1b1xcm1OrnVb">测试目标</h3>
+<div class="ace-line ace-line old-record-id-UVfGdJQsJoctynxNM2TchsTFn5f">验证系统在高并发场景下的性能表现，核心关注两个指标：</div>
+<div class=" old-record-id-BwSSd5mRAoqIOMxOZfccreaZnYt" data-type="sheet">
+<table><colgroup><col width="105" /><col width="105" /><col width="105" /></colgroup>
+<tbody>
+<tr>
+<td>指标</td>
+<td>含义</td>
+<td>单位</td>
+</tr>
+<tr>
+<td>吞吐率（RPS）</td>
+<td>服务器每秒能处理的请求数</td>
+<td>请求数/秒</td>
+</tr>
+<tr>
+<td>用户平均请求等待时间（RTT）</td>
+<td>从发出请求到收到完整响应的时间</td>
+<td>毫秒</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="heading-3 ace-line old-record-id-QVBjdnyBKo0jYCxlvo6cRuj9nUb">测试范围</h3>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-Ygcydgh9AoyyCix1Z67collbnGf" data-list="bullet">
+<div>房间创建接口并发能力</div>
+</li>
+<li class="ace-line ace-line old-record-id-CScXdlU16okHgSxYqmNcqPQpnUc" data-list="bullet">
+<div>WebSocket 信令服务器并发连接能力</div>
+</li>
+</ul>
+<div class=" old-record-id-JG92dP5lOoiBbwxpoblcoyUjn3b" data-type="divider"><hr /></div>
+<h2 class="heading-2 ace-line old-record-id-WhpPdXr8iostS2x54tCczsKCnDh">CI/CD 集成设计</h2>
+<div class="ace-line ace-line old-record-id-AgdtdwaN4o2OnhxmuRZcQRICnPc"><strong>测试目标</strong>：实现代码提交后的自动化测试与部署。</div>
+<div class="ace-line ace-line old-record-id-TmTmdPMuhoHI8IxGXTSc4YFjnHf"><strong>技术选型</strong>：GitHub Actions。</div>
+<h3 class="heading-3 ace-line old-record-id-DtqIdrxZioGyIrx1wZwcwG5tnpg">执行策略</h3>
+<div class=" old-record-id-HRd2dnWPio0w08xPmwpcNLYknVR" data-type="sheet">
+<table><colgroup><col width="105" /><col width="105" /><col width="105" /></colgroup>
+<tbody>
+<tr>
+<td>测试类型</td>
+<td>触发条件</td>
+<td>执行内容</td>
+</tr>
+<tr>
+<td>冒烟测试</td>
+<td>每次 Pull Request</td>
+<td>核心 E2E 流程</td>
+</tr>
+<tr>
+<td>完整回归测试</td>
+<td>每天凌晨定时</td>
+<td>全部 E2E 场景</td>
+</tr>
+<tr>
+<td>压力测试</td>
+<td>主分支合并 / 每天凌晨</td>
+<td>Locust 压测</td>
+</tr>
+<tr>
+<td>网络故障测试</td>
+<td>每周 / 版本发布前</td>
+<td>手动或定时触发（不在 CI 流水线中自动执行）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="heading-3 ace-line old-record-id-Vug7djKaEolY2oxhMdrcbhmlnFg">测试流程</h3>
+<ol class="list-number1" start="1">
+<li class="ace-line ace-line old-record-id-TmHkdeIlyouONQxbCRycS3RYnhb" data-list="number">
+<div>后端单元测试</div>
+</li>
+<li class="ace-line ace-line old-record-id-GZyAdaINQoIk8kxN9wacRLrqnCc" data-list="number">
+<div>后端集成测试（含 API 接口、WebSocket 信令与多客户端场景）</div>
+</li>
+<li class="ace-line ace-line old-record-id-G8M3dbXX1o2QQzx0atlcLCmRn8d" data-list="number">
+<div>前端单元测试</div>
+</li>
+<li class="ace-line ace-line old-record-id-Rkp2d8dxxo8UXIxustGcSFTknrc" data-list="number">
+<div>端到端测试（冒烟）</div>
+</li>
+<li class="ace-line ace-line old-record-id-GTVXdrT8QoNNpjxoO13cR0tnnvg" data-list="number">
+<div>压力测试（仅主分支或定时任务）</div>
+</li>
+<li class="ace-line ace-line old-record-id-CjH0dfuugo2QrQxDcONcfuCSnnd" data-list="number">
+<div>部署上线（仅主分支，部署后冒烟验证）</div>
+</li>
+</ol>
+<h1 class="heading-1 ace-line old-record-id-Cuc7d3wUtogdhnxkBPOccP7enIq"><strong>软件性能</strong></h1>
+<div class="ace-line ace-line old-record-id-CJwYdkbRGou0goxCuAdcthebnqb">WildCard 是一个基于 Web 的自定义规则卡牌联机游戏平台。系统性能量度覆盖浏览器交互、实时通信、并发承载、资源加载、异常恢复和部署运行等方面，性能量度框架如下。</div>
+<div>
+<table class="ace-table" data-ace-table-col-widths="200;200;200;361"><colgroup><col width="200" /><col width="200" /><col width="200" /><col width="361" /></colgroup>
+<tbody>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-EmuidCNMTofKGlxpO2UcRYgXnzg">量度维度</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-M7NzdTiafomMSwxt4E2cuVzQnCe">主要对象</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-PmpLdu3BWoVBcQxVrO2cbCKDnlh">关注重点</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HuD6d9zLYoAaJ2xKOyDcwuVdn9f">量度方式</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-CWYod9UlWoPVTox2mikczS5VnUg">接口交互性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-GBjkdkfWbolWzUxMqVVcDxDcnXh">注册、登录、密码修改、创建房间、加入房间、保存规则、加载规则、提交审核等接口</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UXDddYtWToiPNDxqeABcjTu1nVh">请求成功率、响应时间、错误率</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-LwjadfZZeoS7AExjEebc5wwInlf">通过后端集成测试和压力测试统计接口耗时与错误情况</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HCyUd7TUVosY6cxbC4Ec1XGhnwh">实时通信性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TiD5dZoh3ost4Txy7YwclR2NnPf">WebSocket 连接建立、断开、重连、广播、状态同步</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-LKs9dSlodo5B4yxz2Xkc22NLnOb">连接稳定性、重连恢复能力、消息广播时延、状态一致性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Zdlidmu1EodEL6xkUHrctcAKnKc">模拟多个 WebSocket 客户端进行联机场景测试，并结合网络故障注入测试验证</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-AasXd7bJSoZ49NxLDgIc9y1xn3g">前端交互性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JibzdgaKtoKV7Exzd3dc5Ephnof">流程组件编辑器中的拖拽、移动、删除、连线等操作</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-J6AldlbbHolDtgxjSdHcF5ucnnY">编辑流畅度、交互反馈速度、页面稳定性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-MTL3djMDeoaTGwxnugCc4NysnGR">通过前端组件测试和真实浏览器场景验证编辑体验</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OSsOdeOLQop4RZxshtIcQg49nCh">资源加载性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-WkWldVl85oiRiHxTcKDce3HJnyh">背景、卡背、卡面等自定义素材</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-AawedfbnQo4emCxL9Xhcm8O7nIh">加载时间、资源体积、弱网环境表现</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-NPKbdnjQ0oml2xxCraMcM2p1n4e">对不同规格素材进行加载测试，并结合素材压缩前后结果对比分析</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-FvSLdwDo8opU9axSviIcL0I6nub">回放访问性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UdTidrBEgouGtMxOZi2cCdovnnh">历史对局列表、回放进入、时间轴跳转、视角切换</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OBrAdVpWKo7vY4x5mDMctn1knce">回放打开速度、跳转反馈速度、状态还原正确性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-P97KdJQlboNvXrxW0XncSUAhnfg">通过端到端测试和人工校验结合的方式验证</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-X9gbdv50io3rlpxpLFWc3FiHncz">并发承载性能</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-T1fDdiyRnocBV2xaVBacRbdrnot">房间创建接口、WebSocket 信令服务</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-VsKQd6CbOolkD8xqQGLcckTAnpg">并发请求承载能力、稳定连接能力、运行期资源占用</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ZKeEdXtbpoUBdqxPQYyctnzlnyd">使用 Locust 进行压力测试，并在目标服务器环境下记录 CPU、内存和带宽占用</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Y1nYdPzv1oqLmIxw8AicETyQnzd">异常恢复能力</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-IqAydYUmqo1hfbxOVKfcy4iynsh">延迟、丢包、断链等网络异常场景</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-SR4RdZqiroSn0rxl1uncTgUwnvb">恢复时间、恢复成功率、恢复后状态一致性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-YZ06d7Ph2oc0Q9xy2NTcJ96knre">使用 <code>tc</code> 或 Mahimahi 模拟网络异常环境进行故障测试</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-BBUedaQQao93HSxyvpgcdxRonvg">部署运行适配性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Vw5CdGS8golRyvxdnkRcQgIxnAe">Ubuntu 24.04 云端部署、浏览器访问</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-VMrAdMynjoIqYwx4HU7cYihMnZb">部署成功率、部署后可用性、跨端可访问性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-XkK9dKVq9oAdCexSl5pcknZZnMf">通过 GitHub Actions、Docker 部署和部署后冒烟测试验证</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ace-line ace-line old-record-id-ZGdBd5JOho2OGXx26Vyc1EdSn1e">核心性能指标包括以下五项：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-ZHaVdVtMXou9S2x9LCzcSDLznyh" data-list="bullet">
+<div>房间创建接口在并发场景下的<strong>稳定性</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-OUhNd6Qi0o5YmSx5skGc621onMj" data-list="bullet">
+<div>WebSocket 信令服务器的<strong>稳定连接能力</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-ZivxdoJmqocEAQxwCXlcMqBwn5g" data-list="bullet">
+<div>断线重连后的<strong>状态恢复能力</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-V8eudjHvLohuntxNsFNcESqwnFc" data-list="bullet">
+<div>高规格图形素材加载时的<strong>性能表现</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-OX4rdW7NjoaWp7xUWVMcEP2Mn7g" data-list="bullet">
+<div>对局回放的打开与跳转<strong>响应速度</strong></div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-KoDndseYKonlwUx1wmUcJC6cnqh">上述指标直接对应系统的核心使用路径，是性能验证的重点内容。</div>
+<div class="ace-line ace-line old-record-id-Sg1bdlbKvoc5TgxOP3Cc1zF7nKb">实现阶段统一记录以下数据：接口响应时间分布，WebSocket 稳定连接数与消息广播延迟，素材加载耗时与压缩效果，回放打开与跳转耗时，以及目标部署环境下的 CPU、内存和带宽占用曲线。上述数据构成系统性能基线，也是发布判断的直接依据。</div>
+<div class="ace-line ace-line old-record-id-XZkZd1Y1KobPiuxWwuYc7qalnyh">&nbsp;</div>
+<h1 class="heading-1 ace-line old-record-id-WKbYdZeN1oPFlixEjoncadhLnJf"><strong>软件的能力边界</strong></h1>
+<div class="ace-line ace-line old-record-id-Tu4Ed24LuoTQ05x2zkTcb3ELnmf">WildCard 的能力边界建立在&ldquo;浏览器端交互、自定义规则构建、房间制联机、规则审核后发布、对局回放&rdquo;这一组已定义能力之上。文档中的能力表述以现有规格说明书中已经定义的功能与流程为边界。</div>
+<div>
+<table class="ace-table" data-ace-table-col-widths="200;200;200"><colgroup><col width="200" /><col width="200" /><col width="200" /></colgroup>
+<tbody>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TYdgdH9iiobuxLx6Y7qcYzMMnc2">边界主题</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JcSSdyBqTosJyLxgVkBcI5DUnlg">当前能力范围</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-RwHld28vFoOjefx5zW4cm3YvnJc">边界说明</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Ojw7dWxrJocH6WxAnUCckhPInAe">客户端形态</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OkNodOaNzoyPdoxfth8caYaEnLh">Web 端，适配 PC 和移动端浏览器</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HT6Rdv90BoeQoaxwecpcz1tWnDc">当前文档只定义了网页端形态，不包含原生移动端应用或离线客户端</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-SsfqdsE6FobQaIx74KHctjavnFh">联机模型</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TbeQdUIVkoMHYwxqyGLcxINnn2c">以房间为单位的多人联机</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ZF6NdiK1FoY35mxsOPLcQtLHnWh">当前联机流程围绕房间 ID、二维码、密码和房主机制展开，不适用于超大规模开放式实时会话</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-CJmkdtItAoSckVxJjuEcWUNgn9e">规则表达方式</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UnPkdFeF0oIOb3xHsPrcqio9n2b">通过平台提供的流程组件、类、属性和方法构建规则逻辑</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Nh0TdyOqioGKhZxDelGcg0Dwn0g">当前文档不支持任意脚本上传、任意代码执行或无限复杂规则编排的依据</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Fo29dxibHoymGtxm1p0clxFwn6d">联机规则来源</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-GcuIdfDzqorbWUxHkCycVuVZnOe">经过审核并上架规则市场的规则可进入联机流程</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JpB1dsWZjo43SkxhIW0cX3Vdnvh">未审核规则不应进入公开联机路径，这是平台治理边界的一部分</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HZEid7Xiroip57xkqUTclD6bnaf">图形资产能力</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TQS3dfC72o24caxFLYvc1FBSn7d">支持背景、卡背、卡面等自定义素材</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-CuJDdPyahoCxEcx4vZUcANNKnvc">现有文档已明确高规格素材可能导致加载缓慢，文档不对任意大尺寸素材作无条件性能承诺</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Lmo2d8xzeoMlgLx6ndKcEyJNnid">回放能力</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-R3fSdlzg4oiKTnxRwm6cOL2vn2q">支持历史对局查看、回放进入、时间轴控制和视角切换</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-CB0ud8cfiodvEBxIeokcKHIHntd">当前仅定义了回放查看能力，并未扩展到回放编辑、分支回放或复杂检索分析</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-RKuKdzM3yosnStxUsmuc5AkKnRe">管理治理能力</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Z7fJdj8SyoI3huxk11qcZNUGnHc">支持审核与举报管理</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-QIibdWYRuoL4NRxLngocmVqon2f">当前机制以人工审核、人工处理为主，不应表述为完全自动化内容治理系统</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-VolqdwvKTocKxEx8VM0cT5NnnMe">性能承诺边界</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-SsUWdppbwoZB1JxiGW2cpY6cnWc">明确建立完整测试与性能验证机制</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HM2NdCv9DoRZG0xseW0cWiFAnod">在缺乏实测数据前，文档不承诺具体吞吐量、具体延迟上限或大规模公网承载能力</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ace-line ace-line old-record-id-V8xHd1kI3ogwf5xpdgOcxr5InYe">系统当前按单机云主机部署能力进行规划和验证。目前的部署环境为 Ubuntu 24.04、腾讯云 2 核 CPU、4GB 内存、60GB SSD 云硬盘和 5Mbps 带宽，并采用 Docker 部署与 GitHub Actions 自动化流程。在未引入集群化、水平扩容、消息队列、CDN 等设计之前，系统能力表述限定为&ldquo;在既定部署环境下满足阶段功能与性能要求&rdquo;。</div>
+<div class="ace-line ace-line old-record-id-WWbsdLr6uolBjixBC7CcD9txnEc">&nbsp;</div>
+<h1 class="heading-1 ace-line old-record-id-Knn8dM5Y0ofekExquRFcrpManPf"><strong>出口条件</strong></h1>
+<div class="ace-line ace-line old-record-id-QQBHd7KPzoJ7gMx0WmFc0b4pndb">WildCard 的发布标准同时覆盖功能验收、测试验证、异常恢复、部署验证、内容治理和性能验证。软件发布前必须同时满足以下条件。</div>
+<div>
+<table class="ace-table" data-ace-table-col-widths="200;583"><colgroup><col width="200" /><col width="583" /></colgroup>
+<tbody>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Z78IdQI0do3lKwxExwScekNanRd">类别</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-D1fwdXZM1ozcAZxf1SCcHwGyn6e">出口条件</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-AyrrdolrdoS66Axvagfc7bXXnkf">阶段功能完成度</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-XtZNdZ4brodlSox8BgXc7whjnRd">若以 Alpha 阶段为目标，则应至少完成用户系统基础功能、自定义规则构建功能和联机功能；若进入 Beta 阶段，则还应补齐规则市场、对局回放、审核与举报等后续功能</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-YIMtdlAs3oR9GQxTVb7cQXjjnEc">自动化测试通过</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ZGsRdv5DRoaWfSxePpccD9xrn4f">后端单元测试、后端集成测试、前端测试、端到端测试应纳入 CI/CD 流程并稳定通过</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-M89Xdud1ioxB2hxqJAUcM9ygnmf">网络异常验证完成</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Ka7bdUAWqociTJxZgL7ckPwCn0g">应完成延迟、丢包、连接中断等故障场景测试，验证断线重连和状态恢复机制有效</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Fll6df68uo7ZqfxevaScQtdNngc">压力测试完成</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Qda3d3Bq6o8CRUx05jBcmYqCnba">应对房间创建接口和 WebSocket 信令服务进行压力测试，并形成可复核的测试记录</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-C72ld4QrRo2iftx2xXCc8fmJnGh">部署环境验证通过</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-GFfPdIxJioezIRxxzayckeyXnre">应在既定服务器环境中完成 Docker 部署，并在部署后通过冒烟测试</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ZkdBdHITOoUUAjx02J9cGT07ncc">内容审核链路可用</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UVsLdtBCdoZfvrxedV5cydign8c">规则提交审核、审核通过后上架、违规内容举报与处理链路应完整可用</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-VSyVdAsHJoBK9lxvzVUc9rNmnBd">素材治理机制可用</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OIi6dXL0FocccGxHFWfcbOxJn0b">自定义图形素材上传后，应具备预压缩或等效治理机制，避免高规格素材直接破坏系统体验</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-I4ZEdGN3coPcxhxci3WcZBu4nBf">性能基线形成</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-GHSWdqhxhoOSshxW7SGcd3nWnbd">核心接口、实时通信、资源加载和回放访问应形成与目标部署环境相匹配的性能基线记录</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ace-line ace-line old-record-id-BXtDdKJKeoIqzWxA0jZcVjhrnbf">正式发布判断重点包括以下三项：</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-SfbFdc0a4oOdEsxDmOcccEyCnHd" data-list="bullet">
+<div>房间创建接口的<strong>并发稳定性</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-KI3ddTznyoZQgFxbRPacw3X7nCh" data-list="bullet">
+<div>WebSocket <strong>稳定连接能力</strong></div>
+</li>
+<li class="ace-line ace-line old-record-id-WnUzdCDr3o3WGfx2aOJc3P5wnih" data-list="bullet">
+<div>断线重连后的<strong>状态恢复能力</strong></div>
+</li>
+</ul>
+<div class="ace-line ace-line old-record-id-G78vd5wrRojsIsxE9jocT71bnKd">这三项直接决定联机玩法是否成立，属于核心技术出口条件。若这三项尚未通过压力测试和异常测试验证，即使功能已经实现，软件也仅可作为内部试运行版本或阶段性验收版本，不作为稳定正式版发布。</div>
+<div class="ace-line ace-line old-record-id-RdiTdp3K4oOmggxAIZXcXF60nAA">&nbsp;</div>
+<h1 class="heading-1 ace-line old-record-id-T0MndNAp0ob692xQNnvcWl03ncf"><strong>技术风险识别和评估</strong></h1>
+<div class="ace-line ace-line old-record-id-Jxl5dou08oPwECxNGDgch1O3nWc">WildCard 的主要技术风险集中在实时同步、单机资源承载、素材加载、测试覆盖、回放实现和跨端适配等方面。主要风险如下：</div>
+<div>
+<table class="ace-table" data-ace-table-col-widths="200;200;200;200;200"><colgroup><col width="200" /><col width="200" /><col width="200" /><col width="200" /><col width="200" /></colgroup>
+<tbody>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UA9PdFeBToFpAqxfoiecYDlxnwb">风险项</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ZAxpdhgNUoX93pxTac6crKlNnRe">风险说明</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-BtNsdxZpWolQVsxwjaLcP6BInPh">可能性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JkdRdmXIbopHEqxcYkAcYy48nbf">影响程度</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UaAVdPDp4o733mxQddIcvBV0nff">应对策略</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OJxidETshoPNYLxlgj4cFIWjnWb">WebSocket 多客户端状态不同步</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-PI6hdA66ootHmExRJAHcxmRWnyh">联机系统依赖多客户端实时同步，若广播、重连或状态恢复出现问题，将直接破坏对局正确性</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-BzpYddgfxo4ZQ2xnhzxcT2xAnI4">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-MEhcdWH3moVby5xONeRcUrZ3nHc">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Gcs7dqn7UoPSCIxfNTmcIu6Xnee">优先补齐 WebSocket 集成测试、断线重连测试和网络故障测试；对关键状态变更建立一致性校验</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UgL2dz0Zfo9eoZxbu2RcLtNYnig">单机部署资源不足</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-OGD0dFMZno8tZ3xiVUvcxUYBnch">当前部署环境为单台 2C4G5M 云主机，随着房间数、连接数和资源加载压力上升，可能出现 CPU、内存和带宽瓶颈</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-WC9Ud6imOoH9zLxNXB6c4rIInSb">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-KDSGdID6boJqivxixh0cyO3jn2c">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UTTadk568oWX9ExcjSLckuApnNe">尽快完成房间创建与 WebSocket 压测，记录资源曲线；在需要时升级资源规格，并保持后端具备迁移和扩容条件</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Vex7dApKOoXooCxkjM7cirDenIg">高规格素材拖慢加载</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-ShEfdTxRjomyCSx8xjzc6iJFn8d">用户上传高分辨率背景和卡面素材后，可能导致加载过慢、前端内存压力过大或弱网体验恶化</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JgkmdfmHuofoYixNeOxccitNnih">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-WVAkdMFxcoO0Oqxlk5sciMPxnJd">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-WheAdNyltofWOXxSnuLc2MK4nlc">落实素材预压缩、尺寸限制、格式限制和上传校验，并对代表性素材做专项加载测试</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TQ96dmtcBohcmYxJWLPcu3ujn6d">审核与举报链路不完整</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Tt6vdRApHo4TGbxqJIGcsBKunnc">自定义规则和素材带来内容合规风险，若审核链路未闭环，违规内容可能进入公开市场</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-H8UbdOW4Qo1NAdxZy2XcNPZEnFc">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-NAgPdqh5Io336ExvTjGcsg03nod">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-N5o6duEGeoIkCGxPDn2cHBBAnDb">将审核链路视为发布前置条件，未通过审核的规则不得上架或公开联机；完善举报处理流程</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-STj6dZxJeovPb4x12Aqcvr4GnWb">测试设计已定义但落地不足</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-INh1dHBfqoeOUSxyXPzcZLLSnBh">现有技术规格说明书中的多项测试仍处于待完善状态，若未补齐测试直接发布，回归风险较高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-EBd3dyPgqoOdWIxA7VGckyKTnif">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-FAqPdQ6C5oDkHmxhcJccyLcnncc">高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Ajbed4xvno9t3jxbhZUcivuTnEc">先完成最小可发布测试集，包括单元、集成、端到端冒烟、网络故障和压力测试</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-MKmTdDnOWoJaq4xarFac1yXPnJb">回放功能实现复杂度高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-G0QodoEVLo5s8Lxc1Tkc8Aajn2e">回放功能要求正确记录和重建对局过程，若数据结构、索引和恢复逻辑设计不足，容易出现状态错乱或性能下降</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-EB4EdqIKyoEuf9xhrIScCa7gnh6">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TBFBdXFOgo5Zt8xLy2xckMdtnKh">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-WH6tdZ6foont6SxAAjicXWuanTh">在实现前明确回放事件记录方式、恢复机制和数据保留策略，并进行专门测试</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-SJRIdyLgioxMaixMOyuc2aGMnxf">浏览器与终端适配不稳定</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TXNZdy3wpo2lBFxDznycQJ6Sn9f">图形化规则构建界面包含拖拽、连线、属性编辑等复杂交互，不同终端上的兼容性风险较高</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-F4YhdoACTooKjBxgjx4cIeKdnwd">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Ojatd7UkEo2cVMxDz9ycsn7jnL7">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-S06mdkZXvoopuExI7i1ctAXanzg">明确支持的浏览器范围，对桌面端和移动端分别进行关键路径验证</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-AxNSdSG7ooBuRHxlZeqcl9SqnRg">邮件链路依赖风险</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-TlkFdNVF9o0QcXxMlWpc8l8inNb">注册、找回密码和邮箱修改都依赖邮件发送流程，外部邮件服务异常会影响账户系统关键路径</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-NIRod16cCoA8DGxp93rcasQFnIf">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-R3AMd1aREo4EoMxCzDUcALb4nPg">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Uj5ydeyxBo4oYtxmeGvcf9Urngf">在实现阶段补齐邮件发送、重试、超时和失败提示策略，避免关键流程完全依赖单一链路</div>
+</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-HzhrdrGl6oDp98xXJI7cSpx4nNf">规则复杂度增长导致性能波动</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-JNtndANO2oj6FDx0hO4cLjMRnDe">规则由流程组件、类和方法组合构成，若缺乏复杂度控制，可能影响前端编辑和后端执行表现</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-UanudRo4zoN23hxhY4qcJ6EFnAR">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-CMVldASKMohaBsxH0A8cCH0znif">中</div>
+</td>
+<td rowspan="1" colspan="1">
+<div class="ace-line ace-line old-record-id-Mj7ud2IzrotSalxV2IHcnrFonLg">在实现阶段补充规则规模约束，并对复杂规则做代表性性能验证</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ace-line ace-line old-record-id-Z8Owd1zj7oEbBkxRna1cL9TYnvc">&nbsp;</div>
+<div class="ace-line ace-line old-record-id-KmgUdPiljocmwGxrGj5c7p82nid">系统的核心技术风险集中在&ldquo;实时联机能力是否稳定成立&rdquo;与&ldquo;单机部署条件下是否能承受目标负载&rdquo;两个方面。发布前的技术验证重点包括 WebSocket 同步链路、房间创建接口、网络异常恢复、素材治理和压力测试结果固化。上述关键链路形成稳定验证证据后，系统方可进入正式发布流程。</div>
+<div class="ace-line ace-line old-record-id-CPHtdBVvfoVQCgxXMmncRRL3nBt">&nbsp;</div>
+<h1 class="heading-1 ace-line old-record-id-DpmydnOdKoyYNjxDr5lc0vjSngd">软件部署和维护</h1>
+<h2 class="heading-2 ace-line old-record-id-D2QYd1Vb9okiyAx5yv9c08ycnfd">部署环境</h2>
+<div class="ace-line ace-line old-record-id-NdwMd10GSo5lP3xhngXcVtsGnoh">项目整体基于网页web端实现，目标适配PC、移动端等用户端，项目整体将统一部署到服务器云端，相应云端开发部署环境为ubuntu 24.04，目前已在腾讯云上购买了相应云服务器，其基本配置如下:</div>
+<ul class="list-bullet1">
+<li class="ace-line ace-line old-record-id-OIqDdCUCnoNClhxyyaecqZw8nnb" data-list="bullet">
+<div>2核 CPU，4GB 内存，60GB SSD云硬盘 5Mbps 带宽</div>
+</li>
+</ul>
+<h2 class="heading-2 ace-line old-record-id-OupzdInsForoK4xXo8mcDum7nRh">部署方式</h2>
+<div class="ace-line ace-line old-record-id-NTV2dEzokouM7rxTafOcWDsEnXd">使用GitHub Action运行自动化测试、打包Docker镜像和自动部署。</div>
+<h2 class="heading-2 ace-line old-record-id-SkjAdW43AokMjWx3tJbcez69nhe">Docker部署</h2>
+<div class="ace-line ace-line old-record-id-D9gVd3kCGoqYatxZUv0cdHhHn7f">为了保证部署环境和开发测试环境的一致性，以及CI 部署的方便性，我们采取了Docker 部署方式。</div>
+<h2 class="heading-2 ace-line old-record-id-MxkTdn7fdoQQfJxJEZCcC0xgnZb">运行</h2>
+<div class="ace-line ace-line old-record-id-TSQXdsMwKo7lf8xFc5ccSRdXnnb">服务端就在上述的服务器环境下进行运行。</div>
+<div class="ace-line ace-line old-record-id-T0OGdZg6soGZvmxwHUCcJg5cnhc">用户端则没有特殊的要求，只要有浏览器即可。</div>
+<h2 class="heading-2 ace-line old-record-id-IpardVmN1otzUJxhxXbcK6TVnwb">维护</h2>
+<div class="ace-line ace-line old-record-id-VnZ7dHpY3oSACpxhI32cxtRCnNh">同样是在上述服务器环境下进行，通过新建分支并在其上对可能出现的bug进行修正。</div>
+<div class="ace-line ace-line old-record-id-Z2dGdAha4oG7BBxBAVYcyC4FnYg">&nbsp;</div>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2026/04/16/%E8%BD%AF%E5%B7%A5/[T.6]%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E6%8A%80%E6%9C%AF%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6/">http://ywxy12138.github.io/2026/04/16/软工/[T.6] 团队项目：技术规格说明书/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="../../../../../img/%E8%8A%B1%E9%AC%98.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%5BT.5%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E5%8A%9F%E8%83%BD%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="../../../17/%E8%BD%AF%E5%B7%A5/%5BT.8%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E5%9B%A2%E9%98%9F%E8%B4%A1%E7%8C%AE%E5%88%86%E5%88%86%E9%85%8D%E8%A7%84%E5%88%99/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../../../../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">系统概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">概念与术语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">技术栈说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.1.</span> <span class="toc-text">程序设计语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.2.</span> <span class="toc-text">开发框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.2.1.</span> <span class="toc-text">前端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">运行环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.1.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">5.1.0.1.</span> <span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">5.1.0.2.</span> <span class="toc-text">用户运行环境</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.2.</span> <span class="toc-text">后端</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">软件架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">6.1.</span> <span class="toc-text">前端Web App子系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">6.1.1.</span> <span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">6.1.2.</span> <span class="toc-text">模块划分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">软件设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.1.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">7.1.1.</span> <span class="toc-text">代码编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.2.</span> <span class="toc-text">后端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">7.2.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">7.2.2.</span> <span class="toc-text">总体架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">7.2.2.1.</span> <span class="toc-text">1. 网络与会话层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">7.2.2.2.</span> <span class="toc-text">2. 通用状态机引擎层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">7.2.2.3.</span> <span class="toc-text">3. 游戏逻辑实现层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">7.2.2.4.</span> <span class="toc-text">4. 客户端&#x2F;UI 展现层</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.3.</span> <span class="toc-text">系统文档编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">测试计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.1.</span> <span class="toc-text">测试架构总体设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.1.1.</span> <span class="toc-text">测试设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.1.2.</span> <span class="toc-text">统一测试技术栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.2.</span> <span class="toc-text">后端单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.3.</span> <span class="toc-text">后端集成测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.3.1.</span> <span class="toc-text">API 接口测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.3.2.</span> <span class="toc-text">WebSocket 信令与多客户端场景测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.4.</span> <span class="toc-text">前端测试设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.5.</span> <span class="toc-text">端到端测试设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.6.</span> <span class="toc-text">网络故障测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.7.</span> <span class="toc-text">压力测试设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.7.1.</span> <span class="toc-text">测试工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.7.2.</span> <span class="toc-text">测试目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.7.3.</span> <span class="toc-text">测试范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.8.</span> <span class="toc-text">CI&#x2F;CD 集成设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.8.1.</span> <span class="toc-text">执行策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.8.2.</span> <span class="toc-text">测试流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">软件性能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">软件的能力边界</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">11.</span> <span class="toc-text">出口条件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">12.</span> <span class="toc-text">技术风险识别和评估</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">13.</span> <span class="toc-text">软件部署和维护</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.1.</span> <span class="toc-text">部署环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.2.</span> <span class="toc-text">部署方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.3.</span> <span class="toc-text">Docker部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.5.</span> <span class="toc-text">维护</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.19%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-29T02:40:39.164Z" title="发表于 2026-06-29 10:40:39">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.18%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA/" title="无题">无题</a><time datetime="2026-06-29T02:40:11.952Z" title="发表于 2026-06-29 10:40:11">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.4%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E9%A2%98%E5%92%8C%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" title="无题">无题</a><time datetime="2026-06-29T02:34:31.693Z" title="发表于 2026-06-29 10:34:31">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/25/%E8%BD%AF%E5%B7%A5/%5BI.3%5D%20%E4%B8%AA%E4%BA%BA%E4%BD%9C%E4%B8%9A%EF%BC%9A%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-25T01:43:24.223Z" title="发表于 2026-06-25 09:43:24">2026-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/23/cloud_shit/" title="无题">无题</a><time datetime="2026-06-23T03:26:22.824Z" title="发表于 2026-06-23 11:26:22">2026-06-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../../js/utils.js?v=4.13.0"></script><script src="../../../../../js/main.js?v=4.13.0"></script><script src="../../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

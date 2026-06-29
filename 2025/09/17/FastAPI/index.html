@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FastAPI | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FastAPIPython类型提示函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利： 12345678    def get_full_name(first_name: str, last_name: str):        full_name &#x3D; first_name.title() # 此处打点后就会有相应多选的弹窗&#96;&#96;&#96;  列表(list)、字典(d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FastAPI">
+<meta property="og:url" content="http://ywxy12138.github.io/2025/09/17/FastAPI/index.html">
+<meta property="og:site_name" content="yumooo">
+<meta property="og:description" content="FastAPIPython类型提示函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利： 12345678    def get_full_name(first_name: str, last_name: str):        full_name &#x3D; first_name.title() # 此处打点后就会有相应多选的弹窗&#96;&#96;&#96;  列表(list)、字典(d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg">
+<meta property="article:published_time" content="2025-09-17T03:08:21.000Z">
+<meta property="article:modified_time" content="2025-09-19T05:54:12.417Z">
+<meta property="article:author" content="聿尛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="http://ywxy12138.github.io/2025/09/17/FastAPI/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 聿尛","link":"链接: ","source":"来源: yumooo","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FastAPI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-09-19 13:54:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 19
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('../../../../img/%E8%B5%B5%E4%BA%91%E5%92%8C%E9%A9%AC%E4%BA%91%E7%A6%84.jpeg')"><nav id="nav"><span id="blog-info"><a href="../../../../index.html" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../../../../index.html"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../../../../archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="../../../../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="../../../../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../../../../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../../../../comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="../../../../about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FastAPI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-17T03:08:21.000Z" title="发表于 2025-09-17 11:08:21">2025-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-19T05:54:12.417Z" title="更新于 2025-09-19 13:54:12">2025-09-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FastAPI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h1><h2 id="Python类型提示"><a href="#Python类型提示" class="headerlink" title="Python类型提示"></a>Python类型提示</h2><p>函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_full_name</span>(<span class="hljs-params">first_name: <span class="hljs-built_in">str</span>, last_name: <span class="hljs-built_in">str</span></span>):<br>        full_name = first_name.title() <span class="hljs-comment"># 此处打点后就会有相应多选的弹窗</span><br>```  <br>列表(<span class="hljs-built_in">list</span>)、字典(<span class="hljs-built_in">dict</span>)等类型的标注需要调用`typing`库：<br>```python<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>, <span class="hljs-type">Dict</span>, <span class="hljs-type">Set</span><br><br>x: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]] = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>]]<br></code></pre></td></tr></table></figure>
+<p>此外，还可以使用<code>Optional</code>和<code>Any</code>来实现可选和任意传入的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Optional</span>,<span class="hljs-type">Any</span>, <span class="hljs-type">Sequence</span>, <span class="hljs-type">Tuple</span>, <span class="hljs-type">Callable</span>, TypeVar<br><span class="hljs-comment"># Sequence限定一定是一个序列，列表或者元组</span><br><span class="hljs-comment"># Callable用于限定返回的是一个符合参数和返回值限制的函数</span><br><span class="hljs-comment"># TypeVar是一种泛型，限定了一种特定类型，:</span><br>T = TypeVar(<span class="hljs-string">&#x27;T&#x27;</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_item</span>(<span class="hljs-params">lst: <span class="hljs-type">List</span>[T], index: <span class="hljs-built_in">int</span></span>) -&gt; T:<br>    <span class="hljs-keyword">return</span> lst[index]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">output : [<span class="hljs-type">Optional</span>]=<span class="hljs-literal">False</span></span>):<br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo2</span>(<span class="hljs-params">output: <span class="hljs-type">Any</span></span>):<br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># 由于tuple的特殊性，如果直接使用tuple来限制最终只会限制是否为一个元组，若要限制元组中每个位置上元素的类型则要用Tuple来一一限制：</span><br>x: <span class="hljs-built_in">tuple</span> = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&quot;HELLO&quot;</span>)<br>y: <span class="hljs-type">Tuple</span>[<span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>] = (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><p>在开始一个<code>Python</code>工程时，创建一个虚拟环境:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-m表示以脚本的方式调用一个模块，此后将告知使用哪个模块，venv即为相应模块，将在.venv目录下创建虚拟环境</span><br>python -m venv .venv<br>```   <br>通过如下方式激活虚拟环境：<br>```shell<br>.venv\Scripts\Activate.ps1<br></code></pre></td></tr></table></figure>
+<p>可用如下方法在<code>PowerShell</code>中检查是否激活成功了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">Get-Command python<br></code></pre></td></tr></table></figure>
+<h2 id="并发-async-await"><a href="#并发-async-await" class="headerlink" title="并发 async&#x2F;await"></a>并发 async&#x2F;await</h2><ol>
+<li>若正使用第三方库，可以使用<code>await</code>来调用:<code>result = await some_lib()</code> ，通过<code>async def</code>声明(只能在此内使用<code>await</code>)操作函数：<code>@app.get(&#39;/&#39;) async def read_results():  results = await some_library()  return results</code>。  </li>
+<li>若进行通信的第三方库不支持使用<code>await</code>，则直接使用<code>def</code>定义即可。   </li>
+<li>若应用程序不用和其他任何东西通信来等待响应，则使用<code>async def</code>。  </li>
+<li>不清楚，则使用<code>def</code>即可。<br>遵循上述可进行性能优化。</li>
+</ol>
+<h2 id="decorator-Info"><a href="#decorator-Info" class="headerlink" title="@decorator Info"></a>@decorator Info</h2><p>装饰器，放置在函数的上一行，用来修饰其下的函数。   </p>
+<h2 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h2><p>直接添加到函数定义处的参数列表中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI<br><br>app = FastAPI()<br><br>fake_items_db = [&#123;<span class="hljs-string">&quot;item_name&quot;</span>: <span class="hljs-string">&quot;Foo&quot;</span>&#125;, &#123;<span class="hljs-string">&quot;item_name&quot;</span>: <span class="hljs-string">&quot;Bar&quot;</span>&#125;, &#123;<span class="hljs-string">&quot;item_name&quot;</span>: <span class="hljs-string">&quot;Baz&quot;</span>&#125;]<br><br><br><span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/items/&quot;</span></span>)</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">read_item</span>(<span class="hljs-params">skip: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>, limit: <span class="hljs-built_in">int</span> = <span class="hljs-number">10</span></span>):<br>    <span class="hljs-keyword">return</span> fake_items_db[skip : skip + limit]<br></code></pre></td></tr></table></figure>
+<p>可以通过如下方式来进行相关访问：<code>http://127.0.0.1:8000/items/?skip=0&amp;limit=10</code>.<br>此外还可以通过不添加默认值的方式来设定某些查询参数的必须属性，即非填不可。   </p>
+<h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>一般包含请求信息(请求信息，类型<code>method</code>、<code>URL</code>链接、…)、请求头<code>headers</code>、请求体<code>body</code>(表单数据、<code>JSON</code>数据、文件上传等)</p>
+<h2 id="HTTP与Web标准"><a href="#HTTP与Web标准" class="headerlink" title="HTTP与Web标准"></a>HTTP与Web标准</h2><h3 id="从文件分离，到路由分类集中"><a href="#从文件分离，到路由分类集中" class="headerlink" title="从文件分离，到路由分类集中"></a>从文件分离，到路由分类集中</h3><pre><code class="python">    app = FastAPI()
+
+    router = APIRouter()
+    @router.get(&quot;/items/&#123;item_id&#125;&quot;)
+async def read_item(
+        item_id: int, needy: str, skip: int = 0, limit: Union[int, None] = None
+):
+    pass
+
+@router.get(&quot;/items/&#123;items_id&#125;&quot;)
+async def read_item(items_id: int, needy: str, skip: int = 0, limit: Union[int, None] = None):
+    pass
+
+app.include_router(router, prefix=&quot;/api&quot;)
+</code></pre>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>在路由动作前(后)统一加一个操作，加在路由前的操作为中间件。   </p>
+<h3 id="数据存储：从内存到数据库"><a href="#数据存储：从内存到数据库" class="headerlink" title="数据存储：从内存到数据库"></a>数据存储：从内存到数据库</h3><p>使用数据库存数据</p>
+<h2 id="SQL-关系型-数据库"><a href="#SQL-关系型-数据库" class="headerlink" title="SQL(关系型)数据库"></a>SQL(关系型)数据库</h2><pre><code class="python">from sqlmodel import Field, Session, SQLModel, create_engine, select
+
+### 创建模型
+class Hero(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    name: str
+    secret_name: str
+    age: int | None = None
+
+
+
+### 创建引擎
+&#39;&#39;&#39;
+    使用 check_same_thread=False 可以让 FastAPI 在不同线程中使用同一个 SQLite 数据库。这很有必要，因为单个请求可能会使用多个线程（例如在依赖项中）。
+    不用担心，我们会按照代码结构确保每个请求使用一个单独的 SQLModel 会话，这实际上就是 check_same_thread 想要实现的。
+&#39;&#39;&#39;
+sqlite_file_name = &quot;database.db&quot;
+sqlite_url = f&quot;sqlite:///&#123;sqlite_file_name&#125;&quot;
+
+connect_args = &#123;&quot;check_same_thread&quot;: False&#125;
+engine = create_engine(sqlite_url, connect_args=connect_args)
+
+### 创建表
+def create_db_and_tables():
+    # 为所有表模型创建表
+    SQLModel.metadata.create_all(engine)
+
+# 创建会话依赖项，
+&#39;&#39;&#39;
+    Session 会存储内存中的对象并跟踪数据中所需更改的内容，然后它使用 engine 与数据库进行通信。
+
+    我们会使用 yield 创建一个 FastAPI 依赖项，为每个请求提供一个新的 Session 。这确保我们每个请求使用一个单独的会话。
+
+    然后我们创建一个 Annotated 的依赖项 SessionDep 来简化其他也会用到此依赖的代码。
+&#39;&#39;&#39;
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+SessionDep = Annotated[Session, Depends(get_session)]
+
+### 启动时创建数据库表
+@app.on_event(&quot;startup&quot;)
+def on_startup():
+    create_db_and_tables()
+
+### 创建Hero类
+&#39;&#39;&#39;
+    每个SQLModel模型也是一个Pydantic模型，您可在与其相同的类型标注中使用，如：
+    若声明一个类型为`hero`的参数，其将从JSON主体中读取数据，同样也可以声明为函数的返回类型
+&#39;&#39;&#39;
+@app.post(&quot;/heroes/&quot;)
+def create_hero(hero: Hero, session: SessionDep) -&gt; Hero:
+    session.add(hero)
+    session.commit()
+    session.refresh(hero)
+    return hero
+with Session(engine) as session:
+    # 可以使用如下方式获取数据库中相关数据，但是请注意对于MySQL来说，`session.exec(statement).first()`获取的是一个元组，因此此处仍需要通过[]来再取相应索引的元素
+    statement = select(Hero).where(Hero.name == &quot;Spider-Boy&quot;)
+    hero = session.exec(statement).first()[0]
+    print(hero)
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io">聿尛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ywxy12138.github.io/2025/09/17/FastAPI/">http://ywxy12138.github.io/2025/09/17/FastAPI/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ywxy12138.github.io" target="_blank">yumooo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="../../../../img/%E8%8A%B1%E9%AC%98.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../../../img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../../../img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../../14/vue3/" title="vue3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vue3</div></div></a></div><div class="next-post pull-right"><a href="../../21/compile-experiment/" title="compile-experiment"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">compile-experiment</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../../../../img/%E8%8A%B1%E9%AC%98.jpg" onerror="this.onerror=null;this.src='../../../../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">聿尛</div><div class="author-info__description">孤独永恒，死亡永生。</div></div><div class="card-info-data site-data is-center"><a href="../../../../archives/"><div class="headline">文章</div><div class="length-num">104</div></a><a href="../../../../tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="../../../../categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ywxy12138"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无可奈何花落去，似曾相识燕归来！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FastAPI"><span class="toc-number">1.</span> <span class="toc-text">FastAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E7%B1%BB%E5%9E%8B%E6%8F%90%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">Python类型提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91-async-await"><span class="toc-number">1.3.</span> <span class="toc-text">并发 async&#x2F;await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#decorator-Info"><span class="toc-number">1.4.</span> <span class="toc-text">@decorator Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">查询参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E6%8A%A5%E6%96%87"><span class="toc-number">1.6.</span> <span class="toc-text">HTTP报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E4%B8%8EWeb%E6%A0%87%E5%87%86"><span class="toc-number">1.7.</span> <span class="toc-text">HTTP与Web标准</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E5%88%86%E7%A6%BB%EF%BC%8C%E5%88%B0%E8%B7%AF%E7%94%B1%E5%88%86%E7%B1%BB%E9%9B%86%E4%B8%AD"><span class="toc-number">1.7.1.</span> <span class="toc-text">从文件分离，到路由分类集中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">1.7.2.</span> <span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%EF%BC%9A%E4%BB%8E%E5%86%85%E5%AD%98%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.7.3.</span> <span class="toc-text">数据存储：从内存到数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL-%E5%85%B3%E7%B3%BB%E5%9E%8B-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.8.</span> <span class="toc-text">SQL(关系型)数据库</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.19%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-29T02:40:39.164Z" title="发表于 2026-06-29 10:40:39">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.18%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9ABeta%20%E9%98%B6%E6%AE%B5%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA/" title="无题">无题</a><time datetime="2026-06-29T02:40:11.952Z" title="发表于 2026-06-29 10:40:11">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/29/%E8%BD%AF%E5%B7%A5/%5BT.4%5D%20%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%EF%BC%9A%E9%80%89%E9%A2%98%E5%92%8C%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" title="无题">无题</a><time datetime="2026-06-29T02:34:31.693Z" title="发表于 2026-06-29 10:34:31">2026-06-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/25/%E8%BD%AF%E5%B7%A5/%5BI.3%5D%20%E4%B8%AA%E4%BA%BA%E4%BD%9C%E4%B8%9A%EF%BC%9A%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2026-06-25T01:43:24.223Z" title="发表于 2026-06-25 09:43:24">2026-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../../2026/06/23/cloud_shit/" title="无题">无题</a><time datetime="2026-06-23T03:26:22.824Z" title="发表于 2026-06-23 11:26:22">2026-06-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By 聿尛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello, welcome to my <a target="_blank" rel="noopener" href="https://yumooo.cn">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="../../../../js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
