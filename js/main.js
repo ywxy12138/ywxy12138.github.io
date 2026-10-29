@@ -463,6 +463,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // 模板可能额外插入未进入目录的标题（如友链分组），不能按标题序号匹配目录。
+    // 使用解码后的标题 ID 建立映射，也兼容中文和经过 URL 编码的锚点。
+    const tocLinkById = new Map()
+    Array.from($tocLink || []).forEach(link => {
+      const hash = link.getAttribute('href') || ''
+      if (!hash.startsWith('#')) return
+      try {
+        tocLinkById.set(decodeURIComponent(hash.slice(1)), link)
+      } catch (_) {
+        // 忽略损坏的锚点，避免单个目录项中断滚动监听。
+      }
+    })
+
     // find head position & add active class
     const $articleList = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
     let detectItem = ''
@@ -495,7 +508,9 @@ document.addEventListener('DOMContentLoaded', function () {
           return
         }
 
-        const currentActive = $tocLink[currentIndex]
+        const currentActive = tocLinkById.get(decodeURIComponent(currentId.slice(1)))
+        // 当前标题没有目录项时保持未选中，下一节仍可正常高亮。
+        if (!currentActive) return
         currentActive.classList.add('active')
 
         setTimeout(() => {

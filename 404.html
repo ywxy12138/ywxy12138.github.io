@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: true,
   isToc: false,
-  postUpdate: '2026-10-29 17:49:30'
+  postUpdate: '2026-10-29 18:06:47'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -170,109 +170,136 @@
       }
       detectApple()
     })(window)</script><link rel="stylesheet" href="/self/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%8A%B1%E9%AC%98.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/self/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="error404" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="yumooo"><span class="site-name">yumooo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/self/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><div id="error-wrap"><div class="error-content"><div class="error-img"><img src="https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png" alt="Page not found"></div><div class="error-info"><h1 class="error_title">404</h1><div class="error_subtitle">页面没有找到</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g,"") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0,150) + '...'
+  const repo = "ywxy12138/ywxy12138.github.io"
+  const limit = Number(6) || 6
+  const ttl = (Number(10) || 10) * 60000
+  // 按仓库隔离缓存，保留上次成功结果，在断网或限流时继续展示。
+  const cacheKey = `github-newest-comments:v2:${repo}`
+  let cache = { items: null, updatedAt: 0, retryAt: 0 }
+  let pending = false
+  try {
+    const saved = JSON.parse(localStorage.getItem(cacheKey))
+    if (saved && (saved.items === null || Array.isArray(saved.items))) {
+      // 缓存里的空值或非对象条目也须忽略，避免损坏缓存中断卡片渲染。
+      cache = { ...cache, ...saved, items: saved.items && saved.items.filter(item => item && typeof item === 'object') }
     }
-    return content
+  } catch (_) { /* 存储禁用或缓存损坏时，仍允许正常请求和显示。 */ }
+  const persist = () => {
+    try { localStorage.setItem(cacheKey, JSON.stringify(cache)) } catch (_) {}
   }
-
-  const findTrueUrl = (array) => {
-    Promise.all(array.map(item =>
-      fetch(item.url).then(resp => resp.json()).then(data => {
-        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
-        if (!Array.isArray(urlArray) || urlArray.length === 0) {
-          urlArray = [`${data.html_url}`]
-        }
-        if (data.user.login === 'utterances-bot') {
-          return urlArray.pop()
-        } else {
-          return urlArray.shift()
-        }
-      })
-    )).then(res => {
-        array = array.map((i,index)=> {
-          return {
-            ...i,
-            url: res[index]
-          }
-        })
-
-        saveToLocal.set('github-newest-comments', JSON.stringify(array), 10/(60*24))
-        generateHtml(array)
-    });
+  const safeUrl = value => {
+    try {
+      const url = new URL(value)
+      return url.protocol === 'https:' ? url.href : ''
+    } catch (_) { return '' }
   }
+  const plainText = value => String(value || '').replace(/<[^>]*>/g, '').slice(0, 150)
 
-  const getComment = () => {
-    fetch('https://api.github.com/repos/ywxy12138/ywxy12138.github.io/issues/comments?sort=updated&direction=desc&per_page=6&page=1',{
-      "headers": {
-        Accept: 'application/vnd.github.v3.html+json'
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        const githubArray = data.map(item => {
-          return {
-            'avatar': item.user.avatar_url,
-            'content': changeContent(item.body_html || item.body),
-            'nick': item.user.login,
-            'url': item.issue_url,
-            'date': item.updated_at,
-            'githubUrl': item.html_url
-          }
-        })
-        findTrueUrl(githubArray)
-      }).catch(e => {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
-      })
-  }
-
-  const generateHtml = array => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class=\'aside-list-item\'>'
-
+  const render = (notice = '') => {
+    const dom = document.querySelector('#card-newest-comments .aside-list')
+    if (!dom) return
+    dom.replaceChildren()
+    if (Array.isArray(cache.items)) {
+      cache.items.slice(0, limit).forEach(item => {
+        const row = document.createElement('div')
+        row.className = 'aside-list-item'
+        const href = safeUrl(item.githubUrl)
+        // 外部评论通过 DOM 属性和 textContent 渲染，避免拼接可执行 HTML。
         if (true) {
-          const name = 'src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+          const thumbnail = document.createElement('a')
+          thumbnail.className = 'thumbnail'
+          thumbnail.href = href
+          const image = document.createElement('img')
+          image.src = safeUrl(item.avatar)
+          image.alt = String(item.nick || '')
+          image.loading = 'lazy'
+          thumbnail.appendChild(image)
+          row.appendChild(thumbnail)
         }
-
-        result += `<div class='content'>
-        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
-        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '没有评论'
+        const content = document.createElement('div')
+        content.className = 'content'
+        const link = document.createElement('a')
+        link.className = 'comment'
+        link.href = href
+        link.title = String(item.content || '')
+        link.textContent = String(item.content || '')
+        const name = document.createElement('div')
+        name.className = 'name'
+        name.textContent = `${item.nick || ''} / `
+        const time = document.createElement('time')
+        if (Number.isFinite(Date.parse(item.date))) {
+          time.dateTime = item.date
+          time.textContent = btf.diffDate(item.date, true)
+        }
+        name.appendChild(time)
+        content.append(link, name)
+        row.appendChild(content)
+        dom.appendChild(row)
+      })
+      if (!cache.items.length && !notice) dom.textContent = "没有评论"
     }
-
-    let $dom = document.querySelector('#card-newest-comments .aside-list')
-    $dom && ($dom.innerHTML= result)
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh($dom)
+    if (notice) {
+      const message = document.createElement('div')
+      message.className = 'newest-comments-notice'
+      message.textContent = `${notice}${Array.isArray(cache.items) ? ' 当前显示此前缓存的结果。' : ''} `
+      const link = document.createElement('a')
+      link.href = `https://github.com/${repo}/issues`
+      link.textContent = '前往 GitHub 查看讨论'
+      message.appendChild(link)
+      dom.appendChild(message)
+    }
+    window.pjax && window.pjax.refresh(dom)
   }
 
-  const newestCommentInit = () => {
-    if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('github-newest-comments')
-      if (data) {
-        generateHtml(JSON.parse(data))
-      } else {
-        getComment()
+  const newestCommentInit = async () => {
+    if (!document.querySelector('#card-newest-comments .aside-list')) return
+    if (cache.retryAt > Date.now()) {
+      render('最新评论暂缓更新，请稍后再试。')
+      return
+    }
+    if (Array.isArray(cache.items)) render()
+    if (pending || (Array.isArray(cache.items) && Date.now() - cache.updatedAt < ttl)) return
+    pending = true
+    // 超时后退出加载状态；不自动轮询，以免继续消耗匿名请求额度。
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 8000)
+    try {
+      const response = await fetch(`https://api.github.com/repos/${repo}/issues/comments?sort=updated&direction=desc&per_page=${limit}&page=1`, {
+        headers: { Accept: 'application/vnd.github.v3.html+json' }, signal: controller.signal
+      })
+      const data = await response.json()
+      if (!response.ok) {
+        const limited = response.status === 429 || (response.status === 403 &&
+          (response.headers.get('x-ratelimit-remaining') === '0' || /rate limit/i.test(data?.message || '')))
+        // 遵守服务端重试时间；没有相关头部时退避十分钟，刷新/PJAX 也不立即重试。
+        const retryAfter = (Number(response.headers.get('retry-after')) || 0) * 1000
+        const resetAt = Number(response.headers.get('x-ratelimit-reset')) * 1000
+        cache.retryAt = limited
+          ? Math.max(Date.now() + 60000, Date.now() + retryAfter, resetAt || Date.now() + ttl)
+          : Date.now() + 60000
+        persist()
+        render(limited ? 'GitHub 请求额度暂时用尽，请稍后再试。' : '最新评论暂时无法更新，请稍后再试。')
+        return
       }
+      if (!Array.isArray(data)) throw new Error('Unexpected GitHub response')
+      // 直达 GitHub 原评论，取消原先每条评论额外查询 Issue 的请求，降低额度消耗。
+      cache.items = data.filter(item => item && item.user).slice(0, limit).map(item => ({
+        avatar: item.user.avatar_url, content: plainText(item.body_html || item.body),
+        nick: item.user.login, date: item.updated_at, githubUrl: item.html_url
+      }))
+      cache.updatedAt = Date.now()
+      cache.retryAt = 0
+      persist()
+      render()
+    } catch (_) {
+      cache.retryAt = Date.now() + 60000
+      persist()
+      render('网络暂不可用，最新评论稍后再试。')
+    } finally {
+      clearTimeout(timeout)
+      pending = false
     }
   }
-
   newestCommentInit()
   document.addEventListener('pjax:complete', newestCommentInit)
 })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
