@@ -67,3 +67,8 @@
   .hljs-strong {
     font-weight: bold;
   }
+
+/* 宽高属性用于预留比例；窄屏缩小时让高度随宽度变化，避免图片被拉伸。 */
+#article-container img[width][height] {
+    height: auto;
+}
