@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>yumooo</title>
+    <link>https://ywxy12138.github.io/</link>
+    <description>孤独永恒，死亡永生。</description>
+    <language>zh-CN</language>
+    <copyright>聿尛；除特别声明外，采用 CC BY-NC-SA 4.0。https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;</copyright>
+    <lastBuildDate>Thu, 29 Oct 2026 08:13:53 GMT</lastBuildDate>
+    <generator>Hexo</generator>
+    <image>
+      <url>https://ywxy12138.github.io/img/favicon.png</url>
+      <title>yumooo</title>
+      <link>https://ywxy12138.github.io/</link>
+    </image>
+    <atom:link href="https://ywxy12138.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Zsh/NVM排查</title>
+      <link>https://ywxy12138.github.io/2026/10/28/Zsh%E4%B8%8ENVM%E6%8E%92%E6%9F%A5/</link>
+      <description>
+        <![CDATA[从一个打不开的桌面图标说起 这次想通过桌面图标启动本地的 DeepSeek Harness。启动器 deepseek_harness.desktop 直接调用 deepseek_harness.sh，但点击图标后无法正常启动，于是先怀疑是不是脚本不适合从桌面执行。 下面只保留排查所需的信息，本机用户名、挂载点和目录结构均已隐去。使用 .&#x2F; 的命令假定已经进入相应文件所在目录。 原来的脚本只有两行：…]]>
+      </description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/categories/%E6%9D%82%E9%A1%B9/">杂项</category>
+      <category domain="https://ywxy12138.github.io/tags/Linux/">Linux</category>
+      <category domain="https://ywxy12138.github.io/tags/sh%E8%84%9A%E6%9C%AC/">sh脚本</category>
+      <pubDate>Wed, 28 Oct 2026 12:35:55 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>https://ywxy12138.github.io/2026/09/30/hello-world/</link>
+      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick…</description>
+      <author>聿尛</author>
+      <pubDate>Wed, 30 Sep 2026 06:28:17 GMT</pubDate>
+    </item>
+    <item>
+      <title>Chrome Extensions</title>
+      <link>https://ywxy12138.github.io/2026/09/20/Chrome-Extensions/</link>
+      <description>点击原文链接查看文章。</description>
+      <author>聿尛</author>
+      <pubDate>Sun, 20 Sep 2026 04:13:53 GMT</pubDate>
+    </item>
+    <item>
+      <title>some modern command on shell</title>
+      <link>https://ywxy12138.github.io/2026/07/03/some-modern-command-on-shell/</link>
+      <description>
+        <![CDATA[一些在配置shell时好用的新命令 tldr cd –&gt; zoxide ls –&gt; eza cat –&gt; bat]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Fri, 03 Jul 2026 11:28:13 GMT</pubDate>
+    </item>
+    <item>
+      <title>硕士去处调研</title>
+      <link>https://ywxy12138.github.io/2026/06/23/whereToGo/</link>
+      <description>
+        <![CDATA[硕士去处调研 北大 中科院 中科院工程热物理所 王波 研究员&#x2F;博导&#x2F;副主任 介绍 研究方向是飞行器总体设计、多学科优化设计、随机代理模型数学建模等 飞行器总体设计：主要涉及飞行器总体设计、气动设计、结构设计、强度分析与试验、飞行控制与导航设计等研究内容。 中国科学院青年创新促进会 发表在中国力学期刊网的论文 基于数值模拟的某F级燃气轮机第二级动叶温度场分析 风扇转速对混合动力飞翼布局进排气-风扇流…]]>
+      </description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E8%B0%83%E7%A0%94/">调研</category>
+      <pubDate>Tue, 23 Jun 2026 03:08:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>浙大计院硕导老师调研</title>
+      <link>https://ywxy12138.github.io/2026/05/15/zju_research/</link>
+      <description>
+        <![CDATA[浙大计院硕导老师调研 庄博涵 方向：机器学习&#x2F;大模型系统，尤其大语言模型和多模态大模型 投递 陈翔 计算机图形学和物理仿真和动画，面向3D打印的智能设计 胡天磊 数据库、大数据管理和图形学 曾在网易、字节和腾讯的游戏部门呆过，能和这个老师肯定可以学到很多东西 ( &#104;&#x74;&#108;&#64;&#122;&#x6a;&#x75;&#x2e;&#101;&#100;&#x75;&amp;#x…]]>
+      </description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E8%B0%83%E7%A0%94/">调研</category>
+      <pubDate>Fri, 15 May 2026 07:09:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>意义之舟的覆没</title>
+      <link>https://ywxy12138.github.io/2026/04/27/the_Death_of_Meaning/</link>
+      <description>“意义”之舟的覆没 三月底，不知为何抑郁再次复发，源于那个冯如杯讲座后的下午，孤自一人看了一下午B站，涉及到桌游行业者的生活，加之对计算机行业的些许抵触，因此前者令我心驰神往。忽的，一下午过去，本来预定好的任务，迟迟未开工，内疚和苛责再次涌上心头，躯体化感觉再次袭来，本来只是一次稀松平常的摆烂后的自责，但是晚上却迟迟无法入眠，第二日仍是如此，不得已再次寻医，重新拾起药盒子，第一周真的难熬，好在那段…</description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <pubDate>Mon, 27 Apr 2026 14:15:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>新型计算机系统设计</title>
+      <link>https://ywxy12138.github.io/2026/03/06/%E6%96%B0%E5%9E%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
+      <description>
+        <![CDATA[CXL: 目前大型服务器和计算机架构的普遍架构 新型内存系统 内存系统的架构 内存架构包含内存条、cache等 内存资源管理与调度(软硬结合) 内存系统的问题、未来方向 Memory-Hungry&#x2F;Intensive 两种软件模式 “内存墙”瓶颈 DRAM系统的问题： 慢（带宽小）、 扰（线程间存在严重访存干扰）、 乏（调度算法不满足多样性需求）、 耗（DRAM能耗高） DDR5：]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Fri, 06 Mar 2026 07:07:22 GMT</pubDate>
+    </item>
+    <item>
+      <title>计算机方法论</title>
+      <link>https://ywxy12138.github.io/2026/03/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%B9%E6%B3%95%E8%AE%BA/</link>
+      <description>使用大模型进行论文阅读相关的任务的提示词一定要提及：“一定要去网上查阅文献，不要自己瞎编” 解决实际问题以抽象出通用方法和理论来解决更多的问题 器-术-方法论(做科研的方法) 找到你最擅长的领域刻意练习，并打造底层方法论和思维方式，最好的方法就是写一篇好的论文 对问题进行定义抽象出来找前人的相关解决方法并不断求证、检验得到最终的方案。 写作才是真正的思考，有了idea后边写边想。 像水晶一般清澈的…</description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</category>
+      <pubDate>Thu, 05 Mar 2026 01:54:28 GMT</pubDate>
+    </item>
+    <item>
+      <title>computer net</title>
+      <link>https://ywxy12138.github.io/2026/03/05/computer-net/</link>
+      <description>BitTorrent Skype World Wide Web 传输层而提供的至少两种可能服务： TCP:保证传输的可靠 UDP:不保证，但更简单 网络层使用IP协议，进行端到端的数据传输 链路层通过链路在服务器和路由或者路由间进行传输数据</description>
+      <author>聿尛</author>
+      <pubDate>Thu, 05 Mar 2026 01:05:56 GMT</pubDate>
+    </item>
+    <item>
+      <title>compile optimization</title>
+      <link>https://ywxy12138.github.io/2026/01/04/23371355_%E7%8E%8B%E6%A2%93%E6%81%92_%E4%BC%98%E5%8C%96%E6%96%87%E7%AB%A0/</link>
+      <description>
+        <![CDATA[代码优化 由于时间因素，我只做了以下几种常见的优化。 中端优化 SSA 普通赋值语句通过重命名变量即可 对于较为复杂的，如控制流 引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： ... 1: %2 &#x3D; icmp eq i32 %0, 42 br i1 %1, label %3, label %4 3: br label %6 4: %5 &#x3D; a…]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Sun, 04 Jan 2026 12:48:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>并行计算论文阅读</title>
+      <link>https://ywxy12138.github.io/2025/10/20/paper/</link>
+      <description>第一篇论文 论文题目 Improving Cluster Utilization Through Adaptive Resource Management for Deep Neural Network and CPU Jobs Colocation 论文出处 IEEE Transactions on Computers ( Volume: 72, Issue: 12, December 2023…</description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E5%B9%B6%E8%A1%8C/">并行</category>
+      <pubDate>Mon, 20 Oct 2025 06:27:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>frb准备及北航老师调研</title>
+      <link>https://ywxy12138.github.io/2025/10/08/frb%E5%87%86%E5%A4%87%E5%8F%8A%E5%8C%97%E8%88%AA%E8%80%81%E5%B8%88%E8%B0%83%E7%A0%94/</link>
+      <description>2025年科技创新未来培优计划 rp哥推荐的项目 高泛化的大模型有害生成图像检测 刘艾杉老师(上一届frb指导出了一等奖)，周期有点长，不一定能作为frb项目了。 基于多智能体强化学习的代码大模型 杨健老师，项目周期刚好合适，而且要的人也多，感觉可能比较好报()。 明眸智行 基于大模型的盲人智能环境感知与导航系 统 陆峰老师，项目周期有点难确定，移动端开发倒是和app开发有贴合的地方。 面向移动感…</description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E8%B0%83%E7%A0%94/">调研</category>
+      <pubDate>Wed, 08 Oct 2025 07:50:11 GMT</pubDate>
+    </item>
+    <item>
+      <title>Latex</title>
+      <link>https://ywxy12138.github.io/2025/10/02/Latex/</link>
+      <description>
+        <![CDATA[Latex的一些疑难杂症 如何在数学公式中添加空格： a\qquad b % 两个quad空格，两个m的宽度 a\quad b % 一个quad空格，一个m的宽度 a\ b % 大空格，1&#x2F;3m宽度 a;b % 中等空格，2&#x2F;7m宽度 a,b % 小空格，1&#x2F;6m宽度 a!b % 紧凑，缩紧1&#x2F;6m的宽度 \emptyset代表空集，\cup和\cap分别代表并操作和交操作。无限 &#x2F; 大范围并集：…]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Thu, 02 Oct 2025 03:24:39 GMT</pubDate>
+    </item>
+    <item>
+      <title>compile-experiment</title>
+      <link>https://ywxy12138.github.io/2025/09/21/compile-experiment/</link>
+      <description>
+        <![CDATA[编译实验 文法解读 文法概述 课上使用语言是SysY，C语言的一个子集。 一个该语言源程序有且仅有一个名为main的主函数定义，此外有若干全局变量、常量声明和其他函数定义。支持32位有符号数int类型及其一维数组类型，const修饰符用于限定”常量”。 该语言并未提供输入&#x2F;输出，I&#x2F;O以运行时库方式提供，可以被调用。 部分库函数的参数类型会超出其支持的数据类型，如字符串。编译器需要能够处理此种情况…]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Sun, 21 Sep 2025 12:26:44 GMT</pubDate>
+    </item>
+    <item>
+      <title>FastAPI</title>
+      <link>https://ywxy12138.github.io/2025/09/17/FastAPI/</link>
+      <description>
+        <![CDATA[FastAPI Python类型提示 函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利： def get_full_name(first_name: str, last_name: str): full_name &#x3D; first_name.title() # 此处打点后就会有相应多选的弹窗 &#96;&#96;&#96; 列表(list)、字典(dict)等类型的标注需要调用&#96;ty…]]>
+      </description>
+      <author>聿尛</author>
+      <pubDate>Wed, 17 Sep 2025 03:08:21 GMT</pubDate>
+    </item>
+    <item>
+      <title>vue3</title>
+      <link>https://ywxy12138.github.io/2025/09/14/vue3/</link>
+      <description>vue3 简介 创建vue3工程 基于vue-cli创建 使用webpack脚手架 基于vite创建 vite等价于webpack，前者构建速度更快，对ts、JSX、CSS等支持开箱即用，按需编译，不等待整个应用编译完成。 通过如下命令创建的vue框架的项目文件介绍： npm create vue@latest 初始生成文件中：node_modules为执行npm install命令后生成的包的存…</description>
+      <author>聿尛</author>
+      <pubDate>Sun, 14 Sep 2025 02:49:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>C语言系统级编程</title>
+      <link>https://ywxy12138.github.io/2025/09/11/C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B/</link>
+      <description>一些不一定的概念 一比特不一定是8bit，已经有16bit的机器了，但是至少包含8个，定义了一个宏CHAR_BIT，规定其≥8。 字节是C中基础存储单元，每个字节都有一个编号，即地址 内存为一系列字节顺序排列一起组成的存储结构，地址是字节在内存中的编号，只有字节才有地址。 关键字 const volatile int a;表示a的值不可以改变但是可以以系统未知的方式进行修改(volatile)。 …</description>
+      <author>聿尛</author>
+      <pubDate>Thu, 11 Sep 2025 08:01:37 GMT</pubDate>
+    </item>
+    <item>
+      <title>并行</title>
+      <link>https://ywxy12138.github.io/2025/09/09/%E5%B9%B6%E8%A1%8C/</link>
+      <description>
+        <![CDATA[多核架构优势 P &#x3D; C *(V)^2* F 多核可以降低功耗。通过提高频率F会导致功耗变为原来的8倍，因为提高F，V会相应增大，即P’ &#x3D; C*(2V)^2* 2F. 大作业要求 每人一到两页ppt讲使用ai阅读论文的心得体会，问论文的研究问题、框架是？ 最好选2020后以后的论文 同一团队,8篇论文相关,被别人一同引用,或者国外某一实验室发表的论文 大作业调研 体系结构 存储技术的过去、现在和…]]>
+      </description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</category>
+      <pubDate>Tue, 09 Sep 2025 11:09:12 GMT</pubDate>
+    </item>
+    <item>
+      <title>compile</title>
+      <link>https://ywxy12138.github.io/2025/09/06/compile/</link>
+      <description>编译 五大组成部分 词法分析：将程序文本拆分成字符或tokens， 跟据语言词法规则分析并识别单词，并以相应的编码方式输出(四大类单词：标识符、关键字、常量、运算符)。 语法分析:根据语言的语法规则，识别单词之间的关系，并生成语法树，并进行语法检查。 语义分析\生成中间代码：检查语义错误，如类型检查、作用域检查等，并生成中间代码(便于优化、编译程序的移植(LLVM)，常用：四元式、三元式和逆波兰式…</description>
+      <author>聿尛</author>
+      <pubDate>Sat, 06 Sep 2025 09:31:36 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

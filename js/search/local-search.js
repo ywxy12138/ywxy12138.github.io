@@ -381,7 +381,10 @@ const initLocalSearch = () => {
   }
 
   const searchClickFn = () => {
-    btf.addEventListenerPjax(document.querySelector('#search-button > .search'), 'click', openSearch)
+    // 404 主体按钮与导航栏共用搜索逻辑；不需要跳回首页后再次打开搜索。
+    document.querySelectorAll('#search-button > .search, [data-local-search-open]').forEach(trigger => {
+      btf.addEventListenerPjax(trigger, 'click', openSearch)
+    })
   }
 
   const searchFnOnce = () => {

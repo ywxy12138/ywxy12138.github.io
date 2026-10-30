@@ -1,0 +1,5 @@
+# Public content sitemap, regenerated during each build.
+User-agent: *
+Allow: /
+
+Sitemap: https://ywxy12138.github.io/sitemap.xml
