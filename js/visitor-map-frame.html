@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- 供应商仍使用 // 地址；本地 HTTP 预览时也强制其远程依赖走 HTTPS。 -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>访客地图</title>
+  <style>html,body{margin:0;padding:0;background:transparent}body{overflow-x:hidden}a{color:#49b1f5}</style>
+</head>
+<body>
+  <script>
+    (() => {
+      'use strict'
+      const params = new URLSearchParams(location.search)
+      const id = params.get('d')?.trim()
+      // 直接打开此资源不会统计访问；父页面只有在按钮点击后才创建框架。
+      if (parent === window || !id) return
+      const reportError = () => parent.postMessage({ type: 'blog:visitor-map', state: 'error' }, location.origin)
+      const helperURL = new URL('visitor-map.js', location.href)
+      for (const name of ['v', 'rev']) {
+        if (params.has(name)) helperURL.searchParams.set(name, params.get(name))
+      }
+      const bridge = document.createElement('script')
+      bridge.src = helperURL.href
+      bridge.dataset.visitorMapFrame = ''
+      bridge.dataset.parentOrigin = location.origin
+      bridge.onerror = reportError
+      bridge.onload = () => {
+        const vendorURL = new URL('https://mapmyvisitors.com/globe.js')
+        vendorURL.searchParams.set('d', id)
+        vendorURL.searchParams.set('w', 'a')
+        const vendor = document.createElement('script')
+        vendor.id = 'mmvst_globe'
+        vendor.src = vendorURL.href
+        vendor.onerror = reportError
+        document.body.appendChild(vendor)
+      }
+      // 在文档完成加载前串行启动依赖，兼容供应商的 jQuery window.load 初始化。
+      document.head.appendChild(bridge)
+    })()
+  </script>
+</body>
+</html>
