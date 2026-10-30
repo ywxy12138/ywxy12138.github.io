@@ -4587,10 +4587,10 @@ mjx-assistive-mml {
   min-height: 44px;
   max-width: 100%;
   padding: 8px 18px;
-  border: 1px solid var(--btn-bg);
+  border: 1px solid #186b9a;
   border-radius: 8px;
-  background: var(--btn-bg);
-  color: var(--btn-color);
+  background: #186b9a;
+  color: #fff;
   font: inherit;
   line-height: 1.5;
   cursor: pointer;
