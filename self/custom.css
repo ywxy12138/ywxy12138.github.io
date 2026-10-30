@@ -1,72 +1,173 @@
-/* 代码高亮字体 */
-:root {
-    --hl-color: #24292e;
-    --hl-bg: rgb(246 248 250);
-    --hltools-bg: #49b1f587;
-    --hltools-color: #ffffff;
-    --hlnumber-bg: rgb(235 239 241);
-    --hlnumber-color: #221a0f52;
-  }
-  .hljs {
-    background: white;
-    color: black;
-  }
-  
-  .hljs-comment,
-  .hljs-quote,
-  .hljs-variable {
-    color: #008000;
-  }
-  
-  .hljs-keyword,
-  .hljs-selector-tag,
-  .hljs-built_in,
-  .hljs-name,
-  .hljs-tag {
-    color: #00f;
-  }
-  
-  .hljs-string,
-  .hljs-title,
-  .hljs-section,
-  .hljs-attribute,
-  .hljs-literal,
-  .hljs-template-tag,
-  .hljs-template-variable,
-  .hljs-type,
-  .hljs-addition {
-    color: #a31515;
-  }
-  
-  .hljs-deletion,
-  .hljs-selector-attr,
-  .hljs-selector-pseudo,
-  .hljs-meta {
-    color: #2b91af;
-  }
-  
-  .hljs-doctag {
-    color: #808080;
-  }
-  
-  .hljs-attr {
-    color: #f00;
-  }
-  
-  .hljs-symbol,
-  .hljs-bullet,
-  .hljs-link {
-    color: #00b0e8;
-  }
-  
-  
-  .hljs-emphasis {
+/* 代码框配色由当前主题统一控制，避免浅色面板与暗色行内代码样式混用。 */
+:root,
+[data-theme="light"] {
+    --hl-color: #24292f;
+    --hl-bg: #f6f8fa;
+    --hltools-bg: #eaeef2;
+    --hltools-color: #475569;
+    --hlnumber-bg: #f6f8fa;
+    --hlnumber-color: #667085;
+    --hlscrollbar-bg: #94a3b8;
+    --hlexpand-bg: linear-gradient(180deg, #f6f8fa99, #f6f8fa);
+    --code-border: #d8dee4;
+    --code-selection-bg: #c8e1ff;
+    --code-selection-color: #172b4d;
+    --code-keyword: #8250df;
+    --code-string: #116329;
+    --code-attribute: #0550ae;
+    --code-number: #953800;
+    --code-comment: #627080;
+    --code-function: #6639ba;
+    --code-deletion: #a40e26;
+}
+
+[data-theme="dark"] {
+    --hl-color: #e6edf3;
+    --hl-bg: #161b22;
+    --hltools-bg: #212936;
+    --hltools-color: #c1ccda;
+    --hlnumber-bg: #161b22;
+    --hlnumber-color: #8b98a9;
+    --hlscrollbar-bg: #566579;
+    --hlexpand-bg: linear-gradient(180deg, #161b2299, #161b22);
+    --code-border: #303b4a;
+    --code-selection-bg: #35577d;
+    --code-selection-color: #ffffff;
+    --code-keyword: #c4a7ff;
+    --code-string: #a5d6a7;
+    --code-attribute: #8ecbff;
+    --code-number: #ffbd8a;
+    --code-comment: #96a3b4;
+    --code-function: #d2b5ff;
+    --code-deletion: #ff9b9b;
+}
+
+/* 同时覆盖 Hexo 高亮代码块和未指定语言的 pre；正文中的行内代码保留主题样式。 */
+#article-container figure.highlight,
+#article-container > pre {
+    border: 1px solid var(--code-border);
+    border-radius: 10px;
+    background: var(--hl-bg);
+    color: var(--hl-color);
+}
+
+#article-container figure.highlight pre,
+#article-container pre > code {
+    font-size: 14px;
+    line-height: 1.7;
+    tab-size: 4;
+}
+
+/* 提高选择器优先级以覆盖主题的暗色 pre > code 背景，消除每行文字后的黑块。 */
+html[data-theme] #article-container pre > code {
+    padding: 0;
+    background: transparent;
+    color: var(--hl-color);
+}
+
+#article-container figure.highlight .code pre,
+#article-container figure.highlight .gutter pre {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#article-container figure.highlight .code pre {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+#article-container figure.highlight .gutter pre {
+    border-right: 1px solid var(--code-border);
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+#article-container figure.highlight .highlight-tools {
+    height: 36px;
+    background: var(--hltools-bg);
+    color: var(--hltools-color);
+}
+
+#article-container figure.highlight .code-lang {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+}
+
+#article-container figure.highlight .copy-button:hover,
+#article-container figure.highlight .expand:hover,
+#article-container figure.highlight .code-expand-btn:hover i {
+    color: var(--code-attribute);
+}
+
+/* 仅给语法标记着色，纯文本和未识别的标记继承代码正文色。 */
+#article-container .hljs-keyword,
+#article-container .hljs-selector-tag,
+#article-container .hljs-built_in,
+#article-container .hljs-name,
+#article-container .hljs-tag,
+#article-container .hljs-type {
+    color: var(--code-keyword);
+}
+
+#article-container .hljs-string,
+#article-container .hljs-regexp,
+#article-container .hljs-addition {
+    color: var(--code-string);
+}
+
+#article-container .hljs-attr,
+#article-container .hljs-attribute,
+#article-container .hljs-variable,
+#article-container .hljs-template-variable,
+#article-container .hljs-selector-attr,
+#article-container .hljs-selector-pseudo,
+#article-container .hljs-symbol,
+#article-container .hljs-bullet,
+#article-container .hljs-link,
+#article-container .hljs-meta {
+    color: var(--code-attribute);
+}
+
+#article-container .hljs-number,
+#article-container .hljs-literal {
+    color: var(--code-number);
+}
+
+#article-container .hljs-title,
+#article-container .hljs-section {
+    color: var(--code-function);
+}
+
+#article-container .hljs-comment,
+#article-container .hljs-quote,
+#article-container .hljs-doctag {
+    color: var(--code-comment);
+}
+
+#article-container .hljs-deletion {
+    color: var(--code-deletion);
+}
+
+#article-container .hljs-emphasis {
     font-style: italic;
-  }
-  
-  .hljs-strong {
+}
+
+#article-container .hljs-strong {
     font-weight: bold;
-  }
+}
+
+/* 选中文本与长代码底部展开提示也随主题切换，避免再次出现突兀的浅色区域。 */
+#article-container figure.highlight ::selection,
+#article-container pre > code::selection {
+    background: var(--code-selection-bg);
+    color: var(--code-selection-color);
+}
+
+#article-container figure.highlight .code-expand-btn i {
+    color: var(--hltools-color);
+    animation: none;
+}
 
 /* 宽高属性用于预留比例；窄屏缩小时让高度随宽度变化，避免图片被拉伸。 */
 #article-container img[width][height] {
