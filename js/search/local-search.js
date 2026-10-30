@@ -15,6 +15,8 @@ class LocalSearch {
     this.top_n_per_article = top_n_per_article
     this.isfetched = false
     this.datas = null
+    // 同一时刻只下载一次索引；失败后清空，允许手动重试。
+    this.fetchPromise = null
   }
 
   getIndexByWord (words, text, caseSensitive = false) {
@@ -88,16 +90,23 @@ class LocalSearch {
     }
   }
 
+  // 结果通过 HTML 模板显示，先转义正文和标题，再插入受控的高亮标签。
+  escapeHtml (value) {
+    return value.replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char])
+  }
+
   // Highlight title and content
   highlightKeyword (val, slice) {
     let result = ''
     let index = slice.start
     for (const { position, length } of slice.hits) {
-      result += val.substring(index, position)
+      result += this.escapeHtml(val.substring(index, position))
       index = position + length
-      result += `<mark class="search-keyword">${val.substr(position, length)}</mark>`
+      result += `<mark class="search-keyword">${this.escapeHtml(val.substr(position, length))}</mark>`
     }
-    result += val.substring(index, slice.end)
+    result += this.escapeHtml(val.substring(index, slice.end))
     return result
   }
 
@@ -150,16 +159,16 @@ class LocalSearch {
       url.searchParams.append('highlight', keywords.join(' '))
 
       if (slicesOfTitle.length !== 0) {
-        resultItem += `<div class="local-search-hit-item"><a href="${url.href}"><span class="search-result-title">${this.highlightKeyword(title, slicesOfTitle[0])}</span>`
+        resultItem += `<div class="local-search-hit-item"><a href="${this.escapeHtml(url.href)}"><span class="search-result-title">${this.highlightKeyword(title, slicesOfTitle[0])}</span>`
       } else {
-        resultItem += `<div class="local-search-hit-item"><a href="${url.href}"><span class="search-result-title">${title}</span>`
+        resultItem += `<div class="local-search-hit-item"><a href="${this.escapeHtml(url.href)}"><span class="search-result-title">${this.escapeHtml(title)}</span>`
       }
 
       slicesOfContent.forEach(slice => {
-        resultItem += `<p class="search-result">${this.highlightKeyword(content, slice)}...</p></a>`
+        resultItem += `<p class="search-result">${this.highlightKeyword(content, slice)}...</p>`
       })
 
-      resultItem += '</div>'
+      resultItem += '</a></div>'
       resultItems.push({
         item: resultItem,
         id: resultItems.length,
@@ -171,29 +180,70 @@ class LocalSearch {
   }
 
   fetchData () {
-    const isXml = !this.path.endsWith('json')
-    fetch(this.path)
-      .then(response => response.text())
-      .then(res => {
-        // Get the contents from search data
-        this.isfetched = true
-        this.datas = isXml
-          ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(element => ({
-              title: element.querySelector('title').textContent,
-              content: element.querySelector('content').textContent,
-              url: element.querySelector('url').textContent
-            }))
-          : JSON.parse(res)
-        // Only match articles with non-empty titles
-        this.datas = this.datas.filter(data => data.title).map(data => {
-          data.title = data.title.trim()
-          data.content = data.content ? data.content.trim().replace(/<[^>]+>/g, '') : ''
-          data.url = decodeURIComponent(data.url).replace(/\/{2,}/g, '/')
-          return data
+    if (this.isfetched) return Promise.resolve(true)
+    if (this.fetchPromise) return this.fetchPromise
+
+    // 请求和读取响应体共用超时，断网或 CDN 异常时不让搜索框永久等待。
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 15000)
+    window.dispatchEvent(new Event('search:loading'))
+    this.fetchPromise = (async () => {
+      try {
+        const response = await fetch(this.path, { signal: controller.signal })
+        if (!response.ok) throw new Error(`Search index HTTP ${response.status}`)
+        const text = await response.text()
+        const isXml = !new URL(this.path, location.href).pathname.endsWith('.json')
+        let data
+        if (isXml) {
+          const xml = new DOMParser().parseFromString(text, 'text/xml')
+          if (xml.querySelector('parsererror') || xml.documentElement.nodeName !== 'search') {
+            throw new Error('Invalid search XML')
+          }
+          data = [...xml.querySelectorAll('entry')].map(entry => ({
+            title: entry.querySelector('title')?.textContent,
+            content: entry.querySelector('content')?.textContent || '',
+            url: entry.querySelector('url')?.textContent
+          }))
+        } else {
+          data = JSON.parse(text)
+        }
+        if (!Array.isArray(data)) throw new Error('Invalid search index')
+        this.datas = data.filter(item => {
+          if (!item || typeof item.title !== 'string' || typeof item.url !== 'string' ||
+              (item.content !== undefined && typeof item.content !== 'string')) {
+            throw new Error('Invalid search entry')
+          }
+          return item.title.trim()
+        }).map(item => {
+          // 索引只允许跳转本站；用不插入页面的 template 提取正文，不执行脚本或加载图片。
+          const url = new URL(item.url, location.origin)
+          if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) {
+            throw new Error('Invalid search URL')
+          }
+          const template = document.createElement('template')
+          template.innerHTML = item.content || ''
+          template.content.querySelectorAll('script, style, .gutter, .highlight-tools, .code-expand-btn').forEach(node => node.remove())
+          template.content.querySelectorAll('br').forEach(node => node.replaceWith('\n'))
+          return {
+            title: item.title.trim(),
+            content: template.content.textContent.trim(),
+            url: url.pathname + url.search + url.hash
+          }
         })
-        // Remove loading animation
+        // 解析全部成功后才标记就绪，错误页或损坏索引仍可重新加载。
+        this.isfetched = true
         window.dispatchEvent(new Event('search:loaded'))
-      })
+        return true
+      } catch (error) {
+        this.isfetched = false
+        window.dispatchEvent(new Event('search:error'))
+        return false
+      } finally {
+        clearTimeout(timeout)
+        this.fetchPromise = null
+      }
+    })()
+    return this.fetchPromise
   }
 
   // Highlight by wrapping node in mark elements with the given class name
@@ -234,8 +284,8 @@ class LocalSearch {
   }
 }
 
-window.addEventListener('load', () => {
-// Search
+// DOM 就绪即可初始化，避免等待访客地图或其他外部资源完成加载。
+const initLocalSearch = () => {
   const { path, top_n_per_article, unescape, languages } = GLOBAL_CONFIG.localSearch
   const localSearch = new LocalSearch({
     path,
@@ -246,12 +296,10 @@ window.addEventListener('load', () => {
   const input = document.querySelector('#local-search-input input')
   const statsItem = document.getElementById('local-search-stats-wrap')
   const $loadingStatus = document.getElementById('loading-status')
-  const isXml = !path.endsWith('json')
 
   const inputEventFunction = () => {
     if (!localSearch.isfetched) return
-    let searchText = input.value.trim().toLowerCase()
-    isXml && (searchText = searchText.replace(/</g, '&lt;').replace(/>/g, '&gt;'))
+    const searchText = input.value.trim().toLowerCase()
     if (searchText !== '') $loadingStatus.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>'
     const keywords = searchText.split(/[-\s]+/)
     const container = document.getElementById('local-search-results')
@@ -289,9 +337,12 @@ window.addEventListener('load', () => {
     $loadingStatus.textContent = ''
   }
 
-  let loadFlag = false
   const $searchMask = document.getElementById('search-mask')
   const $searchDialog = document.querySelector('#local-search .search-dialog')
+  const $loadDataItem = document.getElementById('loading-database')
+  const $retryButton = document.getElementById('local-search-retry')
+  const $loadMessage = $loadDataItem.querySelector('span')
+  const $loadIcon = $loadDataItem.querySelector('i')
 
   // fix safari
   const fixSafariHeight = () => {
@@ -307,18 +358,9 @@ window.addEventListener('load', () => {
     btf.animateIn($searchMask, 'to_show 0.5s')
     btf.animateIn($searchDialog, 'titleScale 0.5s')
     setTimeout(() => { input.focus() }, 300)
-    if (!loadFlag) {
-      !localSearch.isfetched && localSearch.fetchData()
-      input.addEventListener('input', inputEventFunction)
-      loadFlag = true
-    }
-    // shortcut: ESC
-    document.addEventListener('keydown', function f (event) {
-      if (event.code === 'Escape') {
-        closeSearch()
-        document.removeEventListener('keydown', f)
-      }
-    })
+    // 失败后重新打开也可再次请求，进行中的请求由 fetchData 合并。
+    if (!localSearch.isfetched) localSearch.fetchData()
+    document.addEventListener('keydown', onSearchKeydown)
 
     fixSafariHeight()
     window.addEventListener('resize', fixSafariHeight)
@@ -331,6 +373,11 @@ window.addEventListener('load', () => {
     btf.animateOut($searchDialog, 'search_close .5s')
     btf.animateOut($searchMask, 'to_hide 0.5s')
     window.removeEventListener('resize', fixSafariHeight)
+    document.removeEventListener('keydown', onSearchKeydown)
+  }
+
+  const onSearchKeydown = event => {
+    if (event.code === 'Escape') closeSearch()
   }
 
   const searchClickFn = () => {
@@ -338,6 +385,8 @@ window.addEventListener('load', () => {
   }
 
   const searchFnOnce = () => {
+    input.addEventListener('input', inputEventFunction)
+    $retryButton.addEventListener('click', () => localSearch.fetchData())
     document.querySelector('#local-search .search-close-button').addEventListener('click', closeSearch)
     $searchMask.addEventListener('click', closeSearch)
     if (GLOBAL_CONFIG.localSearch.preload) {
@@ -346,10 +395,28 @@ window.addEventListener('load', () => {
     localSearch.highlightSearchWords(document.getElementById('article-container'))
   }
 
+  // 保留加载区域节点，失败时显示错误与重试，成功后再展示搜索输入框。
+  window.addEventListener('search:loading', () => {
+    $searchDialog.setAttribute('aria-busy', 'true')
+    $loadDataItem.hidden = false
+    $loadIcon.hidden = false
+    $loadMessage.textContent = languages.load_data || 'Loading search index…'
+    $retryButton.hidden = true
+  })
+  window.addEventListener('search:error', () => {
+    $searchDialog.setAttribute('aria-busy', 'false')
+    $loadIcon.hidden = true
+    $loadMessage.textContent = languages.load_error || 'Search index could not be loaded. Please retry.'
+    $retryButton.textContent = languages.retry || 'Retry'
+    $retryButton.hidden = false
+    $retryButton.focus()
+  })
   window.addEventListener('search:loaded', () => {
-    const $loadDataItem = document.getElementById('loading-database')
+    $searchDialog.setAttribute('aria-busy', 'false')
+    $loadDataItem.hidden = true
     $loadDataItem.nextElementSibling.style.display = 'block'
-    $loadDataItem.remove()
+    inputEventFunction()
+    if (!btf.isHidden($searchDialog)) input.focus()
   })
 
   searchClickFn()
@@ -361,4 +428,10 @@ window.addEventListener('load', () => {
     localSearch.highlightSearchWords(document.getElementById('article-container'))
     searchClickFn()
   })
-})
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLocalSearch, { once: true })
+} else {
+  initLocalSearch()
+}
