@@ -17,9 +17,7 @@
     <item>
       <title>Zsh/NVM排查</title>
       <link>https://ywxy12138.github.io/2026/10/28/Zsh%E4%B8%8ENVM%E6%8E%92%E6%9F%A5/</link>
-      <description>
-        <![CDATA[从一个打不开的桌面图标说起 这次想通过桌面图标启动本地的 DeepSeek Harness。启动器 deepseek_harness.desktop 直接调用 deepseek_harness.sh，但点击图标后无法正常启动，于是先怀疑是不是脚本不适合从桌面执行。 下面只保留排查所需的信息，本机用户名、挂载点和目录结构均已隐去。使用 .&#x2F; 的命令假定已经进入相应文件所在目录。 原来的脚本只有两行：…]]>
-      </description>
+      <description>从一个打不开的桌面图标说起 这次想通过桌面图标启动本地的 DeepSeek Harness。启动器 deepseek_harness.desktop 直接调用 deepseek_harness.sh，但点击图标后无法正常启动，于是先怀疑是不是脚本不适合从桌面执行。 下面只保留排查所需的信息，本机用户名、挂载点和目录结构均已隐去。使用 ./ 的命令假定已经进入相应文件所在目录。 原来的脚本只有两行：…</description>
       <author>聿尛</author>
       <category domain="https://ywxy12138.github.io/categories/%E6%9D%82%E9%A1%B9/">杂项</category>
       <category domain="https://ywxy12138.github.io/tags/Linux/">Linux</category>
@@ -52,9 +50,7 @@
     <item>
       <title>硕士去处调研</title>
       <link>https://ywxy12138.github.io/2026/06/23/whereToGo/</link>
-      <description>
-        <![CDATA[硕士去处调研 北大 中科院 中科院工程热物理所 王波 研究员&#x2F;博导&#x2F;副主任 介绍 研究方向是飞行器总体设计、多学科优化设计、随机代理模型数学建模等 飞行器总体设计：主要涉及飞行器总体设计、气动设计、结构设计、强度分析与试验、飞行控制与导航设计等研究内容。 中国科学院青年创新促进会 发表在中国力学期刊网的论文 基于数值模拟的某F级燃气轮机第二级动叶温度场分析 风扇转速对混合动力飞翼布局进排气-风扇流…]]>
-      </description>
+      <description>硕士去处调研 北大 中科院 中科院工程热物理所 王波 研究员/博导/副主任 介绍 研究方向是飞行器总体设计、多学科优化设计、随机代理模型数学建模等 飞行器总体设计：主要涉及飞行器总体设计、气动设计、结构设计、强度分析与试验、飞行控制与导航设计等研究内容。 中国科学院青年创新促进会 发表在中国力学期刊网的论文 基于数值模拟的某F级燃气轮机第二级动叶温度场分析 风扇转速对混合动力飞翼布局进排气-风扇流…</description>
       <author>聿尛</author>
       <category domain="https://ywxy12138.github.io/tags/%E8%B0%83%E7%A0%94/">调研</category>
       <pubDate>Tue, 23 Jun 2026 03:08:26 GMT</pubDate>
@@ -62,9 +58,7 @@
     <item>
       <title>浙大计院硕导老师调研</title>
       <link>https://ywxy12138.github.io/2026/05/15/zju_research/</link>
-      <description>
-        <![CDATA[浙大计院硕导老师调研 庄博涵 方向：机器学习&#x2F;大模型系统，尤其大语言模型和多模态大模型 投递 陈翔 计算机图形学和物理仿真和动画，面向3D打印的智能设计 胡天磊 数据库、大数据管理和图形学 曾在网易、字节和腾讯的游戏部门呆过，能和这个老师肯定可以学到很多东西 ( &#104;&#116;&#108;&#x40;&#122;&#x6a;&#117;&#46;&#101;&#100;&#x75;&amp;#x…]]>
-      </description>
+      <description>浙大计院硕导老师调研 庄博涵 方向：机器学习/大模型系统，尤其大语言模型和多模态大模型 投递 陈翔 计算机图形学和物理仿真和动画，面向3D打印的智能设计 胡天磊 数据库、大数据管理和图形学 曾在网易、字节和腾讯的游戏部门呆过，能和这个老师肯定可以学到很多东西 ( htl@zju.edu.cn) 向为 智能设计和人AI交互 黄琦(被学生评价自以为是) 生态、服务和互动设计 魏颖 人工智能、机器学习、…</description>
       <author>聿尛</author>
       <category domain="https://ywxy12138.github.io/tags/%E8%B0%83%E7%A0%94/">调研</category>
       <pubDate>Fri, 15 May 2026 07:09:26 GMT</pubDate>
@@ -80,9 +74,7 @@
     <item>
       <title>新型计算机系统设计</title>
       <link>https://ywxy12138.github.io/2026/03/06/%E6%96%B0%E5%9E%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
-      <description>
-        <![CDATA[CXL: 目前大型服务器和计算机架构的普遍架构 新型内存系统 内存系统的架构 内存架构包含内存条、cache等 内存资源管理与调度(软硬结合) 内存系统的问题、未来方向 Memory-Hungry&#x2F;Intensive 两种软件模式 “内存墙”瓶颈 DRAM系统的问题： 慢（带宽小）、 扰（线程间存在严重访存干扰）、 乏（调度算法不满足多样性需求）、 耗（DRAM能耗高） DDR5：]]>
-      </description>
+      <description>CXL: 目前大型服务器和计算机架构的普遍架构 新型内存系统 内存系统的架构 内存架构包含内存条、cache等 内存资源管理与调度(软硬结合) 内存系统的问题、未来方向 Memory-Hungry/Intensive 两种软件模式 “内存墙”瓶颈 DRAM系统的问题： 慢（带宽小）、 扰（线程间存在严重访存干扰）、 乏（调度算法不满足多样性需求）、 耗（DRAM能耗高） DDR5：</description>
       <author>聿尛</author>
       <pubDate>Fri, 06 Mar 2026 07:07:22 GMT</pubDate>
     </item>
@@ -104,9 +96,7 @@
     <item>
       <title>compile optimization</title>
       <link>https://ywxy12138.github.io/2026/01/04/23371355_%E7%8E%8B%E6%A2%93%E6%81%92_%E4%BC%98%E5%8C%96%E6%96%87%E7%AB%A0/</link>
-      <description>
-        <![CDATA[代码优化 由于时间因素，我只做了以下几种常见的优化。 中端优化 SSA 普通赋值语句通过重命名变量即可 对于较为复杂的，如控制流 引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： ... 1: %2 &#x3D; icmp eq i32 %0, 42 br i1 %1, label %3, label %4 3: br label %6 4: %5 &#x3D; a…]]>
-      </description>
+      <description>代码优化 由于时间因素，我只做了以下几种常见的优化。 中端优化 SSA 普通赋值语句通过重命名变量即可 对于较为复杂的，如控制流 引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： ... 1: %2 = icmp eq i32 %0, 42 br i1 %1, label %3, label %4 3: br label %6 4: %5 = a…</description>
       <author>聿尛</author>
       <pubDate>Sun, 04 Jan 2026 12:48:36 GMT</pubDate>
     </item>
@@ -129,27 +119,21 @@
     <item>
       <title>Latex</title>
       <link>https://ywxy12138.github.io/2025/10/02/Latex/</link>
-      <description>
-        <![CDATA[Latex的一些疑难杂症 如何在数学公式中添加空格： a\qquad b % 两个quad空格，两个m的宽度 a\quad b % 一个quad空格，一个m的宽度 a\ b % 大空格，1&#x2F;3m宽度 a;b % 中等空格，2&#x2F;7m宽度 a,b % 小空格，1&#x2F;6m宽度 a!b % 紧凑，缩紧1&#x2F;6m的宽度 \emptyset代表空集，\cup和\cap分别代表并操作和交操作。无限 &#x2F; 大范围并集：…]]>
-      </description>
+      <description>Latex的一些疑难杂症 如何在数学公式中添加空格： a\qquad b % 两个quad空格，两个m的宽度 a\quad b % 一个quad空格，一个m的宽度 a\ b % 大空格，1/3m宽度 a;b % 中等空格，2/7m宽度 a,b % 小空格，1/6m宽度 a!b % 紧凑，缩紧1/6m的宽度 \emptyset代表空集，\cup和\cap分别代表并操作和交操作。无限 / 大范围并集：…</description>
       <author>聿尛</author>
       <pubDate>Thu, 02 Oct 2025 03:24:39 GMT</pubDate>
     </item>
     <item>
       <title>compile-experiment</title>
       <link>https://ywxy12138.github.io/2025/09/21/compile-experiment/</link>
-      <description>
-        <![CDATA[编译实验 文法解读 文法概述 课上使用语言是SysY，C语言的一个子集。 一个该语言源程序有且仅有一个名为main的主函数定义，此外有若干全局变量、常量声明和其他函数定义。支持32位有符号数int类型及其一维数组类型，const修饰符用于限定”常量”。 该语言并未提供输入&#x2F;输出，I&#x2F;O以运行时库方式提供，可以被调用。 部分库函数的参数类型会超出其支持的数据类型，如字符串。编译器需要能够处理此种情况…]]>
-      </description>
+      <description>编译实验 文法解读 文法概述 课上使用语言是SysY，C语言的一个子集。 一个该语言源程序有且仅有一个名为main的主函数定义，此外有若干全局变量、常量声明和其他函数定义。支持32位有符号数int类型及其一维数组类型，const修饰符用于限定”常量”。 该语言并未提供输入/输出，I/O以运行时库方式提供，可以被调用。 部分库函数的参数类型会超出其支持的数据类型，如字符串。编译器需要能够处理此种情况…</description>
       <author>聿尛</author>
       <pubDate>Sun, 21 Sep 2025 12:26:44 GMT</pubDate>
     </item>
     <item>
       <title>FastAPI</title>
       <link>https://ywxy12138.github.io/2025/09/17/FastAPI/</link>
-      <description>
-        <![CDATA[FastAPI Python类型提示 函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利： def get_full_name(first_name: str, last_name: str): full_name &#x3D; first_name.title() # 此处打点后就会有相应多选的弹窗 &#96;&#96;&#96; 列表(list)、字典(dict)等类型的标注需要调用&#96;ty…]]>
-      </description>
+      <description>FastAPI Python类型提示 函数定义处，对于添加类型提示，使得函数内部可以辨别该变量的类型，进而为自动补全提供了便利： def get_full_name(first_name: str, last_name: str): full_name = first_name.title() # 此处打点后就会有相应多选的弹窗 ``` 列表(list)、字典(dict)等类型的标注需要调用`ty…</description>
       <author>聿尛</author>
       <pubDate>Wed, 17 Sep 2025 03:08:21 GMT</pubDate>
     </item>
@@ -170,9 +154,7 @@
     <item>
       <title>并行</title>
       <link>https://ywxy12138.github.io/2025/09/09/%E5%B9%B6%E8%A1%8C/</link>
-      <description>
-        <![CDATA[多核架构优势 P &#x3D; C *(V)^2* F 多核可以降低功耗。通过提高频率F会导致功耗变为原来的8倍，因为提高F，V会相应增大，即P’ &#x3D; C*(2V)^2* 2F. 大作业要求 每人一到两页ppt讲使用ai阅读论文的心得体会，问论文的研究问题、框架是？ 最好选2020后以后的论文 同一团队,8篇论文相关,被别人一同引用,或者国外某一实验室发表的论文 大作业调研 体系结构 存储技术的过去、现在和…]]>
-      </description>
+      <description>多核架构优势 P = C *(V)^2* F 多核可以降低功耗。通过提高频率F会导致功耗变为原来的8倍，因为提高F，V会相应增大，即P’ = C*(2V)^2* 2F. 大作业要求 每人一到两页ppt讲使用ai阅读论文的心得体会，问论文的研究问题、框架是？ 最好选2020后以后的论文 同一团队,8篇论文相关,被别人一同引用,或者国外某一实验室发表的论文 大作业调研 体系结构 存储技术的过去、现在和…</description>
       <author>聿尛</author>
       <category domain="https://ywxy12138.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</category>
       <pubDate>Tue, 09 Sep 2025 11:09:12 GMT</pubDate>
