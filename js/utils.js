@@ -183,7 +183,11 @@ const btf = {
     }
 
     if (service === 'fancybox') {
-      Array.from(ele).forEach(i => {
+      const images = Array.from(ele)
+      // 列表页不再加载库；无目标时不能继续调用 bind，手动图库入口仍需初始化。
+      if (!images.length && !document.querySelector('[data-fancybox], [data-fancybox-trigger]')) return
+
+      images.forEach(i => {
         if (i.parentNode.tagName !== 'A') {
           const dataSrc = i.dataset.lazySrc || i.src
           const dataCaption = i.title || i.alt || ''
@@ -191,8 +195,11 @@ const btf = {
         }
       })
 
+      // CDN 失败时保留上面生成的原图链接，跳过灯箱而不中断后续页面初始化。
+      // 仅成功绑定后才设置标记，避免把库未就绪误记为已经初始化。
+      if (typeof window.Fancybox?.bind !== 'function') return
       if (!window.fancyboxRun) {
-        Fancybox.bind('[data-fancybox]', {
+        window.Fancybox.bind('[data-fancybox]', {
           Hash: false,
           Thumbs: {
             showOnStart: false
