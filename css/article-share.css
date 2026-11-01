@@ -1,0 +1,101 @@
+#post .tag_share .post_share.article-share {
+  --share-surface: #f6f8fb;
+  --share-button: #fff;
+  --share-border: #d8e0ea;
+  --share-ink: #263446;
+  --share-muted: #56647a;
+  --share-accent: #285bc1;
+  display: block;
+  float: none;
+  clear: both;
+  margin: 20px 0;
+  padding: 16px 18px;
+  width: 100%;
+  border: 1px solid var(--share-border);
+  border-radius: 10px;
+  background: var(--share-surface);
+  color: var(--share-ink);
+}
+#post .tag_share .post_share.article-share [hidden] {
+  display: none !important;
+}
+#post .tag_share .post_share.article-share .article-share__row,
+#post .tag_share .post_share.article-share .article-share__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+#post .tag_share .post_share.article-share .article-share__row {
+  justify-content: space-between;
+}
+#post .tag_share .post_share.article-share .article-share__title {
+  font-size: 15px;
+  font-weight: 600;
+}
+#post .tag_share .post_share.article-share .article-share__button {
+  padding: 8px 15px;
+  min-height: 44px;
+  border: 1px solid var(--share-border);
+  border-radius: 8px;
+  background: var(--share-button);
+  color: var(--share-ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+#post .tag_share .post_share.article-share .article-share__button:hover {
+  border-color: var(--share-accent);
+  color: var(--share-accent);
+}
+#post .tag_share .post_share.article-share .article-share__button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+#post .tag_share .post_share.article-share button:focus-visible,
+#post .tag_share .post_share.article-share summary:focus-visible,
+#post .tag_share .post_share.article-share input:focus-visible {
+  outline: 2px solid var(--share-accent);
+  outline-offset: 3px;
+}
+#post .tag_share .post_share.article-share .article-share__status {
+  margin: 8px 0 4px;
+  min-height: 1.5em;
+  color: var(--share-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+#post .tag_share .post_share.article-share .article-share__manual {
+  font-size: 13px;
+}
+#post .tag_share .post_share.article-share .article-share__manual summary {
+  width: fit-content;
+  color: var(--share-accent);
+  cursor: pointer;
+}
+#post .tag_share .post_share.article-share .article-share__label {
+  display: block;
+  margin-top: 10px;
+  color: var(--share-muted);
+}
+#post .tag_share .post_share.article-share .article-share__url {
+  display: block;
+  margin-top: 6px;
+  padding: 9px 10px;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--share-border);
+  border-radius: 6px;
+  background: var(--share-button);
+  color: var(--share-ink);
+  font: inherit;
+}
+[data-theme='dark'] #post .tag_share .post_share.article-share {
+  --share-surface: #1d242d;
+  --share-button: #252e3a;
+  --share-border: #405069;
+  --share-ink: #e1e8f2;
+  --share-muted: #b1bed1;
+  --share-accent: #a1bfff;
+}
