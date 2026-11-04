@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>compile optimization | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="代码优化由于时间因素，我只做了以下几种常见的优化。 中端优化SSA普通赋值语句通过重命名变量即可对于较为复杂的，如控制流引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： 123456789101112...1:    %2 &#x3D; icmp eq i32 %0, 42    br i1 %1, label %3, label %43:     br">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>compile optimization | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="代码优化 由于时间因素，我只做了以下几种常见的优化。 中端优化 SSA 普通赋值语句通过重命名变量即可 对于较为复杂的，如控制流 引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： ... 1: %2 = icmp eq i32 %0, 42 br i1 %1, label %3, label %4 3: br label %6 4: %5 = a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="compile optimization">
 <meta property="og:url" content="https://ywxy12138.github.io/2026/01/04/23371355_%E7%8E%8B%E6%A2%93%E6%81%92_%E4%BC%98%E5%8C%96%E6%96%87%E7%AB%A0/index.html">
 <meta property="og:site_name" content="yumooo">
-<meta property="og:description" content="代码优化由于时间因素，我只做了以下几种常见的优化。 中端优化SSA普通赋值语句通过重命名变量即可对于较为复杂的，如控制流引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： 123456789101112...1:    %2 &#x3D; icmp eq i32 %0, 42    br i1 %1, label %3, label %43:     br">
+<meta property="og:description" content="代码优化 由于时间因素，我只做了以下几种常见的优化。 中端优化 SSA 普通赋值语句通过重命名变量即可 对于较为复杂的，如控制流 引入phi指令实现，其只能放置在基本块开头，且并行执行，即其返回值取决于进入当前基本块时状态。例如： ... 1: %2 = icmp eq i32 %0, 42 br i1 %1, label %3, label %4 3: br label %6 4: %5 = a">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ywxy12138.github.io/img/%E8%8A%B1%E9%AC%98.jpg">
 <meta property="article:published_time" content="2026-01-04T12:48:36.000Z">

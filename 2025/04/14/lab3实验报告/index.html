@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OS_lab3 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="lab3实验报告思考题Thinking 3.1题面1请结合 MOS 中的页目录自映射应用解释代码中 e-&gt;env_pgdir[PDX(UVPT)] &#x3D; PADDR(e-&gt;env_pgdir) | PTE_V 的含义。 回答在MOS中，根据自映射机制，将页表和页目录映射到了用户空间中的0x7fc00000-0x80000000(UVPT-ULIM)区域，而由于自映射，所以物理内存上页目录">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OS_lab3 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="lab3实验报告 思考题 Thinking 3.1 题面 请结合 MOS 中的页目录自映射应用解释代码中 e->env_pgdir[PDX(UVPT)] = PADDR(e->env_pgdir) | PTE_V 的含义。 回答 在MOS中，根据自映射机制，将页表和页目录映射到了用户空间中的0x7fc00000-0x80000000(UVPT-ULIM)区域，而由于自映射，所以物理内存上页目录单独">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OS_lab3">
 <meta property="og:url" content="https://ywxy12138.github.io/2025/04/14/lab3%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/index.html">
 <meta property="og:site_name" content="yumooo">
-<meta property="og:description" content="lab3实验报告思考题Thinking 3.1题面1请结合 MOS 中的页目录自映射应用解释代码中 e-&gt;env_pgdir[PDX(UVPT)] &#x3D; PADDR(e-&gt;env_pgdir) | PTE_V 的含义。 回答在MOS中，根据自映射机制，将页表和页目录映射到了用户空间中的0x7fc00000-0x80000000(UVPT-ULIM)区域，而由于自映射，所以物理内存上页目录">
+<meta property="og:description" content="lab3实验报告 思考题 Thinking 3.1 题面 请结合 MOS 中的页目录自映射应用解释代码中 e->env_pgdir[PDX(UVPT)] = PADDR(e->env_pgdir) | PTE_V 的含义。 回答 在MOS中，根据自映射机制，将页表和页目录映射到了用户空间中的0x7fc00000-0x80000000(UVPT-ULIM)区域，而由于自映射，所以物理内存上页目录单独">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ywxy12138.github.io/img/os.jpg">
 <meta property="article:published_time" content="2025-04-14T03:53:52.000Z">

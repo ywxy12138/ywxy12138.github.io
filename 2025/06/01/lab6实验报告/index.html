@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>lab6实验报告 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="lab6实验报告思考题Thinking 6.1题面1示例代码中，父进程操作管道的写端，子进程操作管道的读端。如果现在想让父进程作为“读者”，代码应当如何修改？ 回答只需要将父子进程中的操作流程反过来即可，也就是在子进程中关闭读端close(fildes[0])，然后进行写操作，并且在写入结束后关闭写端；再父进程中关闭写端close(fildes[1])，然后进行读操作，并且在读取结束后，关闭读端即">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>lab6实验报告 | yumooo</title><meta name="author" content="聿尛"><meta name="copyright" content="聿尛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="lab6实验报告 思考题 Thinking 6.1 题面 示例代码中，父进程操作管道的写端，子进程操作管道的读端。如果现在想让父进程作为“读者”，代码应当如何修改？ 回答 只需要将父子进程中的操作流程反过来即可，也就是在子进程中关闭读端close(fildes[0])，然后进行写操作，并且在写入结束后关闭写端；再父进程中关闭写端close(fildes[1])，然后进行读操作，并且在读取结束后，关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lab6实验报告">
 <meta property="og:url" content="https://ywxy12138.github.io/2025/06/01/lab6%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/index.html">
 <meta property="og:site_name" content="yumooo">
-<meta property="og:description" content="lab6实验报告思考题Thinking 6.1题面1示例代码中，父进程操作管道的写端，子进程操作管道的读端。如果现在想让父进程作为“读者”，代码应当如何修改？ 回答只需要将父子进程中的操作流程反过来即可，也就是在子进程中关闭读端close(fildes[0])，然后进行写操作，并且在写入结束后关闭写端；再父进程中关闭写端close(fildes[1])，然后进行读操作，并且在读取结束后，关闭读端即">
+<meta property="og:description" content="lab6实验报告 思考题 Thinking 6.1 题面 示例代码中，父进程操作管道的写端，子进程操作管道的读端。如果现在想让父进程作为“读者”，代码应当如何修改？ 回答 只需要将父子进程中的操作流程反过来即可，也就是在子进程中关闭读端close(fildes[0])，然后进行写操作，并且在写入结束后关闭写端；再父进程中关闭写端close(fildes[1])，然后进行读操作，并且在读取结束后，关">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ywxy12138.github.io/img/os.jpg">
 <meta property="article:published_time" content="2025-06-01T07:07:17.000Z">
