@@ -2631,6 +2631,28 @@ blockquote > :last-child {
 h1.page-title + .tag-cloud-list {
   text-align: left;
 }
+.tag-cloud-list a.blog-tag,
+#aside-content .card-tag-cloud a.blog-tag {
+  --tag-color: var(--tag-color-light);
+  color: var(--tag-color);
+}
+.tag-cloud-list a.blog-tag:hover,
+#aside-content .card-tag-cloud a.blog-tag:hover,
+.tag-cloud-list a.blog-tag:focus-visible,
+#aside-content .card-tag-cloud a.blog-tag:focus-visible {
+  color: var(--tag-color) !important;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.tag-cloud-list a.blog-tag:focus-visible,
+#aside-content .card-tag-cloud a.blog-tag:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+[data-theme='dark'] .tag-cloud-list a.blog-tag,
+[data-theme='dark'] #aside-content .card-tag-cloud a.blog-tag {
+  --tag-color: var(--tag-color-dark);
+}
 #aside-content {
   width: 26%;
 }
