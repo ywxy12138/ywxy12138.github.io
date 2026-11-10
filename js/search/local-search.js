@@ -19,12 +19,12 @@ class LocalSearch {
     this.fetchPromise = null
   }
 
-  getIndexByWord (words, text, caseSensitive = false) {
+  getIndexByWord (words, text, caseSensitive = false, normalizedText) {
     const index = []
     const included = new Set()
 
     if (!caseSensitive) {
-      text = text.toLowerCase()
+      text = normalizedText === undefined ? text.toLowerCase() : normalizedText
     }
     words.forEach(word => {
       if (this.unescape) {
@@ -112,10 +112,10 @@ class LocalSearch {
 
   getResultItems (keywords) {
     const resultItems = []
-    this.datas.forEach(({ title, content, url }) => {
+    this.datas.forEach(({ title, content, url, normalizedTitle, normalizedContent }) => {
       // The number of different keywords included in the article.
-      const [indexOfTitle, keysOfTitle] = this.getIndexByWord(keywords, title)
-      const [indexOfContent, keysOfContent] = this.getIndexByWord(keywords, content)
+      const [indexOfTitle, keysOfTitle] = this.getIndexByWord(keywords, title, false, normalizedTitle)
+      const [indexOfContent, keysOfContent] = this.getIndexByWord(keywords, content, false, normalizedContent)
       const includedCount = new Set([...keysOfTitle, ...keysOfContent]).size
 
       // Show search results
@@ -224,9 +224,14 @@ class LocalSearch {
           template.innerHTML = item.content || ''
           template.content.querySelectorAll('script, style, .gutter, .highlight-tools, .code-expand-btn').forEach(node => node.remove())
           template.content.querySelectorAll('br').forEach(node => node.replaceWith('\n'))
+          const title = item.title.trim()
+          const content = template.content.textContent.trim()
           return {
-            title: item.title.trim(),
-            content: template.content.textContent.trim(),
+            title,
+            content,
+            // 索引加载后只转换一次大小写；保留原文用于摘要和高亮，不截断代码或正文。
+            normalizedTitle: title.toLowerCase(),
+            normalizedContent: content.toLowerCase(),
             url: url.pathname + url.search + url.hash
           }
         })
@@ -297,9 +302,15 @@ const initLocalSearch = () => {
   const statsItem = document.getElementById('local-search-stats-wrap')
   const $loadingStatus = document.getElementById('loading-status')
 
+  let searchTimer
+  let lastSearchText = null
+
   const inputEventFunction = () => {
     if (!localSearch.isfetched) return
     const searchText = input.value.trim().toLowerCase()
+    // 大小写或首尾空格变化不影响匹配，避免重复遍历全文和重建结果节点。
+    if (searchText === lastSearchText) return
+    lastSearchText = searchText
     if (searchText !== '') $loadingStatus.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>'
     const keywords = searchText.split(/[-\s]+/)
     const container = document.getElementById('local-search-results')
@@ -337,6 +348,14 @@ const initLocalSearch = () => {
     $loadingStatus.textContent = ''
   }
 
+  // 连续输入合并为一次查询；清空立即响应，中文输入法组词期间不查询半成品。
+  const scheduleSearch = event => {
+    clearTimeout(searchTimer)
+    if (event?.isComposing) return
+    if (!input.value.trim()) inputEventFunction()
+    else searchTimer = setTimeout(inputEventFunction, 150)
+  }
+
   const $searchMask = document.getElementById('search-mask')
   const $searchDialog = document.querySelector('#local-search .search-dialog')
   const $loadDataItem = document.getElementById('loading-database')
@@ -360,6 +379,7 @@ const initLocalSearch = () => {
     setTimeout(() => { input.focus() }, 300)
     // 失败后重新打开也可再次请求，进行中的请求由 fetchData 合并。
     if (!localSearch.isfetched) localSearch.fetchData()
+    else scheduleSearch()
     document.addEventListener('keydown', onSearchKeydown)
 
     fixSafariHeight()
@@ -367,6 +387,7 @@ const initLocalSearch = () => {
   }
 
   const closeSearch = () => {
+    clearTimeout(searchTimer)
     const bodyStyle = document.body.style
     bodyStyle.width = ''
     bodyStyle.overflow = ''
@@ -388,7 +409,9 @@ const initLocalSearch = () => {
   }
 
   const searchFnOnce = () => {
-    input.addEventListener('input', inputEventFunction)
+    input.addEventListener('input', scheduleSearch)
+    input.addEventListener('compositionstart', () => clearTimeout(searchTimer))
+    input.addEventListener('compositionend', scheduleSearch)
     $retryButton.addEventListener('click', () => localSearch.fetchData())
     document.querySelector('#local-search .search-close-button').addEventListener('click', closeSearch)
     $searchMask.addEventListener('click', closeSearch)
