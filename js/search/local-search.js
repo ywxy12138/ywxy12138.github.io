@@ -362,6 +362,13 @@ const initLocalSearch = () => {
   const $retryButton = document.getElementById('local-search-retry')
   const $loadMessage = $loadDataItem.querySelector('span')
   const $loadIcon = $loadDataItem.querySelector('i')
+  let searchIsOpen = false
+  let returnFocusTarget = null
+  let focusTimer
+
+  // 每次按键重新查找，兼容加载、重试及搜索结果动态增删控件。
+  const getSearchFocusTargets = () => [...$searchDialog.querySelectorAll('a[href], button, input, select, textarea, [tabindex]')]
+    .filter(node => !node.disabled && node.tabIndex >= 0 && node.getClientRects().length > 0 && !node.closest('[hidden], [inert]'))
 
   // fix safari
   const fixSafariHeight = () => {
@@ -370,13 +377,21 @@ const initLocalSearch = () => {
     }
   }
 
-  const openSearch = () => {
+  const openSearch = event => {
+    if (searchIsOpen) return
+    returnFocusTarget = event?.currentTarget || document.activeElement
+    searchIsOpen = true
     const bodyStyle = document.body.style
     bodyStyle.width = '100%'
     bodyStyle.overflow = 'hidden'
     btf.animateIn($searchMask, 'to_show 0.5s')
     btf.animateIn($searchDialog, 'titleScale 0.5s')
-    setTimeout(() => { input.focus() }, 300)
+    // 关闭时取消延迟聚焦，避免快速开关后焦点被隐藏的输入框抢回。
+    focusTimer = setTimeout(() => {
+      if (!searchIsOpen) return
+      const targets = getSearchFocusTargets()
+      ;(targets.includes(input) ? input : targets[0] || $searchDialog).focus()
+    }, 300)
     // 失败后重新打开也可再次请求，进行中的请求由 fetchData 合并。
     if (!localSearch.isfetched) localSearch.fetchData()
     else scheduleSearch()
@@ -387,6 +402,9 @@ const initLocalSearch = () => {
   }
 
   const closeSearch = () => {
+    if (!searchIsOpen) return
+    searchIsOpen = false
+    clearTimeout(focusTimer)
     clearTimeout(searchTimer)
     const bodyStyle = document.body.style
     bodyStyle.width = ''
@@ -395,10 +413,25 @@ const initLocalSearch = () => {
     btf.animateOut($searchMask, 'to_hide 0.5s')
     window.removeEventListener('resize', fixSafariHeight)
     document.removeEventListener('keydown', onSearchKeydown)
+    // PJAX 可能已经移除原按钮，此时不对脱离文档的元素恢复焦点。
+    if (returnFocusTarget?.isConnected) returnFocusTarget.focus()
+    returnFocusTarget = null
   }
 
   const onSearchKeydown = event => {
-    if (event.code === 'Escape') closeSearch()
+    if (event.key === 'Escape' && !event.isComposing) {
+      event.preventDefault()
+      closeSearch()
+    }
+    if (event.key !== 'Tab') return
+    const targets = getSearchFocusTargets()
+    const first = targets[0] || $searchDialog
+    const last = targets[targets.length - 1] || $searchDialog
+    const active = document.activeElement
+    if (!targets.includes(active) || (event.shiftKey ? active === first : active === last)) {
+      event.preventDefault()
+      ;(event.shiftKey ? last : first).focus()
+    }
   }
 
   const searchClickFn = () => {
@@ -435,14 +468,15 @@ const initLocalSearch = () => {
     $loadMessage.textContent = languages.load_error || 'Search index could not be loaded. Please retry.'
     $retryButton.textContent = languages.retry || 'Retry'
     $retryButton.hidden = false
-    $retryButton.focus()
+    // 后台加载结束时仅更新状态，不能从已关闭的弹窗外抢夺焦点。
+    if (searchIsOpen) $retryButton.focus()
   })
   window.addEventListener('search:loaded', () => {
     $searchDialog.setAttribute('aria-busy', 'false')
     $loadDataItem.hidden = true
     $loadDataItem.nextElementSibling.style.display = 'block'
     inputEventFunction()
-    if (!btf.isHidden($searchDialog)) input.focus()
+    if (searchIsOpen) input.focus()
   })
 
   searchClickFn()
