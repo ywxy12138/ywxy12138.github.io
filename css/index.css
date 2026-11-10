@@ -5556,6 +5556,52 @@ mjx-assistive-mml {
   color: var(--home-muted);
   font-size: 11px;
 }
+.home-personal-page .collection-creator {
+  color: var(--home-muted);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.home-personal-page .collection-creator:hover {
+  color: var(--home-accent);
+}
+.home-personal-page .collection-player {
+  margin: 16px 0;
+  color: var(--home-accent);
+  font-size: 13px;
+}
+.home-personal-page .collection-player .collection-player-retry {
+  padding: 8px 12px;
+  border: 1px solid var(--home-line);
+  border-radius: 8px;
+  background: var(--home-tint);
+  color: var(--home-ink);
+  cursor: pointer;
+}
+.home-personal-page .collection-player .collection-player-status {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.home-personal-page .collection-player summary {
+  padding: 10px 0;
+  cursor: pointer;
+}
+.home-personal-page .collection-player .collection-player-note {
+  line-height: 1.7;
+  font-size: 12px;
+}
+.home-personal-page .collection-player iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 12px;
+}
+.home-personal-page .collection-player .collection-platform {
+  display: inline-block;
+  padding: 12px 0;
+  color: var(--home-accent);
+}
 .home-personal-page .home-topics {
   gap: 12px;
 }
