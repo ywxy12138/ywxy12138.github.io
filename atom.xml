@@ -11,7 +11,24 @@
   <rights>聿尛；除特别声明外，采用 CC BY-NC-SA 4.0。https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;</rights>
   <subtitle>孤独永恒，死亡永生。</subtitle>
   <title>yumooo</title>
-  <updated>2026-11-10T02:30:41.927Z</updated>
+  <updated>2026-11-10T08:34:52.593Z</updated>
+  <entry>
+    <author>
+      <name>聿尛</name>
+    </author>
+    <category term="学习笔记" scheme="https://ywxy12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="CPP" scheme="https://ywxy12138.github.io/tags/CPP/"/>
+    <id>https://ywxy12138.github.io/2026/11/10/cpp-equal-iterator-parameters/</id>
+    <link href="https://ywxy12138.github.io/2026/11/10/cpp-equal-iterator-parameters/"/>
+    <published>2026-11-10T08:06:19.000Z</published>
+    <summary>
+      <![CDATA[为什么第二个容器只传 begin()？ 学习 <algorithm> 中的 std::equal 时，遇到了这样的调用： std::equal(v1.begin(), v1.end(), v2.begin()); 既然是在比较两个容器的元素，为什么 v1 要传 begin() 和 end()，而 v2 只传一个 begin() 就够了？如果没有 v2.end()，函数怎么知道什么时候结束？ 关键在…]]>
+    </summary>
+    <title>
+      <![CDATA[C++ 算法库 <algorithm>中的equal函数的参数疑惑]]>
+    </title>
+    <updated>2026-11-10T08:34:52.593Z</updated>
+  </entry>
   <entry>
     <author>
       <name>聿尛</name>
@@ -261,18 +278,5 @@
     <summary>多核架构优势 P = C *(V)^2* F 多核可以降低功耗。通过提高频率F会导致功耗变为原来的8倍，因为提高F，V会相应增大，即P’ = C*(2V)^2* 2F. 大作业要求 每人一到两页ppt讲使用ai阅读论文的心得体会，问论文的研究问题、框架是？ 最好选2020后以后的论文 同一团队,8篇论文相关,被别人一同引用,或者国外某一实验室发表的论文 大作业调研 体系结构 存储技术的过去、现在和…</summary>
     <title>并行</title>
     <updated>2026-11-09T11:19:02.971Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>聿尛</name>
-    </author>
-    <category term="学习笔记" scheme="https://ywxy12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <category term="编译原理" scheme="https://ywxy12138.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    <id>https://ywxy12138.github.io/2025/09/06/compile/</id>
-    <link href="https://ywxy12138.github.io/2025/09/06/compile/"/>
-    <published>2025-09-06T09:31:36.000Z</published>
-    <summary>编译 五大组成部分 词法分析：将程序文本拆分成字符或tokens， 跟据语言词法规则分析并识别单词，并以相应的编码方式输出(四大类单词：标识符、关键字、常量、运算符)。 语法分析:根据语言的语法规则，识别单词之间的关系，并生成语法树，并进行语法检查。 语义分析\生成中间代码：检查语义错误，如类型检查、作用域检查等，并生成中间代码(便于优化、编译程序的移植(LLVM)，常用：四元式、三元式和逆波兰式…</summary>
-    <title>compile</title>
-    <updated>2026-11-09T11:19:02.263Z</updated>
   </entry>
 </feed>

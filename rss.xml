@@ -6,7 +6,7 @@
     <description>孤独永恒，死亡永生。</description>
     <language>zh-CN</language>
     <copyright>聿尛；除特别声明外，采用 CC BY-NC-SA 4.0。https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;</copyright>
-    <lastBuildDate>Tue, 10 Nov 2026 02:30:41 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 08:34:52 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://ywxy12138.github.io/blog-images/favicon-96.png</url>
@@ -14,6 +14,19 @@
       <link>https://ywxy12138.github.io/</link>
     </image>
     <atom:link href="https://ywxy12138.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>
+        <![CDATA[C++ 算法库 <algorithm>中的equal函数的参数疑惑]]>
+      </title>
+      <link>https://ywxy12138.github.io/2026/11/10/cpp-equal-iterator-parameters/</link>
+      <description>
+        <![CDATA[为什么第二个容器只传 begin()？ 学习 &lt;algorithm&gt; 中的 std::equal 时，遇到了这样的调用： std::equal(v1.begin(), v1.end(), v2.begin()); 既然是在比较两个容器的元素，为什么 v1 要传 begin() 和 end()，而 v2 只传一个 begin() 就够了？如果没有 v2.end()，函数怎么知道什么时候结束？ 关键在…]]>
+      </description>
+      <author>聿尛</author>
+      <category domain="https://ywxy12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <category domain="https://ywxy12138.github.io/tags/CPP/">CPP</category>
+      <pubDate>Tue, 10 Nov 2026 08:06:19 GMT</pubDate>
+    </item>
     <item>
       <title>Zsh/NVM排查</title>
       <link>https://ywxy12138.github.io/2026/10/28/Zsh%E4%B8%8ENVM%E6%8E%92%E6%9F%A5/</link>
@@ -187,15 +200,6 @@
       <category domain="https://ywxy12138.github.io/categories/%E7%A7%91%E7%A0%94%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">科研课堂笔记</category>
       <category domain="https://ywxy12138.github.io/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</category>
       <pubDate>Tue, 09 Sep 2025 11:09:12 GMT</pubDate>
-    </item>
-    <item>
-      <title>compile</title>
-      <link>https://ywxy12138.github.io/2025/09/06/compile/</link>
-      <description>编译 五大组成部分 词法分析：将程序文本拆分成字符或tokens， 跟据语言词法规则分析并识别单词，并以相应的编码方式输出(四大类单词：标识符、关键字、常量、运算符)。 语法分析:根据语言的语法规则，识别单词之间的关系，并生成语法树，并进行语法检查。 语义分析\生成中间代码：检查语义错误，如类型检查、作用域检查等，并生成中间代码(便于优化、编译程序的移植(LLVM)，常用：四元式、三元式和逆波兰式…</description>
-      <author>聿尛</author>
-      <category domain="https://ywxy12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <category domain="https://ywxy12138.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</category>
-      <pubDate>Sat, 06 Sep 2025 09:31:36 GMT</pubDate>
     </item>
   </channel>
 </rss>
