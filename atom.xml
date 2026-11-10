@@ -11,7 +11,7 @@
   <rights>聿尛；除特别声明外，采用 CC BY-NC-SA 4.0。https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;</rights>
   <subtitle>孤独永恒，死亡永生。</subtitle>
   <title>yumooo</title>
-  <updated>2026-11-09T11:19:02.953Z</updated>
+  <updated>2026-11-10T02:30:41.927Z</updated>
   <entry>
     <author>
       <name>聿尛</name>
@@ -24,7 +24,7 @@
     <published>2026-10-28T12:35:55.000Z</published>
     <summary>从一个打不开的桌面图标说起 这次想通过桌面图标启动本地的 DeepSeek Harness。启动器 deepseek_harness.desktop 直接调用 deepseek_harness.sh，但点击图标后无法正常启动，于是先怀疑是不是脚本不适合从桌面执行。 下面只保留排查所需的信息，本机用户名、挂载点和目录结构均已隐去。使用 ./ 的命令假定已经进入相应文件所在目录。 原来的脚本只有两行：…</summary>
     <title>Zsh/NVM排查</title>
-    <updated>2026-11-09T11:19:02.953Z</updated>
+    <updated>2026-11-10T02:30:41.927Z</updated>
   </entry>
   <entry>
     <author>
@@ -78,7 +78,7 @@
     <published>2026-06-23T03:08:26.000Z</published>
     <summary>硕士去处调研 北大 中科院 中科院工程热物理所 王波 研究员/博导/副主任 介绍 研究方向是飞行器总体设计、多学科优化设计、随机代理模型数学建模等 飞行器总体设计：主要涉及飞行器总体设计、气动设计、结构设计、强度分析与试验、飞行控制与导航设计等研究内容。 中国科学院青年创新促进会 发表在中国力学期刊网的论文 基于数值模拟的某F级燃气轮机第二级动叶温度场分析 风扇转速对混合动力飞翼布局进排气-风扇流…</summary>
     <title>硕士去处调研</title>
-    <updated>2026-11-09T11:19:02.937Z</updated>
+    <updated>2026-11-10T02:36:32.233Z</updated>
   </entry>
   <entry>
     <author>
@@ -91,7 +91,7 @@
     <published>2026-05-15T07:09:26.000Z</published>
     <summary>浙大计院硕导老师调研 庄博涵 方向：机器学习/大模型系统，尤其大语言模型和多模态大模型 投递 陈翔 计算机图形学和物理仿真和动画，面向3D打印的智能设计 胡天磊 数据库、大数据管理和图形学 曾在网易、字节和腾讯的游戏部门呆过，能和这个老师肯定可以学到很多东西 ( htl@zju.edu.cn) 向为 智能设计和人AI交互 黄琦(被学生评价自以为是) 生态、服务和互动设计 魏颖 人工智能、机器学习、…</summary>
     <title>浙大计院硕导老师调研</title>
-    <updated>2026-11-09T11:19:02.951Z</updated>
+    <updated>2026-11-10T02:36:32.991Z</updated>
   </entry>
   <entry>
     <author>
@@ -117,7 +117,7 @@
     <published>2026-03-06T07:07:22.000Z</published>
     <summary>CXL: 目前大型服务器和计算机架构的普遍架构 新型内存系统 内存系统的架构 内存架构包含内存条、cache等 内存资源管理与调度(软硬结合) 内存系统的问题、未来方向 Memory-Hungry/Intensive 两种软件模式 “内存墙”瓶颈 DRAM系统的问题： 慢（带宽小）、 扰（线程间存在严重访存干扰）、 乏（调度算法不满足多样性需求）、 耗（DRAM能耗高） DDR5： 封面：Flor…</summary>
     <title>新型计算机系统设计</title>
-    <updated>2026-11-09T11:19:02.995Z</updated>
+    <updated>2026-11-10T02:30:42.801Z</updated>
   </entry>
   <entry>
     <author>
@@ -130,7 +130,7 @@
     <published>2026-03-05T01:54:28.000Z</published>
     <summary>使用大模型进行论文阅读相关的任务的提示词一定要提及：“一定要去网上查阅文献，不要自己瞎编” 解决实际问题以抽象出通用方法和理论来解决更多的问题 器-术-方法论(做科研的方法) 找到你最擅长的领域刻意练习，并打造底层方法论和思维方式，最好的方法就是写一篇好的论文 对问题进行定义抽象出来找前人的相关解决方法并不断求证、检验得到最终的方案。 写作才是真正的思考，有了idea后边写边想。 像水晶一般清澈的…</summary>
     <title>计算机方法论</title>
-    <updated>2026-11-09T11:19:03.001Z</updated>
+    <updated>2026-11-10T02:30:42.352Z</updated>
   </entry>
   <entry>
     <author>
@@ -143,7 +143,7 @@
     <published>2026-03-05T01:05:56.000Z</published>
     <summary>BitTorrent Skype World Wide Web 传输层而提供的至少两种可能服务： TCP:保证传输的可靠 UDP:不保证，但更简单 网络层使用IP协议，进行端到端的数据传输 链路层通过链路在服务器和路由或者路由间进行传输数据 封面（标识排版适配）：Sangre viento at English Wikipedia · Public domain。</summary>
     <title>computer net</title>
-    <updated>2026-11-09T11:19:02.263Z</updated>
+    <updated>2026-11-10T02:30:43.190Z</updated>
   </entry>
   <entry>
     <author>
